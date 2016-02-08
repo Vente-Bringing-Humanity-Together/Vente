@@ -25,6 +25,6 @@ An application to give people the power to connect and share meaningful interact
 
 ##Optional Tier 4
 - [ ] Notification for user if somebody with mutual interest is nearby
-- 
+
 ##Optional Tier ???
 - [ ] Nick's camera idea
