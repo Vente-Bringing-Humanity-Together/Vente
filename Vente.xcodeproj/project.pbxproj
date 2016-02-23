@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27F3B4471C7D25CC006332D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F3B4461C7D25CC006332D7 /* AppDelegate.swift */; };
+		27F3B4491C7D25CC006332D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F3B4481C7D25CC006332D7 /* LoginViewController.swift */; };
+		27F3B44C1C7D25CC006332D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F3B44A1C7D25CC006332D7 /* Main.storyboard */; };
+		27F3B44F1C7D25CC006332D7 /* Vente.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27F3B44D1C7D25CC006332D7 /* Vente.xcdatamodeld */; };
+		27F3B4511C7D25CC006332D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27F3B4501C7D25CC006332D7 /* Assets.xcassets */; };
+		27F3B4541C7D25CC006332D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F3B4521C7D25CC006332D7 /* LaunchScreen.storyboard */; };
+		E07D2127745AD0034CAA4774 /* Pods_Vente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6846B10F5E51F42F7D4D22F8 /* Pods_Vente.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		27F3B4431C7D25CC006332D7 /* Vente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vente.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F3B4461C7D25CC006332D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27F3B4481C7D25CC006332D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		27F3B44B1C7D25CC006332D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27F3B44E1C7D25CC006332D7 /* Vente.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vente.xcdatamodel; sourceTree = "<group>"; };
+		27F3B4501C7D25CC006332D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27F3B4531C7D25CC006332D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		27F3B4551C7D25CC006332D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6846B10F5E51F42F7D4D22F8 /* Pods_Vente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8AF0466069CA779CEC0C9F1 /* Pods-Vente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.debug.xcconfig"; sourceTree = "<group>"; };
+		BB298427FBD133240766D8E8 /* Pods-Vente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27F3B4401C7D25CC006332D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E07D2127745AD0034CAA4774 /* Pods_Vente.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11349DFB4BF0FF3BCEF8CA0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A8AF0466069CA779CEC0C9F1 /* Pods-Vente.debug.xcconfig */,
+				BB298427FBD133240766D8E8 /* Pods-Vente.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1760C1849977CF6493CBF93B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6846B10F5E51F42F7D4D22F8 /* Pods_Vente.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27F3B43A1C7D25CC006332D7 = {
+			isa = PBXGroup;
+			children = (
+				27F3B4451C7D25CC006332D7 /* Vente */,
+				27F3B4441C7D25CC006332D7 /* Products */,
+				11349DFB4BF0FF3BCEF8CA0F /* Pods */,
+				1760C1849977CF6493CBF93B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		27F3B4441C7D25CC006332D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27F3B4431C7D25CC006332D7 /* Vente.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27F3B4451C7D25CC006332D7 /* Vente */ = {
+			isa = PBXGroup;
+			children = (
+				27F3B45F1C7D274B006332D7 /* DatabaseCalls */,
+				27F3B45E1C7D273C006332D7 /* Cells */,
+				27F3B45D1C7D2730006332D7 /* API's */,
+				27F3B45C1C7D2729006332D7 /* Models */,
+				27F3B45B1C7D2721006332D7 /* ViewControllers */,
+				27F3B4461C7D25CC006332D7 /* AppDelegate.swift */,
+				27F3B44A1C7D25CC006332D7 /* Main.storyboard */,
+				27F3B4501C7D25CC006332D7 /* Assets.xcassets */,
+				27F3B4521C7D25CC006332D7 /* LaunchScreen.storyboard */,
+				27F3B4551C7D25CC006332D7 /* Info.plist */,
+				27F3B44D1C7D25CC006332D7 /* Vente.xcdatamodeld */,
+			);
+			path = Vente;
+			sourceTree = "<group>";
+		};
+		27F3B45B1C7D2721006332D7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				27F3B4481C7D25CC006332D7 /* LoginViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		27F3B45C1C7D2729006332D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		27F3B45D1C7D2730006332D7 /* API's */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "API's";
+			sourceTree = "<group>";
+		};
+		27F3B45E1C7D273C006332D7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		27F3B45F1C7D274B006332D7 /* DatabaseCalls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DatabaseCalls;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27F3B4421C7D25CC006332D7 /* Vente */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27F3B4581C7D25CC006332D7 /* Build configuration list for PBXNativeTarget "Vente" */;
+			buildPhases = (
+				CF682B6DDD8C4DB421E464CB /* Check Pods Manifest.lock */,
+				27F3B43F1C7D25CC006332D7 /* Sources */,
+				27F3B4401C7D25CC006332D7 /* Frameworks */,
+				27F3B4411C7D25CC006332D7 /* Resources */,
+				E8D04FB1FF6F9565A2988159 /* Embed Pods Frameworks */,
+				4F6A16976EF3C46041570279 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vente;
+			productName = Vente;
+			productReference = 27F3B4431C7D25CC006332D7 /* Vente.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27F3B43B1C7D25CC006332D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Vente;
+				TargetAttributes = {
+					27F3B4421C7D25CC006332D7 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 27F3B43E1C7D25CC006332D7 /* Build configuration list for PBXProject "Vente" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27F3B43A1C7D25CC006332D7;
+			productRefGroup = 27F3B4441C7D25CC006332D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27F3B4421C7D25CC006332D7 /* Vente */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27F3B4411C7D25CC006332D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F3B4541C7D25CC006332D7 /* LaunchScreen.storyboard in Resources */,
+				27F3B4511C7D25CC006332D7 /* Assets.xcassets in Resources */,
+				27F3B44C1C7D25CC006332D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F6A16976EF3C46041570279 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vente/Pods-Vente-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF682B6DDD8C4DB421E464CB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E8D04FB1FF6F9565A2988159 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vente/Pods-Vente-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27F3B43F1C7D25CC006332D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F3B44F1C7D25CC006332D7 /* Vente.xcdatamodeld in Sources */,
+				27F3B4491C7D25CC006332D7 /* LoginViewController.swift in Sources */,
+				27F3B4471C7D25CC006332D7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		27F3B44A1C7D25CC006332D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27F3B44B1C7D25CC006332D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		27F3B4521C7D25CC006332D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27F3B4531C7D25CC006332D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27F3B4561C7D25CC006332D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		27F3B4571C7D25CC006332D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27F3B4591C7D25CC006332D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8AF0466069CA779CEC0C9F1 /* Pods-Vente.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Vente/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Vente.Vente;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		27F3B45A1C7D25CC006332D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB298427FBD133240766D8E8 /* Pods-Vente.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Vente/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Vente.Vente;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27F3B43E1C7D25CC006332D7 /* Build configuration list for PBXProject "Vente" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27F3B4561C7D25CC006332D7 /* Debug */,
+				27F3B4571C7D25CC006332D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27F3B4581C7D25CC006332D7 /* Build configuration list for PBXNativeTarget "Vente" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27F3B4591C7D25CC006332D7 /* Debug */,
+				27F3B45A1C7D25CC006332D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		27F3B44D1C7D25CC006332D7 /* Vente.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				27F3B44E1C7D25CC006332D7 /* Vente.xcdatamodel */,
+			);
+			currentVersion = 27F3B44E1C7D25CC006332D7 /* Vente.xcdatamodel */;
+			path = Vente.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 27F3B43B1C7D25CC006332D7 /* Project object */;
+}
