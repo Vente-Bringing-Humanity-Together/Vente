@@ -13,6 +13,7 @@ An application to give people the power to connect and share meaningful interact
 - [ ] Filter for users/events based on interests
 - [ ] Add tags for events relating to specific interests
 - [ ] Differentiate between group and peer2peer events
+- [ ] Integrate Yelp API to pull events
 
 ##Optional Tier 2
 - [ ] Invite only vs public events
