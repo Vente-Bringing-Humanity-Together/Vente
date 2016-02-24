@@ -1,3 +1,3 @@
 # GitHub Notes
 
-*The Procedure:
+* The Procedure:
