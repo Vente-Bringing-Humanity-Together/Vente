@@ -5,7 +5,8 @@
 - Hop on the master branch
 - Type 'git branch'
 - If master is not green then type 'git checkout master'
-- Type 'git pull'
+- Type 'git pull' to grab all of the latest changes
+- Type 'git fetch' to grab all of the latest branches
 - Copy the folder into a development folder
 - Do all your work in that development folder
 - When you are done with your work go back to the terminal and master branch and type 'git pull'
