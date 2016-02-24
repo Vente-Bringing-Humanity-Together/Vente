@@ -13,6 +13,7 @@
 		27F3B44F1C7D25CC006332D7 /* Vente.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27F3B44D1C7D25CC006332D7 /* Vente.xcdatamodeld */; };
 		27F3B4511C7D25CC006332D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27F3B4501C7D25CC006332D7 /* Assets.xcassets */; };
 		27F3B4541C7D25CC006332D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F3B4521C7D25CC006332D7 /* LaunchScreen.storyboard */; };
+		27F3B4611C7D2C05006332D7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F3B4601C7D2C05006332D7 /* SignUpViewController.swift */; };
 		E07D2127745AD0034CAA4774 /* Pods_Vente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6846B10F5E51F42F7D4D22F8 /* Pods_Vente.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		27F3B4501C7D25CC006332D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27F3B4531C7D25CC006332D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27F3B4551C7D25CC006332D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27F3B4601C7D2C05006332D7 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6846B10F5E51F42F7D4D22F8 /* Pods_Vente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8AF0466069CA779CEC0C9F1 /* Pods-Vente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.debug.xcconfig"; sourceTree = "<group>"; };
 		BB298427FBD133240766D8E8 /* Pods-Vente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				27F3B4481C7D25CC006332D7 /* LoginViewController.swift */,
+				27F3B4601C7D2C05006332D7 /* SignUpViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				27F3B44F1C7D25CC006332D7 /* Vente.xcdatamodeld in Sources */,
 				27F3B4491C7D25CC006332D7 /* LoginViewController.swift in Sources */,
+				27F3B4611C7D2C05006332D7 /* SignUpViewController.swift in Sources */,
 				27F3B4471C7D25CC006332D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
