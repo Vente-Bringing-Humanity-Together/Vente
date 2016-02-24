@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="162.66666666666666" y="366.83333333333331"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="jhg-14-d6P">
             <objects>
-                <viewController id="sMA-QM-N6z" sceneMemberID="viewController">
+                <viewController id="sMA-QM-N6z" customClass="SignUpViewController" customModule="Vente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hIv-2w-RcO"/>
                         <viewControllerLayoutGuide type="bottom" id="eUD-Ha-nhP"/>
@@ -34,6 +34,12 @@
                     <view key="view" contentMode="scaleToFill" id="rwe-gf-6Rn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-b7-K6z">
+                                <rect key="frame" x="80" y="333" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
