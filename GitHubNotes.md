@@ -1,6 +1,6 @@
 # GitHub Notes
 
-**The Procedure:**
+## The Procedure:
 
 - Hop on the master branch
 - Type 'git branch'
