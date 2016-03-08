@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Vente
 //
-//  Created by Nicholas Miller on 2/23/16.
-//  Copyright © 2016 Vente. All rights reserved.
+//  Created by Nicholas Miller on 3/8/16.
+//  Copyright © 2016 nickbryanmiller. All rights reserved.
 //
 
 import UIKit

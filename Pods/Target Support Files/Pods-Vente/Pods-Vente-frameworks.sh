@@ -88,7 +88,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Vente/BDBOAuth1Manager.framework"
   install_framework "Pods-Vente/Bolts.framework"
   install_framework "Pods-Vente/ChameleonFramework.framework"
-  install_framework "Pods-Vente/LiquidFloatingActionButton.framework"
   install_framework "Pods-Vente/MBProgressHUD.framework"
   install_framework "Pods-Vente/Parse.framework"
 fi
@@ -97,7 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Vente/BDBOAuth1Manager.framework"
   install_framework "Pods-Vente/Bolts.framework"
   install_framework "Pods-Vente/ChameleonFramework.framework"
-  install_framework "Pods-Vente/LiquidFloatingActionButton.framework"
   install_framework "Pods-Vente/MBProgressHUD.framework"
   install_framework "Pods-Vente/Parse.framework"
 fi
