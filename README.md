@@ -2,20 +2,21 @@
 An application to give people the power to connect and share meaningful interactions
 
 ##Required
-- [ ] User can make a profile and login (check for .edu)
+- [ ] User can make a profile and login
 - [ ] User can make events (set a certain radii)
 - [ ] User can join events around them
-- [ ] Way to contact/message people within events
 - [ ] Access to all people's profiles within a public event
 
 ##Optional Tier 1
 - [ ] User can specify interests within profile
 - [ ] Filter for users/events based on interests
 - [ ] Add tags for events relating to specific interests
-- [ ] Differentiate between group and peer2peer events
+- [ ] Way to contact/message people within events
+- [ ] Check for a .ufl email address for securit
 - [ ] Integrate Yelp API to pull events
 
 ##Optional Tier 2
+- [ ] Differentiate between group and peer2peer events
 - [ ] Invite only vs public events
 - [ ] Follow/add friends
 - [ ] Ability to see a person’s past events
