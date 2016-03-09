@@ -8,16 +8,51 @@
 
 import UIKit
 import CoreData
+import Parse
+
+let userDidLogoutNotification = "userDidLogoutNotification"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+    func application(
+        application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+            
+            Parse.initializeWithConfiguration(
+                ParseClientConfiguration(block:
+                    { (configuration:ParseMutableClientConfiguration) -> Void in
+                        
+                        configuration.applicationId = "venteAppID"
+                        configuration.clientKey = "venteMasterKey"
+                        configuration.server = "https://vente.herokuapp.com/parse"
+                }))
+            
+            // Set up listener for user logout
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "didLogout", name: userDidLogoutNotification, object: nil)
+            
+            // Check if user is already signed in
+            if let currentUser = PFUser.currentUser() {
+                print("Logged in user detected: \(currentUser.username!)")
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as UIViewController
+                window?.rootViewController = vc
+                
+            } else {
+                // Let storyboard dictate initial view controller
+                print("No logged in user detected")
+            }
+            
+            return true
+            
+    }
+    
+    func didLogout(){
+        let vc = storyboard.instantiateViewControllerWithIdentifier("initialView") as UIViewController
+        window?.rootViewController = vc
     }
 
     func applicationWillResignActive(application: UIApplication) {

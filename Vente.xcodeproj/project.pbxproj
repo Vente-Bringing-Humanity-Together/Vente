@@ -81,8 +81,6 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
-				38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */,
-				38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
@@ -108,6 +106,8 @@
 		27EADA0B1C8F98CB0069BC6F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */,
+				38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";

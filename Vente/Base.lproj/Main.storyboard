@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -34,14 +34,6 @@
                                     <action selector="onLogIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Yq-qA-KQR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQj-xv-iin">
-                                <rect key="frame" x="127" y="309" width="55" height="30"/>
-                                <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vbY-n8-TQm"/>
-                                    <segue destination="aZH-oC-PO9" kind="modal" id="CzD-UH-cpK"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HG9-fJ-Pe1">
                                 <rect key="frame" x="20" y="80" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -60,13 +52,20 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQj-xv-iin">
+                                <rect key="frame" x="127" y="309" width="55" height="30"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <segue destination="aZH-oC-PO9" kind="modal" id="CzD-UH-cpK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="o6W-0a-sR0" id="gSC-Ux-Hjk"/>
                         <outlet property="usernameField" destination="B4X-MC-SPS" id="NOk-OO-wrT"/>
-                        <segue destination="a3m-f4-HU3" kind="modal" identifier="loginToHome" modalTransitionStyle="flipHorizontal" id="hab-n9-54F"/>
+                        <segue destination="a3m-f4-HU3" kind="modal" identifier="loginSegue" modalTransitionStyle="flipHorizontal" id="hab-n9-54F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,7 +204,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JyC-VY-HqK">
             <objects>
-                <tabBarController id="a3m-f4-HU3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="a3m-f4-HU3" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fga-ou-4cN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -241,7 +240,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8nS-0O-Qif" id="4MW-aj-ZOd">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -279,7 +278,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RZV-T7-fIn" id="mno-Rv-qyT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -303,7 +302,7 @@
         <scene sceneID="izw-Nv-HHg">
             <objects>
                 <navigationController title="HomeNav" automaticallyAdjustsScrollViewInsets="NO" id="4jr-UN-eJ4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" id="OGi-RJ-QyH"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="ic_public" id="OGi-RJ-QyH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gkF-YV-8PQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -322,7 +321,7 @@
         <scene sceneID="PYa-mg-YTY">
             <objects>
                 <navigationController title="EventsNav" automaticallyAdjustsScrollViewInsets="NO" id="BEz-V5-dsO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Events" id="nWM-0f-nPT"/>
+                    <tabBarItem key="tabBarItem" title="My Events" image="ic_business_center" id="nWM-0f-nPT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nXz-pj-7Kg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -341,7 +340,7 @@
         <scene sceneID="Kni-Tz-1fc">
             <objects>
                 <navigationController title="ProfileNav" automaticallyAdjustsScrollViewInsets="NO" id="aKW-qN-FCc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="HL6-xM-5Vw"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="ic_account_circle" id="HL6-xM-5Vw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dEk-l9-Hgc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -357,4 +356,9 @@
             <point key="canvasLocation" x="1146" y="1057"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_account_circle" width="24" height="24"/>
+        <image name="ic_business_center" width="24" height="24"/>
+        <image name="ic_public" width="24" height="24"/>
+    </resources>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpViewController: UIViewController {
 
@@ -21,10 +22,28 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func onCancel(sender: AnyObject) {
+    @IBAction func onCancel(sender: AnyObject)
+    {
+        
     }
-    @IBAction func onSignUp(sender: AnyObject) {
+    
+    @IBAction func onSignUp(sender: AnyObject)
+    {
+        let newUser = PFUser()
+        
+        newUser.username = usernameField.text
+        newUser.password = passwordField.text
+        
+        newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("Yay, created a user")
+                self.performSegueWithIdentifier("loginSegue", sender: nil)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
