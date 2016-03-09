@@ -288,7 +288,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="4OC-PC-ajG">
-                        <barButtonItem key="leftBarButtonItem" title="+" id="ebt-9F-ijQ"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_add" id="ebt-9F-ijQ">
+                            <connections>
+                                <action selector="addEvent:" destination="DRn-OP-QMD" id="rWp-dl-M22"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventsTableView" destination="gnj-5t-eeY" id="Iwv-QG-mUp"/>
@@ -358,6 +362,7 @@
     </scenes>
     <resources>
         <image name="ic_account_circle" width="24" height="24"/>
+        <image name="ic_add" width="24" height="24"/>
         <image name="ic_business_center" width="24" height="24"/>
         <image name="ic_public" width="24" height="24"/>
     </resources>

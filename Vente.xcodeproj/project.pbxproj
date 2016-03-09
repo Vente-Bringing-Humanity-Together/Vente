@@ -85,8 +85,6 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
-				38E8CD4A1C90E8AF00796901 /* CreateEventViewController.swift */,
-				38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
@@ -121,6 +119,7 @@
 		27EADA0C1C8F98D10069BC6F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				38E8CD4E1C90EE7400796901 /* Create Event */,
 				27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */,
 				38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */,
 				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
@@ -128,6 +127,15 @@
 				38AA86071C8FA3B800A4020F /* SignUpViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		38E8CD4E1C90EE7400796901 /* Create Event */ = {
+			isa = PBXGroup;
+			children = (
+				38E8CD4A1C90E8AF00796901 /* CreateEventViewController.swift */,
+				38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */,
+			);
+			name = "Create Event";
 			sourceTree = "<group>";
 		};
 		D3D15AC289945D7994DB2D63 /* Frameworks */ = {

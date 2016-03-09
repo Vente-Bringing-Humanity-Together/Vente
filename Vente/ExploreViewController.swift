@@ -16,6 +16,13 @@ class ExploreViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func addEvent(sender: AnyObject) {
+        let createEventViewController = CreateEventViewController()
+        self.navigationController?.pushViewController(createEventViewController, animated: true)
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
