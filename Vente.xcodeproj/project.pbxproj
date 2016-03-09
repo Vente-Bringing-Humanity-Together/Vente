@@ -19,6 +19,8 @@
 		38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */; };
 		38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */; };
 		38AA86121C8FA73C00A4020F /* MyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */; };
+		38E8CD4C1C90E8AF00796901 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8CD4A1C90E8AF00796901 /* CreateEventViewController.swift */; };
+		38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */; };
 		998C79AC1901CE2F779A2D73 /* Pods_Vente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6439FC470353114C483E092A /* Pods_Vente.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewCell.swift; sourceTree = "<group>"; };
+		38E8CD4A1C90E8AF00796901 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventViewController.xib; sourceTree = "<group>"; };
 		6439FC470353114C483E092A /* Pods_Vente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77EE34EAF608BFF8D3A75FD5 /* Pods-Vente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.debug.xcconfig"; sourceTree = "<group>"; };
 		7963CE69AC357EC7D2B283B6 /* Pods-Vente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
+				38E8CD4A1C90E8AF00796901 /* CreateEventViewController.swift */,
+				38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
@@ -205,6 +211,7 @@
 				27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */,
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
+				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +277,7 @@
 				38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */,
 				38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */,
 				27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */,
+				38E8CD4C1C90E8AF00796901 /* CreateEventViewController.swift in Sources */,
 				38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */,
 				38AA86121C8FA73C00A4020F /* MyEventsTableViewCell.swift in Sources */,
 			);
