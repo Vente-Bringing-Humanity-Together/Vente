@@ -13,6 +13,12 @@
 		27EAD9FD1C8F98B80069BC6F /* Vente.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EAD9FB1C8F98B80069BC6F /* Vente.xcdatamodeld */; };
 		27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */; };
 		27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */; };
+		38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86071C8FA3B800A4020F /* SignUpViewController.swift */; };
+		38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86091C8FA3F600A4020F /* ExploreViewController.swift */; };
+		38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */; };
+		38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */; };
+		38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */; };
+		38AA86121C8FA73C00A4020F /* MyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */; };
 		998C79AC1901CE2F779A2D73 /* Pods_Vente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6439FC470353114C483E092A /* Pods_Vente.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +31,12 @@
 		27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27EADA011C8F98B80069BC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27EADA031C8F98B80069BC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38AA86071C8FA3B800A4020F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		38AA86091C8FA3F600A4020F /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
+		38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
+		38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewCell.swift; sourceTree = "<group>"; };
 		6439FC470353114C483E092A /* Pods_Vente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77EE34EAF608BFF8D3A75FD5 /* Pods-Vente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.debug.xcconfig"; sourceTree = "<group>"; };
 		7963CE69AC357EC7D2B283B6 /* Pods-Vente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +81,8 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
+				38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */,
+				38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
@@ -102,6 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */,
+				38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */,
+				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
+				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
+				38AA86071C8FA3B800A4020F /* SignUpViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -246,8 +264,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				27EAD9FD1C8F98B80069BC6F /* Vente.xcdatamodeld in Sources */,
+				38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */,
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
+				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,
+				38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */,
+				38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */,
 				27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */,
+				38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */,
+				38AA86121C8FA73C00A4020F /* MyEventsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
