@@ -58,6 +58,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27A3731C1C90F0F6004CB934 /* LoginSignViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */,
+				38AA86071C8FA3B800A4020F /* SignUpViewController.swift */,
+			);
+			name = LoginSignViewControllers;
+			sourceTree = "<group>";
+		};
+		27A3731D1C90F142004CB934 /* FromExplore */ = {
+			isa = PBXGroup;
+			children = (
+				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
+				38E8CD4E1C90EE7400796901 /* CreateEventViewController */,
+			);
+			name = FromExplore;
+			sourceTree = "<group>";
+		};
+		27A3731E1C90F154004CB934 /* FromMyEvents */ = {
+			isa = PBXGroup;
+			children = (
+				38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */,
+			);
+			name = FromMyEvents;
+			sourceTree = "<group>";
+		};
+		27A3731F1C90F18A004CB934 /* FromProfile */ = {
+			isa = PBXGroup;
+			children = (
+				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
+			);
+			name = FromProfile;
+			sourceTree = "<group>";
+		};
 		27EAD9E81C8F98B80069BC6F = {
 			isa = PBXGroup;
 			children = (
@@ -119,23 +153,21 @@
 		27EADA0C1C8F98D10069BC6F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				38E8CD4E1C90EE7400796901 /* Create Event */,
-				27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */,
-				38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */,
-				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
-				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
-				38AA86071C8FA3B800A4020F /* SignUpViewController.swift */,
+				27A3731C1C90F0F6004CB934 /* LoginSignViewControllers */,
+				27A3731D1C90F142004CB934 /* FromExplore */,
+				27A3731E1C90F154004CB934 /* FromMyEvents */,
+				27A3731F1C90F18A004CB934 /* FromProfile */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		38E8CD4E1C90EE7400796901 /* Create Event */ = {
+		38E8CD4E1C90EE7400796901 /* CreateEventViewController */ = {
 			isa = PBXGroup;
 			children = (
 				38E8CD4A1C90E8AF00796901 /* CreateEventViewController.swift */,
 				38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */,
 			);
-			name = "Create Event";
+			name = CreateEventViewController;
 			sourceTree = "<group>";
 		};
 		D3D15AC289945D7994DB2D63 /* Frameworks */ = {
