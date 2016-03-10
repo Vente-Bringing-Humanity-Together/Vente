@@ -2,9 +2,9 @@
 An application to give people the power to connect and share meaningful interactions
 
 ##Required
-- [ ] User can make a profile and login
-- [ ] User can make events (set a certain radii)
-- [ ] User can join events around them
+- [X] User can make a profile and login
+- [X] User can make events (set a certain radii)
+- [ ] User can see and join events around them
 - [ ] Access to all people's profiles within a public event
 
 ##Optional Tier 1
