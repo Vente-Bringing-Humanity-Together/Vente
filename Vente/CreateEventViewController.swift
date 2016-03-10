@@ -8,6 +8,7 @@
 
 import UIKit
 
+let userDidPostEventNotification = "userDidPostEventNotification"
 class CreateEventViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -21,6 +22,10 @@ class CreateEventViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func createEvent(sender: AnyObject) {
+        //To be used in successful database push
+        NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+    }
 
     /*
     // MARK: - Navigation
