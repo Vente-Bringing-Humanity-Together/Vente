@@ -7,6 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateEventViewController" customModule="Vente" customModuleProvider="target">
             <connections>
+                <outlet property="eventDateLabel" destination="AIk-lm-011" id="jba-3c-6C1"/>
+                <outlet property="eventImageView" destination="p7P-xM-HAF" id="XGd-3t-R9G"/>
+                <outlet property="eventLocationLabel" destination="Ip3-Fu-f8w" id="dRo-Ho-u40"/>
+                <outlet property="eventNameLabel" destination="5vN-4j-X88" id="bh9-qi-tki"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

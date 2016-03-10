@@ -22,13 +22,11 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func onCancel(sender: AnyObject)
-    {
-        
+    @IBAction func onCancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func onSignUp(sender: AnyObject)
-    {
+    @IBAction func onSignUp(sender: AnyObject) {
         let newUser = PFUser()
         
         newUser.username = usernameField.text
@@ -37,7 +35,7 @@ class SignUpViewController: UIViewController {
         newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
             if success {
                 print("Yay, created a user")
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                self.performSegueWithIdentifier("SignupToHome", sender: nil)
             } else {
                 print(error?.localizedDescription)
             }

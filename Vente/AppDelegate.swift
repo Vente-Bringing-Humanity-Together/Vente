@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import Parse
 
-let userDidLogoutNotification = "userDidLogoutNotification"
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -58,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func didLogout(){
-        let vc = storyboard.instantiateViewControllerWithIdentifier("initialView") as UIViewController
+        let vc = storyboard.instantiateInitialViewController()! as UIViewController
         window?.rootViewController = vc
     }
 

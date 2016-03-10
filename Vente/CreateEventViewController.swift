@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import Parse
 
 let userDidPostEventNotification = "userDidPostEventNotification"
+
 class CreateEventViewController: UIViewController {
 
+    @IBOutlet weak var eventNameLabel: UITextField!
+    @IBOutlet weak var eventDateLabel: UITextField!
+    @IBOutlet weak var eventLocationLabel: UITextField!
+    @IBOutlet weak var eventImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,18 +31,27 @@ class CreateEventViewController: UIViewController {
     }
     
     @IBAction func createEvent(sender: AnyObject) {
+        
+        let event = PFObject(className: "Events")
+        
+        event["creator"] = PFUser.currentUser()
+        event["event_name"] = eventNameLabel.text
+        event["event_date"] = eventDateLabel.text
+        event["event_location"] = eventLocationLabel.text
+        
+        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            if let error = error {
+                print("Event Add Failed")
+                print(error.localizedDescription)
+                
+            } else {
+                print("Added Event Successfully")
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+            }
+        }
+        
         //To be used in successful database push
         NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
