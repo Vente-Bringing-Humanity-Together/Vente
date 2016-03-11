@@ -30,3 +30,7 @@ An application to give people the power to connect and share meaningful interact
 
 ##Optional Tier ???
 - [ ] Nick's camera idea 
+
+## Gif Walkthrough Sprint 1
+
+<img src='Vente1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
