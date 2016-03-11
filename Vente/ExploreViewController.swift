@@ -7,21 +7,61 @@
 //
 
 import UIKit
+import Parse
 
-class ExploreViewController: UIViewController {
+class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var eventsTableView: UITableView!
+    
+    var events: [PFObject]!
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if self.events == nil{
+            return 0
+        }
+        else{
+            return self.events.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = eventsTableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
+        cell.Event = events[indexPath.row]
+        return cell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.eventsTableView.dataSource = self
+        self.eventsTableView.delegate = self
+//        self.eventsTableView.estimatedRowHeight = 150
+//        self.eventsTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     @IBAction func addEvent(sender: AnyObject) {
         let createEventViewController = CreateEventViewController()
         self.navigationController?.pushViewController(createEventViewController, animated: true)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("Retrieving Ventes from Parse...")
         
-        
+        let query = PFQuery(className: "Events")
+        query.orderByDescending("createdAt")
+        query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let results = results {
+                    print("Successfully retrieved \(results.count) ventes")
+                    self.events = results
+                    self.eventsTableView.reloadData()
+                } else {
+                    print("No results returned")
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

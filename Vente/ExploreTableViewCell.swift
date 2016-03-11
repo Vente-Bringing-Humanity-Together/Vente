@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import Parse
 
 class ExploreTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    var Event: PFObject! {
+        didSet {
+            self.nameLabel.text = Event["event_name"] as? String
+            self.dateLabel.text = Event["event_date"] as? String
+            self.locationLabel.text = Event["event_location"] as? String
+        }
+    }
+    
+    @IBAction func onJoin(sender: AnyObject) {
+        
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
