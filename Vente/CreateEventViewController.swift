@@ -18,10 +18,16 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
     
+    let creator = PFUser.currentUser()!.objectId! as String
+    var attendeeList : [String] = []
+    
+    var test = ["haha", 123]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        attendeeList.append(creator)
+        print(attendeeList)
         // Do any additional setup after loading the view.
     }
 
@@ -34,10 +40,11 @@ class CreateEventViewController: UIViewController {
         
         let event = PFObject(className: "Events")
         
-        event["creator"] = PFUser.currentUser()
+        event["creator"] = creator
         event["event_name"] = eventNameLabel.text
         event["event_date"] = eventDateLabel.text
         event["event_location"] = eventLocationLabel.text
+        event["attendee_list"] = attendeeList
         
         event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if let error = error {

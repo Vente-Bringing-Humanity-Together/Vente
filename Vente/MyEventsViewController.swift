@@ -7,30 +7,38 @@
 //
 
 import UIKit
+import Parse
 
-class MyEventsViewController: UIViewController {
+class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var myEventsTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var myEvents: [PFObject]!
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if self.myEvents == nil{
+            return 0
+        }
+        else{
+            return self.myEvents.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
+        cell.Event = myEvents[indexPath.row]
+        return cell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

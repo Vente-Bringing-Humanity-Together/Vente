@@ -27,6 +27,7 @@ class LoginViewController: UIViewController
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 print("You're logging in")
+                print(PFUser.currentUser()?.objectId)
                 
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
             }
