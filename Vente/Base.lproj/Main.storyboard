@@ -60,10 +60,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qze-X4-ZXq" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="62" y="444" width="197" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.76012541119999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" "/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.64920930760377504" green="1" blue="0.86537278101222825" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="facebookButton" destination="qze-X4-ZXq" id="Bbq-hU-ZvH"/>
                         <outlet property="passwordField" destination="o6W-0a-sR0" id="gSC-Ux-Hjk"/>
                         <outlet property="usernameField" destination="B4X-MC-SPS" id="NOk-OO-wrT"/>
                         <segue destination="a3m-f4-HU3" kind="modal" identifier="loginSegue" modalTransitionStyle="flipHorizontal" id="hab-n9-54F"/>

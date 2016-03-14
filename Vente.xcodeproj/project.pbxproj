@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		27D38FE31C974653006D5770 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38FE21C974653006D5770 /* UserMedia.swift */; };
+		27D38FE71C9747C6006D5770 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */; };
+		27D38FE81C9747C6006D5770 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */; };
+		27D38FE91C9747C6006D5770 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE61C9747C6006D5770 /* Bolts.framework */; };
 		27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */; };
 		27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */; };
 		27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EAD9F81C8F98B80069BC6F /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 
 /* Begin PBXFileReference section */
 		27D38FE21C974653006D5770 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
+		27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		27D38FE61C9747C6006D5770 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		27EAD9F11C8F98B80069BC6F /* Vente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +60,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				998C79AC1901CE2F779A2D73 /* Pods_Vente.framework in Frameworks */,
+				27D38FE71C9747C6006D5770 /* FBSDKCoreKit.framework in Frameworks */,
+				27D38FE81C9747C6006D5770 /* FBSDKLoginKit.framework in Frameworks */,
+				27D38FE91C9747C6006D5770 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +185,9 @@
 		D3D15AC289945D7994DB2D63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */,
+				27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */,
+				27D38FE61C9747C6006D5770 /* Bolts.framework */,
 				6439FC470353114C483E092A /* Pods_Vente.framework */,
 			);
 			name = Frameworks;
@@ -435,6 +447,10 @@
 			baseConfigurationReference = 77EE34EAF608BFF8D3A75FD5 /* Pods-Vente.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Vente/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nickbryanmiller.Vente;
@@ -447,6 +463,10 @@
 			baseConfigurationReference = 7963CE69AC357EC7D2B283B6 /* Pods-Vente.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Vente/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nickbryanmiller.Vente;
