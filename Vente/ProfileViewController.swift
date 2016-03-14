@@ -13,10 +13,17 @@ let userDidLogoutNotification = "userDidLogoutNotification"
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        getUserData();
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,15 +44,18 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func getUserData() {
+        
+        let user = PFUser.currentUser()
+        
+        if (user?.username != nil) {
+            nameLabel.text = user?.username
+        }
+        if (user?.email != nil) {
+            emailLabel.text = user?.email
+        }
+        
     }
-    */
 
 }
