@@ -66,6 +66,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 } else {
                     print(error?.localizedDescription)
+                    
+                    if (error?.code == 202) {
+                        PFUser.logInWithUsernameInBackground(strEmail, password: newUser.password!){
+                            (user: PFUser?, error: NSError?) -> Void in
+                            if user != nil {
+                                print("You're logging in through facebook")
+                                print(PFUser.currentUser()?.objectId)
+                                
+                                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                            }
+                        }
+                    }
                 }
             }
             
