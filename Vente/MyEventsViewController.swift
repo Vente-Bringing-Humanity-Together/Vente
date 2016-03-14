@@ -25,7 +25,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyEventsTableViewCell") as! MyEventsTableViewCell
         cell.Event = myEvents[indexPath.row]
         return cell
     }
@@ -35,6 +35,29 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("Retrieving My Ventes from Parse...")
+    
+        let userId = PFUser.currentUser()?.objectId
+        let query = PFQuery(className: "Events")
+
+        query.whereKey("attendee_list", equalTo: userId!)
+        query.orderByDescending("createdAt")
+        query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let results = results {
+                    print("Successfully retrieved \(results.count) ventes")
+                    self.myEvents = results
+                    self.tableView.reloadData()
+                } else {
+                    print("No results returned")
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
