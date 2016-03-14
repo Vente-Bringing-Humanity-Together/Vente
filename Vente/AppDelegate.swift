@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-    func application(
-        application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchToHome", name: userDidPostEventNotification, object: nil)
             
@@ -45,9 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Let storyboard dictate initial view controller
                 print("No logged in user detected")
             }
+        
+            return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
             
-            return true
-            
+//            return true
+        
     }
     
     func switchToHome(){
@@ -76,11 +78,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        FBSDKAppEvents.activateApp()
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        loginManager.logOut()
         self.saveContext()
     }
 
