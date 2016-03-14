@@ -7,9 +7,23 @@
 //
 
 import UIKit
+import Parse
 
 class MyEventsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    var Event: PFObject! {
+        didSet {
+            self.nameLabel.text = Event["event_name"] as? String
+            self.dateLabel.text = Event["event_date"] as? String
+            self.locationLabel.text = Event["event_location"] as? String
+            //self.attendeeList = Event["attendee_list"] as! [String]
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
