@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 let userDidLogoutNotification = "userDidLogoutNotification"
 
@@ -40,6 +42,8 @@ class ProfileViewController: UIViewController {
             }
             else {
                 print("Successfuly logged out")
+                let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+                loginManager.logOut()
                 NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
             }
         }
