@@ -3,6 +3,7 @@ An application to give people the power to connect and share meaningful interact
 
 ##Required
 - [X] User can make a profile and login
+- [X] User can login with facebook
 - [X] User can make events (set a certain radii)
 - [X] User can see and join events around them
 - [ ] Access to all people's profiles within a public event
@@ -12,7 +13,7 @@ An application to give people the power to connect and share meaningful interact
 - [ ] Filter for users/events based on interests
 - [ ] Add tags for events relating to specific interests
 - [ ] Way to contact/message people within events
-- [ ] Check for a .ufl email address for securit
+- [ ] Check for a .ufl email address for security
 - [ ] Integrate Yelp API to pull events
 
 ##Optional Tier 2
