@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+let userDidClickRemove = "userDidClickRemove"
+
 class MyEventsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,6 +23,22 @@ class MyEventsTableViewCell: UITableViewCell {
             self.dateLabel.text = Event["event_date"] as? String
             self.locationLabel.text = Event["event_location"] as? String
             //self.attendeeList = Event["attendee_list"] as! [String]
+        }
+    }
+    
+    @IBAction func onRemove(sender: AnyObject) {
+        let userId = PFUser.currentUser()?.objectId
+        
+        let query = PFQuery(className:"Events")
+        query.getObjectInBackgroundWithId(Event.objectId!) {
+            (event: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let event = event {
+                event.removeObject(userId!, forKey: "attendee_list")
+                event.saveInBackground()
+                NSNotificationCenter.defaultCenter().postNotificationName(userDidClickRemove, object: nil)
+            }
         }
     }
     

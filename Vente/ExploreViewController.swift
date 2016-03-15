@@ -64,6 +64,9 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
             cell.joinButton.enabled = false
         }
+        else {
+            cell.joinButton.enabled = true
+        }
         
         return cell
     }
