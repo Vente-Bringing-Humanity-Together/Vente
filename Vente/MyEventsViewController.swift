@@ -38,11 +38,15 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("Retrieving My Ventes from Parse...")
+        getEventsFromDatabase()
+    }
     
+    func getEventsFromDatabase() {
+        print("Retrieving My Ventes from Parse...")
+        
         let userId = PFUser.currentUser()?.objectId
         let query = PFQuery(className: "Events")
-
+        
         query.whereKey("attendee_list", equalTo: userId!)
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
@@ -60,6 +64,10 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
+    @IBAction func onRemove(sender: AnyObject) {
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

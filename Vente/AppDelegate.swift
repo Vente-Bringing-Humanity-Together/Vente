@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchToHome", name: userDidPostEventNotification, object: nil)
-            
+        
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeEvent", name: userDidClickRemove, object: nil)
+        
             Parse.initializeWithConfiguration(
                 ParseClientConfiguration(block:
                     { (configuration:ParseMutableClientConfiguration) -> Void in
@@ -55,6 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func switchToHome(){
         let vc = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
         window?.rootViewController = vc
+    }
+    
+    func removeEvent()
+    {
+        let vc = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+        vc.selectedIndex = 1
+        window?.rootViewController = vc
+        
     }
     
     func didLogout(){
