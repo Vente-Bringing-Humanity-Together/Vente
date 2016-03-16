@@ -68,12 +68,12 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-  //      let eventsDetailViewController = EventsDetailViewController()
-      //  self.navigationController?.pushViewController(eventsDetailViewController, animated: true)
-    //    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    //}
+        let eventDetailsViewController = EventsDetailViewController()
+        self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     
     @IBAction func addEvent(sender: AnyObject) {
         let createEventViewController = CreateEventViewController()

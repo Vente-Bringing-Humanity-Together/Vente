@@ -19,6 +19,9 @@ class EventsDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let cellNib = UINib(nibName: "AttendeesTableViewCell", bundle: NSBundle.mainBundle())
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "AttendeesTableViewCell")
 
         // Do any additional setup after loading the view.
     }

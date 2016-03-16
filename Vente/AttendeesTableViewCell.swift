@@ -10,6 +10,8 @@ import UIKit
 
 class AttendeesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +22,5 @@ class AttendeesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
