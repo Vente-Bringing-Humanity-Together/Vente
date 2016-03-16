@@ -339,7 +339,7 @@
         <!--Explore View Controller-->
         <scene sceneID="gOn-f2-VYx">
             <objects>
-                <viewController id="DRn-OP-QMD" customClass="ExploreViewController" customModule="Vente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Explore" id="DRn-OP-QMD" customClass="ExploreViewController" customModule="Vente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ghB-6i-WOe"/>
                         <viewControllerLayoutGuide type="bottom" id="vx1-YV-uju"/>

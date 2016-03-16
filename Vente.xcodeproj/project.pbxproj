@@ -17,6 +17,12 @@
 		27EAD9FD1C8F98B80069BC6F /* Vente.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EAD9FB1C8F98B80069BC6F /* Vente.xcdatamodeld */; };
 		27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */; };
 		27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */; };
+		382B7A751C98C807000B2D5E /* OtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382B7A731C98C807000B2D5E /* OtherProfileViewController.swift */; };
+		382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382B7A741C98C807000B2D5E /* OtherProfileViewController.xib */; };
+		382B7A791C98CA6D000B2D5E /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382B7A771C98CA6D000B2D5E /* EventsDetailViewController.swift */; };
+		382B7A7A1C98CA6D000B2D5E /* EventsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382B7A781C98CA6D000B2D5E /* EventsDetailViewController.xib */; };
+		382B7A831C990A3C000B2D5E /* AttendeesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382B7A811C990A3C000B2D5E /* AttendeesTableViewCell.swift */; };
+		382B7A841C990A3C000B2D5E /* AttendeesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */; };
 		38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86071C8FA3B800A4020F /* SignUpViewController.swift */; };
 		38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86091C8FA3F600A4020F /* ExploreViewController.swift */; };
 		38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */; };
@@ -41,6 +47,12 @@
 		27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27EADA011C8F98B80069BC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27EADA031C8F98B80069BC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		382B7A731C98C807000B2D5E /* OtherProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProfileViewController.swift; sourceTree = "<group>"; };
+		382B7A741C98C807000B2D5E /* OtherProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherProfileViewController.xib; sourceTree = "<group>"; };
+		382B7A771C98CA6D000B2D5E /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
+		382B7A781C98CA6D000B2D5E /* EventsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsDetailViewController.xib; sourceTree = "<group>"; };
+		382B7A811C990A3C000B2D5E /* AttendeesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendeesTableViewCell.swift; sourceTree = "<group>"; };
+		382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendeesTableViewCell.xib; sourceTree = "<group>"; };
 		38AA86071C8FA3B800A4020F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		38AA86091C8FA3F600A4020F /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +142,10 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
+				382B7A771C98CA6D000B2D5E /* EventsDetailViewController.swift */,
+				382B7A781C98CA6D000B2D5E /* EventsDetailViewController.xib */,
+				382B7A731C98C807000B2D5E /* OtherProfileViewController.swift */,
+				382B7A741C98C807000B2D5E /* OtherProfileViewController.xib */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
@@ -158,6 +174,8 @@
 			children = (
 				38AA86111C8FA73C00A4020F /* MyEventsTableViewCell.swift */,
 				38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */,
+				382B7A811C990A3C000B2D5E /* AttendeesTableViewCell.swift */,
+				382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -263,10 +281,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382B7A841C990A3C000B2D5E /* AttendeesTableViewCell.xib in Resources */,
+				382B7A7A1C98CA6D000B2D5E /* EventsDetailViewController.xib in Resources */,
 				27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */,
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
+				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,11 +351,14 @@
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
 				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,
 				38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */,
+				382B7A791C98CA6D000B2D5E /* EventsDetailViewController.swift in Sources */,
 				38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */,
 				27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */,
 				38E8CD4C1C90E8AF00796901 /* CreateEventViewController.swift in Sources */,
+				382B7A831C990A3C000B2D5E /* AttendeesTableViewCell.swift in Sources */,
 				38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */,
 				27D38FE31C974653006D5770 /* UserMedia.swift in Sources */,
+				382B7A751C98C807000B2D5E /* OtherProfileViewController.swift in Sources */,
 				38AA86121C8FA73C00A4020F /* MyEventsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
