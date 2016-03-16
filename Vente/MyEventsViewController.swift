@@ -63,10 +63,6 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-
-    @IBAction func onRemove(sender: AnyObject) {
-        self.tableView.reloadData()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

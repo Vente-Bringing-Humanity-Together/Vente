@@ -311,7 +311,6 @@
                                                     <state key="normal" title="Remove"/>
                                                     <connections>
                                                         <action selector="onRemove:" destination="8nS-0O-Qif" eventType="touchUpInside" id="CRD-Wi-ZjN"/>
-                                                        <action selector="onRemove:" destination="Sjy-E4-It5" eventType="touchUpInside" id="maP-eX-9ls"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class EventsDetailViewController: UIViewController {
 
@@ -17,29 +18,28 @@ class EventsDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    var event: PFObject!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let cellNib = UINib(nibName: "AttendeesTableViewCell", bundle: NSBundle.mainBundle())
         tableView.registerNib(cellNib, forCellReuseIdentifier: "AttendeesTableViewCell")
 
-        // Do any additional setup after loading the view.
+        let query = PFQuery(className:"Events")
+        query.getObjectInBackgroundWithId(event.objectId!) {
+            (event: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let event = event {
+                self.creatorNameLabel.text = event["creator"] as? String
+                event.saveInBackground()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

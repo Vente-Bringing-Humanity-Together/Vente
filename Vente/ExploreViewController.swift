@@ -75,7 +75,12 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let eventDetailsViewController = EventsDetailViewController()
         self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
+        
+        let event = events![indexPath.row]
+        eventDetailsViewController.event = event
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
     }
     
     @IBAction func addEvent(sender: AnyObject) {
@@ -84,7 +89,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(sender)
+        let cell = sender as! UITableViewCell
+        let indexPath = eventsTableView.indexPathForCell(cell)
+        let event = events![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! EventsDetailViewController
+        detailViewController.event = event
+        print(event)
     }
 
 }
