@@ -18,6 +18,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    var strFirstName: String = ""
+    var strLastName: String = ""
+//    var strPictureURL: String = ""
+    var strEmail: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,28 +51,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), email"]).startWithCompletionHandler { (connection, result, error) -> Void in
             
-            var strFirstName: String = ""
-            var strLastName: String = ""
-//            var strPictureURL: String = ""
-            var strEmail: String = ""
+//            var strFirstName: String = ""
+//            var strLastName: String = ""
+////            var strPictureURL: String = ""
+//            var strEmail: String = ""
 
             if (result.objectForKey("first_name") != nil) {
-                strFirstName = (result.objectForKey("first_name") as? String)!
+                self.strFirstName = (result.objectForKey("first_name") as? String)!
 
             }
             if (result.objectForKey("last_name") != nil) {
-                strLastName = (result.objectForKey("last_name") as? String)!
+                self.strLastName = (result.objectForKey("last_name") as? String)!
             }
 //            if (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") != nil) {
 //                strPictureURL = (result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String)!
 //            }
             if (result.objectForKey("email") != nil) {
-                strEmail = (result.objectForKey("email") as? String)!
+                self.strEmail = (result.objectForKey("email") as? String)!
             }
             
             let newUser = PFUser()
             
-            newUser.username = strEmail
+            newUser.username = self.strEmail
             newUser.password = "pass"
             
             newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
@@ -78,7 +83,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print(error?.localizedDescription)
                     
                     if (error?.code == 202) {
-                        PFUser.logInWithUsernameInBackground(strEmail, password: newUser.password!){
+                        PFUser.logInWithUsernameInBackground(self.strEmail, password: newUser.password!){
                             (user: PFUser?, error: NSError?) -> Void in
                             if user != nil {
                                 print("You're logging in through facebook")

@@ -53,11 +53,14 @@ class ProfileViewController: UIViewController {
         
         let user = PFUser.currentUser()
         
-        if (user?.username != nil) {
-            nameLabel.text = user?.username
+        if (user?["first_name"] != nil && user?["last_name"] != nil) {
+            nameLabel.text = (user?["first_name"] as! String) + " " + ((user?["last_name"])! as! String)
         }
-        if (user?.email != nil) {
-            emailLabel.text = user?.email
+        if (user?.username != nil) {
+            emailLabel.text = user?.username
+        }
+        if(user?["number"] != nil){
+            numberLabel.text = user?["number"] as? String
         }
         
     }
