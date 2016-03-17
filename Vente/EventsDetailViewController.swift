@@ -32,8 +32,22 @@ class EventsDetailViewController: UIViewController {
             if error != nil {
                 print(error)
             } else if let event = event {
-                self.creatorNameLabel.text = event["creator"] as? String
-                event.saveInBackground()
+                let creator = event["creator"] as? String
+                
+                let query2 : PFQuery = PFUser.query()!
+                query2.getObjectInBackgroundWithId(creator!) {
+                    (user: PFObject?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(user)
+                        print(user?.objectId)
+                    } else if let user = user {
+                        self.creatorNameLabel.text = user["username"] as? String
+                    }
+                
+                self.eventNameLabel.text = event["event_name"] as? String
+                self.dateLabel.text = event["event_date"] as? String
+                self.locationLabel.text = event["event_location"] as? String
+                }
             }
         }
     }

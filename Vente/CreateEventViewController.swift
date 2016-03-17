@@ -53,8 +53,10 @@ class CreateEventViewController: UIViewController {
                 
             } else {
                 print("Added Event Successfully")
-                NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+                //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+                self.navigationController?.popViewControllerAnimated(true)
             }
+            
         }
         
         //To be used in successful database push
