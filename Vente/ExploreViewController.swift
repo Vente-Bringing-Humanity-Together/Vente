@@ -80,7 +80,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         eventDetailsViewController.event = event
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
     }
     
     @IBAction func addEvent(sender: AnyObject) {
