@@ -1,6 +1,9 @@
 # Vente
 An application to give people the power to connect and share meaningful interactions
 
+# Time Spent
+**15** Hours
+
 ##Required
 - [X] User can make a profile and login
 - [X] User can login with facebook
@@ -35,3 +38,7 @@ An application to give people the power to connect and share meaningful interact
 ## Gif Walkthrough Sprint 1
 
 <img src='Vente1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+## Gif Walkthrough Sprint 2
+
+<img src='Vente2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
