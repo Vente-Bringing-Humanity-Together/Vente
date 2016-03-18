@@ -15,11 +15,24 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var myEvents: [PFObject]!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        getEventsFromDatabase()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if self.myEvents == nil{
+        if (self.myEvents == nil) {
             return 0
         }
-        else{
+        else {
             return self.myEvents.count
         }
     }
@@ -30,15 +43,29 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
-    override func viewWillAppear(animated: Bool) {
-        getEventsFromDatabase()
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            let userId = PFUser.currentUser()?.objectId
+            
+            let query = PFQuery(className:"Events")
+            query.getObjectInBackgroundWithId(myEvents[indexPath.row].objectId!) {
+                (event: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let event = event {
+                    event.removeObject(userId!, forKey: "attendee_list")
+                    event.saveInBackground()
+                    self.myEvents.removeAtIndex(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                }
+            }
+        }
     }
     
     func getEventsFromDatabase() {

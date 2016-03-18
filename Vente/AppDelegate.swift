@@ -21,9 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchToHome", name: userDidPostEventNotification, object: nil)
-        
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeEvent", name: userDidClickRemove, object: nil)
-        
+                
             Parse.initializeWithConfiguration(
                 ParseClientConfiguration(block:
                     { (configuration:ParseMutableClientConfiguration) -> Void in
