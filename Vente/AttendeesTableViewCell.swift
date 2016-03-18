@@ -7,13 +7,26 @@
 //
 
 import UIKit
+import Parse
 
 class AttendeesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    
+    var userId: String = "a"
+    
+//    var User : String! {
+//        didSet {
+//            self.nameLabel.text = User["username"] as? String
+//        }
+//    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("AHH")
+        
+        nameLabel.text = userId
         // Initialization code
     }
 
