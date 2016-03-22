@@ -22,6 +22,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.delegate = self
         
         navigationItem.leftBarButtonItem = editButtonItem()
+
     }
     
     override func viewWillAppear(animated: Bool) {
