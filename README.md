@@ -9,7 +9,7 @@ An application to give people the power to connect and share meaningful interact
 - [X] User can login with facebook
 - [X] User can make events (set a certain radii)
 - [X] User can see and join events around them
-- [ ] Access to all people's profiles within a public event
+- [X] Access to all people's profiles within a public event
 
 ##Optional Tier 1
 - [ ] User can specify interests within profile
@@ -21,7 +21,7 @@ An application to give people the power to connect and share meaningful interact
 
 ##Optional Tier 2
 - [ ] Differentiate between group and peer2peer events
-- [ ] Invite only vs public events
+- [X] Invite only vs public events
 - [ ] Follow/add friends
 - [ ] Ability to see a person’s past events
 
