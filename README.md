@@ -16,7 +16,7 @@ An application to give people the power to connect and share meaningful interact
 - [ ] Filter for users/events based on interests
 - [ ] Add tags for events relating to specific interests
 - [ ] Way to contact/message people within events
-- [ ] Check for a .ufl email address for security
+- [X] Check for a .ufl email address for security
 - [ ] Integrate Yelp API to pull events
 
 ##Optional Tier 2
