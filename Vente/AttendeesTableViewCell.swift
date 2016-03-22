@@ -14,7 +14,7 @@ class AttendeesTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    var userId: String = "a"
+//    var userId: String = "a"
     
 //    var User : String! {
 //        didSet {
@@ -24,9 +24,8 @@ class AttendeesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("AHH")
         
-        nameLabel.text = userId
+//        nameLabel.text = userId
         // Initialization code
     }
 

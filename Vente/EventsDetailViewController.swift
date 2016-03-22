@@ -47,8 +47,13 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-            return self.attendeeList.count
+        
+        return self.attendeeList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
