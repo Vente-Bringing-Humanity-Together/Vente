@@ -17,6 +17,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var phoneNumberField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    var followers : [String] = []
+    var following : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +41,8 @@ class SignUpViewController: UIViewController {
             newUser["number"] = phoneNumberField.text
             newUser["first_name"] = firstNameField.text
             newUser["last_name"] = lastNameField.text
+            newUser["followers"] = followers
+            newUser["following"] = following
             
             newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
