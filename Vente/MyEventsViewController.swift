@@ -92,6 +92,17 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let eventDetailsViewController = EventsDetailViewController()
+        self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
+        
+        let event = myEvents![indexPath.row]
+        eventDetailsViewController.event = event
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
