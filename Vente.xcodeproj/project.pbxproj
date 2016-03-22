@@ -93,8 +93,8 @@
 		27A3731D1C90F142004CB934 /* FromExplore */ = {
 			isa = PBXGroup;
 			children = (
-				382B7A851C9B6895000B2D5E /* EventDetails */,
 				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
+				382B7A851C9B6895000B2D5E /* EventDetails */,
 				38E8CD4E1C90EE7400796901 /* CreateEventViewController */,
 			);
 			name = FromExplore;
@@ -111,8 +111,8 @@
 		27A3731F1C90F18A004CB934 /* FromProfile */ = {
 			isa = PBXGroup;
 			children = (
-				382B7A861C9B68BF000B2D5E /* OtherProfile */,
 				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
+				382B7A861C9B68BF000B2D5E /* OtherProfile */,
 			);
 			name = FromProfile;
 			sourceTree = "<group>";

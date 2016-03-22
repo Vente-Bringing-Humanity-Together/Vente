@@ -28,22 +28,29 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUp(sender: AnyObject) {
-        let newUser = PFUser()
         
-        newUser.username = usernameField.text
-        newUser.password = passwordField.text
-        newUser["number"] = phoneNumberField.text
-        newUser["first_name"] = firstNameField.text
-        newUser["last_name"] = lastNameField.text
-        
-        
-        newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-            if success {
-                print("Yay, created a user")
-                self.performSegueWithIdentifier("SignupToHome", sender: nil)
-            } else {
-                print(error?.localizedDescription)
+        if ((usernameField.text?.containsString("ufl.edu")) == true) {
+            
+            let newUser = PFUser()
+            
+            newUser.username = usernameField.text
+            newUser.password = passwordField.text
+            newUser["number"] = phoneNumberField.text
+            newUser["first_name"] = firstNameField.text
+            newUser["last_name"] = lastNameField.text
+            
+            newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    print("Yay, created a user")
+                    self.performSegueWithIdentifier("SignupToHome", sender: nil)
+                } else {
+                    print(error?.localizedDescription)
+                }
             }
+
+        }
+        else {
+            print("No ufl :)")
         }
     }
     
