@@ -28,6 +28,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let query = PFQuery(className: "Events")
         query.orderByDescending("createdAt")
+//        query.whereKey("public", equalTo: true)
+        query.whereKey("public", notEqualTo: false)
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
