@@ -18,6 +18,8 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
     
+    @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
+    
     let creator = PFUser.currentUser()!.objectId! as String
     var attendeeList : [String] = []
     
@@ -45,6 +47,13 @@ class CreateEventViewController: UIViewController {
         event["event_date"] = eventDateLabel.text
         event["event_location"] = eventLocationLabel.text
         event["attendee_list"] = attendeeList
+        
+        if (publicSegmentedControl.selectedSegmentIndex == 0) {
+            event["public"] = true
+        }
+        else {
+            event["public"] = false
+        }
         
         event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if let error = error {
