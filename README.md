@@ -2,7 +2,7 @@
 An application to give people the power to connect and share meaningful interactions
 
 # Time Spent
-**15** Hours
+**20** Hours
 
 ##Required
 - [X] User can make a profile and login
