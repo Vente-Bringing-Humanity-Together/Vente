@@ -20,7 +20,6 @@ An application to give people the power to connect and share meaningful interact
 - [ ] Integrate Yelp API to pull events
 
 ##Optional Tier 2
-- [ ] Differentiate between group and peer2peer events
 - [X] Invite only vs public events
 - [ ] Follow/add friends
 - [ ] Ability to see a person’s past events
