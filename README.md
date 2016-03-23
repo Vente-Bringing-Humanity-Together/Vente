@@ -21,7 +21,7 @@ An application to give people the power to connect and share meaningful interact
 
 ##Optional Tier 2
 - [X] Invite only vs public events
-- [ ] Follow/add friends
+- [X] Follow/add friends
 - [ ] Ability to see a person’s past events
 
 ##Optional Tier 3
