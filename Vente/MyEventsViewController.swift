@@ -74,7 +74,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let userId = PFUser.currentUser()?.objectId
         let query = PFQuery(className: "Events")
-        
+        query.limit = 20
         query.whereKey("attendee_list", equalTo: userId!)
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
