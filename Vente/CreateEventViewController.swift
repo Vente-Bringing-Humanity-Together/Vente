@@ -23,12 +23,12 @@ class CreateEventViewController: UIViewController {
     let creator = PFUser.currentUser()!.objectId! as String
     var attendeeList: [String] = []
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        attendeeList.append(creator)
-//        print(attendeeList)
-        // Do any additional setup after loading the view.
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 800)
     }
 
     override func didReceiveMemoryWarning() {
