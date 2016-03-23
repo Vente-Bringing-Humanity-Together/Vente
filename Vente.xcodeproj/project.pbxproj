@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */; };
+		276C537E1CA2DE8F00388060 /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */; };
 		27D38FE31C974653006D5770 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38FE21C974653006D5770 /* UserMedia.swift */; };
 		27D38FE71C9747C6006D5770 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */; };
 		27D38FE81C9747C6006D5770 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
+		276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
 		27D38FE21C974653006D5770 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
 		27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		276C537A1CA2DE5B00388060 /* InviteFriends */ = {
+			isa = PBXGroup;
+			children = (
+				276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */,
+				276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */,
+			);
+			name = InviteFriends;
+			sourceTree = "<group>";
+		};
 		27A3731C1C90F0F6004CB934 /* LoginSignViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
 				382B7A851C9B6895000B2D5E /* EventDetails */,
 				38E8CD4E1C90EE7400796901 /* CreateEventViewController */,
+				276C537A1CA2DE5B00388060 /* InviteFriends */,
 			);
 			name = FromExplore;
 			sourceTree = "<group>";
@@ -298,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				382B7A841C990A3C000B2D5E /* AttendeesTableViewCell.xib in Resources */,
+				276C537E1CA2DE8F00388060 /* InviteFriendsViewController.xib in Resources */,
 				382B7A7A1C98CA6D000B2D5E /* EventsDetailViewController.xib in Resources */,
 				27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */,
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
@@ -363,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27EAD9FD1C8F98B80069BC6F /* Vente.xcdatamodeld in Sources */,
+				276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */,
 				38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */,
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
 				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,

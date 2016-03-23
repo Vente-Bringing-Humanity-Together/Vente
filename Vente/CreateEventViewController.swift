@@ -69,5 +69,12 @@ class CreateEventViewController: UIViewController {
         //To be used in successful database push
         NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
     }
+    
+    @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
+        let inviteFriendsViewController = InviteFriendsViewController()
+        self.navigationController?.pushViewController(inviteFriendsViewController, animated: true)
+        
+    }
+    
 
 }
