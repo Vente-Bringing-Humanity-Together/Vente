@@ -50,11 +50,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields":"first_name, last_name, picture.type(large), email"]).startWithCompletionHandler { (connection, result, error) -> Void in
-            
-//            var strFirstName: String = ""
-//            var strLastName: String = ""
-////            var strPictureURL: String = ""
-//            var strEmail: String = ""
 
             if (result.objectForKey("first_name") != nil) {
                 self.strFirstName = (result.objectForKey("first_name") as? String)!
@@ -79,7 +74,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if success {
                     print("Yay, created a facebook user")
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
-                } else {
+                }
+                else {
                     print(error?.localizedDescription)
                     
                     if (error?.code == 202) {
