@@ -50,8 +50,7 @@ class OtherProfileViewController: UIViewController {
 //                print("this user is following: \(PFUser.currentUser()?["following"])")
                 
                 if (PFUser.currentUser()?["following"].containsObject((self.thisUser?.objectId)!) == true) {
-                    self.followButton.enabled = false
-                    self.followButton.setTitle("Following", forState: .Normal)
+                    self.followButton.setTitle("Unfollow", forState: .Normal)
                 }
                 
             }
@@ -82,24 +81,44 @@ class OtherProfileViewController: UIViewController {
 //            }
 //        })
         
-        followingArray = me!["following"] as? [String]
-        if (followingArray == nil) {
-            followingArray = []
-        }
-        followingArray.append((thisUser?.objectId)!)
-        me!["following"] = followingArray
-        me?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-            if (error != nil) {
-                print(error?.description)
+        if (followButton.titleForState(.Normal) == "Follow") {
+            followingArray = me!["following"] as? [String]
+            if (followingArray == nil) {
+                followingArray = []
             }
-            else {
-                if (me?["following"] != nil) {
-                    print("this user is following: \(PFUser.currentUser()!["following"])")
+            followingArray.append((thisUser?.objectId)!)
+            me!["following"] = followingArray
+            me?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if (error != nil) {
+                    print(error?.description)
                 }
-                
-                self.followButton.enabled = false
-            }
-        })
+                else {
+                    if (me?["following"] != nil) {
+                        print("this user is following: \(PFUser.currentUser()!["following"])")
+                    }
+                    
+                    self.followButton.setTitle("Unfollow", forState: .Normal)
+                }
+            })
+        }
+        else if (followButton.titleForState(.Normal) == "Unfollow") {
+            followingArray = me!["following"] as? [String]
+            followingArray.removeObject((thisUser?.objectId)!)
+            me!["following"] = followingArray
+            
+            me?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if (error != nil) {
+                    print(error?.description)
+                }
+                else {
+                    if (me?["following"] != nil) {
+                        print("this user is unfollowing: \(PFUser.currentUser()!["following"])")
+                    }
+                    
+                    self.followButton.setTitle("Follow", forState: .Normal)
+                }
+            })
+        }
         
     }
 }
