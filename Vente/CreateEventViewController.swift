@@ -21,13 +21,13 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
     let creator = PFUser.currentUser()!.objectId! as String
-    var attendeeList : [String] = []
+    var attendeeList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        attendeeList.append(creator)
-        print(attendeeList)
+//        attendeeList.append(creator)
+//        print(attendeeList)
         // Do any additional setup after loading the view.
     }
 
@@ -44,6 +44,9 @@ class CreateEventViewController: UIViewController {
         event["event_name"] = eventNameLabel.text
         event["event_date"] = eventDateLabel.text
         event["event_location"] = eventLocationLabel.text
+        
+        // Want creator first
+        attendeeList.insert(creator, atIndex: 0)
         event["attendee_list"] = attendeeList
         
         if (publicSegmentedControl.selectedSegmentIndex == 0) {
@@ -72,7 +75,17 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
         let inviteFriendsViewController = InviteFriendsViewController()
+        
+        // Closures :)
+        inviteFriendsViewController.onDataAvailable = {[weak self]
+            (data: [String]) in
+            self!.attendeeList = data
+            print(self!.attendeeList)
+        }
+        
         self.navigationController?.pushViewController(inviteFriendsViewController, animated: true)
+        
+        inviteFriendsViewController.friendsToInvite = self.attendeeList
         
     }
     

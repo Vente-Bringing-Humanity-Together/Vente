@@ -9,11 +9,30 @@
 import UIKit
 import Parse
 
+// So we can delete from an array based on a value
+extension Array where Element: Equatable {
+    mutating func removeObject(object: Element) {
+        if let index = self.indexOf(object) {
+            self.removeAtIndex(index)
+        }
+    }
+    
+    mutating func removeObjectsInArray(array: [Element]) {
+        for object in array {
+            self.removeObject(object)
+        }
+    }
+}
+
 class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var followingArray: [String]?
+    var friendsToInvite: [String] = []
+    
+    // Closures!
+    var onDataAvailable : ((data: [String]) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +82,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         
+        if (friendsToInvite.contains(followingArray![indexPath.row])) {
+            cell.accessoryType = .Checkmark
+        }
+        
         return cell
     }
     
@@ -70,15 +93,30 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             if cell.accessoryType == .None {
                 cell.accessoryType = .Checkmark
+                
+                if (!friendsToInvite.contains(followingArray![indexPath.row])) {
+                    friendsToInvite.append(followingArray![indexPath.row])
+                }
             }
             else {
                 cell.accessoryType = .None
+                
+                if (friendsToInvite.contains(followingArray![indexPath.row])) {
+                    friendsToInvite.removeObject(followingArray![indexPath.row])
+                }
             }
         }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func sendData(data: [String]) {
+        // Send that thing back
+        self.onDataAvailable?(data: data)
     }
     
     @IBAction func doneButtonTouched(sender: AnyObject) {
-        
+        sendData(self.friendsToInvite)
         navigationController?.popViewControllerAnimated(true)
     }
     
