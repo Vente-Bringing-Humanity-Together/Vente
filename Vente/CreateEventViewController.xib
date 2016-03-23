@@ -65,11 +65,8 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
-                    <rect key="frame" x="8" y="305" width="304" height="84"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6A-gD-glz">
-                    <rect key="frame" x="116" y="467" width="88" height="30"/>
+                    <rect key="frame" x="224" y="461" width="88" height="30"/>
                     <state key="normal" title="Create Event"/>
                     <connections>
                         <action selector="createEvent:" destination="-1" eventType="touchUpInside" id="OQZ-uu-rOc"/>
@@ -82,6 +79,16 @@
                         <segment title="Private"/>
                     </segments>
                 </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0P-C8-ccb">
+                    <rect key="frame" x="8" y="461" width="92" height="30"/>
+                    <state key="normal" title="Invite Friends"/>
+                    <connections>
+                        <action selector="InviteFriendsButtonTouched:" destination="-1" eventType="touchUpInside" id="19a-ut-r99"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
+                    <rect key="frame" x="8" y="305" width="304" height="84"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="353" y="331"/>

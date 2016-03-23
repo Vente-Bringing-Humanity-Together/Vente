@@ -82,6 +82,10 @@ class OtherProfileViewController: UIViewController {
 //            }
 //        })
         
+        followingArray = me!["following"] as? [String]
+        if (followingArray == nil) {
+            followingArray = []
+        }
         followingArray.append((thisUser?.objectId)!)
         me!["following"] = followingArray
         me?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in

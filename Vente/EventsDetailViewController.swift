@@ -52,7 +52,6 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
         return self.attendeeList.count
     }
     
