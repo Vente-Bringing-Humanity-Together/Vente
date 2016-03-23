@@ -17,8 +17,12 @@ class OtherProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     
-    var personID = "";
+    @IBOutlet weak var followButton: UIButton!
     
+    var followingArray: [String]! = []
+//    var followersArray: [String]! = []
+    
+    var personID = "";
     var thisUser: PFObject?
     
     override func viewDidLoad() {
@@ -41,6 +45,15 @@ class OtherProfileViewController: UIViewController {
                 if(user?["number"] != nil){
                     self.numberLabel.text = user?["number"] as? String
                 }
+                
+//                print("the other user's followers: \(self.thisUser?["followers"])")
+//                print("this user is following: \(PFUser.currentUser()?["following"])")
+                
+                if (PFUser.currentUser()?["following"].containsObject((self.thisUser?.objectId)!) == true) {
+                    self.followButton.enabled = false
+                    self.followButton.setTitle("Following", forState: .Normal)
+                }
+                
             }
         }
 
@@ -51,15 +64,38 @@ class OtherProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onFollow(sender: AnyObject) {
+        
+        let me = PFUser.currentUser()
+        
+//        // Cannot save another user for security reasons because they are not logged in
+//        followersArray.append((me?.objectId)!)
+//        thisUser!["followers"] = followersArray
+//        thisUser?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+//            if (error != nil) {
+//                print(error?.description)
+//            }
+//            else {
+//                if (self.thisUser?["followers"] != nil) {
+//                    print("the other user's followers: \(self.thisUser!["followers"])")
+//                }
+//            }
+//        })
+        
+        followingArray.append((thisUser?.objectId)!)
+        me!["following"] = followingArray
+        me?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+            if (error != nil) {
+                print(error?.description)
+            }
+            else {
+                if (me?["following"] != nil) {
+                    print("this user is following: \(PFUser.currentUser()!["following"])")
+                }
+                
+                self.followButton.enabled = false
+            }
+        })
+        
     }
-    */
-
 }

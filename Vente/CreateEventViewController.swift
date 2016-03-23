@@ -23,8 +23,6 @@ class CreateEventViewController: UIViewController {
     let creator = PFUser.currentUser()!.objectId! as String
     var attendeeList : [String] = []
     
-    var test = ["haha", 123]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
