@@ -49,9 +49,19 @@ class OtherProfileViewController: UIViewController {
 //                print("the other user's followers: \(self.thisUser?["followers"])")
 //                print("this user is following: \(PFUser.currentUser()?["following"])")
                 
-                if (PFUser.currentUser()?["following"].containsObject((self.thisUser?.objectId)!) == true) {
-                    self.followButton.setTitle("Unfollow", forState: .Normal)
+//                if (PFUser.currentUser()?["following"].containsObject((self.thisUser?.objectId)!) == true) {
+//                    self.followButton.setTitle("Unfollow", forState: .Normal)
+//                }
+                
+                if (PFUser.currentUser()?["following"] != nil) {
+                    if (self.thisUser?.objectId != nil) {
+                        if (PFUser.currentUser()!["following"].containsObject((self.thisUser?.objectId)!)) {
+                            self.followButton.setTitle("Unfollow", forState: .Normal)
+                        }
+                    }
                 }
+                
+//                print(self.thisUser?.objectId)
                 
             }
         }
