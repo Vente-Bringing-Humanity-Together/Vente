@@ -76,8 +76,10 @@ class CreateEventViewController: UIViewController {
     }
     
     func callYelpAPI(input: String) {
-        Business.searchWithTerm(input, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        if(self.eventLocationLabel.text != nil){
             self.eventLocationLabel.text = input
+        }
+        Business.searchWithTerm(input, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.filteredData = businesses
             
