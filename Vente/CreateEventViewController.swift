@@ -17,9 +17,9 @@ class CreateEventViewController: UIViewController {
     var filteredData: [Business]?
 
     @IBOutlet weak var eventNameLabel: UITextField!
-    @IBOutlet weak var eventDateLabel: UITextField!
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
@@ -44,9 +44,14 @@ class CreateEventViewController: UIViewController {
         
         let event = PFObject(className: "Events")
         
+        var dateString = ""
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        dateString = formatter.stringFromDate(datePicker.date)
+        
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
-        event["event_date"] = eventDateLabel.text
+        event["event_date"] = dateString
         event["event_location"] = eventLocationLabel.text
         
         // Want creator first
