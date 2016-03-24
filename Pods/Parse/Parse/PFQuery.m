@@ -34,32 +34,7 @@
 #import "PFUserPrivate.h"
 #import "ParseInternal.h"
 #import "Parse_Private.h"
-
-NSString *const PFQueryKeyNotEqualTo = @"$ne";
-NSString *const PFQueryKeyLessThan = @"$lt";
-NSString *const PFQueryKeyLessThanEqualTo = @"$lte";
-NSString *const PFQueryKeyGreaterThan = @"$gt";
-NSString *const PFQueryKeyGreaterThanOrEqualTo = @"$gte";
-NSString *const PFQueryKeyContainedIn = @"$in";
-NSString *const PFQueryKeyNotContainedIn = @"$nin";
-NSString *const PFQueryKeyContainsAll = @"$all";
-NSString *const PFQueryKeyNearSphere = @"$nearSphere";
-NSString *const PFQueryKeyWithin = @"$within";
-NSString *const PFQueryKeyRegex = @"$regex";
-NSString *const PFQueryKeyExists = @"$exists";
-NSString *const PFQueryKeyInQuery = @"$inQuery";
-NSString *const PFQueryKeyNotInQuery = @"$notInQuery";
-NSString *const PFQueryKeySelect = @"$select";
-NSString *const PFQueryKeyDontSelect = @"$dontSelect";
-NSString *const PFQueryKeyRelatedTo = @"$relatedTo";
-NSString *const PFQueryKeyOr = @"$or";
-NSString *const PFQueryKeyQuery = @"query";
-NSString *const PFQueryKeyKey = @"key";
-NSString *const PFQueryKeyObject = @"object";
-
-NSString *const PFQueryOptionKeyMaxDistance = @"$maxDistance";
-NSString *const PFQueryOptionKeyBox = @"$box";
-NSString *const PFQueryOptionKeyRegexOptions = @"$options";
+#import "PFQueryConstants.h"
 
 /**
  Checks if an object can be used as value for query equality clauses.
@@ -405,6 +380,12 @@ static void PFQueryAssertValidOrderingClauseClass(id object) {
     return self;
 }
 
+- (instancetype)includeKeys:(NSArray<NSString *> *)keys {
+    [self checkIfCommandIsRunning];
+    [self.state includeKeys:keys];
+    return self;
+}
+
 ///--------------------------------------
 #pragma mark - Select
 ///--------------------------------------
@@ -669,20 +650,15 @@ static void PFQueryAssertValidOrderingClauseClass(id object) {
     return [self queryWithClassName:className normalizedPredicate:normalizedPredicate];
 }
 
-+ (instancetype)orQueryWithSubqueries:(NSArray *)queries {
-    NSMutableArray *array = [NSMutableArray array];
-    NSString *className = nil;
-    for (id object in queries) {
-        PFParameterAssert([object isKindOfClass:[PFQuery class]],
++ (instancetype)orQueryWithSubqueries:(NSArray<PFQuery *> *)queries {
+    PFParameterAssert(queries.count, @"Can't create an `or` query from no subqueries.");
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:queries.count];
+    NSString *className = queries.firstObject.parseClassName;
+    for (PFQuery *query in queries) {
+        PFParameterAssert([query isKindOfClass:[PFQuery class]],
                           @"All elements should be instances of `PFQuery` class.");
-
-        PFQuery *query = (PFQuery *)object;
-        if (!className) {
-            className = query.parseClassName;
-        } else {
-            PFParameterAssert([query.parseClassName isEqualToString:className],
-                              @"All sub queries of an `or` query should be on the same class.");
-        }
+        PFParameterAssert([query.parseClassName isEqualToString:className],
+                          @"All sub queries of an `or` query should be on the same class.");
 
         [array addObject:query];
     }
