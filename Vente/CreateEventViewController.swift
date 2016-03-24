@@ -12,6 +12,9 @@ import Parse
 let userDidPostEventNotification = "userDidPostEventNotification"
 
 class CreateEventViewController: UIViewController {
+    
+    var businesses: [Business]!
+    var filteredData: [Business]?
 
     @IBOutlet weak var eventNameLabel: UITextField!
     @IBOutlet weak var eventDateLabel: UITextField!
@@ -27,6 +30,7 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 800)
     }
@@ -71,6 +75,27 @@ class CreateEventViewController: UIViewController {
 
     }
     
+    func callYelpAPI(input: String) {
+        if(self.eventLocationLabel.text != nil){
+            self.eventLocationLabel.text = input
+        }
+        Business.searchWithTerm(input, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+            self.businesses = businesses
+            self.filteredData = businesses
+            
+            for business in businesses{
+                print(business.name!)
+                print(business.address!)
+            }
+        })
+    
+    }
+        
+
+    
+    @IBAction func onEditingChanged(sender: AnyObject) {
+        callYelpAPI(eventLocationLabel.text!)
+    }
     @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
         let inviteFriendsViewController = InviteFriendsViewController()
         

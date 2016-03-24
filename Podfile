@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'Vente' do
     pod 'Parse'
-    pod 'AFNetworking'
+    pod 'AFNetworking’, '~> 2.5'
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'ChameleonFramework'
     pod 'BDBOAuth1Manager'
