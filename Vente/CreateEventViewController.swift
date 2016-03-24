@@ -47,6 +47,7 @@ class CreateEventViewController: UIViewController {
         var dateString = ""
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .MediumStyle
         dateString = formatter.stringFromDate(datePicker.date)
         
         event["creator"] = creator
