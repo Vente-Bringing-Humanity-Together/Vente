@@ -7,12 +7,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateEventViewController" customModule="Vente" customModuleProvider="target">
             <connections>
+                <outlet property="academicLabel" destination="r8S-Zj-En2" id="WbT-ch-GQq"/>
+                <outlet property="academicSwitch" destination="1nv-hp-oLQ" id="puy-AQ-BEE"/>
+                <outlet property="adventureLabel" destination="ncj-EL-Owa" id="BBO-8V-p7e"/>
+                <outlet property="adventureSwitch" destination="gZw-C9-wCd" id="MI2-9Y-PoE"/>
+                <outlet property="chillLabel" destination="izH-fT-SeL" id="7t1-oi-V0c"/>
+                <outlet property="chillSwitch" destination="XZ7-TN-mak" id="OHg-ir-L6P"/>
                 <outlet property="datePicker" destination="hMD-NM-Zf2" id="rzJ-YR-QzC"/>
+                <outlet property="entertainmentLabel" destination="20C-vW-lIe" id="I9d-I7-j3g"/>
+                <outlet property="entertainmentSwitch" destination="05e-g7-0pd" id="q1C-kc-bYJ"/>
                 <outlet property="eventImageView" destination="p7P-xM-HAF" id="XGd-3t-R9G"/>
                 <outlet property="eventLocationLabel" destination="Ip3-Fu-f8w" id="dRo-Ho-u40"/>
                 <outlet property="eventNameLabel" destination="5vN-4j-X88" id="bh9-qi-tki"/>
+                <outlet property="fooddrinkLabel" destination="8Z2-0F-kwb" id="Y8p-Wo-Bh5"/>
+                <outlet property="fooddrinkSwitch" destination="lJW-AC-Jcj" id="7AZ-Di-3Hu"/>
+                <outlet property="musicLabel" destination="ggD-U4-gJU" id="mUa-z6-ehC"/>
+                <outlet property="musicSwitch" destination="WOE-WF-hoT" id="wJQ-xV-WV9"/>
+                <outlet property="nightlifeLabel" destination="1m1-We-9mh" id="cXR-iB-WdE"/>
+                <outlet property="nightlifeSwitch" destination="TwG-mO-tLW" id="6YW-eo-5mm"/>
                 <outlet property="publicSegmentedControl" destination="Yfz-gH-w63" id="zto-MM-HRB"/>
                 <outlet property="scrollView" destination="ddb-Be-xIG" id="BWJ-GD-PeO"/>
+                <outlet property="sportsLabel" destination="cg6-nz-v5j" id="K2K-ON-x0I"/>
+                <outlet property="sportsSwitch" destination="npr-CE-Syn" id="ey5-DR-rOA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -97,6 +113,78 @@
                                 <!--2016-03-24 22:52:10 +0000-->
                             </date>
                         </datePicker>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Entertainment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20C-vW-lIe">
+                            <rect key="frame" x="8" y="177" width="108" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg6-nz-v5j">
+                            <rect key="frame" x="8" y="206" width="51" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izH-fT-SeL">
+                            <rect key="frame" x="8" y="235" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-U4-gJU">
+                            <rect key="frame" x="8" y="264" width="46" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Academic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8S-Zj-En2">
+                            <rect key="frame" x="8" y="293" width="76" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nightlife" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m1-We-9mh">
+                            <rect key="frame" x="8" y="322" width="64" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adventure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-EL-Owa">
+                            <rect key="frame" x="8" y="351" width="79" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJW-AC-Jcj">
+                            <rect key="frame" x="214" y="143" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05e-g7-0pd">
+                            <rect key="frame" x="214" y="172" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npr-CE-Syn">
+                            <rect key="frame" x="214" y="200" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZ7-TN-mak">
+                            <rect key="frame" x="214" y="230" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOE-WF-hoT">
+                            <rect key="frame" x="214" y="259" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nv-hp-oLQ">
+                            <rect key="frame" x="214" y="288" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwG-mO-tLW">
+                            <rect key="frame" x="214" y="317" width="51" height="31"/>
+                        </switch>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZw-C9-wCd">
+                            <rect key="frame" x="214" y="346" width="51" height="31"/>
+                        </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food/Drink" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Z2-0F-kwb">
+                            <rect key="frame" x="8" y="148" width="85" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </scrollView>
             </subviews>

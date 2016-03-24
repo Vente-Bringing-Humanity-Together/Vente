@@ -28,6 +28,24 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var fooddrinkLabel: UILabel!
+    @IBOutlet weak var entertainmentLabel: UILabel!
+    @IBOutlet weak var sportsLabel: UILabel!
+    @IBOutlet weak var chillLabel: UILabel!
+    @IBOutlet weak var musicLabel: UILabel!
+    @IBOutlet weak var academicLabel: UILabel!
+    @IBOutlet weak var nightlifeLabel: UILabel!
+    @IBOutlet weak var adventureLabel: UILabel!
+    
+    @IBOutlet weak var fooddrinkSwitch: UISwitch!
+    @IBOutlet weak var entertainmentSwitch: UISwitch!
+    @IBOutlet weak var sportsSwitch: UISwitch!
+    @IBOutlet weak var chillSwitch: UISwitch!
+    @IBOutlet weak var musicSwitch: UISwitch!
+    @IBOutlet weak var academicSwitch: UISwitch!
+    @IBOutlet weak var nightlifeSwitch: UISwitch!
+    @IBOutlet weak var adventureSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -38,6 +56,10 @@ class CreateEventViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setAttributes() {
+        
     }
     
     @IBAction func createEvent(sender: AnyObject) {
