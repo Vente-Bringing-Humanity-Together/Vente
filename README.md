@@ -41,3 +41,7 @@ An application to give people the power to connect and share meaningful interact
 ## Gif Walkthrough Sprint 2
 
 <img src='Vente2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+## Gif Walkthrough Sprint 3
+
+<img src='Sprint 3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
