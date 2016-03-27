@@ -28,15 +28,6 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var fooddrinkLabel: UILabel!
-    @IBOutlet weak var entertainmentLabel: UILabel!
-    @IBOutlet weak var sportsLabel: UILabel!
-    @IBOutlet weak var chillLabel: UILabel!
-    @IBOutlet weak var musicLabel: UILabel!
-    @IBOutlet weak var academicLabel: UILabel!
-    @IBOutlet weak var nightlifeLabel: UILabel!
-    @IBOutlet weak var adventureLabel: UILabel!
-    
     @IBOutlet weak var fooddrinkSwitch: UISwitch!
     @IBOutlet weak var entertainmentSwitch: UISwitch!
     @IBOutlet weak var sportsSwitch: UISwitch!
@@ -46,20 +37,39 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var nightlifeSwitch: UISwitch!
     @IBOutlet weak var adventureSwitch: UISwitch!
     
+    func setAttributes() {
+        //label height
+//        fooddrinkLabel.frame = CGRectMake(fooddrinkLabel.frame.origin.x, 200, fooddrinkLabel.frame.width, fooddrinkLabel.frame.height)
+//        fooddrinkLabel.center.y = 700
+//        entertainmentLabel.frame.origin.y = 800
+//        sportsLabel.frame.origin.y = 850
+//        chillLabel.frame.origin.y = 900
+//        academicLabel.frame.origin.y = 950
+//        nightlifeLabel.frame.origin.y = 1000
+//        adventureLabel.frame.origin.y = 1050
+//        musicLabel.frame.origin.y = 1100
+//        
+//        //switch height
+//        fooddrinkSwitch.frame.origin.y = 750
+//        entertainmentSwitch.frame.origin.y = 800
+//        sportsSwitch.frame.origin.y = 850
+//        chillSwitch.frame.origin.y = 900
+//        academicSwitch.frame.origin.y = 950
+//        nightlifeSwitch.frame.origin.y = 1000
+//        adventureSwitch.frame.origin.y = 1050
+//        musicSwitch .frame.origin.y = 1100
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 800)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
+        //setAttributes()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func setAttributes() {
-        
     }
     
     @IBAction func createEvent(sender: AnyObject) {
@@ -76,6 +86,16 @@ class CreateEventViewController: UIViewController {
         event["event_name"] = eventNameLabel.text
         event["event_date"] = dateString
         event["event_location"] = eventLocationLabel.text
+        
+        //Event tags
+        event["fooddrink"] = fooddrinkSwitch.on
+        event["entertainment"] = entertainmentSwitch.on
+        event["sports"] = sportsSwitch.on
+        event["chill"] = chillSwitch.on
+        event["academic"] = academicSwitch.on
+        event["music"] = musicSwitch.on
+        event["nightlife"] = nightlifeSwitch.on
+        event["adventure"] = adventureSwitch.on
         
         // Want creator first
         attendeeList.insert(creator, atIndex: 0)
