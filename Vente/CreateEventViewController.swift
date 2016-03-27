@@ -17,9 +17,9 @@ class CreateEventViewController: UIViewController {
     var filteredData: [Business]?
 
     @IBOutlet weak var eventNameLabel: UITextField!
-    @IBOutlet weak var eventDateLabel: UITextField!
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
@@ -28,11 +28,43 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var fooddrinkSwitch: UISwitch!
+    @IBOutlet weak var entertainmentSwitch: UISwitch!
+    @IBOutlet weak var sportsSwitch: UISwitch!
+    @IBOutlet weak var chillSwitch: UISwitch!
+    @IBOutlet weak var musicSwitch: UISwitch!
+    @IBOutlet weak var academicSwitch: UISwitch!
+    @IBOutlet weak var nightlifeSwitch: UISwitch!
+    @IBOutlet weak var adventureSwitch: UISwitch!
+    
+    func setAttributes() {
+        //label height
+//        fooddrinkLabel.frame = CGRectMake(fooddrinkLabel.frame.origin.x, 200, fooddrinkLabel.frame.width, fooddrinkLabel.frame.height)
+//        fooddrinkLabel.center.y = 700
+//        entertainmentLabel.frame.origin.y = 800
+//        sportsLabel.frame.origin.y = 850
+//        chillLabel.frame.origin.y = 900
+//        academicLabel.frame.origin.y = 950
+//        nightlifeLabel.frame.origin.y = 1000
+//        adventureLabel.frame.origin.y = 1050
+//        musicLabel.frame.origin.y = 1100
+//        
+//        //switch height
+//        fooddrinkSwitch.frame.origin.y = 750
+//        entertainmentSwitch.frame.origin.y = 800
+//        sportsSwitch.frame.origin.y = 850
+//        chillSwitch.frame.origin.y = 900
+//        academicSwitch.frame.origin.y = 950
+//        nightlifeSwitch.frame.origin.y = 1000
+//        adventureSwitch.frame.origin.y = 1050
+//        musicSwitch .frame.origin.y = 1100
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 800)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
+        //setAttributes()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,10 +76,26 @@ class CreateEventViewController: UIViewController {
         
         let event = PFObject(className: "Events")
         
+        var dateString = ""
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .MediumStyle
+        dateString = formatter.stringFromDate(datePicker.date)
+        
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
-        event["event_date"] = eventDateLabel.text
+        event["event_date"] = dateString
         event["event_location"] = eventLocationLabel.text
+        
+        //Event tags
+        event["fooddrink"] = fooddrinkSwitch.on
+        event["entertainment"] = entertainmentSwitch.on
+        event["sports"] = sportsSwitch.on
+        event["chill"] = chillSwitch.on
+        event["academic"] = academicSwitch.on
+        event["music"] = musicSwitch.on
+        event["nightlife"] = nightlifeSwitch.on
+        event["adventure"] = adventureSwitch.on
         
         // Want creator first
         attendeeList.insert(creator, atIndex: 0)
