@@ -228,7 +228,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                 } else {
                     print("Updated event successfully")
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
             })
     }
