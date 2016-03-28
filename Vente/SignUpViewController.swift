@@ -41,20 +41,34 @@ class SignUpViewController: UIViewController {
             newUser["number"] = phoneNumberField.text
             newUser["first_name"] = firstNameField.text
             newUser["last_name"] = lastNameField.text
-            newUser["followers"] = followers
+            //newUser["followers"] = followers
             newUser["following"] = following
             
             newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
                     print("Yay, created a user")
+                    
+                    let followerList = PFObject(className: "Followers")
+                    followerList["followers"] = self.followers
+                    followerList["creatorId"] = newUser.objectId
+                    
+                    followerList.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if let error = error {
+                            print("Follower list add failed")
+                            print(error.localizedDescription)
+                            
+                        } else {
+                            print("Added empty follower list")
+                        }
+                        
+                    }
+                    
                     self.performSegueWithIdentifier("SignupToHome", sender: nil)
                 } else {
+                    print("error")
                     print(error?.localizedDescription)
                 }
             }
-            
-            let followerList = PFObject(className: "Followers")
-            followerList["followers"] = followers
 
         }
         else {

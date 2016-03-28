@@ -20,7 +20,8 @@ class OtherProfileViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     
     var followingArray: [String]! = []
-//    var followersArray: [String]! = []
+    var followersArray: [String]! = []
+    var follow: PFObject!
     
     var personID = "";
     var thisUser: PFObject?
@@ -110,7 +111,37 @@ class OtherProfileViewController: UIViewController {
                     self.followButton.setTitle("Unfollow", forState: .Normal)
                 }
             })
+            
+            let query = PFQuery(className: "Followers")
+            query.whereKey("creatorId", equalTo: personID)
+            query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    if let results = results {
+                        print("Successfully retrieved \(results.count) ventes")
+                        self.follow = results[0]
+                    } else {
+                        print("No results returned")
+                    }
+                }
+            }
+            
+            followersArray.append((me?.objectId)!)
+            follow["followers"] = followersArray
+            
+            follow.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if (error != nil) {
+                    print(error?.description)
+                }
+                else {
+                    if (self.thisUser?["followers"] != nil) {
+                        print("the other user's followers: \(self.thisUser!["followers"])")
+                    }
+                }
+            })
         }
+            
         else if (followButton.titleForState(.Normal) == "Unfollow") {
             followingArray = me!["following"] as? [String]
             followingArray.removeObject((thisUser?.objectId)!)
