@@ -228,6 +228,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="uGF-kz-4JO">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="UXg-DU-ZfY">
+                            <connections>
+                                <action selector="editButtonTouched:" destination="L1h-zZ-QJU" id="Sck-5M-Pje"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="hKF-fq-UOe">
                             <connections>
                                 <action selector="signOutButtonTouched:" destination="L1h-zZ-QJU" id="vi4-ge-cmD"/>

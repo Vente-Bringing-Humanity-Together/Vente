@@ -27,10 +27,35 @@ class ProfileViewController: UIViewController {
 
         getUserData();
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let user = PFUser.currentUser()
+        
+        if (user?["profile_image"] != nil) {
+            let userImageFile = user?["profile_image"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    let image = UIImage(data: imageData!)
+                    self.profileImageView.image = image
+                }
+            })
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func editButtonTouched(sender: AnyObject) {
+        
+        let editProfileViewController = EditProfileViewController()
+        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+        
     }
     
     @IBAction func signOutButtonTouched(sender: AnyObject) {
@@ -63,6 +88,20 @@ class ProfileViewController: UIViewController {
             numberLabel.text = user?["number"] as? String
         }
         
+        if (user?["profile_image"] != nil) {
+            let userImageFile = user?["profile_image"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    let image = UIImage(data: imageData!)
+                    self.profileImageView.image = image
+                }
+            })
+        }
+        
     }
+    
 
 }

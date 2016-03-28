@@ -27,6 +27,8 @@
 		382B7A841C990A3C000B2D5E /* AttendeesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */; };
 		3841B5BD1CA361D9003FEAEE /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3841B5BC1CA361D9003FEAEE /* YelpClient.swift */; };
 		3841B5BF1CA36238003FEAEE /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3841B5BE1CA36238003FEAEE /* Business.swift */; };
+		3841B5C21CA4AF13003FEAEE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */; };
+		3841B5C31CA4AF13003FEAEE /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */; };
 		38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86071C8FA3B800A4020F /* SignUpViewController.swift */; };
 		38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA86091C8FA3F600A4020F /* ExploreViewController.swift */; };
 		38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */; };
@@ -61,6 +63,8 @@
 		382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendeesTableViewCell.xib; sourceTree = "<group>"; };
 		3841B5BC1CA361D9003FEAEE /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		3841B5BE1CA36238003FEAEE /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		38AA86071C8FA3B800A4020F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		38AA86091C8FA3F600A4020F /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
+				3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */,
+				3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
@@ -325,6 +331,7 @@
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
 				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
+				3841B5C31CA4AF13003FEAEE /* EditProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +398,7 @@
 				3841B5BD1CA361D9003FEAEE /* YelpClient.swift in Sources */,
 				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,
 				38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */,
+				3841B5C21CA4AF13003FEAEE /* EditProfileViewController.swift in Sources */,
 				382B7A791C98CA6D000B2D5E /* EventsDetailViewController.swift in Sources */,
 				38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */,
 				27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */,
