@@ -20,7 +20,8 @@ class OtherProfileViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     
     var followingArray: [String]! = []
-//    var followersArray: [String]! = []
+    var followersArray: [String]! = []
+    var follow: PFObject!
     
     var personID = "";
     var thisUser: PFObject?
@@ -110,7 +111,36 @@ class OtherProfileViewController: UIViewController {
                     self.followButton.setTitle("Unfollow", forState: .Normal)
                 }
             })
+            
+            let query = PFQuery(className: "Followers")
+            query.whereKey("creatorId", equalTo: personID)
+            query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    if let results = results {
+                        self.follow = results[0]
+                        
+                        self.followersArray.append((me?.objectId)!)
+                        self.follow["followers"] = self.followersArray
+                        
+                        self.follow.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                            if (error != nil) {
+                                print(error?.description)
+                            }
+                            else {
+                                if (self.thisUser?["followers"] != nil) {
+                                    print("the other user's followers: \(self.thisUser!["followers"])")
+                                }
+                            }
+                        })
+                    } else {
+                        print("No results returned")
+                    }
+                }
+            }
         }
+            
         else if (followButton.titleForState(.Normal) == "Unfollow") {
             followingArray = me!["following"] as? [String]
             followingArray.removeObject((thisUser?.objectId)!)
@@ -122,12 +152,40 @@ class OtherProfileViewController: UIViewController {
                 }
                 else {
                     if (me?["following"] != nil) {
-                        print("this user is unfollowing: \(PFUser.currentUser()!["following"])")
+                        print("this user is following: \(PFUser.currentUser()!["following"])")
                     }
                     
                     self.followButton.setTitle("Follow", forState: .Normal)
                 }
             })
+            
+            let query = PFQuery(className: "Followers")
+            query.whereKey("creatorId", equalTo: personID)
+            query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    if let results = results {
+                        self.follow = results[0]
+                        
+                        self.followersArray.removeObject((self.thisUser?.objectId)!)
+                        self.follow["followers"] = self.followersArray
+                        
+                        self.follow.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                            if (error != nil) {
+                                print(error?.description)
+                            }
+                            else {
+                                if (self.thisUser?["followers"] != nil) {
+                                    print("the other user's followers: \(self.thisUser!["followers"])")
+                                }
+                            }
+                        })
+                    } else {
+                        print("No results returned")
+                    }
+                }
+            }
         }
         
     }
