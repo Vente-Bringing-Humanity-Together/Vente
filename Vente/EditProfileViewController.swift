@@ -13,11 +13,8 @@ import MBProgressHUD
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var uploadImageButton: UIButton!
-
     @IBOutlet weak var profileImageView: UIImageView!
-    
     @IBOutlet weak var doneButton: UIButton!
-    
     @IBOutlet weak var takePhotoButton: UIButton!
     
     let vc = UIImagePickerController()
@@ -56,8 +53,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         let user = PFUser.currentUser()
         
+        let userMedia = UserMedia()
+        
         if (profileImageView.image != nil) {
-            user!["profile_image"] = getPFFileFromImage(profileImageView.image)
+            user!["profile_image"] = userMedia.getPFFileFromImage(profileImageView.image)
         }
         user?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
             if let error = error {
@@ -76,28 +75,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             } else {
                 print("Updated user successfully")
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.popViewControllerAnimated(true)
             }
         })
     }
     
-    
-    func getPFFileFromImage(image: UIImage?) -> PFFile? {
-        // check if image is not nil
-        if let image = image {
-            // get image data and check if that is not nil
-            if let imageData = UIImagePNGRepresentation(image) {
-                return PFFile(name: "image.png", data: imageData)
-            }
-        }
-        return nil
-    }
-    func imagePickerController(picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-            
-            //            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+            // let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-            //            let resizedImage = resize(editedImage, newSize: CGSize(width: 100, height: 200))
+            // let resizedImage = resize(editedImage, newSize: CGSize(width: 100, height: 200))
             profileImageView.image = editedImage
             dismissViewControllerAnimated(true, completion: nil)
     }
@@ -111,15 +97,5 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

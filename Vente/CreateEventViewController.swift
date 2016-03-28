@@ -72,6 +72,13 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         vc.delegate = self
         vc.allowsEditing = true
         
+        if (!UIImagePickerController.isSourceTypeAvailable(.Camera)){
+            takePhotoButton.enabled = false
+        }
+        if (!UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
+            uploadImageButton.enabled = false
+        }
+        
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
         //setAttributes()
     }
@@ -109,6 +116,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         event["music"] = musicSwitch.on
         event["nightlife"] = nightlifeSwitch.on
         event["adventure"] = adventureSwitch.on
+        
+        let userMedia = UserMedia()
+        event["event_image"] = userMedia.getPFFileFromImage(eventImageView.image)
         
         // Want creator first
         attendeeList.insert(creator, atIndex: 0)
@@ -172,16 +182,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         inviteFriendsViewController.friendsToInvite = self.attendeeList
         
     }
-    func getPFFileFromImage(image: UIImage?) -> PFFile? {
-        // check if image is not nil
-        if let image = image {
-            // get image data and check if that is not nil
-            if let imageData = UIImagePNGRepresentation(image) {
-                return PFFile(name: "image.png", data: imageData)
-            }
-        }
-        return nil
-    }
+
+    
     func showImagePicker() {
         self.presentViewController(vc, animated: true, completion: nil)
     }
@@ -194,41 +196,12 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         showImagePicker()
     }
-    func imagePickerController(picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             
             //            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
             //            let resizedImage = resize(editedImage, newSize: CGSize(width: 100, height: 200))
             eventImageView.image = editedImage
             dismissViewControllerAnimated(true, completion: nil)
-            
-            
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            
-            let user = PFUser.currentUser()
-            
-            if (eventImageView.image != nil) {
-                user!["event_image"] = getPFFileFromImage(eventImageView.image)
-            }
-            user?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-                if let error = error {
-                    print("Update event failed")
-                    print(error.localizedDescription)
-                    
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    
-                    let alertController = UIAlertController(title: "There Was An Error", message: "", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-                    }
-                    alertController.addAction(OKAction)
-                    self.presentViewController(alertController, animated: true) {
-                    }
-                    
-                } else {
-                    print("Updated event successfully")
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
-                }
-            })
     }
 }

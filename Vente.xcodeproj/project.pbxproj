@@ -134,11 +134,19 @@
 			isa = PBXGroup;
 			children = (
 				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
-				3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */,
-				3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */,
+				27B831611CA9BE0700F20D60 /* EditProfile */,
 				382B7A861C9B68BF000B2D5E /* OtherProfile */,
 			);
 			name = FromProfile;
+			sourceTree = "<group>";
+		};
+		27B831611CA9BE0700F20D60 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */,
+				3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */,
+			);
+			name = EditProfile;
 			sourceTree = "<group>";
 		};
 		27EAD9E81C8F98B80069BC6F = {
