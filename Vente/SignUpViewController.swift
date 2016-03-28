@@ -52,6 +52,9 @@ class SignUpViewController: UIViewController {
                     print(error?.localizedDescription)
                 }
             }
+            
+            let followerList = PFObject(className: "Followers")
+            followerList["followers"] = followers
 
         }
         else {
