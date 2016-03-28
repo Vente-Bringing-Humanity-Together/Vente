@@ -134,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
+				3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */,
+				3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */,
 				382B7A861C9B68BF000B2D5E /* OtherProfile */,
 			);
 			name = FromProfile;
@@ -166,8 +168,6 @@
 				27EADA0C1C8F98D10069BC6F /* ViewControllers */,
 				27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */,
 				27EAD9F81C8F98B80069BC6F /* Main.storyboard */,
-				3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */,
-				3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */,
 				27EAD9FE1C8F98B80069BC6F /* Assets.xcassets */,
 				27EADA001C8F98B80069BC6F /* LaunchScreen.storyboard */,
 				27EADA031C8F98B80069BC6F /* Info.plist */,
