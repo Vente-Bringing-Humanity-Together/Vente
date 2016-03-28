@@ -8,14 +8,20 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
+
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var businesses: [Business]!
     var filteredData: [Business]?
+    
+    let vc = UIImagePickerController()
 
+    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var eventNameLabel: UITextField!
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
@@ -63,10 +69,17 @@ class CreateEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        vc.delegate = self
+        vc.allowsEditing = true
+        
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
         //setAttributes()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -159,6 +172,64 @@ class CreateEventViewController: UIViewController {
         inviteFriendsViewController.friendsToInvite = self.attendeeList
         
     }
-    
+    func getPFFileFromImage(image: UIImage?) -> PFFile? {
+        // check if image is not nil
+        if let image = image {
+            // get image data and check if that is not nil
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
+    }
+    func showImagePicker() {
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 
+    @IBAction func takePhotoButtonTouched(sender: AnyObject) {
+        vc.sourceType = UIImagePickerControllerSourceType.Camera
+        showImagePicker()
+    }
+    @IBAction func uploadImageButtonTouched(sender: AnyObject) {
+        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        showImagePicker()
+    }
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+            
+            //            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+            //            let resizedImage = resize(editedImage, newSize: CGSize(width: 100, height: 200))
+            eventImageView.image = editedImage
+            dismissViewControllerAnimated(true, completion: nil)
+            
+            
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            
+            let user = PFUser.currentUser()
+            
+            if (eventImageView.image != nil) {
+                user!["event_image"] = getPFFileFromImage(eventImageView.image)
+            }
+            user?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if let error = error {
+                    print("Update event failed")
+                    print(error.localizedDescription)
+                    
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    
+                    let alertController = UIAlertController(title: "There Was An Error", message: "", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                    }
+                    alertController.addAction(OKAction)
+                    self.presentViewController(alertController, animated: true) {
+                    }
+                    
+                } else {
+                    print("Updated event successfully")
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+    }
 }
