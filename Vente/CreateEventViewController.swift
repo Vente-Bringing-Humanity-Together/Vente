@@ -78,20 +78,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 
     override func viewWillAppear(animated: Bool) {
         
-        let user = PFUser.currentUser()
-        
-        if (user?["event_image"] != nil) {
-            let userImageFile = user?["event_image"] as! PFFile
-            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                else {
-                    let image = UIImage(data: imageData!)
-                    self.eventImageView.image = image
-                }
-            })
-        }
     }
     
     override func didReceiveMemoryWarning() {

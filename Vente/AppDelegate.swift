@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchToHome", name: userDidPostEventNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.switchToHome), name: userDidPostEventNotification, object: nil)
                 
             Parse.initializeWithConfiguration(
                 ParseClientConfiguration(block:
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }))
             
             // Set up listener for user logout
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "didLogout", name: userDidLogoutNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.didLogout), name: userDidLogoutNotification, object: nil)
             
             // Check if user is already signed in
             if let currentUser = PFUser.currentUser() {
