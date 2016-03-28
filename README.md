@@ -2,33 +2,36 @@
 An application to give people the power to connect and share meaningful interactions
 
 # Time Spent
-**20** Hours
+**30** Hours
 
 ##Required
-- [X] User can make a profile and login
-- [X] User can login with facebook
-- [X] User can make events (set a certain radii)
+- [X] User can make a profile and log in
+- [X] User can log in with Facebook credentials
+- [X] User can make events
 - [X] User can see and join events around them
-- [X] Access to all people's profiles within a public event
+- [X] User can access all other user's profiles within a public event
 
 ##Optional Tier 1
-- [ ] User can specify interests within profile
-- [ ] Filter for users/events based on interests
+- [ ] Filter for events based on interests
 - [X] Add tags for events relating to specific interests
-- [ ] Way to contact/message people within events
+- [ ] Group chat within each event
 - [X] Check for a .ufl email address for security
 - [X] Integrate Yelp API to pull events
 
 ##Optional Tier 2
 - [X] Invite only vs public events
-- [X] Follow/add friends
-- [ ] Ability to see a person’s past events
+- [X] Follow other users
+- [ ] Load events based on radius of created location
+- [ ] Ability to see a user’s past events
 
 ##Optional Tier 3
+- [ ] Integrate Uber API into chat for users to request rides
 - [ ] Remake a past event
-- [ ] Check-in feature when a person comes to an event (bump phones together? bluetooth?)
+- [ ] Check-in feature when a person comes to an event (bump phones together? bluetooth? location check?)
 
 ##Optional Tier 4
+- [ ] User can specify interests within profile
+- [ ] Filter other users based on their interests
 - [ ] Notification for user if somebody with mutual interest is nearby
 
 ##Optional Tier ???
