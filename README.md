@@ -12,7 +12,8 @@ An application to give people the power to connect and share meaningful interact
 - [X] User can access all other user's profiles within a public event
 
 ##Optional Tier 1
-- [ ] Filter for events based on interests
+- [X] Filter for events based on interests
+- [ ] Allow user to search events based on name
 - [X] Add tags for events relating to specific interests
 - [ ] Group chat within each event
 - [X] Check for a .ufl email address for security
