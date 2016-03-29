@@ -9,5 +9,6 @@ target 'Vente' do
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'ChameleonFramework'
     pod 'BDBOAuth1Manager'
+    pod "PubNub"
 end
 

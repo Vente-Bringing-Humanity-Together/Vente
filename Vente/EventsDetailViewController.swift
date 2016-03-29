@@ -45,6 +45,19 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.creatorNameLabel.text = user["first_name"] as? String
             }
         }
+        
+        let backgroundImage = UIImage(named: "ic_chat")
+        let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
+        
+        self.navigationItem.rightBarButtonItem = groupMessageButton
+    }
+    
+    func chatButtonTouched() {
+        let chatViewController = ChatViewController()
+        
+        chatViewController.event = event
+        
+        self.navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
