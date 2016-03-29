@@ -50,7 +50,7 @@ DEPENDENCIES:
   - ChameleonFramework
   - MBProgressHUD (~> 0.9.2)
   - Parse
-  - PubNub (~> 4.1)
+  - PubNub
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60

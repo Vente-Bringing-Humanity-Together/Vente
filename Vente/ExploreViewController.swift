@@ -124,12 +124,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let eventDetailsViewController = EventsDetailViewController()
-        self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         
 //        let event = events![indexPath.row]
         let event = filteredEvents![indexPath.row]
         
         eventDetailsViewController.event = event
+        
+        self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

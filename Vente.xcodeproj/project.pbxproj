@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DEF621CAAF51C00EBD504 /* SettingsViewController.swift */; };
 		273DEF651CAAF51C00EBD504 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */; };
+		273DEF6A1CAB0F8000EBD504 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DEF681CAB0F8000EBD504 /* ChatViewController.swift */; };
+		273DEF6B1CAB0F8000EBD504 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DEF691CAB0F8000EBD504 /* ChatViewController.xib */; };
 		276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */; };
 		276C537E1CA2DE8F00388060 /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */; };
 		27D38FE31C974653006D5770 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38FE21C974653006D5770 /* UserMedia.swift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		273DEF621CAAF51C00EBD504 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		273DEF681CAB0F8000EBD504 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		273DEF691CAB0F8000EBD504 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
 		27D38FE21C974653006D5770 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
@@ -104,6 +108,15 @@
 				273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		273DEF671CAB0F6500EBD504 /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				273DEF681CAB0F8000EBD504 /* ChatViewController.swift */,
+				273DEF691CAB0F8000EBD504 /* ChatViewController.xib */,
+			);
+			name = ChatRoom;
 			sourceTree = "<group>";
 		};
 		276C537A1CA2DE5B00388060 /* InviteFriends */ = {
@@ -233,6 +246,7 @@
 				27A3731D1C90F142004CB934 /* FromExplore */,
 				27A3731E1C90F154004CB934 /* FromMyEvents */,
 				27A3731F1C90F18A004CB934 /* FromProfile */,
+				273DEF671CAB0F6500EBD504 /* ChatRoom */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 				382B7A7A1C98CA6D000B2D5E /* EventsDetailViewController.xib in Resources */,
 				27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */,
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
+				273DEF6B1CAB0F8000EBD504 /* ChatViewController.xib in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
 				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
@@ -431,6 +446,7 @@
 				38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */,
 				27D38FE31C974653006D5770 /* UserMedia.swift in Sources */,
 				382B7A751C98C807000B2D5E /* OtherProfileViewController.swift in Sources */,
+				273DEF6A1CAB0F8000EBD504 /* ChatViewController.swift in Sources */,
 				38AA86121C8FA73C00A4020F /* MyEventsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

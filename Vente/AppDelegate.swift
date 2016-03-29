@@ -11,6 +11,7 @@ import CoreData
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
+import PubNub
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-            
+        
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.switchToHome), name: userDidPostEventNotification, object: nil)
                 
             Parse.initializeWithConfiguration(
@@ -52,20 +53,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func switchToHome(){
+    func switchToHome() {
         let vc = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
         window?.rootViewController = vc
     }
     
-    func removeEvent()
-    {
+    func removeEvent() {
         let vc = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
         vc.selectedIndex = 1
         window?.rootViewController = vc
-        
     }
-    
-    func didLogout(){
+    func didLogout() {
         let vc = storyboard.instantiateInitialViewController()! as UIViewController
         window?.rootViewController = vc
     }

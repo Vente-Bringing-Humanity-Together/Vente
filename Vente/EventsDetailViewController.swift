@@ -53,7 +53,11 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func chatButtonTouched() {
-        print("hello")
+        let chatViewController = ChatViewController()
+        
+        chatViewController.event = event
+        
+        self.navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
