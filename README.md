@@ -15,7 +15,7 @@ An application to give people the power to connect and share meaningful interact
 - [X] Filter for events based on interests
 - [X] Allow user to search events based on name
 - [X] Add tags for events relating to specific interests
-- [ ] Group chat within each event
+- [X] Group chat within each event
 - [X] Check for a .ufl email address for security
 - [X] Integrate Yelp API to pull events
 
