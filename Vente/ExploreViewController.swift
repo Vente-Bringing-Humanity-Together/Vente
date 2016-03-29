@@ -25,11 +25,49 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        doDatabaseQuery()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func doDatabaseQuery() {
+        let defaults = NSUserDefaults.standardUserDefaults()
         
         let query = PFQuery(className: "Events")
         query.orderByDescending("createdAt")
         query.limit = 20
         query.whereKey("public", notEqualTo: false)
+        
+        if (defaults.integerForKey("fooddrinkSwitch") == 1) {
+            query.whereKey("fooddrink", equalTo: true)
+        }
+        if (defaults.integerForKey("entertainmentSwitch") == 1) {
+            query.whereKey("entertainment", equalTo: true)
+        }
+        if (defaults.integerForKey("sportsSwitch") == 1) {
+            query.whereKey("sports", equalTo: true)
+        }
+        if (defaults.integerForKey("chillSwitch") == 1) {
+            query.whereKey("chill", equalTo: true)
+        }
+        if (defaults.integerForKey("academicSwitch") == 1) {
+            query.whereKey("academic", equalTo: true)
+        }
+        if (defaults.integerForKey("musicSwitch") == 1) {
+            query.whereKey("music", equalTo: true)
+        }
+        if (defaults.integerForKey("nightlifeSwitch") == 1) {
+            query.whereKey("nightlife", equalTo: true)
+        }
+        if (defaults.integerForKey("adventureSwitch") == 1) {
+            query.whereKey("adventure", equalTo: true)
+        }
+        
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
@@ -43,11 +81,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -87,6 +120,14 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func addEvent(sender: AnyObject) {
         let createEventViewController = CreateEventViewController()
         self.navigationController?.pushViewController(createEventViewController, animated: true)
+    }
+    
+    @IBAction func settingsButtonTouched(sender: AnyObject) {
+        let settingsViewController = SettingsViewController()
+//        self.navigationController?.presentViewController(settingsViewController, animated: true, completion: { 
+//            print("success")
+//        })
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

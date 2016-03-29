@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DEF621CAAF51C00EBD504 /* SettingsViewController.swift */; };
+		273DEF651CAAF51C00EBD504 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */; };
 		276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */; };
 		276C537E1CA2DE8F00388060 /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */; };
 		27D38FE31C974653006D5770 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38FE21C974653006D5770 /* UserMedia.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273DEF621CAAF51C00EBD504 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
 		27D38FE21C974653006D5770 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		273DEF611CAAF35900EBD504 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				273DEF621CAAF51C00EBD504 /* SettingsViewController.swift */,
+				273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		276C537A1CA2DE5B00388060 /* InviteFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
+				273DEF611CAAF35900EBD504 /* Settings */,
 				382B7A851C9B6895000B2D5E /* EventDetails */,
 				38E8CD4E1C90EE7400796901 /* CreateEventViewController */,
 				276C537A1CA2DE5B00388060 /* InviteFriends */,
@@ -340,6 +354,7 @@
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
 				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
 				3841B5C31CA4AF13003FEAEE /* EditProfileViewController.xib in Resources */,
+				273DEF651CAAF51C00EBD504 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +418,7 @@
 				38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */,
 				3841B5BF1CA36238003FEAEE /* Business.swift in Sources */,
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
+				273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */,
 				3841B5BD1CA361D9003FEAEE /* YelpClient.swift in Sources */,
 				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,
 				38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */,
