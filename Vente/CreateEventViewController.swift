@@ -117,8 +117,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         event["nightlife"] = nightlifeSwitch.on
         event["adventure"] = adventureSwitch.on
         
-        let userMedia = UserMedia()
-        event["event_image"] = userMedia.getPFFileFromImage(eventImageView.image)
+        if (eventImageView.image != nil) {
+            let userMedia = UserMedia()
+            event["event_image"] = userMedia.getPFFileFromImage(eventImageView.image)
+        }
         
         // Want creator first
         attendeeList.insert(creator, atIndex: 0)
