@@ -79,7 +79,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             uploadImageButton.enabled = false
         }
         
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1270)
         //setAttributes()
     }
 
