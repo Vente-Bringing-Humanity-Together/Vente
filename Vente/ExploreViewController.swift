@@ -9,11 +9,14 @@
 import UIKit
 import Parse
 
-class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var eventsTableView: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var events: [PFObject]!
+    var filteredEvents: [PFObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         self.eventsTableView.delegate = self
         //        self.eventsTableView.estimatedRowHeight = 150
         //        self.eventsTableView.rowHeight = UITableViewAutomaticDimension
+        
+        searchBar.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,6 +80,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                 if let results = results {
                     print("Successfully retrieved \(results.count) ventes")
                     self.events = results
+                    self.filteredEvents = self.events
                     self.eventsTableView.reloadData()
                 } else {
                     print("No results returned")
@@ -84,17 +90,26 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if self.events == nil{
-            return 0
+//        if self.events == nil{
+//            return 0
+//        }
+//        else {
+//            return self.events.count
+//        }
+        
+        if (self.filteredEvents != nil) {
+            return self.filteredEvents!.count
         }
-        else{
-            return self.events.count
+        else {
+            return 0
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = eventsTableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
-        cell.Event = events[indexPath.row]
+        
+//        cell.Event = events[indexPath.row]
+        cell.Event = filteredEvents![indexPath.row]
         
         if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
             cell.joinButton.enabled = false
@@ -111,10 +126,28 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let eventDetailsViewController = EventsDetailViewController()
         self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         
-        let event = events![indexPath.row]
+//        let event = events![indexPath.row]
+        let event = filteredEvents![indexPath.row]
+        
         eventDetailsViewController.event = event
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        filteredEvents = events
+        self.eventsTableView.reloadData()
+    }
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        //let resultPredicate = NSPredicate(format: "name contains[c] %@", searchText)
+        filteredEvents = searchText.isEmpty ? events : events!.filter {
+            $0["event_name"]!.containsString(searchText)
+        }
+        
+        eventsTableView.reloadData()
     }
     
     @IBAction func addEvent(sender: AnyObject) {
