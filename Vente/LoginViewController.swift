@@ -69,6 +69,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             newUser.username = self.strEmail
             newUser.password = "pass"
+            newUser["first_name"] = self.strFirstName
+            newUser["last_name"] = self.strLastName
             
             newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
