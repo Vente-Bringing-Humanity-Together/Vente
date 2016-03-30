@@ -55,13 +55,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXD-iC-LPk">
-                            <rect key="frame" x="8" y="422" width="113" height="21"/>
+                            <rect key="frame" x="8" y="412" width="113" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-Fu-f8w">
-                            <rect key="frame" x="8" y="460" width="304" height="30"/>
+                            <rect key="frame" x="8" y="450" width="258" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -200,7 +200,7 @@
                             <rect key="frame" x="8" y="144" width="304" height="304"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
-                                    <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="304" height="270"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <searchBar key="tableHeaderView" contentMode="redraw" id="Yha-Xb-Qvf">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
@@ -208,9 +208,23 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-Pb-XSI">
+                                    <rect key="frame" x="0.0" y="274" width="304" height="30"/>
+                                    <state key="normal" title="Done"/>
+                                    <connections>
+                                        <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="rxV-ZA-FST"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ2-6r-Otz">
+                            <rect key="frame" x="266" y="450" width="46" height="30"/>
+                            <state key="normal" title="Yelp"/>
+                            <connections>
+                                <action selector="onClickYelp:" destination="-1" eventType="touchUpInside" id="lTH-nB-ZDN"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </scrollView>
             </subviews>

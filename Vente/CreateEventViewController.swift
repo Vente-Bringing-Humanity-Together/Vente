@@ -51,6 +51,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
         yelpTableView.registerNib(cellNib, forCellReuseIdentifier: "YelpTableViewCell")
         
+        self.yelpView.hidden = true
+        
         yelpTableView.delegate = self
         yelpTableView.dataSource = self
         
@@ -71,7 +73,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        print(filteredData!.count)
+        //print(businesses!.count)
         
         if businesses != nil {
             return filteredData!.count;
@@ -85,6 +87,14 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableViewCell", forIndexPath: indexPath) as! YelpTableViewCell
         
         return cell
+    }
+    
+    @IBAction func onClickYelp(sender: AnyObject) {
+        self.yelpView.hidden = false
+    }
+    
+    @IBAction func onClickDone(sender: AnyObject) {
+        self.yelpView.hidden = true
     }
     
     override func didReceiveMemoryWarning() {
