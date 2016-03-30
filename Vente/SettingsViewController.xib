@@ -10,6 +10,7 @@
                 <outlet property="academicSwitch" destination="N2q-Ri-eOt" id="2su-rE-FnU"/>
                 <outlet property="adventureSwitch" destination="ex2-pM-qkQ" id="2xD-4Z-ssw"/>
                 <outlet property="chillSwitch" destination="prc-Qe-IBb" id="HkT-aN-ssE"/>
+                <outlet property="distanceSlider" destination="4Vn-tl-aY9" id="ZdT-dh-eHJ"/>
                 <outlet property="entertainmentSwitch" destination="peb-Vj-CSk" id="DbO-s2-aKq"/>
                 <outlet property="fooddrinkSwitch" destination="0R7-Gf-SUw" id="Ns4-CT-OAU"/>
                 <outlet property="musicSwitch" destination="Tep-SF-5Zp" id="OZw-lO-fzs"/>
@@ -108,24 +109,24 @@
                         <action selector="clearTagsTouched:" destination="-1" eventType="touchUpInside" id="b3o-c9-CsM"/>
                     </connections>
                 </button>
-                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="51" translatesAutoresizingMaskIntoConstraints="NO" id="4Vn-tl-aY9">
-                    <rect key="frame" x="112" y="131" width="178" height="31"/>
-                </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-ey-jJ2">
-                    <rect key="frame" x="98" y="136" width="10" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73o-Yx-8E1">
+                    <rect key="frame" x="10" y="136" width="67" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="51" translatesAutoresizingMaskIntoConstraints="NO" id="4Vn-tl-aY9">
+                    <rect key="frame" x="112" y="131" width="178" height="31"/>
+                </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMD-gN-2t6">
                     <rect key="frame" x="296" y="140" width="13" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73o-Yx-8E1">
-                    <rect key="frame" x="10" y="136" width="67" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-ey-jJ2">
+                    <rect key="frame" x="96" y="136" width="10" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

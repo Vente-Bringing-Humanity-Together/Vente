@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var academicSwitch: UISwitch!
     @IBOutlet weak var nightlifeSwitch: UISwitch!
     @IBOutlet weak var adventureSwitch: UISwitch!
+    @IBOutlet weak var distanceSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,10 @@ class SettingsViewController: UIViewController {
     }
     
     func setSwitches() {
+        
         let defaults = NSUserDefaults.standardUserDefaults()
+        
+        distanceSlider.value = defaults.floatForKey("distanceSlider")
         
         if (defaults.integerForKey("fooddrinkSwitch") == 1) {
             fooddrinkSwitch.on = true
@@ -75,12 +79,15 @@ class SettingsViewController: UIViewController {
         musicSwitch.on = false
         nightlifeSwitch.on = false
         adventureSwitch.on = false
+        distanceSlider.value = 5
         
         setUserDefaults()
     }
     
     func setUserDefaults() {
         let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setFloat(distanceSlider.value, forKey: "distanceSlider")
         
         if (fooddrinkSwitch.on) {
             defaults.setInteger(1, forKey: "fooddrinkSwitch")
