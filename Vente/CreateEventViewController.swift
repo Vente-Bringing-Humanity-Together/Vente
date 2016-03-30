@@ -65,6 +65,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         yelpTableView.delegate = self
         yelpTableView.dataSource = self
         
+        yelpView.backgroundColor = UIColor(red: 0.9, green: 0.2, blue: 0.2, alpha: 0.5)
+
+        
 //        yelpTableView.rowHeight = UITableViewAutomaticDimension
 //        yelpTableView.estimatedRowHeight = 120
         
@@ -99,11 +102,19 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableViewCell", forIndexPath: indexPath) as! YelpTableViewCell
         
         cell.business = filteredData![indexPath.row]
+        cell.backgroundColor = UIColor(red: 0.7, green: 0.2, blue: 0.2, alpha: 0.05)
         
         return cell
     }
     
     @IBAction func onClickYelp(sender: AnyObject) {
+        // // Was thinking we could do a blur
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = view.bounds
+//        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+//        view.addSubview(blurEffectView)
+        
         self.yelpView.hidden = false
         yelpView.center.y = scrollView.contentOffset.y + 305
     }
