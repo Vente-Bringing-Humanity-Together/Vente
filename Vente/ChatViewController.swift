@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import PubNub
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, PNObjectEventListener {
     
     var event: PFObject?
     var client: PubNub?
@@ -23,11 +23,17 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        messageTextView.text = ""
+        
         let configuration = PNConfiguration(publishKey: "pub-c-08213b8e-ca5d-4a44-a0e8-272d6ebbff6d", subscribeKey: "sub-c-0d695744-f5e8-11e5-8cfb-0619f8945a4f")
         // Instantiate PubNub client.
         client = PubNub.clientWithConfiguration(configuration)
         
+        client?.addListener(self)
+        
         eventIDString = (event?.objectId)!
+        
+        self.client?.subscribeToChannels([eventIDString], withPresence: true)
         
         loadMessages(eventIDString)
         
@@ -53,13 +59,13 @@ class ChatViewController: UIViewController {
                                     
                 // Message successfully published to specified channel.
                 print("successful post")
-                if (self.messageTextView.text != nil && self.messageTextView.text != "") {
-                    self.messageTextView.text = self.messageTextView.text + "\n" + message
-                }
-                else {
-                    self.messageTextView.text = message
-                }
-                
+//                if (self.messageTextView.text != nil && self.messageTextView.text != "") {
+//                    self.messageTextView.text = self.messageTextView.text + "\n" + message
+//                }
+//                else {
+//                    self.messageTextView.text = message
+//                }
+//                
                 self.myMessageTextField.text = ""
                 
             }
@@ -104,6 +110,60 @@ class ChatViewController: UIViewController {
                 // Request can be resent using: status.retry()
             }
         })
+    }
+    
+    // Handle new message from one of channels on which client has been subscribed.
+    func client(client: PubNub, didReceiveMessage message: PNMessageResult) {
+        
+        // Handle new message stored in message.data.message
+        if message.data.actualChannel != nil {
+            
+            // Message has been received on channel group stored in
+            // message.data.subscribedChannel
+        }
+        else {
+            
+            // Message has been received on channel stored in
+            // message.data.subscribedChannel
+        }
+        
+        print("Received message: \(message.data.message) on channel " +
+            "\((message.data.actualChannel ?? message.data.subscribedChannel)!) at " +
+            "\(message.data.timetoken)")
+        
+        self.messageTextView.text = self.messageTextView.text + "\n" + (message.data.message as? String)!
+    }
+    
+    // New presence event handling.
+    func client(client: PubNub, didReceivePresenceEvent event: PNPresenceEventResult) {
+        
+        // Handle presence event event.data.presenceEvent (one of: join, leave, timeout,
+        // state-change).
+        if event.data.actualChannel != nil {
+            
+            // Presence event has been received on channel group stored in
+            // event.data.subscribedChannel
+        }
+        else {
+            
+            // Presence event has been received on channel stored in
+            // event.data.subscribedChannel
+        }
+        
+        if event.data.presenceEvent != "state-change" {
+            
+            print("\(event.data.presence.uuid) \"\(event.data.presenceEvent)'ed\"\n" +
+                "at: \(event.data.presence.timetoken) " +
+                "on \((event.data.actualChannel ?? event.data.subscribedChannel)!) " +
+                "(Occupancy: \(event.data.presence.occupancy))");
+        }
+        else {
+            
+            print("\(event.data.presence.uuid) changed state at: " +
+                "\(event.data.presence.timetoken) " +
+                "on \((event.data.actualChannel ?? event.data.subscribedChannel)!) to:\n" +
+                "\(event.data.presence.state)");
+        }
     }
 
 }
