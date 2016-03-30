@@ -18,6 +18,11 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     var businesses: [Business]!
     var filteredData: [Business]?
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var lastSearched: String = ""
+    var isFirstTime: Bool = true
+    
     let vc = UIImagePickerController()
 
     @IBOutlet weak var takePhotoButton: UIButton!
@@ -53,6 +58,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         self.yelpView.hidden = true
         
+        searchBar.delegate = self
         yelpTableView.delegate = self
         yelpTableView.dataSource = self
         
@@ -86,6 +92,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableViewCell", forIndexPath: indexPath) as! YelpTableViewCell
         
+        cell.business = filteredData![indexPath.row]
+        
         return cell
     }
     
@@ -96,6 +104,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBAction func onClickDone(sender: AnyObject) {
         self.yelpView.hidden = true
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -165,6 +175,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         Business.searchWithTerm(input, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.filteredData = businesses
+            self.yelpTableView.reloadData()
             
             for business in businesses{
                 print(business.name!)
@@ -173,12 +184,29 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         })
     
     }
-        
-
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        callYelpAPI(searchBar.text!)
+        yelpTableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        filteredData = businesses
+        self.yelpTableView.reloadData()
+    }
     
     @IBAction func onEditingChanged(sender: AnyObject) {
-        callYelpAPI(eventLocationLabel.text!)
+        //callYelpAPI(eventLocationLabel.text!)
     }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        callYelpAPI(searchBar.text!)
+    }
+    
     @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
         let inviteFriendsViewController = InviteFriendsViewController()
         
