@@ -52,7 +52,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var yelpTableView: UITableView!
     @IBOutlet weak var yelpSearchBar: UISearchBar!
     
+    @IBOutlet weak var createEventButton: UIButton!
+    
     override func viewDidLoad() {
+        createEventButton.enabled = true
         let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
         yelpTableView.registerNib(cellNib, forCellReuseIdentifier: "YelpTableViewCell")
         
@@ -61,6 +64,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         searchBar.delegate = self
         yelpTableView.delegate = self
         yelpTableView.dataSource = self
+        
+//        yelpTableView.rowHeight = UITableViewAutomaticDimension
+//        yelpTableView.estimatedRowHeight = 120
         
         super.viewDidLoad()
         
@@ -99,13 +105,17 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     @IBAction func onClickYelp(sender: AnyObject) {
         self.yelpView.hidden = false
+        yelpView.center.y = scrollView.contentOffset.y + 305
     }
     
     @IBAction func onClickDone(sender: AnyObject) {
         self.yelpView.hidden = true
     }
     
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        eventLocationLabel.text = filteredData![indexPath.row].address
+        self.yelpView.hidden = true
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,7 +123,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @IBAction func createEvent(sender: AnyObject) {
-        
+        self.createEventButton.enabled = false
         let event = PFObject(className: "Events")
         
         var dateString = ""
@@ -157,6 +167,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             if let error = error {
                 print("Event Add Failed")
                 print(error.localizedDescription)
+                self.createEventButton.enabled = true
                 
             } else {
                 print("Added Event Successfully")
@@ -177,10 +188,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             self.filteredData = businesses
             self.yelpTableView.reloadData()
             
-            for business in businesses{
-                print(business.name!)
-                print(business.address!)
-            }
+//            for business in businesses{
+//                print(business.name!)
+//                print(business.address!)
+//            }
         })
     
     }
