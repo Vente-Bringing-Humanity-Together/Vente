@@ -13,7 +13,7 @@ import MBProgressHUD
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var businesses: [Business]!
     var filteredData: [Business]?
@@ -48,6 +48,12 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var yelpSearchBar: UISearchBar!
     
     override func viewDidLoad() {
+        let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
+        yelpTableView.registerNib(cellNib, forCellReuseIdentifier: "YelpTableViewCell")
+        
+        yelpTableView.delegate = self
+        yelpTableView.dataSource = self
+        
         super.viewDidLoad()
         
         vc.delegate = self
@@ -63,9 +69,22 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1270)
         //setAttributes()
     }
-
-    override func viewWillAppear(animated: Bool) {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        print(filteredData!.count)
         
+        if businesses != nil {
+            return filteredData!.count;
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableViewCell", forIndexPath: indexPath) as! YelpTableViewCell
+        
+        return cell
     }
     
     override func didReceiveMemoryWarning() {

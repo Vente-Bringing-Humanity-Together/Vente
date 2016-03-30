@@ -43,6 +43,8 @@
 		38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E8CD4B1C90E8AF00796901 /* CreateEventViewController.xib */; };
 		998C79AC1901CE2F779A2D73 /* Pods_Vente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6439FC470353114C483E092A /* Pods_Vente.framework */; };
 		A1529BC41CAB4AED0066BA85 /* YelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1529BC31CAB4AED0066BA85 /* YelpView.swift */; };
+		A1529BC71CAB51B30066BA85 /* YelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1529BC51CAB51B30066BA85 /* YelpTableViewCell.swift */; };
+		A1529BC81CAB51B30066BA85 /* YelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1529BC61CAB51B30066BA85 /* YelpTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		77EE34EAF608BFF8D3A75FD5 /* Pods-Vente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.debug.xcconfig"; sourceTree = "<group>"; };
 		7963CE69AC357EC7D2B283B6 /* Pods-Vente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vente.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vente/Pods-Vente.release.xcconfig"; sourceTree = "<group>"; };
 		A1529BC31CAB4AED0066BA85 /* YelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpView.swift; sourceTree = "<group>"; };
+		A1529BC51CAB51B30066BA85 /* YelpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpTableViewCell.swift; sourceTree = "<group>"; };
+		A1529BC61CAB51B30066BA85 /* YelpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YelpTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +242,8 @@
 				38AA860F1C8FA6E200A4020F /* ExploreTableViewCell.swift */,
 				382B7A811C990A3C000B2D5E /* AttendeesTableViewCell.swift */,
 				382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */,
+				A1529BC51CAB51B30066BA85 /* YelpTableViewCell.swift */,
+				A1529BC61CAB51B30066BA85 /* YelpTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
 				273DEF6B1CAB0F8000EBD504 /* ChatViewController.xib in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
+				A1529BC81CAB51B30066BA85 /* YelpTableViewCell.xib in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
 				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
 				3841B5C31CA4AF13003FEAEE /* EditProfileViewController.xib in Resources */,
@@ -443,6 +450,7 @@
 				27EAD9FD1C8F98B80069BC6F /* Vente.xcdatamodeld in Sources */,
 				276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */,
 				38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */,
+				A1529BC71CAB51B30066BA85 /* YelpTableViewCell.swift in Sources */,
 				3841B5BF1CA36238003FEAEE /* Business.swift in Sources */,
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
 				273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */,
