@@ -13,10 +13,15 @@ import MBProgressHUD
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var businesses: [Business]!
     var filteredData: [Business]?
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var lastSearched: String = ""
+    var isFirstTime: Bool = true
     
     let vc = UIImagePickerController()
 
@@ -43,30 +48,26 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var nightlifeSwitch: UISwitch!
     @IBOutlet weak var adventureSwitch: UISwitch!
     
-    func setAttributes() {
-        //label height
-//        fooddrinkLabel.frame = CGRectMake(fooddrinkLabel.frame.origin.x, 200, fooddrinkLabel.frame.width, fooddrinkLabel.frame.height)
-//        fooddrinkLabel.center.y = 700
-//        entertainmentLabel.frame.origin.y = 800
-//        sportsLabel.frame.origin.y = 850
-//        chillLabel.frame.origin.y = 900
-//        academicLabel.frame.origin.y = 950
-//        nightlifeLabel.frame.origin.y = 1000
-//        adventureLabel.frame.origin.y = 1050
-//        musicLabel.frame.origin.y = 1100
-//        
-//        //switch height
-//        fooddrinkSwitch.frame.origin.y = 750
-//        entertainmentSwitch.frame.origin.y = 800
-//        sportsSwitch.frame.origin.y = 850
-//        chillSwitch.frame.origin.y = 900
-//        academicSwitch.frame.origin.y = 950
-//        nightlifeSwitch.frame.origin.y = 1000
-//        adventureSwitch.frame.origin.y = 1050
-//        musicSwitch .frame.origin.y = 1100
-    }
+    @IBOutlet weak var yelpView: UIView!
+    @IBOutlet weak var yelpTableView: UITableView!
+    @IBOutlet weak var yelpSearchBar: UISearchBar!
+    
+    @IBOutlet weak var createEventButton: UIButton!
     
     override func viewDidLoad() {
+        createEventButton.enabled = true
+        let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
+        yelpTableView.registerNib(cellNib, forCellReuseIdentifier: "YelpTableViewCell")
+        
+        self.yelpView.hidden = true
+        
+        searchBar.delegate = self
+        yelpTableView.delegate = self
+        yelpTableView.dataSource = self
+        
+//        yelpTableView.rowHeight = UITableViewAutomaticDimension
+//        yelpTableView.estimatedRowHeight = 120
+        
         super.viewDidLoad()
         
         vc.delegate = self
@@ -82,9 +83,38 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1270)
         //setAttributes()
     }
-
-    override func viewWillAppear(animated: Bool) {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        //print(businesses!.count)
         
+        if businesses != nil {
+            return filteredData!.count;
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableViewCell", forIndexPath: indexPath) as! YelpTableViewCell
+        
+        cell.business = filteredData![indexPath.row]
+        
+        return cell
+    }
+    
+    @IBAction func onClickYelp(sender: AnyObject) {
+        self.yelpView.hidden = false
+        yelpView.center.y = scrollView.contentOffset.y + 305
+    }
+    
+    @IBAction func onClickDone(sender: AnyObject) {
+        self.yelpView.hidden = true
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        eventLocationLabel.text = filteredData![indexPath.row].address
+        self.yelpView.hidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,7 +123,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @IBAction func createEvent(sender: AnyObject) {
-        
+        self.createEventButton.enabled = false
         let event = PFObject(className: "Events")
         
         var dateString = ""
@@ -137,6 +167,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             if let error = error {
                 print("Event Add Failed")
                 print(error.localizedDescription)
+                self.createEventButton.enabled = true
                 
             } else {
                 print("Added Event Successfully")
@@ -155,20 +186,38 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         Business.searchWithTerm(input, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.filteredData = businesses
+            self.yelpTableView.reloadData()
             
-            for business in businesses{
-                print(business.name!)
-                print(business.address!)
-            }
+//            for business in businesses{
+//                print(business.name!)
+//                print(business.address!)
+//            }
         })
     
     }
-        
-
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        callYelpAPI(searchBar.text!)
+        yelpTableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        filteredData = businesses
+        self.yelpTableView.reloadData()
+    }
     
     @IBAction func onEditingChanged(sender: AnyObject) {
-        callYelpAPI(eventLocationLabel.text!)
+        //callYelpAPI(eventLocationLabel.text!)
     }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        callYelpAPI(searchBar.text!)
+    }
+    
     @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
         let inviteFriendsViewController = InviteFriendsViewController()
         

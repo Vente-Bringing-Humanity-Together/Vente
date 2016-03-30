@@ -10,6 +10,7 @@
                 <outlet property="academicSwitch" destination="1nv-hp-oLQ" id="puy-AQ-BEE"/>
                 <outlet property="adventureSwitch" destination="gZw-C9-wCd" id="MI2-9Y-PoE"/>
                 <outlet property="chillSwitch" destination="XZ7-TN-mak" id="OHg-ir-L6P"/>
+                <outlet property="createEventButton" destination="w6A-gD-glz" id="eyX-l5-Sve"/>
                 <outlet property="datePicker" destination="hMD-NM-Zf2" id="rzJ-YR-QzC"/>
                 <outlet property="entertainmentSwitch" destination="05e-g7-0pd" id="q1C-kc-bYJ"/>
                 <outlet property="eventImageView" destination="p7P-xM-HAF" id="XGd-3t-R9G"/>
@@ -20,10 +21,14 @@
                 <outlet property="nightlifeSwitch" destination="TwG-mO-tLW" id="6YW-eo-5mm"/>
                 <outlet property="publicSegmentedControl" destination="Yfz-gH-w63" id="zto-MM-HRB"/>
                 <outlet property="scrollView" destination="ddb-Be-xIG" id="BWJ-GD-PeO"/>
+                <outlet property="searchBar" destination="Yha-Xb-Qvf" id="MDM-Ok-D6S"/>
                 <outlet property="sportsSwitch" destination="npr-CE-Syn" id="ey5-DR-rOA"/>
                 <outlet property="takePhotoButton" destination="k5K-xU-vob" id="Sjq-vX-3YK"/>
                 <outlet property="uploadImageButton" destination="hTL-X4-Ebg" id="CeZ-8y-a3N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yelpSearchBar" destination="Yha-Xb-Qvf" id="Rfo-7N-krL"/>
+                <outlet property="yelpTableView" destination="uMI-Cn-e1g" id="p6B-qZ-fQu"/>
+                <outlet property="yelpView" destination="sF0-wM-jSx" id="BA8-m8-SSx"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -52,13 +57,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXD-iC-LPk">
-                            <rect key="frame" x="8" y="422" width="113" height="21"/>
+                            <rect key="frame" x="8" y="412" width="113" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-Fu-f8w">
-                            <rect key="frame" x="8" y="451" width="304" height="30"/>
+                            <rect key="frame" x="8" y="450" width="258" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -193,6 +198,39 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
                             <rect key="frame" x="8" y="539" width="304" height="304"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ2-6r-Otz">
+                            <rect key="frame" x="265" y="450" width="46" height="30"/>
+                            <state key="normal" title="Yelp"/>
+                            <connections>
+                                <action selector="onClickYelp:" destination="-1" eventType="touchUpInside" id="lTH-nB-ZDN"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
+                            <rect key="frame" x="8" y="86" width="304" height="401"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-Pb-XSI">
+                                    <rect key="frame" x="0.0" y="371" width="304" height="30"/>
+                                    <state key="normal" title="Done"/>
+                                    <connections>
+                                        <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="rxV-ZA-FST"/>
+                                    </connections>
+                                </button>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
+                                    <rect key="frame" x="0.0" y="0.0" width="304" height="363"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="Yha-Xb-Qvf">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                 </scrollView>
             </subviews>
