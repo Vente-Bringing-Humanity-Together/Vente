@@ -24,6 +24,9 @@
                 <outlet property="takePhotoButton" destination="k5K-xU-vob" id="Sjq-vX-3YK"/>
                 <outlet property="uploadImageButton" destination="hTL-X4-Ebg" id="CeZ-8y-a3N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yelpSearchBar" destination="Yha-Xb-Qvf" id="Rfo-7N-krL"/>
+                <outlet property="yelpTableView" destination="uMI-Cn-e1g" id="p6B-qZ-fQu"/>
+                <outlet property="yelpView" destination="sF0-wM-jSx" id="BA8-m8-SSx"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,7 +61,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-Fu-f8w">
-                            <rect key="frame" x="8" y="451" width="304" height="30"/>
+                            <rect key="frame" x="8" y="460" width="304" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -193,6 +196,21 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
                             <rect key="frame" x="8" y="539" width="304" height="304"/>
                         </imageView>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
+                            <rect key="frame" x="8" y="144" width="304" height="304"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
+                                    <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <searchBar key="tableHeaderView" contentMode="redraw" id="Yha-Xb-Qvf">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                 </scrollView>
             </subviews>

@@ -43,28 +43,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var nightlifeSwitch: UISwitch!
     @IBOutlet weak var adventureSwitch: UISwitch!
     
-    func setAttributes() {
-        //label height
-//        fooddrinkLabel.frame = CGRectMake(fooddrinkLabel.frame.origin.x, 200, fooddrinkLabel.frame.width, fooddrinkLabel.frame.height)
-//        fooddrinkLabel.center.y = 700
-//        entertainmentLabel.frame.origin.y = 800
-//        sportsLabel.frame.origin.y = 850
-//        chillLabel.frame.origin.y = 900
-//        academicLabel.frame.origin.y = 950
-//        nightlifeLabel.frame.origin.y = 1000
-//        adventureLabel.frame.origin.y = 1050
-//        musicLabel.frame.origin.y = 1100
-//        
-//        //switch height
-//        fooddrinkSwitch.frame.origin.y = 750
-//        entertainmentSwitch.frame.origin.y = 800
-//        sportsSwitch.frame.origin.y = 850
-//        chillSwitch.frame.origin.y = 900
-//        academicSwitch.frame.origin.y = 950
-//        nightlifeSwitch.frame.origin.y = 1000
-//        adventureSwitch.frame.origin.y = 1050
-//        musicSwitch .frame.origin.y = 1100
-    }
+    @IBOutlet weak var yelpView: UIView!
+    @IBOutlet weak var yelpTableView: UITableView!
+    @IBOutlet weak var yelpSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
