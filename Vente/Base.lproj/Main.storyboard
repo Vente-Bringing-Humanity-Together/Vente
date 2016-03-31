@@ -285,28 +285,36 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="op5-Yd-jL0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="AYC-hj-CgW">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyEventsTableViewCell" editingAccessoryType="detailDisclosureButton" rowHeight="112" id="8nS-0O-Qif" customClass="MyEventsTableViewCell" customModule="Vente" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="112"/>
+                                        <rect key="frame" x="0.0" y="136" width="320" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8nS-0O-Qif" id="4MW-aj-ZOd">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5W-d1-lbl">
-                                                    <rect key="frame" x="8" y="8" width="292" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzC-B3-ftq">
+                                                    <rect key="frame" x="86" y="70" width="221" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzC-B3-ftq">
-                                                    <rect key="frame" x="8" y="37" width="292" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-r9-9vn">
+                                                    <rect key="frame" x="8" y="21" width="70" height="70"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5W-d1-lbl">
+                                                    <rect key="frame" x="86" y="21" width="221" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGq-nn-elA">
-                                                    <rect key="frame" x="8" y="66" width="292" height="21"/>
+                                                    <rect key="frame" x="86" y="45" width="221" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -315,6 +323,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="FzC-B3-ftq" id="BEN-IG-KbR"/>
+                                            <outlet property="eventImageView" destination="cIK-r9-9vn" id="ev2-sH-pt7"/>
                                             <outlet property="locationLabel" destination="CGq-nn-elA" id="e7i-8F-UNg"/>
                                             <outlet property="nameLabel" destination="x5W-d1-lbl" id="73a-Mf-e9q"/>
                                         </connections>
@@ -324,8 +333,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Wyf-kf-lwA"/>
+                    <navigationItem key="navigationItem" id="Wyf-kf-lwA">
+                        <barButtonItem key="leftBarButtonItem" image="ic_settings" id="w8F-9n-fHc">
+                            <connections>
+                                <action selector="settingsButtonTouched:" destination="Sjy-E4-It5" id="Zuf-DR-uYK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="AYC-hj-CgW" id="REQ-DV-ggg"/>
                         <outlet property="tableView" destination="op5-Yd-jL0" id="lMI-lx-EZY"/>
                     </connections>
                 </viewController>
@@ -405,7 +421,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="4OC-PC-ajG">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="j6q-M0-Y6n">
+                        <barButtonItem key="leftBarButtonItem" image="ic_settings" id="j6q-M0-Y6n">
                             <connections>
                                 <action selector="settingsButtonTouched:" destination="DRn-OP-QMD" id="jmI-if-fsi"/>
                             </connections>
@@ -488,6 +504,7 @@
         <image name="ic_add" width="24" height="24"/>
         <image name="ic_business_center" width="24" height="24"/>
         <image name="ic_public" width="24" height="24"/>
+        <image name="ic_settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hab-n9-54F"/>

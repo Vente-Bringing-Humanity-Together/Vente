@@ -15,11 +15,14 @@ class MyEventsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet weak var eventImageView: UIImageView!
+    
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String
             self.dateLabel.text = Event["event_date"] as? String
             self.locationLabel.text = Event["event_location"] as? String
+            self.eventImageView.image = Event["event_image"] as? UIImage
             //self.attendeeList = Event["attendee_list"] as! [String]
         }
     }
