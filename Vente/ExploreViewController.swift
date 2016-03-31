@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var eventsTableView: UITableView!
     
@@ -18,6 +18,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     var events: [PFObject]!
     var filteredEvents: [PFObject]?
     
+    var locationManager = CLLocationManager()
+    var location: CLLocation!
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +30,19 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         self.eventsTableView.delegate = self
         //        self.eventsTableView.estimatedRowHeight = 150
         //        self.eventsTableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            print("Location Successful")
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            location = nil
+        } else {
+            print("No location")
+        }
         
         searchBar.delegate = self
     }
@@ -41,7 +59,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func doDatabaseQuery() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let radiusVal = defaults.integerForKey("distanceSlider")
+        let radius: CLLocationDistance = Double(radiusVal)
         
         let query = PFQuery(className: "Events")
         query.orderByDescending("createdAt")
@@ -81,6 +100,19 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                     print("Successfully retrieved \(results.count) ventes")
                     self.events = results
                     self.filteredEvents = self.events
+                    
+                    for event in self.filteredEvents!{
+                        let eventLat = event["latitude"].doubleValue as CLLocationDegrees
+                        let eventLong = event["longitude"].doubleValue as CLLocationDegrees
+                        
+                        let eventLocation = CLLocation(latitude: eventLat, longitude: eventLong)
+                        let distanceFromEvent: CLLocationDistance = self.location.distanceFromLocation(eventLocation)
+                        
+                        if(distanceFromEvent > radius){
+                            self.filteredEvents?.removeObject(event)
+                        }
+                    }
+                    
                     self.eventsTableView.reloadData()
                 } else {
                     print("No results returned")
@@ -89,13 +121,16 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let latestLocation: AnyObject = locations[locations.count - 1]
+        
+        if location == nil {
+            location = latestLocation as! CLLocation
+        }
+    }
+
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-//        if self.events == nil{
-//            return 0
-//        }
-//        else {
-//            return self.events.count
-//        }
         
         if (self.filteredEvents != nil) {
             return self.filteredEvents!.count
@@ -108,7 +143,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = eventsTableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
         
-//        cell.Event = events[indexPath.row]
         cell.Event = filteredEvents![indexPath.row]
         
         if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
