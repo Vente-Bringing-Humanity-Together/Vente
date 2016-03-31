@@ -81,8 +81,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 //        yelpTableView.estimatedRowHeight = 120
         
         self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -120,6 +118,19 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         }
         
     }
+//    
+//    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+//        
+//        let currentLocation : CLLocation = newLocation
+//        
+//        
+//        latitude = "\(currentLocation.coordinate.latitude)"
+//        longitude = "\(currentLocation.coordinate.longitude)"
+//        print("longitude \(self.latitude)")
+//        print("latitude \(self.longitude)")
+//        
+//        
+//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         //print(businesses!.count)
