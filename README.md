@@ -23,8 +23,8 @@ An application to give people the power to connect and share meaningful interact
 - [X] Invite only vs public events
 - [X] Follow other users
 - [ ] Load events based on radius of created location
-- [ ] Ability to see a user’s past events
-- [ ] Ability to see followers and following
+- [X] Ability to see a user’s past events
+- [X] Ability to see followers and following
 
 ##Optional Tier 3
 - [ ] Integrate Uber API into chat for users to request rides
