@@ -26,9 +26,29 @@ class OtherProfileViewController: UIViewController {
     var personID = "";
     var thisUser: PFObject?
     
+    @IBOutlet weak var optionSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        doDatabaseQuery()
+    }
+    
+    @IBAction func optionSegmentedControlChanged(sender: AnyObject) {
+    }
+    
+    func doDatabaseQuery() {
         let query : PFQuery = PFUser.query()!
         query.getObjectInBackgroundWithId(personID) {
             (user: PFObject?, error: NSError?) -> Void in
@@ -47,13 +67,6 @@ class OtherProfileViewController: UIViewController {
                     self.numberLabel.text = user?["number"] as? String
                 }
                 
-//                print("the other user's followers: \(self.thisUser?["followers"])")
-//                print("this user is following: \(PFUser.currentUser()?["following"])")
-                
-//                if (PFUser.currentUser()?["following"].containsObject((self.thisUser?.objectId)!) == true) {
-//                    self.followButton.setTitle("Unfollow", forState: .Normal)
-//                }
-                
                 if (PFUser.currentUser()?["following"] != nil) {
                     if (self.thisUser?.objectId != nil) {
                         if (PFUser.currentUser()!["following"].containsObject((self.thisUser?.objectId)!)) {
@@ -62,17 +75,11 @@ class OtherProfileViewController: UIViewController {
                     }
                 }
                 
-//                print(self.thisUser?.objectId)
-                
             }
         }
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     @IBAction func onFollow(sender: AnyObject) {
         
