@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController {
         musicSwitch.on = false
         nightlifeSwitch.on = false
         adventureSwitch.on = false
-        distanceSlider.value = 5
+        distanceSlider.value = 10
         
         setUserDefaults()
     }
