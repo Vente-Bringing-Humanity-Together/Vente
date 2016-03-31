@@ -199,27 +199,20 @@
                             <rect key="frame" x="8" y="539" width="304" height="304"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ2-6r-Otz">
-                            <rect key="frame" x="265" y="450" width="46" height="30"/>
-                            <state key="normal" title="Yelp"/>
+                            <rect key="frame" x="137" y="408" width="46" height="30"/>
+                            <state key="normal" title="Yelp?"/>
                             <connections>
                                 <action selector="onClickYelp:" destination="-1" eventType="touchUpInside" id="lTH-nB-ZDN"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
-                            <rect key="frame" x="8" y="86" width="304" height="401"/>
+                            <rect key="frame" x="31" y="106" width="250" height="336"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-Pb-XSI">
-                                    <rect key="frame" x="0.0" y="371" width="304" height="30"/>
-                                    <state key="normal" title="Done"/>
-                                    <connections>
-                                        <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="rxV-ZA-FST"/>
-                                    </connections>
-                                </button>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
-                                    <rect key="frame" x="0.0" y="0.0" width="304" height="363"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="295"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="Yha-Xb-Qvf">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <scopeButtonTitles>
@@ -228,6 +221,13 @@
                                         </scopeButtonTitles>
                                     </searchBar>
                                 </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-Pb-XSI">
+                                    <rect key="frame" x="0.0" y="303" width="250" height="30"/>
+                                    <state key="normal" title="Cancel"/>
+                                    <connections>
+                                        <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="rxV-ZA-FST"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
