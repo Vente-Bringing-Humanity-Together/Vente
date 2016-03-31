@@ -12,6 +12,7 @@ import Parse
 class AttendeesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
 //    var userId: String = "a"

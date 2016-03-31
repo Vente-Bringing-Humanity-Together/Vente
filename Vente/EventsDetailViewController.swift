@@ -78,7 +78,22 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                 print(error)
             } else if let user = user {
                 cell.nameLabel.text = user["first_name"] as? String
-//                print(user["first_name"])
+                cell.lastNameLabel.text = user["last_name"] as? String
+                
+                if (user["profile_image"] != nil) {
+                    let userImageFile = user["profile_image"] as! PFFile
+                    userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else {
+                            if(imageData != nil){
+                                let image = UIImage(data: imageData!)
+                                cell.profileImageView.image = image
+                            }
+                        }
+                    })
+                }
             }
         }
         
