@@ -179,6 +179,19 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                     self.numberLabel.text = user?["number"] as? String
                 }
                 
+                if (user?["profile_image"] != nil) {
+                    let userImageFile = user?["profile_image"] as! PFFile
+                    userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else {
+                            let image = UIImage(data: imageData!)
+                            self.profileImageView.image = image
+                        }
+                    })
+                }
+                
                 if (PFUser.currentUser()?["following"] != nil) {
                     if (self.thisUser?.objectId != nil) {
                         if (PFUser.currentUser()!["following"].containsObject((self.thisUser?.objectId)!)) {
@@ -203,6 +216,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         let oneDayAgo = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
         query2.whereKey("createdAt", lessThan: oneDayAgo!)
         // End of past events
+        query2.whereKey("public", equalTo: true)
         query2.orderByDescending("createdAt")
         
         query2.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
