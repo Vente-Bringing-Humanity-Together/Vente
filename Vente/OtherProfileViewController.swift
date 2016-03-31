@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class OtherProfileViewController: UIViewController {
+class OtherProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -29,8 +29,20 @@ class OtherProfileViewController: UIViewController {
     @IBOutlet weak var optionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
+    var events: [PFObject]!
+    var tableFollowingArray: [String]! = []
+    var tableFollowersArray: [String]! = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let cellNib = UINib(nibName: "PastEventsTableViewCell", bundle: NSBundle.mainBundle())
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "PastEventsTableViewCell")
+        let cellNib2 = UINib(nibName: "XIBPeopleTableViewCell", bundle: NSBundle.mainBundle())
+        tableView.registerNib(cellNib2, forCellReuseIdentifier: "XIBPeopleTableViewCell")
         
     }
 
@@ -45,7 +57,107 @@ class OtherProfileViewController: UIViewController {
         doDatabaseQuery()
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (optionSegmentedControl.selectedSegmentIndex == 0) {
+            if (self.events != nil) {
+                return self.events!.count
+            }
+            else {
+                return 0
+            }
+        }
+        else if (optionSegmentedControl.selectedSegmentIndex == 1) {
+            if (self.tableFollowingArray != nil && self.tableFollowingArray != []) {
+                return self.tableFollowingArray!.count
+            }
+            else {
+                return 0
+            }
+        }
+        else if (optionSegmentedControl.selectedSegmentIndex == 2) {
+            if (self.tableFollowersArray != nil && self.tableFollowersArray != []) {
+                return self.tableFollowersArray!.count
+            }
+            else {
+                return 0
+            }
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if (optionSegmentedControl.selectedSegmentIndex == 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PastEventsTableViewCell") as! PastEventsTableViewCell
+            
+            cell.Event = events[indexPath.row]
+            
+            if (events?[indexPath.row]["event_image"] != nil) {
+                let userImageFile = events?[indexPath.row]["event_image"] as! PFFile
+                userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    else {
+                        if(imageData != nil){
+                            let image = UIImage(data: imageData!)
+                            cell.eventImageView.image = image
+                        }
+                    }
+                })
+            }
+            
+            return cell
+        }
+        else if (optionSegmentedControl.selectedSegmentIndex == 1) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("XIBPeopleTableViewCell") as! XIBPeopleTableViewCell
+            
+            let query : PFQuery = PFUser.query()!
+            query.getObjectInBackgroundWithId(tableFollowingArray[indexPath.row]) {
+                (user: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let user = user {
+                    cell.firstNameLabel.text = user["first_name"] as? String
+                    cell.lastNameLabel.text = user["last_name"] as? String
+                    
+                    if (user["profile_image"] != nil) {
+                        let userImageFile = user["profile_image"] as! PFFile
+                        userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
+                            else {
+                                if(imageData != nil){
+                                    let image = UIImage(data: imageData!)
+                                    cell.profileImageView.image = image
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+            
+            return cell
+        }
+        else if (optionSegmentedControl.selectedSegmentIndex == 2) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("XIBPeopleTableViewCell") as! XIBPeopleTableViewCell
+            
+            return cell
+        }
+        else {
+            return UITableViewCell()
+        }
+
+    }
+    
     @IBAction func optionSegmentedControlChanged(sender: AnyObject) {
+        tableView.reloadData()
     }
     
     func doDatabaseQuery() {
@@ -75,8 +187,38 @@ class OtherProfileViewController: UIViewController {
                     }
                 }
                 
+                if (user?["following"] != nil) {
+                    self.tableFollowingArray = user?["following"] as? [String]
+                }
+                
             }
         }
+        
+        let query2 = PFQuery(className: "Events")
+        query2.limit = 20
+        query2.whereKey("attendee_list", equalTo: personID)
+        // This needs to be the date of the event
+        let calendar = NSCalendar.currentCalendar()
+        // Probably should be -1
+        let oneDayAgo = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
+        query2.whereKey("createdAt", lessThan: oneDayAgo!)
+        // End of past events
+        query2.orderByDescending("createdAt")
+        
+        query2.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let results = results {
+                    print("Successfully retrieved \(results.count) ventes")
+                    self.events = results
+                    self.tableView.reloadData()
+                } else {
+                    print("No results returned")
+                }
+            }
+        }
+
 
     }
     
@@ -84,20 +226,6 @@ class OtherProfileViewController: UIViewController {
     @IBAction func onFollow(sender: AnyObject) {
         
         let me = PFUser.currentUser()
-        
-//        // Cannot save another user for security reasons because they are not logged in
-//        followersArray.append((me?.objectId)!)
-//        thisUser!["followers"] = followersArray
-//        thisUser?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-//            if (error != nil) {
-//                print(error?.description)
-//            }
-//            else {
-//                if (self.thisUser?["followers"] != nil) {
-//                    print("the other user's followers: \(self.thisUser!["followers"])")
-//                }
-//            }
-//        })
         
         if (followButton.titleForState(.Normal) == "Follow") {
             followingArray = me!["following"] as? [String]
