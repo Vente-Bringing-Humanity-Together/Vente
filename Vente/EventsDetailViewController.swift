@@ -103,10 +103,11 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let otherProfileViewController = OtherProfileViewController()
-        self.navigationController?.pushViewController(otherProfileViewController, animated: true)
-        
         let personID = attendeeList[indexPath.row]
         otherProfileViewController.personID = personID
+        
+        self.navigationController?.pushViewController(otherProfileViewController, animated: true)
+    
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 

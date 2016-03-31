@@ -282,11 +282,11 @@
                                             <outlet property="nameLabel" destination="VY1-18-M2R" id="cga-FV-g1y"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleTableViewCell" rowHeight="79" id="gud-FN-HPg" customClass="PeopleTableViewCell" customModule="Vente" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="108" width="280" height="79"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleTableViewCell" rowHeight="80" id="gud-FN-HPg" customClass="PeopleTableViewCell" customModule="Vente" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="108" width="280" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gud-FN-HPg" id="X1R-im-BWO">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="78.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Uu-0P-s0S">

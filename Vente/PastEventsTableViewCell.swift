@@ -1,21 +1,21 @@
 //
-//  MyEventsTableViewCell.swift
+//  PastEventsTableViewCell.swift
 //  Vente
 //
-//  Created by Alexandra Munoz on 3/8/16.
+//  Created by Nicholas Miller on 3/31/16.
 //  Copyright © 2016 nickbryanmiller. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class MyEventsTableViewCell: UITableViewCell {
-
+class PastEventsTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
-    
+
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String
@@ -36,5 +36,5 @@ class MyEventsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
