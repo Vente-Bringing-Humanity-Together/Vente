@@ -22,7 +22,7 @@ An application to give people the power to connect and share meaningful interact
 ##Optional Tier 2
 - [X] Invite only vs public events
 - [X] Follow other users
-- [ ] Load events based on radius of created location
+- [X] Load events based on radius of created location
 - [ ] Ability to see a user’s past events
 - [ ] Ability to see followers and following
 

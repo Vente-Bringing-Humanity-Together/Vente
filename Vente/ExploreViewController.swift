@@ -108,7 +108,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                         let eventLocation = CLLocation(latitude: eventLat, longitude: eventLong)
                         let distanceFromEvent: CLLocationDistance = self.location.distanceFromLocation(eventLocation)
                         
-                        if(distanceFromEvent > radius){
+                        if(distanceFromEvent > radius && radiusVal != 10){
                             self.filteredEvents?.removeObject(event)
                         }
                     }
