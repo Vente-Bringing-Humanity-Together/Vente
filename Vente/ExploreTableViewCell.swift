@@ -16,6 +16,8 @@ class ExploreTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var joinButton: UIButton!
     
+    @IBOutlet weak var eventImageView: UIImageView!
+    
     var attendeeList : [String]!
     
     var Event: PFObject! {
@@ -24,6 +26,7 @@ class ExploreTableViewCell: UITableViewCell {
             self.dateLabel.text = Event["event_date"] as? String
             self.locationLabel.text = Event["event_location"] as? String
             self.attendeeList = Event["attendee_list"] as! [String]
+            self.eventImageView.image = Event["event_image"] as? UIImage
         }
     }
     

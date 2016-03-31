@@ -12,7 +12,6 @@ import Parse
 class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var eventsTableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var events: [PFObject]!
@@ -110,6 +109,21 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
 //        cell.Event = events[indexPath.row]
         cell.Event = filteredEvents![indexPath.row]
+        
+        if (events?[indexPath.row]["event_image"] != nil) {
+            let userImageFile = events?[indexPath.row]["event_image"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    if(imageData != nil){
+                        let image = UIImage(data: imageData!)
+                        cell.eventImageView.image = image
+                    }
+                }
+            })
+        }
         
         if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
             cell.joinButton.enabled = false
