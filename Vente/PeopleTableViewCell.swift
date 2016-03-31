@@ -10,6 +10,11 @@ import UIKit
 
 class PeopleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
