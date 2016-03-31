@@ -19,8 +19,8 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var followButton: UIButton!
     
-    var followingArray: [String]! = []
-    var followersArray: [String]! = []
+    var followingArray: [String]!
+    var followersArray: [String]!
     var follow: PFObject!
     
     var personID = "";
@@ -269,7 +269,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                 } else {
                     if let results = results {
                         self.follow = results[0]
-                        
+                        self.followersArray = self.follow["followers"] as? [String]
                         self.followersArray.append((me?.objectId)!)
                         self.follow["followers"] = self.followersArray
                         
@@ -316,7 +316,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                 } else {
                     if let results = results {
                         self.follow = results[0]
-                        
+                        self.followersArray = self.follow["followers"] as? [String]
                         self.followersArray.removeObject((self.thisUser?.objectId)!)
                         self.follow["followers"] = self.followersArray
                         
