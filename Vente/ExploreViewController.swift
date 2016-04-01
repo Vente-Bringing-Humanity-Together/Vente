@@ -17,6 +17,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     var events: [PFObject]!
     var filteredEvents: [PFObject]?
     
+    var attendeeList : [String]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,6 +135,36 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+            print("leave button tapped")
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        let join = UITableViewRowAction(style: .Normal, title: "  Join  ") { action, index in
+            print("join button tapped")
+            
+            self.attendeeList = self.events[indexPath.row]["attendee_list"] as! [String]
+            
+            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
+            
+            let query = PFQuery(className:"Events")
+            query.getObjectInBackgroundWithId(self.events[indexPath.row].objectId!) {
+                (event: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let event = event {
+                    event["attendee_list"] = self.attendeeList
+                    event.saveInBackground()
+                }
+            }
+        }
+        join.backgroundColor = UIColor.greenColor()
+        
+        return [join]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

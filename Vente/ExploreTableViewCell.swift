@@ -31,22 +31,22 @@ class ExploreTableViewCell: UITableViewCell {
     }
     
     @IBAction func onJoin(sender: AnyObject) {
-        attendeeList.append(PFUser.currentUser()!.objectId! as String)
+//        attendeeList.append(PFUser.currentUser()!.objectId! as String)
         //Event["attendee_list"] = attendeeList
-        print(attendeeList)
-        
-        let query = PFQuery(className:"Events")
-        query.getObjectInBackgroundWithId(Event.objectId!) {
-            (event: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            } else if let event = event {
-                event["attendee_list"] = self.attendeeList
-                event.saveInBackground()
-            }
-        }
-        
-        joinButton.enabled = false
+//        print(attendeeList)
+//        
+//        let query = PFQuery(className:"Events")
+//        query.getObjectInBackgroundWithId(Event.objectId!) {
+//            (event: PFObject?, error: NSError?) -> Void in
+//            if error != nil {
+//                print(error)
+//            } else if let event = event {
+//                event["attendee_list"] = self.attendeeList
+//                event.saveInBackground()
+//            }
+//        }
+//        
+//        joinButton.enabled = false
     }
 
     override func awakeFromNib() {

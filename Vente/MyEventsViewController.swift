@@ -82,12 +82,36 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+//            // handle delete (by removing the data from your array and updating the tableview)
+//            let userId = PFUser.currentUser()?.objectId
+//            
+//            let query = PFQuery(className:"Events")
+//            query.getObjectInBackgroundWithId(myEvents[indexPath.row].objectId!) {
+//                (event: PFObject?, error: NSError?) -> Void in
+//                if error != nil {
+//                    print(error)
+//                } else if let event = event {
+//                    event.removeObject(userId!, forKey: "attendee_list")
+//                    event.saveInBackground()
+//                    self.myEvents.removeAtIndex(indexPath.row)
+//                    self.filteredEvents?.removeAtIndex(indexPath.row)
+//                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+//                }
+//            }
+//        }
+        
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let leave = UITableViewRowAction(style: .Normal, title: "Leave") { action, index in
+            print("leave button tapped")
             // handle delete (by removing the data from your array and updating the tableview)
             let userId = PFUser.currentUser()?.objectId
             
             let query = PFQuery(className:"Events")
-            query.getObjectInBackgroundWithId(myEvents[indexPath.row].objectId!) {
+            query.getObjectInBackgroundWithId(self.myEvents[indexPath.row].objectId!) {
                 (event: PFObject?, error: NSError?) -> Void in
                 if error != nil {
                     print(error)
@@ -99,7 +123,11 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                 }
             }
+
         }
+        leave.backgroundColor = UIColor.redColor()
+        
+        return [leave]
     }
     
     func getEventsFromDatabase() {
