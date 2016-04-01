@@ -128,10 +128,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
-            cell.joinButton.enabled = false
+            cell.backgroundColor = UIColor.greenColor()
         }
         else {
-            cell.joinButton.enabled = true
+            cell.backgroundColor = UIColor.whiteColor()
         }
         
         return cell
@@ -186,9 +186,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                                     event["attendee_list"] = self.attendeeList
                                     event.saveInBackground()
                                     tableView.setEditing(false, animated: true)
-                                     let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
-                                    // cell?.backgroundColor = UIColor.greenColor()
-                                    cell?.joinButton.enabled = false
+                                    let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
+                                    cell?.backgroundColor = UIColor.greenColor()
                                 }
                             }
                         }
