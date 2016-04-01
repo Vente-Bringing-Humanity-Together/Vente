@@ -148,6 +148,32 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         else if (optionSegmentedControl.selectedSegmentIndex == 2) {
             let cell = tableView.dequeueReusableCellWithIdentifier("XIBPeopleTableViewCell") as! XIBPeopleTableViewCell
             
+            let query : PFQuery = PFUser.query()!
+            query.getObjectInBackgroundWithId(tableFollowersArray[indexPath.row]) {
+                (user: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let user = user {
+                    cell.firstNameLabel.text = user["first_name"] as? String
+                    cell.lastNameLabel.text = user["last_name"] as? String
+                    
+                    if (user["profile_image"] != nil) {
+                        let userImageFile = user["profile_image"] as! PFFile
+                        userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
+                            else {
+                                if(imageData != nil){
+                                    let image = UIImage(data: imageData!)
+                                    cell.profileImageView.image = image
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+            
             return cell
         }
         else {
@@ -232,10 +258,22 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         }
-
-
+        
+        let query3 = PFQuery(className: "Followers")
+        query3.whereKey("creatorId", equalTo: personID)
+        query3.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let results = results {
+                    let followerObject = results[0]
+                    self.tableFollowersArray = followerObject["followers"] as? [String]
+                } else {
+                    print("No results returned")
+                }
+            }
+        }
     }
-    
     
     @IBAction func onFollow(sender: AnyObject) {
         
