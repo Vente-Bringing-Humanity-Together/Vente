@@ -139,8 +139,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-//        let joined: UITableViewRowAction?
-        
         let query = PFQuery(className: "Events")
         let eventID = filteredEvents![indexPath.row].objectId
         query.whereKey("objectId", equalTo: eventID!)
@@ -155,12 +153,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.filteredEvents = self.events
                     
                     print(results)
-                    
-//                    joined = UITableViewRowAction(style: .Normal, title: "Joined!") { action, index in
-//                        print("joined button tapped")
-//                        tableView.setEditing(false, animated: true)
-//                    }
-//                    joined!.backgroundColor = UIColor.greenColor()
                     
                 } else {
                     print("No results returned")
@@ -179,21 +171,21 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let join = UITableViewRowAction(style: .Normal, title: " Join? ") { action, index in
             print("join button tapped")
             
-//            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
-//            
-//            let query = PFQuery(className:"Events")
-//            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
-//                (event: PFObject?, error: NSError?) -> Void in
-//                if error != nil {
-//                    print(error)
-//                } else if let event = event {
-//                    event["attendee_list"] = self.attendeeList
-//                    event.saveInBackground()
-//                    tableView.setEditing(false, animated: true)
-//                    let cell = tableView.cellForRowAtIndexPath(indexPath)
-////                    cell?.backgroundColor = UIColor.greenColor()
-//                }
-//            }
+            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
+            
+            let query = PFQuery(className:"Events")
+            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
+                (event: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let event = event {
+                    event["attendee_list"] = self.attendeeList
+                    event.saveInBackground()
+                    tableView.setEditing(false, animated: true)
+                    let cell = tableView.cellForRowAtIndexPath(indexPath)
+//                    cell?.backgroundColor = UIColor.greenColor()
+                }
+            }
         }
         join.backgroundColor = UIColor.greenColor()
         
