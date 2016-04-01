@@ -8,9 +8,12 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
-class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
 
+    var locationManager : CLLocationManager!
+    
     @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -24,10 +27,16 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.eventsTableView.dataSource = self
         self.eventsTableView.delegate = self
-        //        self.eventsTableView.estimatedRowHeight = 150
-        //        self.eventsTableView.rowHeight = UITableViewAutomaticDimension
+        // self.eventsTableView.estimatedRowHeight = 150
+        // self.eventsTableView.rowHeight = UITableViewAutomaticDimension
         
         searchBar.delegate = self
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 200
+        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,6 +48,29 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            
+            
+            let latitude = location.coordinate.latitude
+            let latitudeString = "\(latitude)"
+            
+            let longitude = location.coordinate.longitude
+            let longitudeString = "\(longitude)"
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(latitudeString, forKey: "user_latitude")
+            defaults.setObject(longitudeString, forKey: "user_longitude")
+            defaults.synchronize()
+        }
     }
     
     func doDatabaseQuery() {
