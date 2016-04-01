@@ -17,6 +17,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     var events: [PFObject]!
     var filteredEvents: [PFObject]?
     
+    var attendeeList : [String]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,13 +128,79 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
-            cell.joinButton.enabled = false
+            cell.backgroundColor = UIColor.greenColor()
         }
         else {
-            cell.joinButton.enabled = true
+            cell.backgroundColor = UIColor.whiteColor()
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // for editing style
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    
+        self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
+        
+        let join = UITableViewRowAction(style: .Normal, title: "  Join  ") { action, index in
+            print("join button tapped")
+            
+            let query = PFQuery(className: "Events")
+            let eventID = self.filteredEvents![indexPath.row].objectId
+            query.whereKey("objectId", equalTo: eventID!)
+
+            query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    if let results = results {
+                        print("Successfully retrieved \(results.count) ventes")
+                        self.events[indexPath.row] = results[0]
+                        self.filteredEvents = self.events
+        
+                        // print(results)
+                        
+                        self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
+                        
+                        if self.attendeeList.contains((PFUser.currentUser()?.objectId)!) {
+                            print("already joined")
+                            tableView.setEditing(false, animated: true)
+                        }
+                        else {
+                            
+                            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
+                            
+                            let query = PFQuery(className:"Events")
+                            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
+                                (event: PFObject?, error: NSError?) -> Void in
+                                if error != nil {
+                                    print(error)
+                                } else if let event = event {
+                                    event["attendee_list"] = self.attendeeList
+                                    event.saveInBackground()
+                                    tableView.setEditing(false, animated: true)
+                                    let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
+                                    cell?.backgroundColor = UIColor.greenColor()
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        print("No results returned")
+                    }
+                }
+            }
+        }
+        join.backgroundColor = UIColor.greenColor()
+        
+        return[join]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
