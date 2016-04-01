@@ -19,8 +19,8 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var followButton: UIButton!
     
-    var followingArray: [String]!
-    var followersArray: [String]!
+    var followingArray: [String]! = []
+    var followersArray: [String]! = []
     var follow: PFObject!
     
     var personID = "";

@@ -141,6 +141,32 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         else if (optionSegmentedControl.selectedSegmentIndex == 2) {
             let cell = tableView.dequeueReusableCellWithIdentifier("PeopleTableViewCell") as! PeopleTableViewCell
             
+            let query : PFQuery = PFUser.query()!
+            query.getObjectInBackgroundWithId(followerArray[indexPath.row]) {
+                (user: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let user = user {
+                    cell.firstNameLabel.text = user["first_name"] as? String
+                    cell.lastNameLabel.text = user["last_name"] as? String
+                    
+                    if (user["profile_image"] != nil) {
+                        let userImageFile = user["profile_image"] as! PFFile
+                        userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
+                            else {
+                                if(imageData != nil){
+                                    let image = UIImage(data: imageData!)
+                                    cell.profileImageView.image = image
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+            
             return cell
         }
         else {
@@ -177,34 +203,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         // Grab the followers and set it to the follower array
-//        let query2 = PFQuery(className: "Followers")
-//        query2.limit = 20
-////        query2.whereKey("creatorId", equalTo: userId!)
-//        query2.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
-//            if let error = error {
-//                print("Error: \(error)")
-//            } else {
-//                if let results = results {
-//                    self.followerObject = results[0]
-//                    print(self.followerObject)
-////                    self.follow["followers"] = self.followersArray
-//                    
-////                    self.follow.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-////                        if (error != nil) {
-////                            print(error?.description)
-////                        }
-////                        else {
-////                            if (self.thisUser?["followers"] != nil) {
-////                                print("the other user's followers: \(self.thisUser!["followers"])")
-////                            }
-////                        }
-////                    })
-//                } else {
-//                    print("No results returned")
-//                }
-//            }
-//        }
-
+        let query2 = PFQuery(className: "Followers")
+        query2.whereKey("creatorId", equalTo: userId!)
+        query2.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let results = results {
+                    self.followerObject = results[0]
+                    self.followerArray = self.followerObject!["followers"] as? [String]
+                } else {
+                    print("No results returned")
+                }
+            }
+        }
     }
     
     @IBAction func editButtonTouched(sender: AnyObject) {
