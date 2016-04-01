@@ -226,7 +226,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
-        callYelpAPI(searchBar.text!)
+//        callYelpAPI(searchBar.text!)
     }
     
     @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
