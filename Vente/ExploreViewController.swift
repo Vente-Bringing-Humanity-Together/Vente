@@ -146,63 +146,62 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
-        let query = PFQuery(className: "Events")
-        let eventID = filteredEvents![indexPath.row].objectId
-        query.whereKey("objectId", equalTo: eventID!)
-        
-        query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
-            if let error = error {
-                print("Error: \(error)")
-            } else {
-                if let results = results {
-                    print("Successfully retrieved \(results.count) ventes")
-                    self.events[indexPath.row] = results[0]
-                    self.filteredEvents = self.events
-                    
-                    print(results)
-                    
-                } else {
-                    print("No results returned")
-                }
-            }
-        }
-        
+    
         self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
         
-        let joined = UITableViewRowAction(style: .Normal, title: "Joined!") { action, index in
-            print("joined button tapped")
-            tableView.setEditing(false, animated: true)
-        }
-        joined.backgroundColor = UIColor.greenColor()
-        
-        let join = UITableViewRowAction(style: .Normal, title: " Join? ") { action, index in
+        let join = UITableViewRowAction(style: .Normal, title: "  Join  ") { action, index in
             print("join button tapped")
             
-            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
-            
-            let query = PFQuery(className:"Events")
-            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
-                (event: PFObject?, error: NSError?) -> Void in
-                if error != nil {
-                    print(error)
-                } else if let event = event {
-                    event["attendee_list"] = self.attendeeList
-                    event.saveInBackground()
-                    tableView.setEditing(false, animated: true)
-                    let cell = tableView.cellForRowAtIndexPath(indexPath)
-//                    cell?.backgroundColor = UIColor.greenColor()
+            let query = PFQuery(className: "Events")
+            let eventID = self.filteredEvents![indexPath.row].objectId
+            query.whereKey("objectId", equalTo: eventID!)
+
+            query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    if let results = results {
+                        print("Successfully retrieved \(results.count) ventes")
+                        self.events[indexPath.row] = results[0]
+                        self.filteredEvents = self.events
+        
+                        // print(results)
+                        
+                        self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
+                        
+                        if self.attendeeList.contains((PFUser.currentUser()?.objectId)!) {
+                            print("already joined")
+                            tableView.setEditing(false, animated: true)
+                        }
+                        else {
+                            
+                            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
+                            
+                            let query = PFQuery(className:"Events")
+                            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
+                                (event: PFObject?, error: NSError?) -> Void in
+                                if error != nil {
+                                    print(error)
+                                } else if let event = event {
+                                    event["attendee_list"] = self.attendeeList
+                                    event.saveInBackground()
+                                    tableView.setEditing(false, animated: true)
+                                     let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
+                                    // cell?.backgroundColor = UIColor.greenColor()
+                                    cell?.joinButton.enabled = false
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        print("No results returned")
+                    }
                 }
             }
         }
         join.backgroundColor = UIColor.greenColor()
         
-        if !attendeeList.contains((PFUser.currentUser()?.objectId)!) {
-            return [join]
-        }
-        else {
-            return [joined]
-        }
+        return[join]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
