@@ -46,10 +46,15 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-        let backgroundImage = UIImage(named: "ic_chat")
-        let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
-        
-        self.navigationItem.rightBarButtonItem = groupMessageButton
+        if (attendeeList.contains((PFUser.currentUser()?.objectId)!)) {
+            let backgroundImage = UIImage(named: "ic_chat")
+            let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
+            
+            self.navigationItem.rightBarButtonItem = groupMessageButton
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = .None
+        }
     }
     
     func chatButtonTouched() {
@@ -78,7 +83,22 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                 print(error)
             } else if let user = user {
                 cell.nameLabel.text = user["first_name"] as? String
-//                print(user["first_name"])
+                cell.lastNameLabel.text = user["last_name"] as? String
+                
+                if (user["profile_image"] != nil) {
+                    let userImageFile = user["profile_image"] as! PFFile
+                    userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else {
+                            if(imageData != nil){
+                                let image = UIImage(data: imageData!)
+                                cell.profileImageView.image = image
+                            }
+                        }
+                    })
+                }
             }
         }
         
@@ -88,10 +108,11 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let otherProfileViewController = OtherProfileViewController()
-        self.navigationController?.pushViewController(otherProfileViewController, animated: true)
-        
         let personID = attendeeList[indexPath.row]
         otherProfileViewController.personID = personID
+        
+        self.navigationController?.pushViewController(otherProfileViewController, animated: true)
+    
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 

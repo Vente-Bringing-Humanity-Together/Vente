@@ -1,32 +1,21 @@
 //
-//  AttendeesTableViewCell.swift
+//  XIBPeopleTableViewCell.swift
 //  Vente
 //
-//  Created by Alexandra Munoz on 3/15/16.
+//  Created by Nicholas Miller on 3/31/16.
 //  Copyright © 2016 nickbryanmiller. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class AttendeesTableViewCell: UITableViewCell {
+class XIBPeopleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    
-//    var userId: String = "a"
-    
-//    var User : String! {
-//        didSet {
-//            self.nameLabel.text = User["username"] as? String
-//        }
-//    }
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-//        nameLabel.text = userId
         // Initialization code
     }
 

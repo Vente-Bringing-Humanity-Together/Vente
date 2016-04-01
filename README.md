@@ -2,7 +2,7 @@
 An application to give people the power to connect and share meaningful interactions
 
 # Time Spent
-**30** Hours
+**40** Hours
 
 ##Required
 - [X] User can make a profile and log in
@@ -23,8 +23,8 @@ An application to give people the power to connect and share meaningful interact
 - [X] Invite only vs public events
 - [X] Follow other users
 - [X] Load events based on radius of created location
-- [ ] Ability to see a user’s past events
-- [ ] Ability to see followers and following
+- [X] Ability to see a user’s past events
+- [X] Ability to see followers and following
 
 ##Optional Tier 3
 - [ ] Integrate Uber API into chat for users to request rides
@@ -39,14 +39,6 @@ An application to give people the power to connect and share meaningful interact
 ##Optional Tier ???
 - [ ] Nick's camera idea 
 
-## Gif Walkthrough Sprint 1
+## Vente Gif Walkthrough
 
-<img src='Vente1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-## Gif Walkthrough Sprint 2
-
-<img src='Vente2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-## Gif Walkthrough Sprint 3
-
-<img src='Sprint 3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='Vente.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />

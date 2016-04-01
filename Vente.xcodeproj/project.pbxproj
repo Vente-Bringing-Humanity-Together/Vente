@@ -11,6 +11,11 @@
 		273DEF651CAAF51C00EBD504 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */; };
 		273DEF6A1CAB0F8000EBD504 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273DEF681CAB0F8000EBD504 /* ChatViewController.swift */; };
 		273DEF6B1CAB0F8000EBD504 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DEF691CAB0F8000EBD504 /* ChatViewController.xib */; };
+		2742B12E1CADA4F000BA5176 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742B12D1CADA4F000BA5176 /* PeopleTableViewCell.swift */; };
+		2742B1311CADCE8100BA5176 /* PastEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742B12F1CADCE8100BA5176 /* PastEventsTableViewCell.swift */; };
+		2742B1321CADCE8100BA5176 /* PastEventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742B1301CADCE8100BA5176 /* PastEventsTableViewCell.xib */; };
+		2742B1351CADCEC600BA5176 /* XIBPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742B1331CADCEC600BA5176 /* XIBPeopleTableViewCell.swift */; };
+		2742B1361CADCEC600BA5176 /* XIBPeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742B1341CADCEC600BA5176 /* XIBPeopleTableViewCell.xib */; };
 		276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */; };
 		276C537E1CA2DE8F00388060 /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */; };
 		27D38FE31C974653006D5770 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38FE21C974653006D5770 /* UserMedia.swift */; };
@@ -52,6 +57,11 @@
 		273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		273DEF681CAB0F8000EBD504 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		273DEF691CAB0F8000EBD504 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		2742B12D1CADA4F000BA5176 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		2742B12F1CADCE8100BA5176 /* PastEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastEventsTableViewCell.swift; sourceTree = "<group>"; };
+		2742B1301CADCE8100BA5176 /* PastEventsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastEventsTableViewCell.xib; sourceTree = "<group>"; };
+		2742B1331CADCEC600BA5176 /* XIBPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XIBPeopleTableViewCell.swift; sourceTree = "<group>"; };
+		2742B1341CADCEC600BA5176 /* XIBPeopleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XIBPeopleTableViewCell.xib; sourceTree = "<group>"; };
 		276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
 		27D38FE21C974653006D5770 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
@@ -244,6 +254,11 @@
 				382B7A821C990A3C000B2D5E /* AttendeesTableViewCell.xib */,
 				A1529BC51CAB51B30066BA85 /* YelpTableViewCell.swift */,
 				A1529BC61CAB51B30066BA85 /* YelpTableViewCell.xib */,
+				2742B12D1CADA4F000BA5176 /* PeopleTableViewCell.swift */,
+				2742B12F1CADCE8100BA5176 /* PastEventsTableViewCell.swift */,
+				2742B1301CADCE8100BA5176 /* PastEventsTableViewCell.xib */,
+				2742B1331CADCEC600BA5176 /* XIBPeopleTableViewCell.swift */,
+				2742B1341CADCEC600BA5176 /* XIBPeopleTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -383,9 +398,11 @@
 				27EADA021C8F98B80069BC6F /* LaunchScreen.storyboard in Resources */,
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
 				273DEF6B1CAB0F8000EBD504 /* ChatViewController.xib in Resources */,
+				2742B1361CADCEC600BA5176 /* XIBPeopleTableViewCell.xib in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
 				A1529BC81CAB51B30066BA85 /* YelpTableViewCell.xib in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
+				2742B1321CADCE8100BA5176 /* PastEventsTableViewCell.xib in Resources */,
 				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
 				3841B5C31CA4AF13003FEAEE /* EditProfileViewController.xib in Resources */,
 				273DEF651CAAF51C00EBD504 /* SettingsViewController.xib in Resources */,
@@ -452,7 +469,9 @@
 				38AA860C1C8FA40F00A4020F /* MyEventsViewController.swift in Sources */,
 				A1529BC71CAB51B30066BA85 /* YelpTableViewCell.swift in Sources */,
 				3841B5BF1CA36238003FEAEE /* Business.swift in Sources */,
+				2742B1351CADCEC600BA5176 /* XIBPeopleTableViewCell.swift in Sources */,
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
+				2742B12E1CADA4F000BA5176 /* PeopleTableViewCell.swift in Sources */,
 				273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */,
 				3841B5BD1CA361D9003FEAEE /* YelpClient.swift in Sources */,
 				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,
@@ -462,6 +481,7 @@
 				38AA86081C8FA3B800A4020F /* SignUpViewController.swift in Sources */,
 				27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */,
 				38E8CD4C1C90E8AF00796901 /* CreateEventViewController.swift in Sources */,
+				2742B1311CADCE8100BA5176 /* PastEventsTableViewCell.swift in Sources */,
 				382B7A831C990A3C000B2D5E /* AttendeesTableViewCell.swift in Sources */,
 				38AA86101C8FA6E200A4020F /* ExploreTableViewCell.swift in Sources */,
 				27D38FE31C974653006D5770 /* UserMedia.swift in Sources */,
