@@ -139,32 +139,70 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
-            print("leave button tapped")
-        }
-        delete.backgroundColor = UIColor.redColor()
+//        let joined: UITableViewRowAction?
         
-        let join = UITableViewRowAction(style: .Normal, title: "  Join  ") { action, index in
-            print("join button tapped")
-            
-            self.attendeeList = self.events[indexPath.row]["attendee_list"] as! [String]
-            
-            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
-            
-            let query = PFQuery(className:"Events")
-            query.getObjectInBackgroundWithId(self.events[indexPath.row].objectId!) {
-                (event: PFObject?, error: NSError?) -> Void in
-                if error != nil {
-                    print(error)
-                } else if let event = event {
-                    event["attendee_list"] = self.attendeeList
-                    event.saveInBackground()
+        let query = PFQuery(className: "Events")
+        let eventID = filteredEvents![indexPath.row].objectId
+        query.whereKey("objectId", equalTo: eventID!)
+        
+        query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let results = results {
+                    print("Successfully retrieved \(results.count) ventes")
+                    self.events[indexPath.row] = results[0]
+                    self.filteredEvents = self.events
+                    
+                    print(results)
+                    
+//                    joined = UITableViewRowAction(style: .Normal, title: "Joined!") { action, index in
+//                        print("joined button tapped")
+//                        tableView.setEditing(false, animated: true)
+//                    }
+//                    joined!.backgroundColor = UIColor.greenColor()
+                    
+                } else {
+                    print("No results returned")
                 }
             }
         }
+        
+        self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
+        
+        let joined = UITableViewRowAction(style: .Normal, title: "Joined!") { action, index in
+            print("joined button tapped")
+            tableView.setEditing(false, animated: true)
+        }
+        joined.backgroundColor = UIColor.greenColor()
+        
+        let join = UITableViewRowAction(style: .Normal, title: " Join? ") { action, index in
+            print("join button tapped")
+            
+//            self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
+//            
+//            let query = PFQuery(className:"Events")
+//            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
+//                (event: PFObject?, error: NSError?) -> Void in
+//                if error != nil {
+//                    print(error)
+//                } else if let event = event {
+//                    event["attendee_list"] = self.attendeeList
+//                    event.saveInBackground()
+//                    tableView.setEditing(false, animated: true)
+//                    let cell = tableView.cellForRowAtIndexPath(indexPath)
+////                    cell?.backgroundColor = UIColor.greenColor()
+//                }
+//            }
+        }
         join.backgroundColor = UIColor.greenColor()
         
-        return [join]
+        if !attendeeList.contains((PFUser.currentUser()?.objectId)!) {
+            return [join]
+        }
+        else {
+            return [joined]
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
