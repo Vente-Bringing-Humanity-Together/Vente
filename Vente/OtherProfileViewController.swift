@@ -182,6 +182,32 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
 
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (optionSegmentedControl.selectedSegmentIndex == 0) {
+            let eventDetailsViewController = EventsDetailViewController()
+            
+            let event = events![indexPath.row]
+            eventDetailsViewController.event = event
+            
+            self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
+        }
+        else if (optionSegmentedControl.selectedSegmentIndex == 1) {
+            let otherProfileViewController = OtherProfileViewController()
+            let personID = tableFollowingArray[indexPath.row]
+            otherProfileViewController.personID = personID
+            
+            self.navigationController?.pushViewController(otherProfileViewController, animated: true)
+        }
+        else if (optionSegmentedControl.selectedSegmentIndex == 2) {
+            let otherProfileViewController = OtherProfileViewController()
+            let personID = tableFollowingArray[indexPath.row]
+            otherProfileViewController.personID = personID
+            
+            self.navigationController?.pushViewController(otherProfileViewController, animated: true)
+        }
+        
+    }
+    
     @IBAction func optionSegmentedControlChanged(sender: AnyObject) {
         tableView.reloadData()
     }
