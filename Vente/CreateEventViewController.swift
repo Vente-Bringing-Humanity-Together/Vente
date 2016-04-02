@@ -313,7 +313,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         inviteFriendsViewController.friendsToInvite = self.attendeeList
         
     }
-
     
     func showImagePicker() {
         self.presentViewController(vc, animated: true, completion: nil)
