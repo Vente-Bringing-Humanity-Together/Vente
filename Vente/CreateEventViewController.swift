@@ -10,7 +10,6 @@ import UIKit
 import Parse
 import MBProgressHUD
 
-
 let userDidPostEventNotification = "userDidPostEventNotification"
 
 class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
@@ -314,7 +313,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         inviteFriendsViewController.friendsToInvite = self.attendeeList
         
     }
-
     
     func showImagePicker() {
         self.presentViewController(vc, animated: true, completion: nil)
