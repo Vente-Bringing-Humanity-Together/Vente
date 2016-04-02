@@ -38,12 +38,6 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-//        if (self.myEvents == nil) {
-//            return 0
-//        }
-//        else {
-//            return self.myEvents.count
-//        }
         
         if (self.filteredEvents != nil) {
             return self.filteredEvents!.count
@@ -82,24 +76,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-//            // handle delete (by removing the data from your array and updating the tableview)
-//            let userId = PFUser.currentUser()?.objectId
-//            
-//            let query = PFQuery(className:"Events")
-//            query.getObjectInBackgroundWithId(myEvents[indexPath.row].objectId!) {
-//                (event: PFObject?, error: NSError?) -> Void in
-//                if error != nil {
-//                    print(error)
-//                } else if let event = event {
-//                    event.removeObject(userId!, forKey: "attendee_list")
-//                    event.saveInBackground()
-//                    self.myEvents.removeAtIndex(indexPath.row)
-//                    self.filteredEvents?.removeAtIndex(indexPath.row)
-//                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-//                }
-//            }
-//        }
+        // Edit stuff
         
     }
     
@@ -198,9 +175,9 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func settingsButtonTouched(sender: AnyObject) {
         let settingsViewController = SettingsViewController()
-        //        self.navigationController?.presentViewController(settingsViewController, animated: true, completion: {
-        //            print("success")
-        //        })
+        
+        settingsViewController.fromExplore = false
+
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     

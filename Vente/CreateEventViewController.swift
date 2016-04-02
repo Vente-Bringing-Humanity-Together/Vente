@@ -55,6 +55,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var createEventButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         createEventButton.enabled = true
         let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
         yelpTableView.registerNib(cellNib, forCellReuseIdentifier: "YelpTableViewCell")
@@ -70,8 +72,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
 //        yelpTableView.rowHeight = UITableViewAutomaticDimension
 //        yelpTableView.estimatedRowHeight = 120
-        
-        super.viewDidLoad()
         
         vc.delegate = self
         vc.allowsEditing = true
@@ -147,6 +147,19 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         event["event_name"] = eventNameLabel.text
         event["event_date"] = dateString
         event["event_location"] = eventLocationLabel.text
+        
+        // Grab our current location from the defaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let latitude = defaults.objectForKey("user_latitude") as? String
+        let longitude = defaults.objectForKey("user_longitude") as? String
+        
+        if (latitude != nil) {
+            event["latitude"] = latitude
+        }
+        if (longitude != nil) {
+            event["longitude"] = longitude
+        }
         
         //Event tags
         event["fooddrink"] = fooddrinkSwitch.on

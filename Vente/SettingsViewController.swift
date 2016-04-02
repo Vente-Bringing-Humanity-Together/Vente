@@ -18,11 +18,32 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var academicSwitch: UISwitch!
     @IBOutlet weak var nightlifeSwitch: UISwitch!
     @IBOutlet weak var adventureSwitch: UISwitch!
+    @IBOutlet weak var distanceSlider: UISlider!
+    
+    @IBOutlet weak var allLabel: UILabel!
+    @IBOutlet weak var oneLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    var fromExplore = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setSwitches()
+        
+        if (fromExplore) {
+            distanceSlider.hidden = false
+            allLabel.hidden = false
+            oneLabel.hidden = false
+            distanceLabel.hidden = false
+
+        }
+        else {
+            distanceSlider.hidden = true
+            allLabel.hidden = true
+            oneLabel.hidden = true
+            distanceLabel.hidden = true
+        }
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -38,7 +59,10 @@ class SettingsViewController: UIViewController {
     }
     
     func setSwitches() {
+        
         let defaults = NSUserDefaults.standardUserDefaults()
+        
+        distanceSlider.value = defaults.floatForKey("distanceSlider")
         
         if (defaults.integerForKey("fooddrinkSwitch") == 1) {
             fooddrinkSwitch.on = true
@@ -75,12 +99,15 @@ class SettingsViewController: UIViewController {
         musicSwitch.on = false
         nightlifeSwitch.on = false
         adventureSwitch.on = false
+        distanceSlider.value = 10
         
         setUserDefaults()
     }
     
     func setUserDefaults() {
         let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setFloat(distanceSlider.value, forKey: "distanceSlider")
         
         if (fooddrinkSwitch.on) {
             defaults.setInteger(1, forKey: "fooddrinkSwitch")
