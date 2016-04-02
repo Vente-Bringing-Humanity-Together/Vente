@@ -11,8 +11,6 @@ import Parse
 import CoreLocation
 
 class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
-
-    //var locationManager : CLLocationManager!
     
     @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -21,9 +19,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     var filteredEvents: [PFObject]?
     
     var locationManager = CLLocationManager()
-    var location: CLLocation!
+    var myGlobalLocation: CLLocation!
     
-    let defaults = NSUserDefaults.standardUserDefaults()
     var attendeeList : [String]!
     
     override func viewDidLoad() {
@@ -42,7 +39,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
-            location = nil
         } else {
             print("No location")
         }
@@ -59,7 +55,16 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        // Grab our current location from the defaults
+        let defaults = NSUserDefaults.standardUserDefaults()
         
+        let latitude = defaults.objectForKey("user_latitude") as? String
+        let longitude = defaults.objectForKey("user_longitude") as? String
+        
+        if (latitude != nil && longitude != nil) {
+            doDatabaseQuery()
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +81,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             
-            
             let latitude = location.coordinate.latitude
             let latitudeString = "\(latitude)"
             
@@ -87,9 +91,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             defaults.setObject(latitudeString, forKey: "user_latitude")
             defaults.setObject(longitudeString, forKey: "user_longitude")
             
-            //self.location = CLLocation(latitude: latitude, longitude: longitude)
-            print(location)
-            defaults.setObject(location, forKey: "user_location")
+            myGlobalLocation = location
             
             defaults.synchronize()
             doDatabaseQuery()
@@ -97,6 +99,9 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func doDatabaseQuery() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
         let radiusVal = defaults.integerForKey("distanceSlider")
         let radius: CLLocationDistance = Double(radiusVal)
         
@@ -146,7 +151,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                             eventLat = event["latitude"].doubleValue as CLLocationDegrees
                             eventLong = event["longitude"].doubleValue as CLLocationDegrees
                         }
-                        let userLocation = self.defaults.objectForKey("user_location")
+                        let userLocation = self.myGlobalLocation
                         
                         let eventLocation = CLLocation(latitude: eventLat, longitude: eventLong)
                         let distanceFromEvent: CLLocationDistance = userLocation!.distanceFromLocation(eventLocation)
@@ -163,15 +168,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-    
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let latestLocation: AnyObject = locations[locations.count - 1]
-//        
-//        if location == nil {
-//            location = latestLocation as! CLLocation
-//        }
-//    }
-
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
@@ -240,8 +236,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                         print("Successfully retrieved \(results.count) ventes")
                         self.events[indexPath.row] = results[0]
                         self.filteredEvents = self.events
-        
-                        // print(results)
                         
                         self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
                         
@@ -316,9 +310,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBAction func settingsButtonTouched(sender: AnyObject) {
         let settingsViewController = SettingsViewController()
-//        self.navigationController?.presentViewController(settingsViewController, animated: true, completion: { 
-//            print("success")
-//        })
+        
+        settingsViewController.fromExplore = true
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     

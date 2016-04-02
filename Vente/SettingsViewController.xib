@@ -9,12 +9,15 @@
             <connections>
                 <outlet property="academicSwitch" destination="N2q-Ri-eOt" id="2su-rE-FnU"/>
                 <outlet property="adventureSwitch" destination="ex2-pM-qkQ" id="2xD-4Z-ssw"/>
+                <outlet property="allLabel" destination="sMD-gN-2t6" id="QYW-Ph-lqs"/>
                 <outlet property="chillSwitch" destination="prc-Qe-IBb" id="HkT-aN-ssE"/>
+                <outlet property="distanceLabel" destination="73o-Yx-8E1" id="guB-mr-jmI"/>
                 <outlet property="distanceSlider" destination="4Vn-tl-aY9" id="ZdT-dh-eHJ"/>
                 <outlet property="entertainmentSwitch" destination="peb-Vj-CSk" id="DbO-s2-aKq"/>
                 <outlet property="fooddrinkSwitch" destination="0R7-Gf-SUw" id="Ns4-CT-OAU"/>
                 <outlet property="musicSwitch" destination="Tep-SF-5Zp" id="OZw-lO-fzs"/>
                 <outlet property="nightlifeSwitch" destination="0GH-ny-ek5" id="L1l-Z8-1HE"/>
+                <outlet property="oneLabel" destination="w9T-ey-jJ2" id="7DV-Cr-RJ3"/>
                 <outlet property="sportsSwitch" destination="Tl1-NE-xOq" id="YhZ-Hk-hgF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
