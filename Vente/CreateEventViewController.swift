@@ -32,6 +32,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    var datePickerView: UIDatePicker? = nil
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
@@ -109,12 +110,12 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @IBAction func onEditingDidBegin(sender: UITextField) {
-        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView = UIDatePicker()
         
         let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
         
-        datePickerView.datePickerMode = UIDatePickerMode.Date
-        inputView.addSubview(datePickerView) // add date picker to UIView
+        datePickerView!.datePickerMode = UIDatePickerMode.Date
+        inputView.addSubview(datePickerView!) // add date picker to UIView
         
         let green = UIColor(red: 122/255, green: 203/255, blue: 110/255, alpha: 1)
         let darkGreen = UIColor(red: 60/255, green: 139/255, blue: 48/255, alpha: 1)
@@ -132,10 +133,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         sender.inputView = inputView
 
         
-        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+        datePickerView!.datePickerMode = UIDatePickerMode.DateAndTime
     
         
-        datePickerView.addTarget(self, action: #selector(CreateEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView!.addTarget(self, action: #selector(CreateEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func datePickerValueChanged(sender:UIDatePicker) {
@@ -188,7 +189,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .MediumStyle
-        dateString = formatter.stringFromDate(datePicker.date)
+        dateString = formatter.stringFromDate(datePickerView!.date)
         
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
