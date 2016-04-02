@@ -116,7 +116,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         let query = PFQuery(className: "Events")
         query.limit = 20
         query.whereKey("attendee_list", equalTo: userId!)
-        query.orderByDescending("createdAt")
+        query.orderByDescending("event_date")
         
         if (defaults.integerForKey("fooddrinkSwitch") == 1) {
             query.whereKey("fooddrink", equalTo: true)

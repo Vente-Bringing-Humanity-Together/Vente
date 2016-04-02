@@ -99,7 +99,7 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
         let oneAfterFirstAt = firstAt?.advancedBy(1)
         let messageNameAndText = messageWhole.substringFromIndex(oneAfterFirstAt!)
         let secondAt = messageNameAndText.characters.indexOf("@")
-        let name = messageNameAndText.substringToIndex(secondAt!)
+//        let name = messageNameAndText.substringToIndex(secondAt!)
         let oneAfterSecondAt = secondAt?.advancedBy(1)
         let messageText = messageNameAndText.substringFromIndex(oneAfterSecondAt!)
         

@@ -32,7 +32,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
     var datePickerView: UIDatePicker? = nil
+    var dateString = ""
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
@@ -128,7 +130,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         inputView.addSubview(doneButton) // add Button to UIView
         
-        doneButton.addTarget(self, action: "doneButton:", forControlEvents: UIControlEvents.TouchUpInside) // set button click event
+        doneButton.addTarget(self, action: #selector(CreateEventViewController.doneButton(_:)), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
         
         sender.inputView = inputView
 
@@ -185,7 +187,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         self.createEventButton.enabled = false
         let event = PFObject(className: "Events")
         
-        var dateString = ""
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .MediumStyle

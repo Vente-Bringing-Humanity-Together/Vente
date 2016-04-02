@@ -106,9 +106,9 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let radius: CLLocationDistance = Double(radiusVal)
         
         let query = PFQuery(className: "Events")
-        query.orderByDescending("createdAt")
         query.limit = 20
         query.whereKey("public", notEqualTo: false)
+        query.orderByDescending("event_date")
         
         if (defaults.integerForKey("fooddrinkSwitch") == 1) {
             query.whereKey("fooddrink", equalTo: true)

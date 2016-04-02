@@ -266,10 +266,10 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         let calendar = NSCalendar.currentCalendar()
         // Probably should be -1
         let oneDayAgo = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
-        query2.whereKey("createdAt", lessThan: oneDayAgo!)
+        query2.whereKey("event_date", lessThan: oneDayAgo!)
         // End of past events
         query2.whereKey("public", equalTo: true)
-        query2.orderByDescending("createdAt")
+        query2.orderByDescending("event_date")
         
         query2.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
