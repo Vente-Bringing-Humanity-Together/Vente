@@ -15,7 +15,7 @@ class YelpTableViewCell: UITableViewCell {
     
     var business: Business! {
         didSet {
-            if (business.imageURL != nil) {
+            if (business?.imageURL != nil) {
                 yelpImageView.setImageWithURL(business.imageURL!)
             }
             if (business.name != nil) {

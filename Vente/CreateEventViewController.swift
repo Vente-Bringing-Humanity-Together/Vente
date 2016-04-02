@@ -194,11 +194,14 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .MediumStyle
-        dateString = formatter.stringFromDate(datePickerView!.date)
+        
+        if (datePickerView?.date != nil) {
+            dateString = formatter.stringFromDate(datePickerView!.date)
+            event["event_date"] = datePickerView!.date
+        }
         
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
-        event["event_date"] = datePickerView!.date
         event["event_location"] = eventLocationLabel.text
         event["event_description"] = descriptionTextField.text
         
