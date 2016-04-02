@@ -8,13 +8,12 @@
 
 import UIKit
 import Parse
-import CoreLocation
 import MBProgressHUD
 
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var businesses: [Business]!
     var filteredData: [Business]?
@@ -55,12 +54,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     @IBOutlet weak var createEventButton: UIButton!
     
-    var locationManager = CLLocationManager()
-    var location: CLLocation!
-    
-    var longitude = ""
-    var latitude = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,19 +73,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 //        yelpTableView.rowHeight = UITableViewAutomaticDimension
 //        yelpTableView.estimatedRowHeight = 120
         
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            print("Location Successful")
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-            location = nil
-        } else {
-            print("No location")
-        }
-        
         vc.delegate = self
         vc.allowsEditing = true
         
@@ -106,31 +86,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1270)
         //setAttributes()
     }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let latestLocation: AnyObject = locations[locations.count - 1]
-        
-        latitude = String(format: "%.4f", latestLocation.coordinate.latitude)
-        longitude = String(format: "%.4f", latestLocation.coordinate.longitude)
-        
-        if location == nil {
-            location = latestLocation as! CLLocation
-        }
-        
-    }
-//    
-//    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-//        
-//        let currentLocation : CLLocation = newLocation
-//        
-//        
-//        latitude = "\(currentLocation.coordinate.latitude)"
-//        longitude = "\(currentLocation.coordinate.longitude)"
-//        print("longitude \(self.latitude)")
-//        print("latitude \(self.longitude)")
-//        
-//        
-//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         //print(businesses!.count)
@@ -193,8 +148,18 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         event["event_date"] = dateString
         event["event_location"] = eventLocationLabel.text
         
-        event["longitude"] = longitude
-        event["latitude"] = latitude
+        // Grab our current location from the defaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let latitude = defaults.objectForKey("user_latitude") as? String
+        let longitude = defaults.objectForKey("user_longitude") as? String
+        
+        if (latitude != nil) {
+            event["latitude"] = latitude
+        }
+        if (longitude != nil) {
+            event["longitude"] = longitude
+        }
         
         //Event tags
         event["fooddrink"] = fooddrinkSwitch.on
