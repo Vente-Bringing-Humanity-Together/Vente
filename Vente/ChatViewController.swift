@@ -10,20 +10,30 @@ import UIKit
 import Parse
 import PubNub
 
-class ChatViewController: UIViewController, PNObjectEventListener {
+class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDelegate, UITableViewDataSource {
     
     var event: PFObject?
     var client: PubNub?
     
     @IBOutlet weak var myMessageTextField: UITextField!
-    @IBOutlet weak var messageTextView: UITextView!
-    
+//    @IBOutlet weak var messageTextView: UITextView!
+
     var eventIDString: String = ""
+    
+    var messages: [String] = []
+    
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageTextView.text = ""
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let cellNib = UINib(nibName: "MessageTableViewCell", bundle: NSBundle.mainBundle())
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "MessageTableViewCell")
+        
+//        messageTextView.text = ""
         
         let configuration = PNConfiguration(publishKey: "pub-c-08213b8e-ca5d-4a44-a0e8-272d6ebbff6d", subscribeKey: "sub-c-0d695744-f5e8-11e5-8cfb-0619f8945a4f")
         // Instantiate PubNub client.
@@ -47,9 +57,68 @@ class ChatViewController: UIViewController, PNObjectEventListener {
     @IBAction func sendButtonTouched(sender: AnyObject) {
         if myMessageTextField.text != nil {
             let me = PFUser.currentUser()!
-            let myMessage = (me["first_name"] as! String) + " " + (me["last_name"] as! String) + ": " + myMessageTextField.text!
-            sendMessageTo(myMessage, channel: eventIDString)
+            let myID = me.objectId
+            let myMessage = (me["first_name"] as! String) + " " + (me["last_name"] as! String) + "@" + myMessageTextField.text!
+            
+            let IDMessage = myID! + "@" + myMessage
+            
+            // sendMessageTo(myMessage, channel: eventIDString)
+            sendMessageTo(IDMessage, channel: eventIDString)
         }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        if messages != [] {
+//            return messages.count
+//        }
+//        else {
+//            return 0
+//        }
+        
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+        
+        if messages != [] {
+            return messages.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell", forIndexPath: indexPath) as! MessageTableViewCell
+        
+//        let messageWhole = messages[indexPath.section]
+        let messageWhole = messages[indexPath.row]
+        let firstAt = messageWhole.characters.indexOf("@")
+        let userID = messageWhole.substringToIndex(firstAt!)
+        let oneAfterFirstAt = firstAt?.advancedBy(1)
+        let messageNameAndText = messageWhole.substringFromIndex(oneAfterFirstAt!)
+        let secondAt = messageNameAndText.characters.indexOf("@")
+        let name = messageNameAndText.substringToIndex(secondAt!)
+        let oneAfterSecondAt = secondAt?.advancedBy(1)
+        let messageText = messageNameAndText.substringFromIndex(oneAfterSecondAt!)
+        
+        if (PFUser.currentUser()?.objectId! == userID) {
+            cell.leftView.backgroundColor = UIColor.whiteColor()
+            cell.leftLabel.text = ""
+            cell.rightView.backgroundColor = UIColor.blueColor()
+            cell.rightLabel.text = messageText
+            cell.rightLabel.textColor = UIColor.whiteColor()
+        }
+        else {
+            cell.rightView.backgroundColor = UIColor.whiteColor()
+            cell.rightLabel.text = ""
+            cell.leftView.backgroundColor = UIColor.greenColor()
+            cell.leftLabel.text = messageText
+            cell.leftLabel.textColor = UIColor.whiteColor()
+        }
+        
+        return cell
     }
     
     func sendMessageTo(message: String, channel: String) {
@@ -59,13 +128,7 @@ class ChatViewController: UIViewController, PNObjectEventListener {
                                     
                 // Message successfully published to specified channel.
                 print("successful post")
-//                if (self.messageTextView.text != nil && self.messageTextView.text != "") {
-//                    self.messageTextView.text = self.messageTextView.text + "\n" + message
-//                }
-//                else {
-//                    self.messageTextView.text = message
-//                }
-//                
+               
                 self.myMessageTextField.text = ""
                 
             }
@@ -91,14 +154,20 @@ class ChatViewController: UIViewController, PNObjectEventListener {
                 //   result.data.end - newest message time stamp in response
                 //   result.data.messages - list of messages
                 
-                for ele in result!.data.messages {
-                    if (self.messageTextView.text != nil && self.messageTextView.text != "") {
-                        self.messageTextView.text = self.messageTextView.text + "\n" + (ele as! String)
-                    }
-                    else {
-                        self.messageTextView.text = ele as! String
-                    }
+//                for ele in result!.data.messages {
+//                    if (self.messageTextView.text != nil && self.messageTextView.text != "") {
+//                        self.messageTextView.text = self.messageTextView.text + "\n" + (ele as! String)
+//                    }
+//                    else {
+//                        self.messageTextView.text = ele as! String
+//                    }
+//                }
+                
+                if (result?.data.messages != nil) {
+                    self.messages = result!.data.messages as! [String]
+                    self.tableView.reloadData()
                 }
+                
             }
             else {
                 
@@ -131,7 +200,13 @@ class ChatViewController: UIViewController, PNObjectEventListener {
             "\((message.data.actualChannel ?? message.data.subscribedChannel)!) at " +
             "\(message.data.timetoken)")
         
-        self.messageTextView.text = self.messageTextView.text + "\n" + (message.data.message as? String)!
+//        self.messageTextView.text = self.messageTextView.text + "\n" + (message.data.message as? String)!
+        
+        messages.append((message.data.message as? String)!)
+        
+        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: messages.count-1, inSection: 0)], withRowAnimation: .Bottom)
+        
+        
     }
     
     // New presence event handling.
