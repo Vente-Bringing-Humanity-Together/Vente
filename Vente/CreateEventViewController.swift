@@ -193,7 +193,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
-        event["event_date"] = dateString
+        event["event_date"] = datePickerView!.date
         event["event_location"] = eventLocationLabel.text
         
         // Grab our current location from the defaults
