@@ -32,6 +32,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         facebookButton.readPermissions = ["public_profile", "email", "user_friends"];
         facebookButton.delegate = self
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setFloat(10, forKey: "distanceSlider")
+        defaults.synchronize()
     }
 
     @IBAction func onLogIn(sender: AnyObject) {
