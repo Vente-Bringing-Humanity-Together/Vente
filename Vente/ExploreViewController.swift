@@ -62,6 +62,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let longitude = defaults.objectForKey("user_longitude") as? String
         
         if (latitude != nil && longitude != nil) {
+            myGlobalLocation = CLLocation(latitude: Double(latitude!)!, longitude: Double(longitude!)!)
             doDatabaseQuery()
         }
 
