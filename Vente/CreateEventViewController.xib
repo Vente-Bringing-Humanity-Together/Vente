@@ -199,8 +199,16 @@
                                 <action selector="onClickYelp:" destination="-1" eventType="touchUpInside" id="lTH-nB-ZDN"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSa-Hb-AcD">
+                            <rect key="frame" x="8" y="188" width="304" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="onEditingDidBegin:" destination="-1" eventType="editingDidBegin" id="xWF-gc-q9w"/>
+                            </connections>
+                        </textField>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
-                            <rect key="frame" x="1000" y="1000" width="250" height="336"/>
+                            <rect key="frame" x="47" y="68" width="250" height="336"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="295"/>
@@ -225,14 +233,6 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSa-Hb-AcD">
-                            <rect key="frame" x="8" y="188" width="304" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <action selector="onEditingDidBegin:" destination="-1" eventType="editingDidBegin" id="xWF-gc-q9w"/>
-                            </connections>
-                        </textField>
                     </subviews>
                 </scrollView>
             </subviews>

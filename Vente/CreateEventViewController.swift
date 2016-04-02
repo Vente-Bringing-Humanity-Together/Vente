@@ -163,6 +163,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         self.yelpView.hidden = false
         yelpView.center.y = scrollView.contentOffset.y + 305
+        yelpView.center.x = scrollView.contentOffset.x + 160
     }
     
     @IBAction func onClickDone(sender: AnyObject) {
