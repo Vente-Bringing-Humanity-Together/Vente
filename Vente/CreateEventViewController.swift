@@ -25,6 +25,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     let vc = UIImagePickerController()
 
+    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var eventNameLabel: UITextField!
@@ -107,6 +108,51 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         return cell
     }
     
+    @IBAction func onEditingDidBegin(sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
+        
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        inputView.addSubview(datePickerView) // add date picker to UIView
+        
+        let green = UIColor(red: 122/255, green: 203/255, blue: 110/255, alpha: 1)
+        let darkGreen = UIColor(red: 60/255, green: 139/255, blue: 48/255, alpha: 1)
+        
+        let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width) - (90), 0, 100, 50))
+        doneButton.setTitle("Done", forState: UIControlState.Normal)
+        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
+        doneButton.setTitleColor(green, forState: UIControlState.Normal)
+        doneButton.setTitleColor(darkGreen, forState: UIControlState.Highlighted)
+        
+        inputView.addSubview(doneButton) // add Button to UIView
+        
+        doneButton.addTarget(self, action: "doneButton:", forControlEvents: UIControlEvents.TouchUpInside) // set button click event
+        
+        sender.inputView = inputView
+
+        
+        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+    
+        
+        datePickerView.addTarget(self, action: #selector(CreateEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        
+        dateFormatter.timeStyle = NSDateFormatterStyle.MediumStyle
+        
+        dateTextField.text = dateFormatter.stringFromDate(sender.date)
+        
+    }
+    func doneButton(sender:UIButton)
+    {
+        dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
+    }
     @IBAction func onClickYelp(sender: AnyObject) {
         // // Was thinking we could do a blur
 //        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
