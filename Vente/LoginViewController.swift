@@ -119,6 +119,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     }
 
-
+    @IBAction func screenTapped(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
 }
 

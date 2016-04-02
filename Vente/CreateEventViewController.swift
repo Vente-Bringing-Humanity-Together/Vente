@@ -336,4 +336,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             eventImageView.image = editedImage
             dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func screenTapped(sender: AnyObject) {
+        view.endEditing(true)
+    }
 }

@@ -67,6 +67,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.64920930760377504" green="1" blue="0.86537278101222825" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KJ6-rq-nNh" appends="YES" id="GNL-PF-SvA"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="facebookButton" destination="qze-X4-ZXq" id="Bbq-hU-ZvH"/>
@@ -76,6 +80,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KJ6-rq-nNh">
+                    <connections>
+                        <action selector="screenTapped:" destination="BYZ-38-t0r" id="8XR-J7-nWw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="177" y="366"/>
         </scene>
@@ -174,6 +183,10 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CUd-KS-cQX" appends="YES" id="cJo-wa-udq"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="firstNameField" destination="RPn-Xo-Efp" id="whB-jN-TMa"/>
@@ -185,6 +198,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pz-Me-BwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CUd-KS-cQX">
+                    <connections>
+                        <action selector="screenTapped:" destination="aZH-oC-PO9" id="ijG-LW-0a0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="177" y="1052"/>
         </scene>
@@ -591,6 +609,6 @@
         <image name="ic_settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hab-n9-54F"/>
+        <segue reference="0Ze-4u-Ofb"/>
     </inferredMetricsTieBreakers>
 </document>

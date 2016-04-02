@@ -107,6 +107,10 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         return [leave]
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     func getEventsFromDatabase() {
         print("Retrieving My Ventes from Parse...")
         
@@ -161,6 +165,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        view.endEditing(true)
+        
         let eventDetailsViewController = EventsDetailViewController()
         
         //        let event = myEvents![indexPath.row]
@@ -187,6 +193,10 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         searchBar.resignFirstResponder()
         filteredEvents = myEvents
         self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
