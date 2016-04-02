@@ -209,9 +209,6 @@
                                 <action selector="takePhotoButtonTouched:" destination="-1" eventType="touchUpInside" id="czF-KJ-3bP"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
-                            <rect key="frame" x="8" y="441" width="304" height="304"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ2-6r-Otz">
                             <rect key="frame" x="137" y="310" width="46" height="30"/>
                             <state key="normal" title="Yelp?"/>
@@ -245,6 +242,9 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
+                            <rect key="frame" x="8" y="445" width="304" height="296"/>
+                        </imageView>
                     </subviews>
                 </scrollView>
             </subviews>
