@@ -274,7 +274,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         return[join]
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        view.endEditing(true)
         
         let eventDetailsViewController = EventsDetailViewController()
         
@@ -294,6 +300,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         searchBar.resignFirstResponder()
         filteredEvents = events
         self.eventsTableView.reloadData()
+        
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         //let resultPredicate = NSPredicate(format: "name contains[c] %@", searchText)
@@ -302,6 +309,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         eventsTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     @IBAction func addEvent(sender: AnyObject) {

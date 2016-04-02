@@ -89,7 +89,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-Fu-f8w">
-                            <rect key="frame" x="8" y="352" width="258" height="30"/>
+                            <rect key="frame" x="8" y="352" width="301" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -246,10 +246,19 @@
                             <rect key="frame" x="8" y="445" width="304" height="296"/>
                         </imageView>
                     </subviews>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gaK-4i-lsU" appends="YES" id="aTi-PP-PbH"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="273" y="315"/>
         </view>
+        <tapGestureRecognizer id="gaK-4i-lsU">
+            <connections>
+                <action selector="screenTapped:" destination="-1" id="6VP-oG-GxQ"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
