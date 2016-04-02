@@ -16,6 +16,8 @@
 		2742B1321CADCE8100BA5176 /* PastEventsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742B1301CADCE8100BA5176 /* PastEventsTableViewCell.xib */; };
 		2742B1351CADCEC600BA5176 /* XIBPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742B1331CADCEC600BA5176 /* XIBPeopleTableViewCell.swift */; };
 		2742B1361CADCEC600BA5176 /* XIBPeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2742B1341CADCEC600BA5176 /* XIBPeopleTableViewCell.xib */; };
+		276B89491CAF31E800455247 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276B89471CAF31E800455247 /* MessageTableViewCell.swift */; };
+		276B894A1CAF31E800455247 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276B89481CAF31E800455247 /* MessageTableViewCell.xib */; };
 		276C537D1CA2DE8F00388060 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */; };
 		276C537E1CA2DE8F00388060 /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */; };
 		27D38FE31C974653006D5770 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D38FE21C974653006D5770 /* UserMedia.swift */; };
@@ -62,6 +64,8 @@
 		2742B1301CADCE8100BA5176 /* PastEventsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastEventsTableViewCell.xib; sourceTree = "<group>"; };
 		2742B1331CADCEC600BA5176 /* XIBPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XIBPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		2742B1341CADCEC600BA5176 /* XIBPeopleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XIBPeopleTableViewCell.xib; sourceTree = "<group>"; };
+		276B89471CAF31E800455247 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		276B89481CAF31E800455247 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
 		27D38FE21C974653006D5770 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				2742B1301CADCE8100BA5176 /* PastEventsTableViewCell.xib */,
 				2742B1331CADCEC600BA5176 /* XIBPeopleTableViewCell.swift */,
 				2742B1341CADCEC600BA5176 /* XIBPeopleTableViewCell.xib */,
+				276B89471CAF31E800455247 /* MessageTableViewCell.swift */,
+				276B89481CAF31E800455247 /* MessageTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 				27EAD9FF1C8F98B80069BC6F /* Assets.xcassets in Resources */,
 				273DEF6B1CAB0F8000EBD504 /* ChatViewController.xib in Resources */,
 				2742B1361CADCEC600BA5176 /* XIBPeopleTableViewCell.xib in Resources */,
+				276B894A1CAF31E800455247 /* MessageTableViewCell.xib in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
 				A1529BC81CAB51B30066BA85 /* YelpTableViewCell.xib in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
@@ -471,6 +478,7 @@
 				3841B5BF1CA36238003FEAEE /* Business.swift in Sources */,
 				2742B1351CADCEC600BA5176 /* XIBPeopleTableViewCell.swift in Sources */,
 				27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */,
+				276B89491CAF31E800455247 /* MessageTableViewCell.swift in Sources */,
 				2742B12E1CADA4F000BA5176 /* PeopleTableViewCell.swift in Sources */,
 				273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */,
 				3841B5BD1CA361D9003FEAEE /* YelpClient.swift in Sources */,

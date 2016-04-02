@@ -46,15 +46,20 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-        if (attendeeList.contains((PFUser.currentUser()?.objectId)!)) {
-            let backgroundImage = UIImage(named: "ic_chat")
-            let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
-            
-            self.navigationItem.rightBarButtonItem = groupMessageButton
-        }
-        else {
-            self.navigationItem.rightBarButtonItem = .None
-        }
+//        if (attendeeList.contains((PFUser.currentUser()?.objectId)!)) {
+//            let backgroundImage = UIImage(named: "ic_chat")
+//            let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
+//
+//            self.navigationItem.rightBarButtonItem = groupMessageButton
+//        }
+//        else {
+//            self.navigationItem.rightBarButtonItem = .None
+//        }
+        
+        let backgroundImage = UIImage(named: "ic_chat")
+        let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
+
+        self.navigationItem.rightBarButtonItem = groupMessageButton
     }
     
     func chatButtonTouched() {
