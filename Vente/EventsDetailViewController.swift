@@ -17,6 +17,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var event: PFObject!
     var attendeeList : [String] = []
@@ -34,6 +35,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         self.dateLabel.text = event["event_date"] as? String
         self.locationLabel.text = event["event_location"] as? String
         self.attendeeList = event["attendee_list"] as! [String]
+        self.descriptionLabel.text = event["event_description"] as? String
         
         let query : PFQuery = PFUser.query()!
         query.getObjectInBackgroundWithId(event["creator"] as! String) {

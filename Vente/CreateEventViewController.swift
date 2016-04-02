@@ -25,6 +25,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     let vc = UIImagePickerController()
 
+    @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var uploadImageButton: UIButton!
@@ -87,7 +88,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             uploadImageButton.enabled = false
         }
         
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1270)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1180)
         //setAttributes()
     }
     
@@ -175,6 +176,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         eventLocationLabel.text = filteredData![indexPath.row].address
+        if (filteredData![indexPath.row].imageURL != nil) {
+            eventImageView.setImageWithURL(filteredData![indexPath.row].imageURL!)
+        }
         self.yelpView.hidden = true
     }
     
@@ -190,12 +194,16 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .MediumStyle
-        dateString = formatter.stringFromDate(datePickerView!.date)
+        
+        if (datePickerView?.date != nil) {
+            dateString = formatter.stringFromDate(datePickerView!.date)
+            event["event_date"] = datePickerView!.date
+        }
         
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
-        event["event_date"] = datePickerView!.date
         event["event_location"] = eventLocationLabel.text
+        event["event_description"] = descriptionTextField.text
         
         // Grab our current location from the defaults
         let defaults = NSUserDefaults.standardUserDefaults()
