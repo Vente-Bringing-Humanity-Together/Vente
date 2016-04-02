@@ -25,6 +25,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     let vc = UIImagePickerController()
 
+    @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var uploadImageButton: UIButton!
@@ -175,6 +176,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         eventLocationLabel.text = filteredData![indexPath.row].address
+        if (filteredData![indexPath.row].imageURL != nil) {
+            eventImageView.setImageWithURL(filteredData![indexPath.row].imageURL!)
+        }
         self.yelpView.hidden = true
     }
     
@@ -196,6 +200,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         event["event_name"] = eventNameLabel.text
         event["event_date"] = datePickerView!.date
         event["event_location"] = eventLocationLabel.text
+        event["event_description"] = descriptionTextField.text
         
         // Grab our current location from the defaults
         let defaults = NSUserDefaults.standardUserDefaults()
