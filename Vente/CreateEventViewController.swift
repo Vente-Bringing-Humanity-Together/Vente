@@ -10,7 +10,6 @@ import UIKit
 import Parse
 import MBProgressHUD
 
-
 let userDidPostEventNotification = "userDidPostEventNotification"
 
 class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
