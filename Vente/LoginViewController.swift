@@ -18,6 +18,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    var followers : [String] = []
+    var following : [String] = []
+    
     var strFirstName: String = ""
     var strLastName: String = ""
 //    var strPictureURL: String = ""
@@ -71,10 +74,27 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             newUser.password = "pass"
             newUser["first_name"] = self.strFirstName
             newUser["last_name"] = self.strLastName
+            newUser["following"] = self.following
             
             newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
                     print("Yay, created a facebook user")
+                    
+                    let followerList = PFObject(className: "Followers")
+                    followerList["followers"] = self.followers
+                    followerList["creatorId"] = newUser.objectId
+                    
+                    followerList.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if let error = error {
+                            print("Follower list add failed")
+                            print(error.localizedDescription)
+                            
+                        } else {
+                            print("Added empty follower list")
+                        }
+                        
+                    }
+                    
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
                 else {

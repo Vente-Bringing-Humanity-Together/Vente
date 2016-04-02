@@ -41,7 +41,6 @@ class SignUpViewController: UIViewController {
             newUser["number"] = phoneNumberField.text
             newUser["first_name"] = firstNameField.text
             newUser["last_name"] = lastNameField.text
-            //newUser["followers"] = followers
             newUser["following"] = following
             
             newUser.signUpInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
