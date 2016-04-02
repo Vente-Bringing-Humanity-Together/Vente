@@ -1,0 +1,6 @@
+framework module imglyKit {
+  umbrella header "imglyKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
