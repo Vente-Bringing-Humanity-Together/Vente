@@ -12,7 +12,7 @@ import MBProgressHUD
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate {
     
     var businesses: [Business]!
     var filteredData: [Business]?
@@ -87,6 +87,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             uploadImageButton.enabled = false
         }
         
+        scrollView.delegate = self
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1180)
         //setAttributes()
     }
@@ -336,6 +337,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        print("a")
+        view.endEditing(true)
     }
 }
