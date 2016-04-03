@@ -152,8 +152,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         dateTextField.text = dateFormatter.stringFromDate(sender.date)
         
     }
-    func doneButton(sender:UIButton)
-    {
+    func doneButton(sender:UIButton) {
         dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
     }
     @IBAction func onClickYelp(sender: AnyObject) {
@@ -165,6 +164,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 //        view.addSubview(blurEffectView)
         
         self.yelpView.hidden = false
+        self.view.bringSubviewToFront(yelpView)
         yelpView.center.y = scrollView.contentOffset.y + 305
         yelpView.center.x = scrollView.contentOffset.x + 160
     }
@@ -335,7 +335,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func screenTapped(sender: AnyObject) {
-        view.endEditing(true)
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        print("a")
     }
 }
