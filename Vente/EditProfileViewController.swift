@@ -167,5 +167,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func screenTapped(sender: AnyObject) {
         view.endEditing(true)
     }
+    
+    
 
 }

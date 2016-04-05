@@ -18,20 +18,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwh-zC-ocZ">
-                    <rect key="frame" x="8" y="80" width="260" height="30"/>
+                    <rect key="frame" x="8" y="463" width="260" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.76012541119999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="myMessageFieldBegan:" destination="-1" eventType="editingDidBegin" id="uTd-fd-yiJ"/>
+                        <action selector="myMessageFieldEnd:" destination="-1" eventType="editingDidEnd" id="uc2-3K-WNG"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTz-F0-bD7">
-                    <rect key="frame" x="276" y="79" width="36" height="30"/>
+                    <rect key="frame" x="276" y="463" width="36" height="30"/>
                     <state key="normal" title="Send"/>
                     <connections>
                         <action selector="sendButtonTouched:" destination="-1" eventType="touchUpInside" id="E8C-5l-4xa"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G89-3f-49z">
-                    <rect key="frame" x="8" y="118" width="304" height="374"/>
+                    <rect key="frame" x="8" y="56" width="304" height="376"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
