@@ -145,9 +145,12 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
                 if (result?.data.messages != nil) {
                     self.messages = result!.data.messages as! [String]
                     self.tableView.reloadData()
-                    let lastSpot = self.messages.count - 1
-                    let position = NSIndexPath(forRow: lastSpot, inSection: 0)
-                    self.tableView.scrollToRowAtIndexPath(position, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+                    
+                    if (self.messages.count > 0) {
+                        let lastSpot = self.messages.count - 1
+                        let position = NSIndexPath(forRow: lastSpot, inSection: 0)
+                        self.tableView.scrollToRowAtIndexPath(position, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+                    }
                 }
                 
             }
