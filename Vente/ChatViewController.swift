@@ -16,8 +16,7 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
     var client: PubNub?
     
     @IBOutlet weak var myMessageTextField: UITextField!
-//    @IBOutlet weak var messageTextView: UITextView!
-
+    
     var eventIDString: String = ""
     
     var messages: [String] = []
@@ -32,8 +31,6 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
         
         let cellNib = UINib(nibName: "MessageTableViewCell", bundle: NSBundle.mainBundle())
         tableView.registerNib(cellNib, forCellReuseIdentifier: "MessageTableViewCell")
-        
-//        messageTextView.text = ""
         
         let configuration = PNConfiguration(publishKey: "pub-c-08213b8e-ca5d-4a44-a0e8-272d6ebbff6d", subscribeKey: "sub-c-0d695744-f5e8-11e5-8cfb-0619f8945a4f")
         // Instantiate PubNub client.
@@ -62,24 +59,16 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
             
             let IDMessage = myID! + "@" + myMessage
             
-            // sendMessageTo(myMessage, channel: eventIDString)
             sendMessageTo(IDMessage, channel: eventIDString)
         }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        if messages != [] {
-//            return messages.count
-//        }
-//        else {
-//            return 0
-//        }
         
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
         
         if messages != [] {
             return messages.count
@@ -92,7 +81,6 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell", forIndexPath: indexPath) as! MessageTableViewCell
         
-//        let messageWhole = messages[indexPath.section]
         let messageWhole = messages[indexPath.row]
         let firstAt = messageWhole.characters.indexOf("@")
         let userID = messageWhole.substringToIndex(firstAt!)
@@ -154,15 +142,6 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
                 //   result.data.end - newest message time stamp in response
                 //   result.data.messages - list of messages
                 
-//                for ele in result!.data.messages {
-//                    if (self.messageTextView.text != nil && self.messageTextView.text != "") {
-//                        self.messageTextView.text = self.messageTextView.text + "\n" + (ele as! String)
-//                    }
-//                    else {
-//                        self.messageTextView.text = ele as! String
-//                    }
-//                }
-                
                 if (result?.data.messages != nil) {
                     self.messages = result!.data.messages as! [String]
                     self.tableView.reloadData()
@@ -199,8 +178,6 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
         print("Received message: \(message.data.message) on channel " +
             "\((message.data.actualChannel ?? message.data.subscribedChannel)!) at " +
             "\(message.data.timetoken)")
-        
-//        self.messageTextView.text = self.messageTextView.text + "\n" + (message.data.message as? String)!
         
         messages.append((message.data.message as? String)!)
         
@@ -239,6 +216,10 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
                 "on \((event.data.actualChannel ?? event.data.subscribedChannel)!) to:\n" +
                 "\(event.data.presence.state)");
         }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 
 }
