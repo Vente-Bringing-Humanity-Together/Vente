@@ -2,7 +2,7 @@
 An application to give people the power to connect and share meaningful interactions
 
 # Time Spent
-**60** Hours
+**70** Hours
 
 ##Required
 - [X] User can make a profile and log in
@@ -35,6 +35,11 @@ An application to give people the power to connect and share meaningful interact
 - [ ] User can specify interests within profile
 - [ ] Filter other users based on their interests
 - [ ] Notification for user if somebody with mutual interest is nearby
+- 
+##UI 
+- [ ] Loading screen while loading events/profiles
+- [ ] Autolayout
+- [ ] Custom search bars and tool bars
 
 ##Optional Tier ???
 - [ ] Nick's camera idea 
