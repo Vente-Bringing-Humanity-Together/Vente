@@ -18,9 +18,6 @@ class ExploreTableViewCell: UITableViewCell {
     
     var attendeeList : [String]!
     
-    @IBOutlet weak var joinedView: UIView!
-    @IBOutlet weak var joinedViewLabel: UILabel!
-    
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String

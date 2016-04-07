@@ -247,12 +247,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.backgroundColor = UIColor(red: 121/255, green: 183/255, blue: 145/255, alpha: 1.0)
         
         if (events[indexPath.section]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
-            cell.joinedViewLabel.text = "You are going to this event!"
-            cell.joinedView.backgroundColor = UIColor(red: 50/255, green: 156/255, blue: 101/255, alpha: 1.0)
+            
         }
         else {
-            cell.joinedViewLabel.text = "<-- Swipe to join this event!"
-            cell.joinedView.backgroundColor = UIColor.grayColor()
+            
         }
         
 //        cell.backgroundColor = UIColor(red: 125/255, green: 221/255, blue: 176/255, alpha: 1.0)
@@ -307,9 +305,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                                     event["attendee_list"] = self.attendeeList
                                     event.saveInBackground()
                                     tableView.setEditing(false, animated: true)
-                                    let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
-                                    cell!.joinedViewLabel.text = "You are going to this event!"
-                                    cell!.joinedView.backgroundColor = UIColor(red: 50/255, green: 156/255, blue: 101/255, alpha: 1.0)
+//                                    let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
                                 }
                             }
                         }
