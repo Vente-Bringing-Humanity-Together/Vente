@@ -74,7 +74,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             tabBar.backgroundColor = UIColor.whiteColor()
             tabBar.tintColor = UIColor(red: 200/255, green: 159/255, blue: 124/255, alpha: 1.0)
         }
-
         
     }
     
