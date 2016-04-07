@@ -8,14 +8,18 @@
 
 import UIKit
 import Parse
+import Material
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var firstNameField: UITextField!
-    @IBOutlet weak var lastNameField: UITextField!
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var phoneNumberField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    let firstNameField: TextField = TextField(frame: CGRectMake(20, 127, 275, 30))
+    let lastNameField: TextField = TextField(frame: CGRectMake(20, 200, 275, 30))
+    let usernameField: TextField = TextField(frame: CGRectMake(20, 273, 275, 30))
+    let passwordField: TextField = TextField(frame: CGRectMake(20, 420, 275, 30))
+    let phoneNumberField: TextField = TextField(frame: CGRectMake(20, 347, 275, 30))
+    
+    let cancelbutton: FlatButton = FlatButton(frame: CGRectMake(3, 520, 90, 40))
+    let signupbutton: FlatButton = FlatButton(frame: CGRectMake(220, 520, 100, 40))
     
     var followers : [String] = []
     var following : [String] = []
@@ -26,8 +30,35 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        firstNameField.placeholder = "First Name"
+        textMaker(firstNameField)
+        
+        lastNameField.placeholder = "Last Name"
+        textMaker(lastNameField)
+        
+        usernameField.placeholder = "Username (Email)"
+        textMaker(usernameField)
+        usernameField.addTarget(self, action: #selector(SignUpViewController.usernameBeganToEdit), forControlEvents: .EditingDidBegin)
+        usernameField.addTarget(self, action: #selector(SignUpViewController.usernameEndToEdit), forControlEvents: .EditingDidEnd)
+        
+        passwordField.placeholder = "Password"
+        textMaker(passwordField)
+        passwordField.addTarget(self, action: #selector(SignUpViewController.passwordBeganToEdit), forControlEvents: .EditingDidBegin)
+        passwordField.addTarget(self, action: #selector(SignUpViewController.passwordEndToEdit), forControlEvents: .EditingDidEnd)
+        
+        phoneNumberField.placeholder = "Phone Number"
+        textMaker(phoneNumberField)
+        phoneNumberField.addTarget(self, action: #selector(SignUpViewController.numberBeganToEdit), forControlEvents: .EditingDidBegin)
+        phoneNumberField.addTarget(self, action: #selector(SignUpViewController.numberEndToEdit), forControlEvents: .EditingDidEnd)
+        
+        cancelbutton.setTitle("Cancel", forState: .Normal)
+        buttonMaker(cancelbutton)
+        cancelbutton.addTarget(self, action: #selector(SignUpViewController.cancelButtonTouched), forControlEvents: .TouchUpInside)
+        
+        signupbutton.setTitle("Sign Up", forState: .Normal)
+        buttonMaker(signupbutton)
+        signupbutton.addTarget(self, action: #selector(SignUpViewController.signupButtonTouched), forControlEvents: .TouchUpInside)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,25 +66,45 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
-            print(keyboardSize.height)
-        }
+    func textMaker(field: TextField) {
         
+        field.placeholderTextColor = MaterialColor.grey.base
+        field.font = UIFont (name: "District Pro Thin", size: 17)
+        field.textColor = MaterialColor.black
+        
+        field.titleLabel = UILabel()
+        field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
+        field.titleLabelColor = MaterialColor.grey.base
+        field.titleLabelActiveColor = MaterialColor.blue.darken1
+        
+        let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        
+        let clearButton: FlatButton = FlatButton()
+        clearButton.pulseColor = MaterialColor.red.lighten1
+        clearButton.pulseScale = false
+        clearButton.tintColor = MaterialColor.red.lighten1
+        clearButton.setImage(image, forState: .Normal)
+        clearButton.setImage(image, forState: .Highlighted)
+        
+        field.clearButton = clearButton
+        view.addSubview(field)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
-        }
+    func buttonMaker(button: FlatButton) {
+        button.titleLabel!.font = UIFont (name: "District Pro Thin", size: 13)
+        button.tintColor = MaterialColor.blue.darken1
+        
+        // Add button to UIViewController.
+        view.addSubview(button)
     }
 
-    @IBAction func onCancel(sender: AnyObject) {
+    func cancelButtonTouched() {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func onSignUp(sender: AnyObject) {
+    func signupButtonTouched() {
+        
+        self.view.endEditing(true)
         
         if ((usernameField.text?.containsString("ufl.edu")) == true) {
             
@@ -85,7 +136,11 @@ class SignUpViewController: UIViewController {
                         
                     }
                     
-                    self.performSegueWithIdentifier("SignupToHome", sender: nil)
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as UIViewController
+                    vc.modalTransitionStyle = .FlipHorizontal
+                    self.presentViewController(vc, animated: true, completion: nil)
+                    
                 } else {
                     print("error")
                     print(error?.localizedDescription)
@@ -102,25 +157,25 @@ class SignUpViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func emailBeganToEdit(sender: UITextField) {
-        textFieldDidBeginEditing(sender)
+    func usernameBeganToEdit() {
+        textFieldDidBeginEditing(usernameField)
     }
-    @IBAction func emailEndToEdit(sender: UITextField) {
-        textFieldDidEndEditing(sender)
-    }
-    
-    @IBAction func numberBeganToEdit(sender: UITextField) {
-        textFieldDidBeginEditing(sender)
-    }
-    @IBAction func numberEndToEdit(sender: UITextField) {
-        textFieldDidEndEditing(sender)
+    func usernameEndToEdit() {
+        textFieldDidEndEditing(usernameField)
     }
     
-    @IBAction func passwordBeganToEdit(sender: UITextField) {
-        textFieldDidBeginEditing(sender)
+    func numberBeganToEdit() {
+        textFieldDidBeginEditing(phoneNumberField)
     }
-    @IBAction func passwordEndToEdit(sender: UITextField) {
-        textFieldDidEndEditing(sender)
+    func numberEndToEdit() {
+        textFieldDidEndEditing(phoneNumberField)
+    }
+    
+    func passwordBeganToEdit() {
+        textFieldDidBeginEditing(passwordField)
+    }
+    func passwordEndToEdit() {
+        textFieldDidEndEditing(passwordField)
     }
     
     struct MoveKeyboard {
