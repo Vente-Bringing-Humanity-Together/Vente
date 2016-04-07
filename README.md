@@ -35,7 +35,7 @@ An application to give people the power to connect and share meaningful interact
 - [ ] User can specify interests within profile
 - [ ] Filter other users based on their interests
 - [ ] Notification for user if somebody with mutual interest is nearby
-- 
+
 ##UI 
 - [ ] Loading screen while loading events/profiles
 - [ ] Autolayout
