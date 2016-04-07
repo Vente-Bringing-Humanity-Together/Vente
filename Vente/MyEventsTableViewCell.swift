@@ -24,10 +24,13 @@ class MyEventsTableViewCell: UITableViewCell {
             //self.attendeeList = Event["attendee_list"] as! [String]
             
             var eventDateString = ""
+            var eventTimeString = ""
             let formatter = NSDateFormatter()
             formatter.dateStyle = .ShortStyle
+            formatter.timeStyle = .ShortStyle
             eventDateString = formatter.stringFromDate((Event!["event_date"] as? NSDate)!)
-            self.dateLabel.text = eventDateString
+            eventTimeString = formatter.stringFromDate((Event!["event_date"] as? NSDate)!)
+            self.dateLabel.text = eventDateString + eventTimeString
         }
     }
     
