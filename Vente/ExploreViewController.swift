@@ -238,6 +238,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                 else {
                     if(imageData != nil){
                         let image = UIImage(data: imageData!)
+                        
+//                        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+//                        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                        blurEffectView.frame = cell.eventImageView.bounds
+//                        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+//                        cell.eventImageView.addSubview(blurEffectView)
+
                         cell.eventImageView.image = image
                     }
                 }
