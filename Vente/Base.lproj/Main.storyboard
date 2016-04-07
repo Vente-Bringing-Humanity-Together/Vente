@@ -465,6 +465,8 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="Xgd-u6-lOt" id="yJr-2y-b5O"/>
                                             <outlet property="eventImageView" destination="agi-8x-AeZ" id="nOC-GL-TWj"/>
+                                            <outlet property="joinedView" destination="XJn-fa-NJe" id="cak-qf-uc4"/>
+                                            <outlet property="joinedViewLabel" destination="We9-f1-Hl9" id="EyL-cC-IQQ"/>
                                             <outlet property="locationLabel" destination="ObS-h8-A6O" id="B5d-qv-ZYF"/>
                                             <outlet property="nameLabel" destination="VUv-sd-Rnr" id="Jlh-Cy-zlt"/>
                                         </connections>
@@ -561,6 +563,6 @@
         <image name="ic_settings" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hab-n9-54F"/>
+        <segue reference="0Ze-4u-Ofb"/>
     </inferredMetricsTieBreakers>
 </document>

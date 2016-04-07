@@ -14,10 +14,12 @@ class ExploreTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    
     @IBOutlet weak var eventImageView: UIImageView!
     
     var attendeeList : [String]!
+    
+    @IBOutlet weak var joinedView: UIView!
+    @IBOutlet weak var joinedViewLabel: UILabel!
     
     var Event: PFObject! {
         didSet {
