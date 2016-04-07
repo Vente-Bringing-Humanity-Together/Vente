@@ -163,7 +163,11 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         let query = PFQuery(className: "Events")
         query.limit = 20
         query.whereKey("attendee_list", equalTo: userId!)
-        query.orderByDescending("event_date")
+        // This needs to be the date of the event
+        let calendar = NSCalendar.currentCalendar()
+        // Probably should be -0
+        let today = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
+        query.whereKey("event_date", greaterThanOrEqualTo: today!)
         
         if (defaults.integerForKey("fooddrinkSwitch") == 1) {
             query.whereKey("fooddrink", equalTo: true)
@@ -189,6 +193,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         if (defaults.integerForKey("adventureSwitch") == 1) {
             query.whereKey("adventure", equalTo: true)
         }
+        
+        query.orderByAscending("event_date")
         
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
