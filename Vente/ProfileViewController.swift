@@ -230,9 +230,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         query.whereKey("attendee_list", equalTo: userId!)
         // This needs to be the date of the event
         let calendar = NSCalendar.currentCalendar()
-        // Probably should be -1
-        let oneDayAgo = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
-        query.whereKey("event_date", lessThan: oneDayAgo!)
+        // Probably should be 0
+        let today = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
+        query.whereKey("event_date", lessThan: today!)
         // End of past events
         query.orderByDescending("event_date")
         
