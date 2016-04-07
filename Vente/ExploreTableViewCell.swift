@@ -27,13 +27,11 @@ class ExploreTableViewCell: UITableViewCell {
             self.eventImageView.image = Event["event_image"] as? UIImage
             
             var eventDateString = ""
-            var eventTimeString = ""
             let formatter = NSDateFormatter()
             formatter.dateStyle = .ShortStyle
             formatter.timeStyle = .ShortStyle
-            eventDateString = formatter.stringFromDate((Event!["event_date"] as? NSDate)!)
-            eventTimeString = formatter.stringFromDate((Event!["event_date"] as? NSDate)!)
-            self.dateLabel.text = eventDateString + eventTimeString
+            eventDateString = formatter.stringFromDate((Event["event_date"] as? NSDate)!)
+            self.dateLabel.text = eventDateString
         }
     }
 

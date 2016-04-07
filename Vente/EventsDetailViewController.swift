@@ -32,10 +32,16 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
         
         self.eventNameLabel.text = event["event_name"] as? String
-        self.dateLabel.text = event["event_date"] as? String
         self.locationLabel.text = event["event_location"] as? String
         self.attendeeList = event["attendee_list"] as! [String]
         self.descriptionLabel.text = event["event_description"] as? String
+        
+        var eventDateString = ""
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .ShortStyle
+        eventDateString = formatter.stringFromDate((event["event_date"] as? NSDate)!)
+        self.dateLabel.text = eventDateString
         
         let query : PFQuery = PFUser.query()!
         query.getObjectInBackgroundWithId(event["creator"] as! String) {
