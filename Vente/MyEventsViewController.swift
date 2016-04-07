@@ -83,7 +83,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
         
         if (self.filteredEvents != nil) {
             return self.filteredEvents!.count
@@ -93,14 +94,26 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+//        if (self.filteredEvents != nil) {
+//            return self.filteredEvents!.count
+//        }
+//        else {
+//            return 0
+//        }
+        
+        return 1
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("MyEventsTableViewCell") as! MyEventsTableViewCell
         
-//        cell.Event = myEvents[indexPath.row]
-        cell.Event = filteredEvents![indexPath.row]
+//        cell.Event = myEvents[indexPath.section]
+        cell.Event = filteredEvents![indexPath.section]
         
-        if (myEvents?[indexPath.row]["event_image"] != nil) {
-            let userImageFile = myEvents?[indexPath.row]["event_image"] as! PFFile
+        if (myEvents?[indexPath.section]["event_image"] != nil) {
+            let userImageFile = myEvents?[indexPath.section]["event_image"] as! PFFile
             userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
@@ -134,15 +147,15 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
             let userId = PFUser.currentUser()?.objectId
             
             let query = PFQuery(className:"Events")
-            query.getObjectInBackgroundWithId(self.myEvents[indexPath.row].objectId!) {
+            query.getObjectInBackgroundWithId(self.myEvents[indexPath.section].objectId!) {
                 (event: PFObject?, error: NSError?) -> Void in
                 if error != nil {
                     print(error)
                 } else if let event = event {
                     event.removeObject(userId!, forKey: "attendee_list")
                     event.saveInBackground()
-                    self.myEvents.removeAtIndex(indexPath.row)
-                    self.filteredEvents?.removeAtIndex(indexPath.row)
+                    self.myEvents.removeAtIndex(indexPath.section)
+                    self.filteredEvents?.removeAtIndex(indexPath.section)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                 }
             }
@@ -221,8 +234,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let eventDetailsViewController = EventsDetailViewController()
         
-        //        let event = myEvents![indexPath.row]
-        let event = filteredEvents![indexPath.row]
+        //        let event = myEvents![indexPath.section]
+        let event = filteredEvents![indexPath.section]
         
         eventDetailsViewController.event = event
         

@@ -202,7 +202,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
         
         if (self.filteredEvents != nil) {
             return self.filteredEvents!.count
@@ -212,13 +213,24 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 1
+        
+//        if (self.filteredEvents != nil) {
+//            return self.filteredEvents!.count
+//        }
+//        else {
+//            return 0
+//        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = eventsTableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
         
-        cell.Event = filteredEvents![indexPath.row]
+        cell.Event = filteredEvents![indexPath.section]
         
-        if (events?[indexPath.row]["event_image"] != nil) {
-            let userImageFile = events?[indexPath.row]["event_image"] as! PFFile
+        if (events?[indexPath.section]["event_image"] != nil) {
+            let userImageFile = events?[indexPath.section]["event_image"] as! PFFile
             userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
@@ -234,7 +246,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         cell.backgroundColor = UIColor(red: 121/255, green: 183/255, blue: 145/255, alpha: 1.0)
         
-        if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
+        if (events[indexPath.section]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
             cell.joinedViewLabel.text = "You are going to this event!"
             cell.joinedView.backgroundColor = UIColor(red: 50/255, green: 156/255, blue: 101/255, alpha: 1.0)
         }
@@ -258,13 +270,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
     
-        self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
+        self.attendeeList = self.filteredEvents![indexPath.section]["attendee_list"] as! [String]
         
         let join = UITableViewRowAction(style: .Normal, title: "  Join  ") { action, index in
             print("join button tapped")
             
             let query = PFQuery(className: "Events")
-            let eventID = self.filteredEvents![indexPath.row].objectId
+            let eventID = self.filteredEvents![indexPath.section].objectId
             query.whereKey("objectId", equalTo: eventID!)
 
             query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
@@ -273,10 +285,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                 } else {
                     if let results = results {
                         print("Successfully retrieved \(results.count) ventes")
-                        self.events[indexPath.row] = results[0]
+                        self.events[indexPath.section] = results[0]
                         self.filteredEvents = self.events
                         
-                        self.attendeeList = self.filteredEvents![indexPath.row]["attendee_list"] as! [String]
+                        self.attendeeList = self.filteredEvents![indexPath.section]["attendee_list"] as! [String]
                         
                         if self.attendeeList.contains((PFUser.currentUser()?.objectId)!) {
                             print("already joined")
@@ -287,7 +299,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                             self.attendeeList.append(PFUser.currentUser()!.objectId! as String)
                             
                             let query = PFQuery(className:"Events")
-                            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.row].objectId!) {
+                            query.getObjectInBackgroundWithId(self.filteredEvents![indexPath.section].objectId!) {
                                 (event: PFObject?, error: NSError?) -> Void in
                                 if error != nil {
                                     print(error)
@@ -323,8 +335,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let eventDetailsViewController = EventsDetailViewController()
         
-//        let event = events![indexPath.row]
-        let event = filteredEvents![indexPath.row]
+//        let event = events![indexPath.section]
+        let event = filteredEvents![indexPath.section]
         
         eventDetailsViewController.event = event
         
