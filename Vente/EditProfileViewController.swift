@@ -33,7 +33,26 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             uploadImageButton.enabled = false
         }
 
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Edit Profile"
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.backgroundColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
+            navigationBar.tintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
+            
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+            shadow.shadowOffset = CGSizeMake(1, 1);
+            shadow.shadowBlurRadius = 1;
+            navigationBar.titleTextAttributes = [
+                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+                NSForegroundColorAttributeName : UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 0.78),
+                NSShadowAttributeName : shadow
+            ]
+        }
+        
+        if let tabBar = tabBarController?.tabBar {
+            tabBar.barTintColor = UIColor(red: 200/255, green: 159/255, blue: 124/255, alpha: 0.2)
+            tabBar.tintColor = UIColor.whiteColor()
+        }
     }
 
     @IBAction func uploadImageButtonTouched(sender: AnyObject) {
