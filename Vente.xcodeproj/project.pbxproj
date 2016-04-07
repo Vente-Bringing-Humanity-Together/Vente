@@ -121,31 +121,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		273DEF611CAAF35900EBD504 /* Settings */ = {
+		273DEF611CAAF35900EBD504 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				273DEF621CAAF51C00EBD504 /* SettingsViewController.swift */,
 				273DEF631CAAF51C00EBD504 /* SettingsViewController.xib */,
 			);
-			name = Settings;
+			name = SettingsViewController;
 			sourceTree = "<group>";
 		};
-		273DEF671CAB0F6500EBD504 /* ChatRoom */ = {
+		273DEF671CAB0F6500EBD504 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
 				273DEF681CAB0F8000EBD504 /* ChatViewController.swift */,
 				273DEF691CAB0F8000EBD504 /* ChatViewController.xib */,
 			);
-			name = ChatRoom;
+			name = ChatViewController;
 			sourceTree = "<group>";
 		};
-		276C537A1CA2DE5B00388060 /* InviteFriends */ = {
+		276C537A1CA2DE5B00388060 /* InviteFriendsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				276C537B1CA2DE8F00388060 /* InviteFriendsViewController.swift */,
 				276C537C1CA2DE8F00388060 /* InviteFriendsViewController.xib */,
 			);
-			name = InviteFriends;
+			name = InviteFriendsViewController;
 			sourceTree = "<group>";
 		};
 		27A3731C1C90F0F6004CB934 /* LoginSignViewControllers */ = {
@@ -157,43 +157,37 @@
 			name = LoginSignViewControllers;
 			sourceTree = "<group>";
 		};
-		27A3731D1C90F142004CB934 /* FromExplore */ = {
+		27A3731D1C90F142004CB934 /* ExploreViewController */ = {
 			isa = PBXGroup;
 			children = (
 				38AA86091C8FA3F600A4020F /* ExploreViewController.swift */,
-				273DEF611CAAF35900EBD504 /* Settings */,
-				382B7A851C9B6895000B2D5E /* EventDetails */,
-				38E8CD4E1C90EE7400796901 /* CreateEventViewController */,
-				276C537A1CA2DE5B00388060 /* InviteFriends */,
 			);
-			name = FromExplore;
+			name = ExploreViewController;
 			sourceTree = "<group>";
 		};
-		27A3731E1C90F154004CB934 /* FromMyEvents */ = {
+		27A3731E1C90F154004CB934 /* MyEventsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				38AA860B1C8FA40F00A4020F /* MyEventsViewController.swift */,
 			);
-			name = FromMyEvents;
+			name = MyEventsViewController;
 			sourceTree = "<group>";
 		};
-		27A3731F1C90F18A004CB934 /* FromProfile */ = {
+		27A3731F1C90F18A004CB934 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				38AA860D1C8FA41A00A4020F /* ProfileViewController.swift */,
-				27B831611CA9BE0700F20D60 /* EditProfile */,
-				382B7A861C9B68BF000B2D5E /* OtherProfile */,
 			);
-			name = FromProfile;
+			name = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		27B831611CA9BE0700F20D60 /* EditProfile */ = {
+		27B831611CA9BE0700F20D60 /* EditProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3841B5C01CA4AF13003FEAEE /* EditProfileViewController.swift */,
 				3841B5C11CA4AF13003FEAEE /* EditProfileViewController.xib */,
 			);
-			name = EditProfile;
+			name = EditProfileViewController;
 			sourceTree = "<group>";
 		};
 		27EAD9E81C8F98B80069BC6F = {
@@ -273,30 +267,36 @@
 			isa = PBXGroup;
 			children = (
 				27A3731C1C90F0F6004CB934 /* LoginSignViewControllers */,
-				27A3731D1C90F142004CB934 /* FromExplore */,
-				27A3731E1C90F154004CB934 /* FromMyEvents */,
-				27A3731F1C90F18A004CB934 /* FromProfile */,
-				273DEF671CAB0F6500EBD504 /* ChatRoom */,
+				27A3731D1C90F142004CB934 /* ExploreViewController */,
+				38E8CD4E1C90EE7400796901 /* CreateEventViewController */,
+				27A3731E1C90F154004CB934 /* MyEventsViewController */,
+				382B7A851C9B6895000B2D5E /* EventDetailsViewController */,
+				276C537A1CA2DE5B00388060 /* InviteFriendsViewController */,
+				27A3731F1C90F18A004CB934 /* ProfileViewController */,
+				27B831611CA9BE0700F20D60 /* EditProfileViewController */,
+				382B7A861C9B68BF000B2D5E /* OtherProfileViewController */,
+				273DEF671CAB0F6500EBD504 /* ChatViewController */,
+				273DEF611CAAF35900EBD504 /* SettingsViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		382B7A851C9B6895000B2D5E /* EventDetails */ = {
+		382B7A851C9B6895000B2D5E /* EventDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				382B7A771C98CA6D000B2D5E /* EventsDetailViewController.swift */,
 				382B7A781C98CA6D000B2D5E /* EventsDetailViewController.xib */,
 			);
-			name = EventDetails;
+			name = EventDetailsViewController;
 			sourceTree = "<group>";
 		};
-		382B7A861C9B68BF000B2D5E /* OtherProfile */ = {
+		382B7A861C9B68BF000B2D5E /* OtherProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				382B7A731C98C807000B2D5E /* OtherProfileViewController.swift */,
 				382B7A741C98C807000B2D5E /* OtherProfileViewController.xib */,
 			);
-			name = OtherProfile;
+			name = OtherProfileViewController;
 			sourceTree = "<group>";
 		};
 		38E8CD4E1C90EE7400796901 /* CreateEventViewController */ = {
