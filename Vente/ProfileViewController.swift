@@ -74,10 +74,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+        
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             if (self.events != nil) {
                 return self.events!.count
@@ -107,15 +105,47 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if (optionSegmentedControl.selectedSegmentIndex == 0) {
+//            if (self.events != nil) {
+//                return self.events!.count
+//            }
+//            else {
+//                return 0
+//            }
+//        }
+//        else if (optionSegmentedControl.selectedSegmentIndex == 1) {
+//            if (self.followingArray != nil && self.followingArray != []) {
+//                return self.followingArray!.count
+//            }
+//            else {
+//                return 0
+//            }
+//        }
+//        else if (optionSegmentedControl.selectedSegmentIndex == 2) {
+//            if (self.followerArray != nil && self.followerArray != []) {
+//                return self.followerArray!.count
+//            }
+//            else {
+//                return 0
+//            }
+//        }
+//        else {
+//            return 0
+//        }
+        
+        return 1
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier("MyEventsTableViewCell") as! MyEventsTableViewCell
             
-            cell.Event = events[indexPath.row]
+            cell.Event = events[indexPath.section]
             
-            if (events?[indexPath.row]["event_image"] != nil) {
-                let userImageFile = events?[indexPath.row]["event_image"] as! PFFile
+            if (events?[indexPath.section]["event_image"] != nil) {
+                let userImageFile = events?[indexPath.section]["event_image"] as! PFFile
                 userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                     if let error = error {
                         print(error.localizedDescription)
@@ -135,7 +165,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCellWithIdentifier("PeopleTableViewCell") as! PeopleTableViewCell
             
             let query : PFQuery = PFUser.query()!
-            query.getObjectInBackgroundWithId(followingArray[indexPath.row]) {
+            query.getObjectInBackgroundWithId(followingArray[indexPath.section]) {
                 (user: PFObject?, error: NSError?) -> Void in
                 if error != nil {
                     print(error)
@@ -166,7 +196,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCellWithIdentifier("PeopleTableViewCell") as! PeopleTableViewCell
             
             let query : PFQuery = PFUser.query()!
-            query.getObjectInBackgroundWithId(followerArray[indexPath.row]) {
+            query.getObjectInBackgroundWithId(followerArray[indexPath.section]) {
                 (user: PFObject?, error: NSError?) -> Void in
                 if error != nil {
                     print(error)
@@ -203,21 +233,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             let eventDetailsViewController = EventsDetailViewController()
             
-            let event = events![indexPath.row]
+            let event = events![indexPath.section]
             eventDetailsViewController.event = event
             
             self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         }
         else if (optionSegmentedControl.selectedSegmentIndex == 1) {
             let otherProfileViewController = OtherProfileViewController()
-            let personID = followingArray[indexPath.row]
+            let personID = followingArray[indexPath.section]
             otherProfileViewController.personID = personID
             
             self.navigationController?.pushViewController(otherProfileViewController, animated: true)
         }
         else if (optionSegmentedControl.selectedSegmentIndex == 2) {
             let otherProfileViewController = OtherProfileViewController()
-            let personID = followerArray[indexPath.row]
+            let personID = followerArray[indexPath.section]
             otherProfileViewController.personID = personID
             
             self.navigationController?.pushViewController(otherProfileViewController, animated: true)

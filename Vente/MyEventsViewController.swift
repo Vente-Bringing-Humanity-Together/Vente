@@ -156,7 +156,9 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
                     event.saveInBackground()
                     self.myEvents.removeAtIndex(indexPath.section)
                     self.filteredEvents?.removeAtIndex(indexPath.section)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+//                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                    let path = NSIndexSet(index: indexPath.section)
+                    tableView.deleteSections(path, withRowAnimation: UITableViewRowAnimation.Fade)
                 }
             }
 
