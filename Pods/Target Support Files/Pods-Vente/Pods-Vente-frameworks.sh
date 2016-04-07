@@ -89,8 +89,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Vente/Bolts.framework"
   install_framework "Pods-Vente/ChameleonFramework.framework"
   install_framework "Pods-Vente/CocoaLumberjack.framework"
+  install_framework "Pods-Vente/DOFavoriteButton.framework"
   install_framework "Pods-Vente/MBProgressHUD.framework"
   install_framework "Pods-Vente/Material.framework"
+  install_framework "Pods-Vente/MaterialControls.framework"
   install_framework "Pods-Vente/Parse.framework"
   install_framework "Pods-Vente/PubNub.framework"
 fi
@@ -100,8 +102,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Vente/Bolts.framework"
   install_framework "Pods-Vente/ChameleonFramework.framework"
   install_framework "Pods-Vente/CocoaLumberjack.framework"
+  install_framework "Pods-Vente/DOFavoriteButton.framework"
   install_framework "Pods-Vente/MBProgressHUD.framework"
   install_framework "Pods-Vente/Material.framework"
+  install_framework "Pods-Vente/MaterialControls.framework"
   install_framework "Pods-Vente/Parse.framework"
   install_framework "Pods-Vente/PubNub.framework"
 fi

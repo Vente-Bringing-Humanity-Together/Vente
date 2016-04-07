@@ -11,5 +11,7 @@ target 'Vente' do
     pod 'BDBOAuth1Manager'
     pod "PubNub"
     pod 'Material', '~> 1.38'
+    pod 'DOFavoriteButton'
+    pod 'MaterialControls', '~> 1.0.2'
 end
 
