@@ -301,7 +301,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.49019607840000001" green="0.86666666670000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-r9-9vn">
                                                     <rect key="frame" x="8" y="21" width="70" height="70"/>
@@ -461,7 +461,7 @@
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.49019607840000001" green="0.86666666670000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.47450980392156861" green="0.71764705882352942" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="Xgd-u6-lOt" id="yJr-2y-b5O"/>
                                             <outlet property="eventImageView" destination="agi-8x-AeZ" id="nOC-GL-TWj"/>
