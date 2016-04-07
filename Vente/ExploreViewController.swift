@@ -232,13 +232,12 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             })
         }
         
-//        if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
-////            cell.backgroundColor = UIColor.greenColor()
-////            cell.backgroundColor = UIColor(red: 125/255, green: 221/255, blue: 176/255, alpha: 1.0)
-//        }
-//        else {
-//            cell.backgroundColor = UIColor.whiteColor()
-//        }
+        if (events[indexPath.row]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
+            
+        }
+        else {
+            
+        }
         
         cell.backgroundColor = UIColor(red: 125/255, green: 221/255, blue: 176/255, alpha: 1.0)
         
