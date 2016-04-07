@@ -19,10 +19,15 @@ class MyEventsTableViewCell: UITableViewCell {
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String
-            self.dateLabel.text = Event["event_date"] as? String
             self.locationLabel.text = Event["event_location"] as? String
             self.eventImageView.image = Event["event_image"] as? UIImage
             //self.attendeeList = Event["attendee_list"] as! [String]
+            
+            var eventDateString = ""
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .ShortStyle
+            eventDateString = formatter.stringFromDate((Event!["event_date"] as? NSDate)!)
+            self.dateLabel.text = eventDateString
         }
     }
     
