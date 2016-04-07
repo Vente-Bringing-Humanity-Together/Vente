@@ -1,6 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/imglyKit" "${PODS_ROOT}/Headers/Public"
-OTHER_LDFLAGS = -framework "AVFoundation" -framework "Accelerate" -framework "CoreGraphics" -framework "CoreImage" -framework "CoreMotion" -framework "CoreText" -framework "Foundation" -framework "GLKit" -framework "MobileCoreServices" -framework "OpenGLES" -framework "Photos" -framework "UIKit"
-OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES

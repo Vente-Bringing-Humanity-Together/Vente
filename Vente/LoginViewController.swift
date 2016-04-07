@@ -10,13 +10,16 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Material
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var facebookButton: FBSDKLoginButton!
-
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    
+    let usernameField: TextField! = TextField(frame: CGRectMake(20, 110, 275, 30))
+    let passwordField: TextField! = TextField(frame: CGRectMake(20, 180, 275, 30))
+    let loginbutton: FlatButton = FlatButton(frame: CGRectMake(114, 265, 80, 40))
+    let signupbutton: FlatButton = FlatButton(frame: CGRectMake(105, 310, 100, 40))
     
     var followers : [String] = []
     var following : [String] = []
@@ -36,9 +39,34 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setFloat(10, forKey: "distanceSlider")
         defaults.synchronize()
+        
+        usernameField.placeholder = "Username"
+        textMaker(usernameField)
+        
+        passwordField.placeholder = "Password"
+        textMaker(passwordField)
+        
+        loginbutton.setTitle("Log In", forState: .Normal)
+        buttonMaker(loginbutton)
+        loginbutton.addTarget(self, action: #selector(LoginViewController.loginButtonTouched), forControlEvents: .TouchUpInside)
+        
+        signupbutton.setTitle("Sign Up", forState: .Normal)
+        buttonMaker(signupbutton)
+        signupbutton.addTarget(self, action: #selector(LoginViewController.signupButtonTouched), forControlEvents: .TouchUpInside)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func signupButtonTouched() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("signupvc") as UIViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
-    @IBAction func onLogIn(sender: AnyObject) {
+    func loginButtonTouched() {
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!){
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
@@ -48,11 +76,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -127,5 +150,36 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.endEditing(true)
     }
     
+    func textMaker(field: TextField) {
+        
+        field.placeholderTextColor = MaterialColor.grey.base
+        field.font = UIFont (name: "District Pro Thin", size: 17)
+        field.textColor = MaterialColor.black
+        
+        field.titleLabel = UILabel()
+        field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
+        field.titleLabelColor = MaterialColor.grey.base
+        field.titleLabelActiveColor = MaterialColor.blue.darken1
+        
+        let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        
+        let clearButton: FlatButton = FlatButton()
+        clearButton.pulseColor = MaterialColor.red.lighten1
+        clearButton.pulseScale = false
+        clearButton.tintColor = MaterialColor.red.lighten1
+        clearButton.setImage(image, forState: .Normal)
+        clearButton.setImage(image, forState: .Highlighted)
+        
+        field.clearButton = clearButton
+        view.addSubview(field)
+    }
+    
+    func buttonMaker(button: FlatButton) {
+        button.titleLabel!.font = UIFont (name: "District Pro Thin", size: 13)
+        button.tintColor = MaterialColor.blue.darken1
+        
+        // Add button to UIViewController.
+        view.addSubview(button)
+    }
 }
 

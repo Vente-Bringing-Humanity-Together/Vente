@@ -10,5 +10,6 @@ target 'Vente' do
     pod 'ChameleonFramework'
     pod 'BDBOAuth1Manager'
     pod "PubNub"
+    pod 'Material', '~> 1.38'
 end
 
