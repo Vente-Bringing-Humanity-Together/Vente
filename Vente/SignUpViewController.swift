@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
         field.font = UIFont (name: "District Pro Thin", size: 17)
         field.textColor = MaterialColor.black
         
-        field.titleLabel = UILabel()
+//        field.titleLabel = UILabel()
         field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
         field.titleLabelColor = MaterialColor.grey.base
         field.titleLabelActiveColor = MaterialColor.blue.darken1
@@ -86,7 +86,7 @@ class SignUpViewController: UIViewController {
         clearButton.setImage(image, forState: .Normal)
         clearButton.setImage(image, forState: .Highlighted)
         
-        field.clearButton = clearButton
+//        field.clearButton = clearButton
         view.addSubview(field)
     }
     
