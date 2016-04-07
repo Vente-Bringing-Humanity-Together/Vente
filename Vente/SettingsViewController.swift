@@ -44,6 +44,29 @@ class SettingsViewController: UIViewController {
             oneLabel.hidden = true
             distanceLabel.hidden = true
         }
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
+            navigationBar.backgroundColor = UIColor.whiteColor()
+            navigationBar.tintColor = UIColor.whiteColor()
+            
+            self.navigationItem.title = "Settings"
+            
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+            shadow.shadowOffset = CGSizeMake(1, 1);
+            shadow.shadowBlurRadius = 1;
+            navigationBar.titleTextAttributes = [
+                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+                NSForegroundColorAttributeName : UIColor.whiteColor(),
+                NSShadowAttributeName : shadow
+            ]
+        }
+        
+        if let tabBar = tabBarController?.tabBar {
+            tabBar.barTintColor = UIColor.whiteColor()
+            tabBar.backgroundColor = UIColor.whiteColor()
+        }
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
