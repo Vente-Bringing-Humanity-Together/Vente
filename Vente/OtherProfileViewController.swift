@@ -200,7 +200,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         }
         else if (optionSegmentedControl.selectedSegmentIndex == 2) {
             let otherProfileViewController = OtherProfileViewController()
-            let personID = tableFollowingArray[indexPath.row]
+            let personID = tableFollowersArray[indexPath.row]
             otherProfileViewController.personID = personID
             
             self.navigationController?.pushViewController(otherProfileViewController, animated: true)
