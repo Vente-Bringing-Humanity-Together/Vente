@@ -19,6 +19,8 @@ class ExploreTableViewCell: UITableViewCell {
     
     var attendeeList : [String]!
     
+    let button = DOFavoriteButton(frame: CGRectMake(250, 0, 60, 60), image: UIImage(named: "ic_done"))
+    
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String
@@ -32,14 +34,15 @@ class ExploreTableViewCell: UITableViewCell {
             formatter.timeStyle = .ShortStyle
             eventDateString = formatter.stringFromDate((Event["event_date"] as? NSDate)!)
             self.dateLabel.text = eventDateString
+            
+            button.deselect()
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        let button = DOFavoriteButton(frame: CGRectMake(250, 0, 60, 60), image: UIImage(named: "ic_done"))
+                
         button.imageColorOff = UIColor.whiteColor()
         button.imageColorOn = UIColor.greenColor()
         button.circleColor = UIColor.whiteColor()
