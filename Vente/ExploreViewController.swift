@@ -188,6 +188,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             
             defaults.synchronize()
             doDatabaseQuery()
+            
+            locationManager.stopUpdatingLocation()
         }
     }
     
