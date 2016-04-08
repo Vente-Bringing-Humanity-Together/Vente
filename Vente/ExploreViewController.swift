@@ -424,12 +424,12 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController?.pushViewController(createEventViewController, animated: true)
     }
     
-    @IBAction func settingsButtonTouched(sender: AnyObject) {
-        let settingsViewController = SettingsViewController()
-        
-        settingsViewController.fromExplore = true
-        self.navigationController?.pushViewController(settingsViewController, animated: true)
-    }
+//    @IBAction func settingsButtonTouched(sender: AnyObject) {
+//        let settingsViewController = SettingsViewController()
+//        
+//        settingsViewController.fromExplore = true
+//        self.navigationController?.pushViewController(settingsViewController, animated: true)
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! UITableViewCell
@@ -464,6 +464,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             
             }, completion: { animationFinished in
                 self.subView1.hidden = true
+                self.scrollView.hidden = true
+                self.distanceView.hidden = true
+                
+                self.tagsSwitch.on = false
+                self.distanceSwitch.on = false
         })
         
     }
