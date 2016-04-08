@@ -277,7 +277,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="149" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="op5-Yd-jL0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.34901960780000002" green="0.23529411759999999" blue="0.1215686275" alpha="0.79931294330000002" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.87058823529411766" green="0.72156862745098038" blue="0.52941176470588236" alpha="0.79931294330000002" colorSpace="calibratedRGB"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="AYC-hj-CgW">
                                     <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -344,7 +344,7 @@
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.51764705879999995" green="0.3411764706" blue="0.18823529410000001" alpha="0.78205341319999999" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.59607843140000005" green="0.46274509800000002" blue="0.3294117647" alpha="0.62286679960000002" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="FzC-B3-ftq" id="BEN-IG-KbR"/>
                                             <outlet property="eventImageView" destination="cIK-r9-9vn" id="ev2-sH-pt7"/>

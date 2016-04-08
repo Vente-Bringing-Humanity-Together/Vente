@@ -17,6 +17,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     var myEvents: [PFObject]!
     var filteredEvents: [PFObject]?
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,10 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         searchBar.delegate = self
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MyEventsViewController.onRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
         
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
@@ -55,25 +61,9 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(animated: Bool) {
-//        if let navigationBar = navigationController?.navigationBar {
-//            navigationBar.backgroundColor = UIColor(red: 125/255, green: 221/255, blue: 176/255, alpha: 1.0)
-//            navigationBar.tintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 0.78)
-//            
-//            let shadow = NSShadow()
-//            shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
-//            shadow.shadowOffset = CGSizeMake(2, 2);
-//            shadow.shadowBlurRadius = 4;
-//            navigationBar.titleTextAttributes = [
-//                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
-//                NSForegroundColorAttributeName : UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 0.78),
-//                NSShadowAttributeName : shadow
-//            ]
-//        }
-//        
-//        if let tabBar = tabBarController?.tabBar {
-//            tabBar.barTintColor = UIColor(red: 125/255, green: 221/255, blue: 176/255, alpha: 0.2)
-//            tabBar.tintColor = UIColor.whiteColor()
-//        }
+        
+        tableView.hidden = true
+        tableView.alpha = 0.0
         
         getEventsFromDatabase()
     }
@@ -81,6 +71,24 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    func onRefresh() {
+        delay(2, closure: {
+            self.refreshControl.endRefreshing()
+        })
+        
+        getEventsFromDatabase()
+        
+        self.refreshControl?.endRefreshing()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -223,6 +231,18 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.myEvents = results
                     self.filteredEvents = self.myEvents
                     self.tableView.reloadData()
+                    
+                    self.tableView.hidden = false
+                    self.tableView.alpha = 0.0
+                    
+                    UIView.animateWithDuration(0.2, animations: {
+                        
+                        self.tableView.alpha = 1.0
+                        
+                        }, completion: { animationFinished in
+                    })
+
+                    
                 } else {
                     print("No results returned")
                 }
