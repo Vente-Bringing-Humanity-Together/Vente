@@ -794,6 +794,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             doDatabaseQuery()
         }
         
+        print(defaults.integerForKey("distanceSlider"))
+        
         eventsTableView.reloadData()
         
         
