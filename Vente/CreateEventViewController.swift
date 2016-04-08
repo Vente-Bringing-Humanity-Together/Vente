@@ -75,7 +75,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         yelpTableView.dataSource = self
         
         yelpView.backgroundColor = UIColor(red: 0.95, green: 0.6, blue: 0.6, alpha: 1.0)
-
+        yelpView.clipsToBounds = true
+        yelpView.layer.cornerRadius = 15;
         
 //        yelpTableView.rowHeight = UITableViewAutomaticDimension
 //        yelpTableView.estimatedRowHeight = 120
