@@ -365,6 +365,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func scrollViewDidScroll(scrollView: UIScrollView) {
         subView1.hidden = true
         distanceView.hidden = true
+        self.scrollView.hidden = true
         view.endEditing(true)
     }
     
