@@ -209,16 +209,35 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @IBAction func onClickDone(sender: AnyObject) {
-        blurEffectView?.removeFromSuperview()
-        self.yelpView.hidden = true
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.yelpView.center.y = self.scrollView.contentOffset.y + 915
+            self.yelpView.center.x = self.scrollView.contentOffset.x + 160
+            
+            self.view.bringSubviewToFront(self.yelpView)
+            }, completion: { animationFinished in
+                self.blurEffectView?.removeFromSuperview()
+                self.yelpView.hidden = true
+        })
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        eventLocationLabel.text = filteredData![indexPath.row].address
-        if (filteredData![indexPath.row].imageURL != nil) {
-            eventImageView.setImageWithURL(filteredData![indexPath.row].imageURL!)
-        }
-        self.yelpView.hidden = true
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.yelpView.center.y = self.scrollView.contentOffset.y + 915
+            self.yelpView.center.x = self.scrollView.contentOffset.x + 160
+            
+            self.view.bringSubviewToFront(self.yelpView)
+            }, completion: { animationFinished in
+                self.blurEffectView?.removeFromSuperview()
+                self.eventLocationLabel.text = self.filteredData![indexPath.row].address
+                if (self.filteredData![indexPath.row].imageURL != nil) {
+                    self.eventImageView.setImageWithURL(self.filteredData![indexPath.row].imageURL!)
+                }
+                self.yelpView.hidden = true
+        })
     }
     
     override func didReceiveMemoryWarning() {
