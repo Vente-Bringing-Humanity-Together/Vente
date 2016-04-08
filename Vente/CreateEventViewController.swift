@@ -184,10 +184,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
     }
     @IBAction func onClickYelp(sender: AnyObject) {
-         // Was thinking we could do a blur
-//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView?.frame = scrollView.bounds
+        let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
+        let start = CGPoint(x: 0.0, y: 0.0)
+        blurEffectView?.frame = CGRect(origin: start, size: blurEffectViewSize)
         blurEffectView?.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         scrollView.addSubview(blurEffectView!)
         
