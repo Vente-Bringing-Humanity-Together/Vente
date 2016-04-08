@@ -357,6 +357,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         subView1.hidden = true
+        distanceView.hidden = true
         view.endEditing(true)
     }
     
@@ -536,6 +537,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         // save to defaults everything
         setUserDefaults()
         // reload the table
+        searchTags()
     }
     
     
@@ -626,6 +628,9 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         distanceSwitch.on = false
         distanceView.hidden = true
         setUserDefaults()
+        
+        filteredEvents = events
+        eventsTableView.reloadData()
     }
     
     func setSwitches() {
@@ -725,6 +730,51 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func searchTags() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if (defaults.integerForKey("foodDrinkSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["fooddrink"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("entertainmentSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["entertainment"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("sportsSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["sports"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("chillSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["chill"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("academicSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["academic"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("musicSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["music"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("nightlifeSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["nightlife"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("adventureSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["adventure"]!.isEqual(true)
+            }
+        }
+        
+        eventsTableView.reloadData()
         
     }
 
