@@ -43,6 +43,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var nightlifeSwitch: UISwitch!
     @IBOutlet weak var adventureSwitch: UISwitch!
     
+    @IBOutlet weak var distanceSlider: UISlider!
+    
     @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
@@ -78,6 +80,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         subView1.hidden = true
         distanceView.hidden = true
+        
+        setSwitches()
                 
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
@@ -168,7 +172,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let today = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
         query.whereKey("event_date", greaterThanOrEqualTo: today!)
         
-        if (defaults.integerForKey("fooddrinkSwitch") == 1) {
+//        if (defaults.integerForKey("fooddrinkSwitch") == 1) {
+//            query.whereKey("fooddrink", equalTo: true)
+//        }
+        if (defaults.integerForKey("foodDrinkSwitch") == 1) {
             query.whereKey("fooddrink", equalTo: true)
         }
         if (defaults.integerForKey("entertainmentSwitch") == 1) {
@@ -626,7 +633,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         musicSwitch.on = false
         nightlifeSwitch.on = false
         adventureSwitch.on = false
-//        distanceSlider.value = 10
+        distanceSlider.value = 10
         
         tagsSwitch.on = false
         scrollView.hidden = true
@@ -642,7 +649,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
-//        distanceSlider.value = defaults.floatForKey("distanceSlider")
+        distanceSlider.value = defaults.floatForKey("distanceSlider")
         
         if (defaults.integerForKey("foodDrinkSwitch") == 1) {
             foodDrinkSwitch.on = true
@@ -673,7 +680,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func setUserDefaults() {
         let defaults = NSUserDefaults.standardUserDefaults()
         
-//        defaults.setFloat(distanceSlider.value, forKey: "distanceSlider")
+        defaults.setFloat(distanceSlider.value, forKey: "distanceSlider")
         
         if (foodDrinkSwitch.on) {
             defaults.setInteger(1, forKey: "foodDrinkSwitch")
@@ -779,12 +786,16 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        if (defaults.integerForKey("foodDrinkSwitch") == 0 && defaults.integerForKey("entertainmentSwitch") == 0 && defaults.integerForKey("sportsSwitch") == 0 && defaults.integerForKey("chillSwitch") == 0 && defaults.integerForKey("academicSwitch") == 0 && defaults.integerForKey("musicSwitch") == 0 && defaults.integerForKey("nightlifeSwitch") == 0 && defaults.integerForKey("adventureSwitch") == 0) {
+        if (defaults.integerForKey("foodDrinkSwitch") == 0 && defaults.integerForKey("entertainmentSwitch") == 0 && defaults.integerForKey("sportsSwitch") == 0 && defaults.integerForKey("chillSwitch") == 0 && defaults.integerForKey("academicSwitch") == 0 && defaults.integerForKey("musicSwitch") == 0 && defaults.integerForKey("nightlifeSwitch") == 0 && defaults.integerForKey("adventureSwitch") == 0 && defaults.integerForKey("distanceSlider") == 10) {
             
             filteredEvents = events
         }
+        else if (defaults.integerForKey("distanceSlider") != 10) {
+            doDatabaseQuery()
+        }
         
         eventsTableView.reloadData()
+        
         
     }
 

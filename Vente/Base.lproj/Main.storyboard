@@ -524,7 +524,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUh-T2-XDJ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUh-T2-XDJ">
                                         <rect key="frame" x="247" y="11" width="65" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -642,6 +642,7 @@
                         <outlet property="academicSwitch" destination="JML-5C-pyD" id="a8c-wT-lr2"/>
                         <outlet property="adventureSwitch" destination="F0v-qH-w1h" id="do1-NE-TD3"/>
                         <outlet property="chillSwitch" destination="Mhe-jK-QpQ" id="aK6-Ov-EER"/>
+                        <outlet property="distanceSlider" destination="ZlO-LB-WyC" id="K5I-1E-Mhm"/>
                         <outlet property="distanceSwitch" destination="aTq-NE-KBu" id="c7c-v6-Q6J"/>
                         <outlet property="distanceView" destination="IaM-d5-S8r" id="7Dj-D2-Hvs"/>
                         <outlet property="doneButton" destination="CUa-Wb-8x5" id="dei-gb-HIS"/>
