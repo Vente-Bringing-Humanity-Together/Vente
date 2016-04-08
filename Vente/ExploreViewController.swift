@@ -245,6 +245,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
 //                        cell.eventImageView.addSubview(blurEffectView)
 
                         cell.eventImageView.image = image
+//                        cell.eventImageView.image = self.applyBlurEffect2(image!)
                     }
                 }
             })
@@ -346,6 +347,27 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func applyBlurEffect(image: UIImage) -> UIImage {
+        let imageToBlur = CIImage(image: image)
+        let blurfilter = CIFilter(name: "CIGaussianBlur")
+        blurfilter!.setValue(imageToBlur, forKey: "inputImage")
+        let resultImage = blurfilter!.valueForKey("outputImage") as! CIImage
+        let blurredImage = UIImage(CIImage: resultImage)
+        return blurredImage
+    }
+    
+    func applyBlurEffect2(image: UIImage) -> UIImage {
+        let imageToBlur = CIImage(image: image)
+        let blurfilter = CIFilter(name: "CIGaussianBlur")
+        blurfilter!.setValue(5, forKey: kCIInputRadiusKey)
+        blurfilter!.setValue(imageToBlur, forKey: "inputImage")
+        let resultImage = blurfilter!.valueForKey("outputImage") as! CIImage
+        var blurredImage = UIImage(CIImage: resultImage)
+        let cropped:CIImage=resultImage.imageByCroppingToRect(CGRectMake(0, 0,imageToBlur!.extent.size.width, imageToBlur!.extent.size.height))
+        blurredImage = UIImage(CIImage: cropped)
+        return blurredImage
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
