@@ -17,6 +17,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     var myEvents: [PFObject]!
     var filteredEvents: [PFObject]?
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,10 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         searchBar.delegate = self
         
 //        navigationItem.leftBarButtonItem = editButtonItem()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MyEventsViewController.onRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
         
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
@@ -65,6 +71,24 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    func onRefresh() {
+        delay(2, closure: {
+            self.refreshControl.endRefreshing()
+        })
+        
+        getEventsFromDatabase()
+        
+        self.refreshControl?.endRefreshing()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
