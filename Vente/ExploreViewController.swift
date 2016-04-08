@@ -47,6 +47,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var doneButton: UIButton!
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +84,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         distanceView.hidden = true
         
         setSwitches()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ExploreViewController.onRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        eventsTableView.insertSubview(refreshControl, atIndex: 0)
                 
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
@@ -107,27 +113,56 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             tabBar.tintColor = UIColor(red: 200/255, green: 159/255, blue: 124/255, alpha: 1.0)
         }
         
+//        // Grab our current location from the defaults
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        
+//        let latitude = defaults.objectForKey("user_latitude") as? String
+//        let longitude = defaults.objectForKey("user_longitude") as? String
+//        
+//        if (latitude != nil && longitude != nil) {
+//            myGlobalLocation = CLLocation(latitude: Double(latitude!)!, longitude: Double(longitude!)!)
+//            doDatabaseQuery()
+//        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        // Grab our current location from the defaults
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        let latitude = defaults.objectForKey("user_latitude") as? String
-        let longitude = defaults.objectForKey("user_longitude") as? String
-        
-        if (latitude != nil && longitude != nil) {
-            myGlobalLocation = CLLocation(latitude: Double(latitude!)!, longitude: Double(longitude!)!)
-            doDatabaseQuery()
-        }
+//        // Grab our current location from the defaults
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        
+//        let latitude = defaults.objectForKey("user_latitude") as? String
+//        let longitude = defaults.objectForKey("user_longitude") as? String
+//        
+//        if (latitude != nil && longitude != nil) {
+//            myGlobalLocation = CLLocation(latitude: Double(latitude!)!, longitude: Double(longitude!)!)
+//            doDatabaseQuery()
+//        }
 
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    func onRefresh() {
+        delay(2, closure: {
+            self.refreshControl.endRefreshing()
+        })
+        
+        doDatabaseQuery()
+        
+        self.refreshControl?.endRefreshing()
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
