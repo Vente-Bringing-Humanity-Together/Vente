@@ -19,7 +19,7 @@ class ExploreTableViewCell: UITableViewCell {
     
     var attendeeList : [String]!
     
-    let button = DOFavoriteButton(frame: CGRectMake(250, 0, 60, 60), image: UIImage(named: "ic_done"))
+    let joinButton = DOFavoriteButton(frame: CGRectMake(250, 0, 60, 60), image: UIImage(named: "ic_done"))
     
     var Event: PFObject! {
         didSet {
@@ -35,7 +35,7 @@ class ExploreTableViewCell: UITableViewCell {
             eventDateString = formatter.stringFromDate((Event["event_date"] as? NSDate)!)
             self.dateLabel.text = eventDateString
             
-            button.deselect()
+            joinButton.deselect()
         }
     }
 
@@ -43,13 +43,13 @@ class ExploreTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
                 
-        button.imageColorOff = UIColor.whiteColor()
-        button.imageColorOn = UIColor.greenColor()
-        button.circleColor = UIColor.whiteColor()
-        button.lineColor = UIColor.greenColor()
-        button.duration = 2.0
-        self.addSubview(button)
-        button.addTarget(self, action: #selector(ExploreTableViewCell.tapped(_:)), forControlEvents: .TouchUpInside)
+        joinButton.imageColorOff = UIColor.whiteColor()
+        joinButton.imageColorOn = UIColor.greenColor()
+        joinButton.circleColor = UIColor.whiteColor()
+        joinButton.lineColor = UIColor.greenColor()
+        joinButton.duration = 2.0
+        self.addSubview(joinButton)
+//        button.addTarget(self, action: #selector(ExploreTableViewCell.tapped(_:)), forControlEvents: .TouchUpInside)
         
     }
 
@@ -59,13 +59,13 @@ class ExploreTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func tapped(sender: DOFavoriteButton) {
-        if sender.selected {
+    func animateJoin() {
+        if joinButton.selected {
             // deselect
-            sender.deselect()
+            joinButton.deselect()
         } else {
             // select with animation
-            sender.select()
+            joinButton.select()
         }
     }
 
