@@ -779,6 +779,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
+        if (defaults.integerForKey("foodDrinkSwitch") == 0 && defaults.integerForKey("entertainmentSwitch") == 0 && defaults.integerForKey("sportsSwitch") == 0 && defaults.integerForKey("chillSwitch") == 0 && defaults.integerForKey("academicSwitch") == 0 && defaults.integerForKey("musicSwitch") == 0 && defaults.integerForKey("nightlifeSwitch") == 0 && defaults.integerForKey("adventureSwitch") == 0) {
+            
+            filteredEvents = events
+        }
+        
         eventsTableView.reloadData()
         
     }
