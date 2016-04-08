@@ -33,6 +33,18 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    // Tag Switches
+    @IBOutlet weak var foodDrinkSwitch: UISwitch!
+    @IBOutlet weak var entertainmentSwitch: UISwitch!
+    @IBOutlet weak var sportsSwitch: UISwitch!
+    @IBOutlet weak var chillSwitch: UISwitch!
+    @IBOutlet weak var musicSwitch: UISwitch!
+    @IBOutlet weak var academicSwitch: UISwitch!
+    @IBOutlet weak var nightlifeSwitch: UISwitch!
+    @IBOutlet weak var adventureSwitch: UISwitch!
+    
+    @IBOutlet weak var doneButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -522,7 +534,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         // save to defaults everything
-        // dismiss the searchbar as first responder
+        setUserDefaults()
         // reload the table
     }
     
@@ -597,5 +609,124 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             })
         }
     }
+    
+    @IBAction func clearTagsTouched(sender: AnyObject) {
+        foodDrinkSwitch.on = false
+        entertainmentSwitch.on = false
+        sportsSwitch.on = false
+        chillSwitch.on = false
+        academicSwitch.on = false
+        musicSwitch.on = false
+        nightlifeSwitch.on = false
+        adventureSwitch.on = false
+//        distanceSlider.value = 10
+        
+        tagsSwitch.on = false
+        scrollView.hidden = true
+        distanceSwitch.on = false
+        distanceView.hidden = true
+        setUserDefaults()
+    }
+    
+    func setSwitches() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+//        distanceSlider.value = defaults.floatForKey("distanceSlider")
+        
+        if (defaults.integerForKey("foodDrinkSwitch") == 1) {
+            foodDrinkSwitch.on = true
+        }
+        if (defaults.integerForKey("entertainmentSwitch") == 1) {
+            entertainmentSwitch.on = true
+        }
+        if (defaults.integerForKey("sportsSwitch") == 1) {
+            sportsSwitch.on = true
+        }
+        if (defaults.integerForKey("chillSwitch") == 1) {
+            chillSwitch.on = true
+        }
+        if (defaults.integerForKey("academicSwitch") == 1) {
+            academicSwitch.on = true
+        }
+        if (defaults.integerForKey("musicSwitch") == 1) {
+            musicSwitch.on = true
+        }
+        if (defaults.integerForKey("nightlifeSwitch") == 1) {
+            nightlifeSwitch.on = true
+        }
+        if (defaults.integerForKey("adventureSwitch") == 1) {
+            adventureSwitch.on = true
+        }
+    }
+    
+    func setUserDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+//        defaults.setFloat(distanceSlider.value, forKey: "distanceSlider")
+        
+        if (foodDrinkSwitch.on) {
+            defaults.setInteger(1, forKey: "foodDrinkSwitch")
+        }
+        else if (!foodDrinkSwitch.on) {
+            defaults.setInteger(0, forKey: "foodDrinkSwitch")
+        }
+        
+        if (entertainmentSwitch.on) {
+            defaults.setInteger(1, forKey: "entertainmentSwitch")
+        }
+        else if (!entertainmentSwitch.on) {
+            defaults.setInteger(0, forKey: "entertainmentSwitch")
+        }
+        
+        if (sportsSwitch.on) {
+            defaults.setInteger(1, forKey: "sportsSwitch")
+        }
+        else if (!sportsSwitch.on) {
+            defaults.setInteger(0, forKey: "sportsSwitch")
+        }
+        
+        if (chillSwitch.on) {
+            defaults.setInteger(1, forKey: "chillSwitch")
+        }
+        else if (!chillSwitch.on) {
+            defaults.setInteger(0, forKey: "chillSwitch")
+        }
+        
+        if (academicSwitch.on) {
+            defaults.setInteger(1, forKey: "academicSwitch")
+        }
+        else if (!academicSwitch.on) {
+            defaults.setInteger(0, forKey: "academicSwitch")
+        }
+        
+        if (musicSwitch.on) {
+            defaults.setInteger(1, forKey: "musicSwitch")
+        }
+        else if (!musicSwitch.on) {
+            defaults.setInteger(0, forKey: "musicSwitch")
+        }
+        
+        if (nightlifeSwitch.on) {
+            defaults.setInteger(1, forKey: "nightlifeSwitch")
+        }
+        else if (!nightlifeSwitch.on) {
+            defaults.setInteger(0, forKey: "nightlifeSwitch")
+        }
+        
+        if (adventureSwitch.on) {
+            defaults.setInteger(1, forKey: "adventureSwitch")
+        }
+        else if (!adventureSwitch.on) {
+            defaults.setInteger(0, forKey: "adventureSwitch")
+        }
+        
+        defaults.synchronize()
+    }
+    
+    func searchTags() {
+        
+    }
+
 
 }
