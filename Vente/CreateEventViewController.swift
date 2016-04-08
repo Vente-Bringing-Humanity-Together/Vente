@@ -193,8 +193,19 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         self.yelpView?.hidden = false
         self.view.bringSubviewToFront(yelpView)
-        yelpView.center.y = scrollView.contentOffset.y + 305
-        yelpView.center.x = scrollView.contentOffset.x + 160
+//        yelpView.center.y = scrollView.contentOffset.y + 305
+//        yelpView.center.x = scrollView.contentOffset.x + 160
+        
+        self.yelpView.center.y = scrollView.contentOffset.y + 915
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.yelpView.center.y = self.scrollView.contentOffset.y + 305
+            self.yelpView.center.x = self.scrollView.contentOffset.x + 160
+            
+            self.view.bringSubviewToFront(self.yelpView)
+            }, completion: { animationFinished in
+        })
     }
     
     @IBAction func onClickDone(sender: AnyObject) {
