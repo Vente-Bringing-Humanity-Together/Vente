@@ -58,6 +58,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     @IBOutlet weak var createEventButton: UIButton!
     
+    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+    var blurEffectView: UIVisualEffectView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +74,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         yelpTableView.delegate = self
         yelpTableView.dataSource = self
         
-        yelpView.backgroundColor = UIColor(red: 0.9, green: 0.2, blue: 0.2, alpha: 0.5)
+        yelpView.backgroundColor = UIColor(red: 0.95, green: 0.6, blue: 0.6, alpha: 1.0)
 
         
 //        yelpTableView.rowHeight = UITableViewAutomaticDimension
@@ -181,20 +184,21 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
     }
     @IBAction func onClickYelp(sender: AnyObject) {
-        // // Was thinking we could do a blur
+         // Was thinking we could do a blur
 //        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = view.bounds
-//        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
-//        view.addSubview(blurEffectView)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.frame = scrollView.bounds
+        blurEffectView?.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        scrollView.addSubview(blurEffectView!)
         
-        self.yelpView.hidden = false
+        self.yelpView?.hidden = false
         self.view.bringSubviewToFront(yelpView)
         yelpView.center.y = scrollView.contentOffset.y + 305
         yelpView.center.x = scrollView.contentOffset.x + 160
     }
     
     @IBAction func onClickDone(sender: AnyObject) {
+        blurEffectView?.removeFromSuperview()
         self.yelpView.hidden = true
     }
     

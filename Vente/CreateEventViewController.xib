@@ -216,38 +216,38 @@
                                 <action selector="onClickYelp:" destination="-1" eventType="touchUpInside" id="lTH-nB-ZDN"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
-                            <rect key="frame" x="1000" y="-30" width="250" height="336"/>
-                            <subviews>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="295"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="Yha-Xb-Qvf">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                    </searchBar>
-                                </tableView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-Pb-XSI">
-                                    <rect key="frame" x="0.0" y="303" width="250" height="30"/>
-                                    <state key="normal" title="Cancel"/>
-                                    <connections>
-                                        <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="rxV-ZA-FST"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
                             <rect key="frame" x="8" y="445" width="304" height="296"/>
                         </imageView>
                     </subviews>
                     <gestureRecognizers/>
                 </scrollView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
+                    <rect key="frame" x="35" y="115" width="250" height="339"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="295"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="Yha-Xb-Qvf">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                        </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxG-Pb-XSI">
+                            <rect key="frame" x="0.0" y="303" width="250" height="30"/>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="onClickDone:" destination="-1" eventType="touchUpInside" id="rxV-ZA-FST"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="273" y="315"/>
