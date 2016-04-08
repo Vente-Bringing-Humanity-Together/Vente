@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import CoreLocation
+import Material
 
 class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
     
@@ -22,6 +23,29 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     var myGlobalLocation: CLLocation!
     
     var attendeeList : [String]!
+    
+    @IBOutlet weak var subView1: UIView!
+    
+    @IBOutlet weak var tagsSwitch: UISwitch!
+    @IBOutlet weak var distanceSwitch: UISwitch!
+    
+    @IBOutlet weak var distanceView: UIView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    // Tag Switches
+    @IBOutlet weak var foodDrinkSwitch: UISwitch!
+    @IBOutlet weak var entertainmentSwitch: UISwitch!
+    @IBOutlet weak var sportsSwitch: UISwitch!
+    @IBOutlet weak var chillSwitch: UISwitch!
+    @IBOutlet weak var musicSwitch: UISwitch!
+    @IBOutlet weak var academicSwitch: UISwitch!
+    @IBOutlet weak var nightlifeSwitch: UISwitch!
+    @IBOutlet weak var adventureSwitch: UISwitch!
+    
+    @IBOutlet weak var distanceSlider: UISlider!
+    
+    @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +75,14 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         locationManager.distanceFilter = 200
         locationManager.requestWhenInUseAuthorization()
         
+        scrollView.contentSize = CGSize(width: 2 * scrollView.frame.width, height: scrollView.frame.height)
+        scrollView.hidden = true
+        
+        subView1.hidden = true
+        distanceView.hidden = true
+        
+        setSwitches()
+                
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
             navigationBar.backgroundColor = UIColor.whiteColor()
@@ -140,7 +172,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let today = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
         query.whereKey("event_date", greaterThanOrEqualTo: today!)
         
-        if (defaults.integerForKey("fooddrinkSwitch") == 1) {
+//        if (defaults.integerForKey("fooddrinkSwitch") == 1) {
+//            query.whereKey("fooddrink", equalTo: true)
+//        }
+        if (defaults.integerForKey("foodDrinkSwitch") == 1) {
             query.whereKey("fooddrink", equalTo: true)
         }
         if (defaults.integerForKey("entertainmentSwitch") == 1) {
@@ -260,8 +295,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.joinButton.deselect()
         }
         
-//        cell.backgroundColor = UIColor(red: 125/255, green: 221/255, blue: 176/255, alpha: 1.0)
-        
         return cell
     }
     
@@ -330,6 +363,9 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        subView1.hidden = true
+        distanceView.hidden = true
+        self.scrollView.hidden = true
         view.endEditing(true)
     }
     
@@ -396,12 +432,12 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController?.pushViewController(createEventViewController, animated: true)
     }
     
-    @IBAction func settingsButtonTouched(sender: AnyObject) {
-        let settingsViewController = SettingsViewController()
-        
-        settingsViewController.fromExplore = true
-        self.navigationController?.pushViewController(settingsViewController, animated: true)
-    }
+//    @IBAction func settingsButtonTouched(sender: AnyObject) {
+//        let settingsViewController = SettingsViewController()
+//        
+//        settingsViewController.fromExplore = true
+//        self.navigationController?.pushViewController(settingsViewController, animated: true)
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! UITableViewCell
@@ -412,5 +448,359 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         detailViewController.event = event
         print(event)
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        subView1.hidden = false
+        subView1.alpha = 0.0
+        
+        self.view.bringSubviewToFront(subView1)
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.subView1.alpha = 1.0
+            
+            }, completion: { animationFinished in
+        })
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.subView1.alpha = 0.0
+            
+            }, completion: { animationFinished in
+                self.subView1.hidden = true
+                self.scrollView.hidden = true
+                self.distanceView.hidden = true
+                
+                self.tagsSwitch.on = false
+                self.distanceSwitch.on = false
+        })
+        
+    }
+    
+    @IBAction func doneButtonTouched(sender: AnyObject) {
+        // animate the views back
+        
+        if tagsSwitch.on {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.scrollView.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.scrollView.hidden = false
+                    
+                    UIView.animateWithDuration(0.5, animations: {
+                        
+                        self.subView1.alpha = 0.0
+                        
+                        }, completion: { animationFinished in
+                            self.subView1.hidden = true
+                            
+                            self.distanceSwitch.on = false
+                            self.tagsSwitch.on = false
+                            
+                            self.searchBar.resignFirstResponder()
+                    })
+            })
+            
+        }
+        else if distanceSwitch.on {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.distanceView.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.distanceView.hidden = true
+                    
+                    UIView.animateWithDuration(0.5, animations: {
+                        
+                        self.subView1.alpha = 0.0
+                        
+                        }, completion: { animationFinished in
+                            self.subView1.hidden = true
+                            
+                            self.distanceSwitch.on = false
+                            self.tagsSwitch.on = false
+                            
+                            self.searchBar.resignFirstResponder()
+                    })
+                    
+            })
+            
+        }
+            
+        else {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.subView1.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.subView1.hidden = true
+                    
+                    self.distanceSwitch.on = false
+                    self.tagsSwitch.on = false
+                    
+                    self.searchBar.resignFirstResponder()
+            })
+        }
+        
+        // save to defaults everything
+        setUserDefaults()
+        // reload the table
+        searchTags()
+    }
+    
+    
+    @IBAction func tagsSwitchToggled(sender: AnyObject) {
+        if (tagsSwitch.on) {
+            
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.distanceView.alpha = 0.0
+                self.distanceSwitch.on = false
+                
+                }, completion: { animationFinished in
+                    self.distanceView.hidden = true
+            })
+            
+            scrollView.hidden = false
+            scrollView.alpha = 0.0
+            
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.scrollView.alpha = 1.0
+                
+                }, completion: { animationFinished in
+            })
+        }
+            
+        else {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.scrollView.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.scrollView.hidden = false
+            })
+        }
+    }
+    
+    @IBAction func distanceSwitchToggled(sender: AnyObject) {
+        if (distanceSwitch.on) {
+            
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.scrollView.alpha = 0.0
+                
+                self.tagsSwitch.on = false
+                
+                }, completion: { animationFinished in
+                    self.scrollView.hidden = true
+            })
+            
+            distanceView.hidden = false
+            distanceView.alpha = 0.0
+            
+            self.view.bringSubviewToFront(distanceView)
+            
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.distanceView.alpha = 1.0
+                
+                }, completion: { animationFinished in
+            })
+        }
+            
+        else {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.distanceView.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.distanceView.hidden = true
+            })
+        }
+    }
+    
+    @IBAction func clearTagsTouched(sender: AnyObject) {
+        foodDrinkSwitch.on = false
+        entertainmentSwitch.on = false
+        sportsSwitch.on = false
+        chillSwitch.on = false
+        academicSwitch.on = false
+        musicSwitch.on = false
+        nightlifeSwitch.on = false
+        adventureSwitch.on = false
+        distanceSlider.value = 10
+        
+        tagsSwitch.on = false
+        scrollView.hidden = true
+        distanceSwitch.on = false
+        distanceView.hidden = true
+        setUserDefaults()
+        
+        filteredEvents = events
+        eventsTableView.reloadData()
+    }
+    
+    func setSwitches() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        distanceSlider.value = defaults.floatForKey("distanceSlider")
+        
+        if (defaults.integerForKey("foodDrinkSwitch") == 1) {
+            foodDrinkSwitch.on = true
+        }
+        if (defaults.integerForKey("entertainmentSwitch") == 1) {
+            entertainmentSwitch.on = true
+        }
+        if (defaults.integerForKey("sportsSwitch") == 1) {
+            sportsSwitch.on = true
+        }
+        if (defaults.integerForKey("chillSwitch") == 1) {
+            chillSwitch.on = true
+        }
+        if (defaults.integerForKey("academicSwitch") == 1) {
+            academicSwitch.on = true
+        }
+        if (defaults.integerForKey("musicSwitch") == 1) {
+            musicSwitch.on = true
+        }
+        if (defaults.integerForKey("nightlifeSwitch") == 1) {
+            nightlifeSwitch.on = true
+        }
+        if (defaults.integerForKey("adventureSwitch") == 1) {
+            adventureSwitch.on = true
+        }
+    }
+    
+    func setUserDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setFloat(distanceSlider.value, forKey: "distanceSlider")
+        
+        if (foodDrinkSwitch.on) {
+            defaults.setInteger(1, forKey: "foodDrinkSwitch")
+        }
+        else if (!foodDrinkSwitch.on) {
+            defaults.setInteger(0, forKey: "foodDrinkSwitch")
+        }
+        
+        if (entertainmentSwitch.on) {
+            defaults.setInteger(1, forKey: "entertainmentSwitch")
+        }
+        else if (!entertainmentSwitch.on) {
+            defaults.setInteger(0, forKey: "entertainmentSwitch")
+        }
+        
+        if (sportsSwitch.on) {
+            defaults.setInteger(1, forKey: "sportsSwitch")
+        }
+        else if (!sportsSwitch.on) {
+            defaults.setInteger(0, forKey: "sportsSwitch")
+        }
+        
+        if (chillSwitch.on) {
+            defaults.setInteger(1, forKey: "chillSwitch")
+        }
+        else if (!chillSwitch.on) {
+            defaults.setInteger(0, forKey: "chillSwitch")
+        }
+        
+        if (academicSwitch.on) {
+            defaults.setInteger(1, forKey: "academicSwitch")
+        }
+        else if (!academicSwitch.on) {
+            defaults.setInteger(0, forKey: "academicSwitch")
+        }
+        
+        if (musicSwitch.on) {
+            defaults.setInteger(1, forKey: "musicSwitch")
+        }
+        else if (!musicSwitch.on) {
+            defaults.setInteger(0, forKey: "musicSwitch")
+        }
+        
+        if (nightlifeSwitch.on) {
+            defaults.setInteger(1, forKey: "nightlifeSwitch")
+        }
+        else if (!nightlifeSwitch.on) {
+            defaults.setInteger(0, forKey: "nightlifeSwitch")
+        }
+        
+        if (adventureSwitch.on) {
+            defaults.setInteger(1, forKey: "adventureSwitch")
+        }
+        else if (!adventureSwitch.on) {
+            defaults.setInteger(0, forKey: "adventureSwitch")
+        }
+        
+        defaults.synchronize()
+    }
+    
+    func searchTags() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if (defaults.integerForKey("foodDrinkSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["fooddrink"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("entertainmentSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["entertainment"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("sportsSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["sports"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("chillSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["chill"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("academicSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["academic"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("musicSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["music"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("nightlifeSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["nightlife"]!.isEqual(true)
+            }
+        }
+        if (defaults.integerForKey("adventureSwitch") == 1) {
+            filteredEvents = events!.filter {
+                $0["adventure"]!.isEqual(true)
+            }
+        }
+        
+        if (defaults.integerForKey("foodDrinkSwitch") == 0 && defaults.integerForKey("entertainmentSwitch") == 0 && defaults.integerForKey("sportsSwitch") == 0 && defaults.integerForKey("chillSwitch") == 0 && defaults.integerForKey("academicSwitch") == 0 && defaults.integerForKey("musicSwitch") == 0 && defaults.integerForKey("nightlifeSwitch") == 0 && defaults.integerForKey("adventureSwitch") == 0 && defaults.integerForKey("distanceSlider") == 10) {
+            
+            filteredEvents = events
+        }
+        else if (defaults.integerForKey("distanceSlider") != 10) {
+            doDatabaseQuery()
+        }
+        
+        print(defaults.integerForKey("distanceSlider"))
+        
+        eventsTableView.reloadData()
+        
+        
+    }
+
 
 }
