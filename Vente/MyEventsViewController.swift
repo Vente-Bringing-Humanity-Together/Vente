@@ -132,6 +132,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("MyEventsTableViewCell") as! MyEventsTableViewCell
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
 //        cell.Event = myEvents[indexPath.section]
         cell.Event = filteredEvents![indexPath.section]
         

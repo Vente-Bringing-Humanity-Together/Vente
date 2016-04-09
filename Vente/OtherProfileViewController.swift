@@ -149,6 +149,8 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier("PastEventsTableViewCell") as! PastEventsTableViewCell
             
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
             cell.Event = events[indexPath.section]
             
             if (events?[indexPath.section]["event_image"] != nil) {

@@ -154,6 +154,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier("MyEventsTableViewCell") as! MyEventsTableViewCell
             
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
             cell.Event = events[indexPath.section]
             
             if (events?[indexPath.section]["event_image"] != nil) {

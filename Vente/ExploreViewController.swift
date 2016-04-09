@@ -290,6 +290,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = eventsTableView.dequeueReusableCellWithIdentifier("ExploreTableViewCell") as! ExploreTableViewCell
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         cell.Event = filteredEvents![indexPath.section]
         
         if (events?[indexPath.section]["event_image"] != nil) {
