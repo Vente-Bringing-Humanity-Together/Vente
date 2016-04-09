@@ -74,6 +74,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        tableView.hidden = true
+        
         doDatabaseQuery()
         getUserData();
     }
@@ -286,6 +288,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     print("Successfully retrieved \(results.count) ventes")
                     self.events = results
                     self.tableView.reloadData()
+                    
+                    self.tableView.hidden = false
+                    self.tableView.alpha = 0.0
+                    
+                    UIView.animateWithDuration(0.2, animations: {
+                        
+                        self.tableView.alpha = 1.0
+                        
+                        }, completion: { animationFinished in
+                    })
+                    
                 } else {
                     print("No results returned")
                 }
