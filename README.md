@@ -55,4 +55,4 @@ An application to give people the power to connect and share meaningful interact
 
 ## Vente Gif Walkthrough
 
-<img src='Vente.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='Vente1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
