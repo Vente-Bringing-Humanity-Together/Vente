@@ -18,8 +18,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
+//    @IBOutlet weak var emailLabel: UILabel!
+//    @IBOutlet weak var numberLabel: UILabel!
     
     @IBOutlet weak var optionSegmentedControl: UISegmentedControl!
     
@@ -330,12 +330,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (user?["first_name"] != nil && user?["last_name"] != nil) {
             nameLabel.text = (user?["first_name"] as! String) + " " + ((user?["last_name"])! as! String)
         }
-        if (user?.username != nil) {
-            emailLabel.text = user?.username
-        }
-        if(user?["number"] != nil){
-            numberLabel.text = user?["number"] as? String
-        }
+//        if (user?.username != nil) {
+//            emailLabel.text = user?.username
+//        }
+//        if(user?["number"] != nil){
+//            numberLabel.text = user?["number"] as? String
+//        }
         
         if (user?["profile_image"] != nil) {
             let userImageFile = user?["profile_image"] as! PFFile

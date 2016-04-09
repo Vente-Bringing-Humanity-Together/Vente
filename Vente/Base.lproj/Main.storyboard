@@ -111,30 +111,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHt-Mc-QLy">
                                 <rect key="frame" x="95" y="79" width="130" height="110"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sv4-NY-rkT">
-                                <rect key="frame" x="20" y="226" width="74" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-I4-pGV">
+                                <rect key="frame" x="20" y="226" width="280" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6q-I4-pGV">
-                                <rect key="frame" x="118" y="226" width="182" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-Pf-L4O">
-                                <rect key="frame" x="20" y="277" width="280" height="29"/>
-                                <segments>
-                                    <segment title="Past Events"/>
-                                    <segment title="Following"/>
-                                    <segment title="Followers"/>
-                                </segments>
-                                <color key="tintColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="optionSegmentedControlChanged:" destination="L1h-zZ-QJU" eventType="valueChanged" id="DU7-og-vrX"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="APL-X8-gFf">
                                 <rect key="frame" x="20" y="326" width="280" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,12 +190,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvR-g7-eg6">
-                                <rect key="frame" x="20" y="248" width="77" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-Pf-L4O">
+                                <rect key="frame" x="20" y="290" width="280" height="29"/>
+                                <segments>
+                                    <segment title="Past Events"/>
+                                    <segment title="Following"/>
+                                    <segment title="Followers"/>
+                                </segments>
+                                <color key="tintColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="optionSegmentedControlChanged:" destination="L1h-zZ-QJU" eventType="valueChanged" id="DU7-og-vrX"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -231,9 +219,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="xQt-Ti-vCk" id="dwE-3r-piP"/>
-                        <outlet property="emailLabel" destination="sv4-NY-rkT" id="yTB-W4-AGh"/>
                         <outlet property="nameLabel" destination="atA-0G-CGe" id="zvW-ik-Qe3"/>
-                        <outlet property="numberLabel" destination="OvR-g7-eg6" id="Tdw-vY-rGt"/>
                         <outlet property="optionSegmentedControl" destination="3FR-Pf-L4O" id="LLh-cJ-3QC"/>
                         <outlet property="profileImageView" destination="SHt-Mc-QLy" id="v6z-UO-dbY"/>
                         <outlet property="tableView" destination="APL-X8-gFf" id="pDW-MV-QYQ"/>
