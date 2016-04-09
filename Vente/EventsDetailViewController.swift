@@ -36,6 +36,23 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         self.attendeeList = event["attendee_list"] as! [String]
         self.descriptionLabel.text = event["event_description"] as? String
         
+        if (event["event_image"] != nil) {
+            let userImageFile = event["event_image"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    if(imageData != nil){
+                        let image = UIImage(data: imageData!)
+                        
+                        self.coverImageView.image = image
+                    }
+                }
+            })
+        }
+
+        
         var eventDateString = ""
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
@@ -50,7 +67,9 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                 print(user)
                 print(user?.objectId)
             } else if let user = user {
-                self.creatorNameLabel.text = user["first_name"] as? String
+                let first = user["first_name"] as? String
+                let last = user["last_name"] as? String
+                self.creatorNameLabel.text = "by: " + first! + " " + last!
             }
         }
         
@@ -138,6 +157,8 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         }
+        
+        cell.backgroundColor = UIColor(red: 222/255, green: 184/255, blue: 135/255, alpha: 0.8)
         
         return cell
     }
