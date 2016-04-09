@@ -15,6 +15,8 @@ class MyEventsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var goingCountLabel: UILabel!
+    @IBOutlet weak var wentCountLabel: UILabel!
     
     var Event: PFObject! {
         didSet {
@@ -22,6 +24,27 @@ class MyEventsTableViewCell: UITableViewCell {
             self.locationLabel.text = Event["event_location"] as? String
             self.eventImageView.image = Event["event_image"] as? UIImage
             //self.attendeeList = Event["attendee_list"] as! [String]
+            if (Event?["attendee_list"] != nil) {
+                let goingCount = Event!["attendee_list"].count
+                
+                if (goingCountLabel != nil) {
+                    if (goingCount == 1) {
+                        goingCountLabel.text = "\(goingCount) person is going"
+                    }
+                    else {
+                        goingCountLabel.text = "\(goingCount) people are going"
+                    }
+                }
+                if (wentCountLabel != nil) {
+                    if (goingCount == 1) {
+                        wentCountLabel.text = "\(goingCount) person went"
+                    }
+                    else {
+                        wentCountLabel.text = "\(goingCount) people went"
+                    }
+                }
+                
+            }
             
             var eventDateString = ""
             let formatter = NSDateFormatter()
