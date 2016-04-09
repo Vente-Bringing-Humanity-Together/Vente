@@ -110,19 +110,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         if let tabBar = tabBarController?.tabBar {
             tabBar.barTintColor = UIColor.whiteColor()
             tabBar.backgroundColor = UIColor.whiteColor()
-            tabBar.tintColor = UIColor(red: 200/255, green: 159/255, blue: 124/255, alpha: 1.0)
+            tabBar.tintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
         }
-        
-//        // Grab our current location from the defaults
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        
-//        let latitude = defaults.objectForKey("user_latitude") as? String
-//        let longitude = defaults.objectForKey("user_longitude") as? String
-//        
-//        if (latitude != nil && longitude != nil) {
-//            myGlobalLocation = CLLocation(latitude: Double(latitude!)!, longitude: Double(longitude!)!)
-//            doDatabaseQuery()
-//        }
         
     }
     
@@ -174,6 +163,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             
+            locationManager.stopUpdatingLocation()
+            
             let latitude = location.coordinate.latitude
             let latitudeString = "\(latitude)"
             
@@ -189,7 +180,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             defaults.synchronize()
             doDatabaseQuery()
             
-            locationManager.stopUpdatingLocation()
         }
     }
     
@@ -209,9 +199,6 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let today = calendar.dateByAddingUnit(.Day, value: -0, toDate: NSDate(), options: [])
         query.whereKey("event_date", greaterThanOrEqualTo: today!)
         
-//        if (defaults.integerForKey("fooddrinkSwitch") == 1) {
-//            query.whereKey("fooddrink", equalTo: true)
-//        }
         if (defaults.integerForKey("foodDrinkSwitch") == 1) {
             query.whereKey("fooddrink", equalTo: true)
         }
@@ -286,13 +273,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
-        
-//        if (self.filteredEvents != nil) {
-//            return self.filteredEvents!.count
-//        }
-//        else {
-//            return 0
-//        }
+
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -680,7 +661,76 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         setUserDefaults()
         
         filteredEvents = events
-        eventsTableView.reloadData()
+        
+        if tagsSwitch.on {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.scrollView.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.scrollView.hidden = false
+                    
+                    UIView.animateWithDuration(0.5, animations: {
+                        
+                        self.subView1.alpha = 0.0
+                        
+                        }, completion: { animationFinished in
+                            self.subView1.hidden = true
+                            
+                            self.distanceSwitch.on = false
+                            self.tagsSwitch.on = false
+                            
+                            self.searchBar.resignFirstResponder()
+                            
+                            self.eventsTableView.reloadData()
+                    })
+            })
+            
+        }
+        else if distanceSwitch.on {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.distanceView.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.distanceView.hidden = true
+                    
+                    UIView.animateWithDuration(0.5, animations: {
+                        
+                        self.subView1.alpha = 0.0
+                        
+                        }, completion: { animationFinished in
+                            self.subView1.hidden = true
+                            
+                            self.distanceSwitch.on = false
+                            self.tagsSwitch.on = false
+                            
+                            self.searchBar.resignFirstResponder()
+                            
+                            self.eventsTableView.reloadData()
+                    })
+                    
+            })
+            
+        }
+            
+        else {
+            UIView.animateWithDuration(0.5, animations: {
+                
+                self.subView1.alpha = 0.0
+                
+                }, completion: { animationFinished in
+                    self.subView1.hidden = true
+                    
+                    self.distanceSwitch.on = false
+                    self.tagsSwitch.on = false
+                    
+                    self.searchBar.resignFirstResponder()
+                    
+                    self.eventsTableView.reloadData()
+            })
+        }
+        
     }
     
     func setSwitches() {
