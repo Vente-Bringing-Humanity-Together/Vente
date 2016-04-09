@@ -36,6 +36,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.cornerRadius = 30
+        
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
             navigationBar.backgroundColor = UIColor.whiteColor()
@@ -349,6 +352,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             })
         }
+        
+        if (user?["cover_image"] != nil) {
+            let userImageFile = user?["cover_image"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                else {
+                    let image = UIImage(data: imageData!)
+                    
+                    self.backgroundImageView.image = image
+                    
+                }
+            })
+        }
+
         
         if (user?["following"] != nil) {
             followingArray = user?["following"] as? [String]

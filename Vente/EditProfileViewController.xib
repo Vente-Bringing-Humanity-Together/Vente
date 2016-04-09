@@ -7,9 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="Vente" customModuleProvider="target">
             <connections>
+                <outlet property="coverImageView" destination="gAF-LN-O2z" id="aYx-Ug-3Fm"/>
                 <outlet property="doneButton" destination="YQf-xr-9Dx" id="8MI-Ec-6qf"/>
+                <outlet property="myBioTextField" destination="FBX-JJ-ktQ" id="xc9-d3-3WX"/>
                 <outlet property="profileImageView" destination="3Vq-jH-50k" id="303-Y3-PcH"/>
+                <outlet property="takeCoverPhotoButton" destination="PLc-i6-twD" id="i8D-Jv-Zig"/>
                 <outlet property="takePhotoButton" destination="CdH-2C-FlM" id="gE6-cu-bv0"/>
+                <outlet property="uploadCoverImageButton" destination="i9k-SN-SSL" id="DPD-Ct-Pa3"/>
                 <outlet property="uploadImageButton" destination="iiZ-zS-dor" id="0ut-wJ-K0X"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,54 +24,67 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiZ-zS-dor">
-                    <rect key="frame" x="68" y="362" width="50" height="30"/>
-                    <state key="normal" title="Upload"/>
+                    <rect key="frame" x="68" y="372" width="50" height="30"/>
+                    <state key="normal" title="Upload">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="uploadImageButtonTouched:" destination="-1" eventType="touchUpInside" id="bgr-Je-A8V"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdH-2C-FlM">
-                    <rect key="frame" x="181" y="362" width="77" height="30"/>
-                    <state key="normal" title="Take Photo"/>
+                    <rect key="frame" x="181" y="372" width="77" height="30"/>
+                    <state key="normal" title="Take Photo">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="takePhotoButtonTouched:" destination="-1" eventType="touchUpInside" id="fhu-ta-mpc"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Vq-jH-50k">
-                    <rect key="frame" x="105" y="254" width="110" height="100"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAF-LN-O2z">
-                    <rect key="frame" x="8" y="92" width="304" height="95"/>
+                    <rect key="frame" x="105" y="264" width="110" height="100"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Image:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-Qc-F97">
-                    <rect key="frame" x="86" y="63" width="148" height="21"/>
+                    <rect key="frame" x="86" y="65" width="148" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k80-TO-m0D">
-                    <rect key="frame" x="110" y="225" width="100" height="21"/>
+                    <rect key="frame" x="110" y="235" width="100" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9k-SN-SSL">
-                    <rect key="frame" x="68" y="187" width="50" height="30"/>
-                    <state key="normal" title="Upload"/>
+                    <rect key="frame" x="68" y="197" width="50" height="30"/>
+                    <state key="normal" title="Upload">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="uploadCoverImageButtonTouched:" destination="-1" eventType="touchUpInside" id="4NV-PV-nrC"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLc-i6-twD">
-                    <rect key="frame" x="181" y="187" width="77" height="30"/>
-                    <state key="normal" title="Take Photo"/>
+                    <rect key="frame" x="181" y="197" width="77" height="30"/>
+                    <state key="normal" title="Take Photo">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="takeCoverPhotoButtonTouched:" destination="-1" eventType="touchUpInside" id="HAq-Yj-1jq"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-xr-9Dx">
                     <rect key="frame" x="142" y="477" width="37" height="30"/>
-                    <state key="normal" title="Done"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="doneButtonTouched:" destination="-1" eventType="touchUpInside" id="cxT-IR-HYJ"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FBX-JJ-ktQ">
-                    <rect key="frame" x="8" y="430" width="304" height="30"/>
+                    <rect key="frame" x="8" y="439" width="304" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -76,13 +93,16 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4k-m1-8bH">
-                    <rect key="frame" x="128" y="401" width="64" height="21"/>
+                    <rect key="frame" x="128" y="410" width="64" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAF-LN-O2z">
+                    <rect key="frame" x="8" y="94" width="304" height="95"/>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="UxS-WM-j6c" appends="YES" id="YDE-NM-Bik"/>

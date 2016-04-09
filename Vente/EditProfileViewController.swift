@@ -17,6 +17,14 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var uploadCoverImageButton: UIButton!
+    @IBOutlet weak var takeCoverPhotoButton: UIButton!
+    
+    @IBOutlet weak var myBioTextField: UITextField!
+    
+    var isCover = false
+    
     let vc = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -28,9 +36,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         if (!UIImagePickerController.isSourceTypeAvailable(.Camera)){
             takePhotoButton.enabled = false
+            takeCoverPhotoButton.enabled = false
         }
         if (!UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
             uploadImageButton.enabled = false
+            uploadCoverImageButton.enabled = false
         }
 
         if let navigationBar = navigationController?.navigationBar {
@@ -58,17 +68,29 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func uploadImageButtonTouched(sender: AnyObject) {
-        
+        isCover = false
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         showImagePicker()
     }
     @IBAction func takePhotoButtonTouched(sender: AnyObject) {
-        
+        isCover = false
+        vc.sourceType = UIImagePickerControllerSourceType.Camera
+        showImagePicker()
+    }
+    
+    @IBAction func uploadCoverImageButtonTouched(sender: AnyObject) {
+        isCover = true
+        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        showImagePicker()
+    }
+    @IBAction func takeCoverPhotoButtonTouched(sender: AnyObject) {
+        isCover = true
         vc.sourceType = UIImagePickerControllerSourceType.Camera
         showImagePicker()
     }
     
     @IBAction func doneButtonTouched(sender: AnyObject) {
+        self.view.endEditing(true)
         
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
@@ -79,6 +101,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         if (profileImageView.image != nil) {
             user!["profile_image"] = userMedia.getPFFileFromImage(profileImageView.image)
         }
+        if (coverImageView.image != nil) {
+            user!["cover_image"] = userMedia.getPFFileFromImage(coverImageView.image)
+        }
+        if (myBioTextField.text != nil || myBioTextField.text != "") {
+            user!["bio"] = myBioTextField.text
+        }
+        
         user?.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
             if let error = error {
                 print("Update user failed")
@@ -102,11 +131,16 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-            // let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-            // let resizedImage = resize(editedImage, newSize: CGSize(width: 100, height: 200))
+        // let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        // let resizedImage = resize(editedImage, newSize: CGSize(width: 100, height: 200))
+        if isCover {
+            coverImageView.image = editedImage
+        }
+        else {
             profileImageView.image = editedImage
-            dismissViewControllerAnimated(true, completion: nil)
+        }
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func showImagePicker() {
