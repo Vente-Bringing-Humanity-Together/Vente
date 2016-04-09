@@ -11,7 +11,6 @@
                 <outlet property="adventureSwitch" destination="gZw-C9-wCd" id="MI2-9Y-PoE"/>
                 <outlet property="chillSwitch" destination="XZ7-TN-mak" id="OHg-ir-L6P"/>
                 <outlet property="createEventButton" destination="w6A-gD-glz" id="eyX-l5-Sve"/>
-                <outlet property="dateTextField" destination="cSa-Hb-AcD" id="E8I-Ze-Vxd"/>
                 <outlet property="descriptionTextField" destination="Nui-1d-T9U" id="x2F-uy-mHH"/>
                 <outlet property="entertainmentSwitch" destination="05e-g7-0pd" id="q1C-kc-bYJ"/>
                 <outlet property="eventImageView" destination="p7P-xM-HAF" id="XGd-3t-R9G"/>
@@ -52,19 +51,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEc-jb-xvx">
-                            <rect key="frame" x="8" y="159" width="84" height="21"/>
+                            <rect key="frame" x="42" y="159" width="84" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSa-Hb-AcD">
-                            <rect key="frame" x="8" y="188" width="304" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <action selector="onEditingDidBegin:" destination="-1" eventType="editingDidBegin" id="xWF-gc-q9w"/>
-                            </connections>
-                        </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPo-HI-K4M">
                             <rect key="frame" x="8" y="234" width="135" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -241,12 +232,36 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7P-xM-HAF">
                             <rect key="frame" x="8" y="445" width="304" height="296"/>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpn-ty-RTM">
+                            <rect key="frame" x="180" y="159" width="86" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxX-n7-Pyh">
+                            <rect key="frame" x="58" y="188" width="40" height="30"/>
+                            <state key="normal" title="Date?">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="eventDateButtonTouched:" destination="-1" eventType="touchUpInside" id="ZK5-YM-pLo"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGw-o1-0y7">
+                            <rect key="frame" x="206" y="188" width="42" height="30"/>
+                            <state key="normal" title="Time?">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="eventTimeButtonTouched:" destination="-1" eventType="touchUpInside" id="7iy-pl-KGo"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
                     <gestureRecognizers/>
                 </scrollView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
-                    <rect key="frame" x="35" y="115" width="250" height="339"/>
+                    <rect key="frame" x="1000" y="115" width="250" height="339"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
                             <rect key="frame" x="0.0" y="0.0" width="250" height="295"/>
