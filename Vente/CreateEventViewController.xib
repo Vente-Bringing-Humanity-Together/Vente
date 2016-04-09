@@ -261,7 +261,7 @@
                     <gestureRecognizers/>
                 </scrollView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">
-                    <rect key="frame" x="1000" y="115" width="250" height="339"/>
+                    <rect key="frame" x="35" y="115" width="250" height="339"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Cn-e1g">
                             <rect key="frame" x="0.0" y="0.0" width="250" height="295"/>
