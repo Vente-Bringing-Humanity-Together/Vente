@@ -52,7 +52,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
             navigationBar.backgroundColor = UIColor.whiteColor()
             navigationBar.tintColor = UIColor.whiteColor()
             
-            self.navigationItem.title = "Invite Friends"
+            self.navigationItem.title = "Invite"
             
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
@@ -102,6 +102,21 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
                 print(error)
             } else if let user = user {
                 cell.nameLabel.text = user["first_name"] as? String
+                cell.lastNameLabel.text = user["last_name"] as? String
+                
+                if (user["profile_image"] != nil) {
+                    let userImageFile = user["profile_image"] as! PFFile
+                    userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else {
+                            let image = UIImage(data: imageData!)
+                            cell.profileImageView.image = image
+                        }
+                    })
+                }
+
             }
         }
         
