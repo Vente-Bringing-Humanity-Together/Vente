@@ -95,6 +95,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1180)
         //setAttributes()
         
+        let createBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(CreateEventViewController.createBarButtonTouched))
+        
+        self.navigationItem.rightBarButtonItem = createBarButton
+        
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
             navigationBar.backgroundColor = UIColor.whiteColor()
@@ -244,6 +248,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func createBarButtonTouched() {
+        createEvent("")
     }
     
     @IBAction func createEvent(sender: AnyObject) {

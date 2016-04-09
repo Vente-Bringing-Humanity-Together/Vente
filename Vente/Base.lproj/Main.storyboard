@@ -197,6 +197,7 @@
                                             <outlet property="eventImageView" destination="CMM-oj-waF" id="Vfg-eZ-53X"/>
                                             <outlet property="locationLabel" destination="93b-HE-hDx" id="PDm-gp-g3K"/>
                                             <outlet property="nameLabel" destination="VY1-18-M2R" id="cga-FV-g1y"/>
+                                            <outlet property="wentCountLabel" destination="uCP-yA-gRe" id="WZG-ns-4HW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleTableViewCell" rowHeight="80" id="gud-FN-HPg" customClass="PeopleTableViewCell" customModule="Vente" customModuleProvider="target">
@@ -367,6 +368,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="FzC-B3-ftq" id="BEN-IG-KbR"/>
                                             <outlet property="eventImageView" destination="cIK-r9-9vn" id="ev2-sH-pt7"/>
+                                            <outlet property="goingCountLabel" destination="9q7-Na-zAq" id="Dxe-CR-fh0"/>
                                             <outlet property="locationLabel" destination="CGq-nn-elA" id="e7i-8F-UNg"/>
                                             <outlet property="nameLabel" destination="x5W-d1-lbl" id="73a-Mf-e9q"/>
                                         </connections>
