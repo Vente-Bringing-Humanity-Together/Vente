@@ -325,7 +325,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func editButtonTouched(sender: AnyObject) {
         
         let editProfileViewController = EditProfileViewController()
-        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+        editProfileViewController.modalTransitionStyle = .PartialCurl
+//        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+        presentViewController(editProfileViewController, animated: true, completion: nil)
         
     }
     

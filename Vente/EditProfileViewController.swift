@@ -125,7 +125,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             } else {
                 print("Updated user successfully")
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
-                self.navigationController?.popViewControllerAnimated(true)
+//                self.navigationController?.popViewControllerAnimated(true)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         })
     }
@@ -223,6 +224,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         view.endEditing(true)
     }
     
+    @IBAction func closeButtonTouched(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 
 }
