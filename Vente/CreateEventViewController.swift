@@ -116,7 +116,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         if let tabBar = tabBarController?.tabBar {
             tabBar.barTintColor = UIColor.whiteColor()
             tabBar.backgroundColor = UIColor.whiteColor()
-            tabBar.tintColor = UIColor(red: 200/255, green: 159/255, blue: 124/255, alpha: 1.0)
+            tabBar.tintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
         }
     }
     
