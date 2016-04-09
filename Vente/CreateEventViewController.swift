@@ -9,10 +9,11 @@
 import UIKit
 import Parse
 import MBProgressHUD
+import MaterialControls
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate, MDCalendarDelegate, MDCalendarTimePickerDialogDelegate {
     
     var businesses: [Business]!
     var filteredData: [Business]?
@@ -25,16 +26,11 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     let vc = UIImagePickerController()
 
     @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var eventNameLabel: UITextField!
     @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
-    var datePickerView: UIDatePicker? = nil
-    var dateString = ""
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
@@ -60,6 +56,16 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var blurEffectView: UIVisualEffectView?
+    
+    let dateFrame = CGRect(x: 35, y: 115, width: 250, height: 339)
+    let timeFrame = CGRect(x: 10, y: 115, width: 300, height: 400)
+    
+    var datePicker: MDDatePicker?
+    var timePicker: MDTimePickerDialog?
+    
+    var myDate = NSDate()
+    var myDateStr = ""
+    var myTimeStr = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +128,17 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             tabBar.backgroundColor = UIColor.whiteColor()
             tabBar.tintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
         }
+        
+        datePicker = MDDatePicker(frame: dateFrame)
+        datePicker!.delegate = self
+        view.addSubview(datePicker!)
+        datePicker?.hidden = true
+        
+        timePicker = MDTimePickerDialog()
+        timePicker!.frame = timeFrame
+        timePicker!.delegate = self
+        view.addSubview(timePicker!)
+        timePicker?.hidden = true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -144,50 +161,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         return cell
     }
     
-    @IBAction func onEditingDidBegin(sender: UITextField) {
-        datePickerView = UIDatePicker()
-        
-        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
-        
-        datePickerView!.datePickerMode = UIDatePickerMode.Date
-        inputView.addSubview(datePickerView!) // add date picker to UIView
-        
-        let green = UIColor(red: 122/255, green: 203/255, blue: 110/255, alpha: 1)
-        let darkGreen = UIColor(red: 60/255, green: 139/255, blue: 48/255, alpha: 1)
-        
-        let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width) - (90), 0, 100, 50))
-        doneButton.setTitle("Done", forState: UIControlState.Normal)
-        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
-        doneButton.setTitleColor(green, forState: UIControlState.Normal)
-        doneButton.setTitleColor(darkGreen, forState: UIControlState.Highlighted)
-        
-        inputView.addSubview(doneButton) // add Button to UIView
-        
-        doneButton.addTarget(self, action: #selector(CreateEventViewController.doneButton(_:)), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
-        
-        sender.inputView = inputView
-
-        
-        datePickerView!.datePickerMode = UIDatePickerMode.DateAndTime
-    
-        
-        datePickerView!.addTarget(self, action: #selector(CreateEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
-    func datePickerValueChanged(sender:UIDatePicker) {
-        
-        let dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        
-        dateFormatter.timeStyle = NSDateFormatterStyle.MediumStyle
-        
-        dateTextField.text = dateFormatter.stringFromDate(sender.date)
-        
-    }
-    func doneButton(sender:UIButton) {
-        dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
-    }
     @IBAction func onClickYelp(sender: AnyObject) {
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
@@ -258,14 +231,12 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         self.createEventButton.enabled = false
         let event = PFObject(className: "Events")
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .MediumStyle
+        let formatter2 = NSDateFormatter()
+        formatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        if (datePickerView?.date != nil) {
-            dateString = formatter.stringFromDate(datePickerView!.date)
-            event["event_date"] = datePickerView!.date
-        }
+        let finalDateStr = myDateStr + " " + myTimeStr
+        let finalDate = formatter2.dateFromString(finalDateStr)
+        event["event_date"] = finalDate!
         
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
@@ -406,4 +377,124 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         view.endEditing(true)
     }
+    
+    @IBAction func eventDateButtonTouched(sender: AnyObject) {
+        
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
+        let start = CGPoint(x: 0.0, y: 0.0)
+        blurEffectView?.frame = CGRect(origin: start, size: blurEffectViewSize)
+        blurEffectView?.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        scrollView.addSubview(blurEffectView!)
+        
+        self.datePicker?.hidden = false
+        self.view.bringSubviewToFront(datePicker!)
+        
+        self.datePicker?.center.y = scrollView.contentOffset.y + 915
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.datePicker?.center.y = self.scrollView.contentOffset.y + 370
+            self.datePicker?.center.x = self.scrollView.contentOffset.x + 160
+            
+            self.view.bringSubviewToFront(self.datePicker!)
+            }, completion: { animationFinished in
+        })
+
+    }
+    
+    @IBAction func eventTimeButtonTouched(sender: AnyObject) {
+        
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
+        let start = CGPoint(x: 0.0, y: 0.0)
+        blurEffectView?.frame = CGRect(origin: start, size: blurEffectViewSize)
+        blurEffectView?.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        scrollView.addSubview(blurEffectView!)
+        
+        self.timePicker?.hidden = false
+        self.view.bringSubviewToFront(timePicker!)
+        
+        self.timePicker?.center.y = scrollView.contentOffset.y + 915
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.timePicker?.center.y = self.scrollView.contentOffset.y + 360
+            self.timePicker?.center.x = self.scrollView.contentOffset.x + 160
+            
+            self.view.bringSubviewToFront(self.timePicker!)
+            }, completion: { animationFinished in
+        })
+    }
+    
+    func calendar(calendar: MDCalendar!, didSelectDate date: NSDate!) {
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            self.datePicker?.center.y = self.scrollView.contentOffset.y + 915
+            self.datePicker?.center.x = self.scrollView.contentOffset.x + 160
+            
+            }, completion: { animationFinished in
+                self.blurEffectView?.removeFromSuperview()
+                self.datePicker?.hidden = true
+                
+                self.myDate = date
+                
+                self.myDateStr = ""
+                self.myDateStr = self.myDateStr + "\(self.myDate.mdYear)"
+                if (self.myDate.mdMonth > 9) {
+                    self.myDateStr = self.myDateStr + "-" + "\(self.myDate.mdMonth)"
+                }
+                else {
+                    self.myDateStr = self.myDateStr + "-" + "0\(self.myDate.mdMonth)"
+                }
+                if (self.myDate.mdDay > 9) {
+                    self.myDateStr = self.myDateStr + "-" + "\(self.myDate.mdDay)"
+                }
+                else {
+                    self.myDateStr = self.myDateStr + "-" + "0\(self.myDate.mdDay)"
+                }
+                
+        })
+    }
+    
+    func timePickerDialog(timePickerDialog: MDTimePickerDialog!, didSelectHour hour: Int, andMinute minute: Int) {
+        
+        let timePicker = MDTimePickerDialog(hour: hour, andWithMinute: minute)
+        timePicker.frame = timeFrame
+        timePicker.delegate = self
+        timePicker.hidden = false
+        timePicker.center.y = self.scrollView.contentOffset.y + 360
+        timePicker.center.x = self.scrollView.contentOffset.x + 160
+        view.addSubview(timePicker)
+        
+        UIView.animateWithDuration(0.5, animations: {
+            
+            timePicker.center.y = self.scrollView.contentOffset.y + 915
+            timePicker.center.x = self.scrollView.contentOffset.x + 160
+            
+            }, completion: { animationFinished in
+                self.blurEffectView?.removeFromSuperview()
+                timePicker.hidden = true
+                
+                self.myTimeStr = ""
+                
+                if (hour > 9) {
+                    self.myTimeStr = self.myTimeStr + "\(hour)"
+                }
+                else {
+                    self.myTimeStr = self.myTimeStr + "0\(hour)"
+                }
+                if (minute > 9) {
+                    self.myTimeStr = self.myTimeStr + ":" + "\(minute)"
+                }
+                else {
+                    self.myTimeStr = self.myTimeStr + ":" + "0\(minute)"
+                }
+
+                self.myTimeStr = self.myTimeStr + ":00"
+                
+        })
+    }
+    
 }
