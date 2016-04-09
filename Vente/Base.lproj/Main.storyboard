@@ -116,12 +116,13 @@
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-Pf-L4O">
                                 <rect key="frame" x="20" y="290" width="280" height="29"/>
+                                <color key="backgroundColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Past Events"/>
                                     <segment title="Following"/>
                                     <segment title="Followers"/>
                                 </segments>
-                                <color key="tintColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="optionSegmentedControlChanged:" destination="L1h-zZ-QJU" eventType="valueChanged" id="DU7-og-vrX"/>
                                 </connections>
@@ -219,6 +220,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="xQt-Ti-vCk" id="dwE-3r-piP"/>
+                        <outlet property="bioLabel" destination="r6q-I4-pGV" id="cDe-Rc-wnT"/>
                         <outlet property="nameLabel" destination="atA-0G-CGe" id="zvW-ik-Qe3"/>
                         <outlet property="optionSegmentedControl" destination="3FR-Pf-L4O" id="LLh-cJ-3QC"/>
                         <outlet property="profileImageView" destination="SHt-Mc-QLy" id="v6z-UO-dbY"/>

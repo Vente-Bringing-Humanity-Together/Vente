@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var nameLabel: UILabel!
 //    @IBOutlet weak var emailLabel: UILabel!
 //    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var bioLabel: UILabel!
     
     @IBOutlet weak var optionSegmentedControl: UISegmentedControl!
     
@@ -367,7 +368,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             })
         }
-
+        
+        if (user?["bio"] != nil) {
+            bioLabel.text = user?["bio"] as? String
+        }
         
         if (user?["following"] != nil) {
             followingArray = user?["following"] as? [String]
