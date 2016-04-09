@@ -11,6 +11,7 @@
                 <outlet property="adventureSwitch" destination="gZw-C9-wCd" id="MI2-9Y-PoE"/>
                 <outlet property="chillSwitch" destination="XZ7-TN-mak" id="OHg-ir-L6P"/>
                 <outlet property="createEventButton" destination="w6A-gD-glz" id="eyX-l5-Sve"/>
+                <outlet property="dateLabel" destination="JEc-jb-xvx" id="q0w-B5-6ji"/>
                 <outlet property="descriptionTextField" destination="Nui-1d-T9U" id="x2F-uy-mHH"/>
                 <outlet property="entertainmentSwitch" destination="05e-g7-0pd" id="q1C-kc-bYJ"/>
                 <outlet property="eventImageView" destination="p7P-xM-HAF" id="XGd-3t-R9G"/>
@@ -24,6 +25,7 @@
                 <outlet property="searchBar" destination="Yha-Xb-Qvf" id="MDM-Ok-D6S"/>
                 <outlet property="sportsSwitch" destination="npr-CE-Syn" id="ey5-DR-rOA"/>
                 <outlet property="takePhotoButton" destination="k5K-xU-vob" id="Sjq-vX-3YK"/>
+                <outlet property="timeLabel" destination="xpn-ty-RTM" id="m6f-Si-gIM"/>
                 <outlet property="uploadImageButton" destination="hTL-X4-Ebg" id="CeZ-8y-a3N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yelpSearchBar" destination="Yha-Xb-Qvf" id="Rfo-7N-krL"/>

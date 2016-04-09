@@ -67,6 +67,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     var myDateStr = ""
     var myTimeStr = ""
     
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -455,6 +458,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                     self.myDateStr = self.myDateStr + "-" + "0\(self.myDate.mdDay)"
                 }
                 
+                self.dateLabel.text = "\(self.myDate.mdMonth)/\(self.myDate.mdDay)/\(self.myDate.mdYear)"
+                self.dateLabel.textAlignment = .Center
         })
     }
     
@@ -494,6 +499,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 
                 self.myTimeStr = self.myTimeStr + ":00"
                 
+                self.timeLabel.text = "\(hour):\(minute)"
+                self.timeLabel.textAlignment = .Center
         })
     }
     
