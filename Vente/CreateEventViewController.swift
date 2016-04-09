@@ -34,8 +34,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var eventImageView: UIImageView!
 //    @IBOutlet weak var datePicker: UIDatePicker!
     
-    var datePickerView: UIDatePicker? = nil
-    var dateString = ""
+//    var datePickerView: UIDatePicker? = nil
+//    var dateString = ""
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
     
@@ -67,6 +67,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     var datePicker: MDDatePicker?
     var timePicker: MDTimePickerDialog?
+    
+    var myDate = NSDate()
+    var myDateStr = ""
+    var myTimeStr = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -277,14 +281,12 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         self.createEventButton.enabled = false
         let event = PFObject(className: "Events")
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .MediumStyle
+        let formatter2 = NSDateFormatter()
+        formatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        if (datePickerView?.date != nil) {
-            dateString = formatter.stringFromDate(datePickerView!.date)
-            event["event_date"] = datePickerView!.date
-        }
+        let finalDateStr = myDateStr + " " + myTimeStr
+        let finalDate = formatter2.dateFromString(finalDateStr)
+        event["event_date"] = finalDate!
         
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
@@ -476,7 +478,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func calendar(calendar: MDCalendar!, didSelectDate date: NSDate!) {
-        print(date)
         
         UIView.animateWithDuration(0.5, animations: {
             
@@ -486,11 +487,28 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             }, completion: { animationFinished in
                 self.blurEffectView?.removeFromSuperview()
                 self.datePicker?.hidden = true
+                
+                self.myDate = date
+                
+                self.myDateStr = ""
+                self.myDateStr = self.myDateStr + "\(self.myDate.mdYear)"
+                if (self.myDate.mdMonth > 9) {
+                    self.myDateStr = self.myDateStr + "-" + "\(self.myDate.mdMonth)"
+                }
+                else {
+                    self.myDateStr = self.myDateStr + "-" + "0\(self.myDate.mdMonth)"
+                }
+                if (self.myDate.mdDay > 9) {
+                    self.myDateStr = self.myDateStr + "-" + "\(self.myDate.mdDay)"
+                }
+                else {
+                    self.myDateStr = self.myDateStr + "-" + "0\(self.myDate.mdDay)"
+                }
+                
         })
     }
     
     func timePickerDialog(timePickerDialog: MDTimePickerDialog!, didSelectHour hour: Int, andMinute minute: Int) {
-        print("\(hour)" + "\(minute)")
         
         let timePicker = MDTimePickerDialog(hour: hour, andWithMinute: minute)
         timePicker.frame = timeFrame
@@ -508,6 +526,24 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             }, completion: { animationFinished in
                 self.blurEffectView?.removeFromSuperview()
                 timePicker.hidden = true
+                
+                self.myTimeStr = ""
+                
+                if (hour > 9) {
+                    self.myTimeStr = self.myTimeStr + "\(hour)"
+                }
+                else {
+                    self.myTimeStr = self.myTimeStr + "0\(hour)"
+                }
+                if (minute > 9) {
+                    self.myTimeStr = self.myTimeStr + ":" + "\(minute)"
+                }
+                else {
+                    self.myTimeStr = self.myTimeStr + ":" + "0\(minute)"
+                }
+
+                self.myTimeStr = self.myTimeStr + ":00"
+                
         })
     }
     
