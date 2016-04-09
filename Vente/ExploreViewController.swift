@@ -158,6 +158,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         if let location = locations.first {
             
             locationManager.stopUpdatingLocation()
@@ -175,9 +176,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             myGlobalLocation = location
             
             defaults.synchronize()
+            
             doDatabaseQuery()
             
         }
+        
     }
     
     func doDatabaseQuery() {

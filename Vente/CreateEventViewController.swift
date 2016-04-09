@@ -394,8 +394,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         UIView.animateWithDuration(0.5, animations: {
             
-            self.datePicker?.center.y = self.scrollView.contentOffset.y + 370
-            self.datePicker?.center.x = self.scrollView.contentOffset.x + 160
+            self.datePicker?.center.y = 290
+            self.datePicker?.center.x = 160
             
             self.view.bringSubviewToFront(self.datePicker!)
             }, completion: { animationFinished in
@@ -419,8 +419,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         UIView.animateWithDuration(0.5, animations: {
             
-            self.timePicker?.center.y = self.scrollView.contentOffset.y + 360
-            self.timePicker?.center.x = self.scrollView.contentOffset.x + 160
+            self.timePicker?.center.y = 290
+            self.timePicker?.center.x = 160
             
             self.view.bringSubviewToFront(self.timePicker!)
             }, completion: { animationFinished in
@@ -464,8 +464,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         timePicker.frame = timeFrame
         timePicker.delegate = self
         timePicker.hidden = false
-        timePicker.center.y = self.scrollView.contentOffset.y + 360
-        timePicker.center.x = self.scrollView.contentOffset.x + 160
+        timePicker.center.y = 290
+        timePicker.center.x = 160
         view.addSubview(timePicker)
         
         UIView.animateWithDuration(0.5, animations: {
