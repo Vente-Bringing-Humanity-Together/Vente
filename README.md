@@ -2,7 +2,7 @@
 An application to give people the power to connect and share meaningful interactions
 
 # Time Spent
-**90** Hours
+**100** Hours
 
 ##Required
 - [X] User can make a profile and log in
@@ -37,9 +37,18 @@ An application to give people the power to connect and share meaningful interact
 - [ ] Notification for user if somebody with mutual interest is nearby
 
 ##UI 
-- [ ] Loading screen while loading events/profiles
+- [X] Custom splash screen
+- [ ] Splash screen animation
+- [X] Custom search bars
+- [X] Tableviews fade in
+- [X] Subviews slide on the screen
+- [ ] Loading indicators
+- [ ] Alerts for bad data entry
+- [X] Screen moves to match textfield
+- [X] Clean color scheme
+
+##AutoLayout
 - [ ] Autolayout
-- [ ] Custom search bars and tool bars
 
 ##Optional Tier ???
 - [ ] Nick's camera idea 
