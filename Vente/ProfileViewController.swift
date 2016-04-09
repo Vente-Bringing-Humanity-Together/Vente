@@ -37,6 +37,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.clipsToBounds = true
+        let white = UIColor.whiteColor()
+        tableView.layer.borderColor = white.CGColor
+        tableView.layer.borderWidth = 1
+        tableView.layer.cornerRadius = 15
+        
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 30
         
