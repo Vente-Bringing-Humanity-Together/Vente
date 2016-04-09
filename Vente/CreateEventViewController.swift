@@ -100,7 +100,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             navigationBar.backgroundColor = UIColor.whiteColor()
             navigationBar.tintColor = UIColor.whiteColor()
             
-            self.navigationItem.title = "Create Event"
+            self.navigationItem.title = "Create"
             
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.grayColor().colorWithAlphaComponent(0.2)

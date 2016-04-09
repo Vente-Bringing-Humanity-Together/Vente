@@ -71,11 +71,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         searchBar.delegate = self
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.distanceFilter = 200
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager = CLLocationManager()
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//        locationManager.distanceFilter = 200
+//        locationManager.requestWhenInUseAuthorization()
         
         scrollView.contentSize = CGSize(width: 2 * scrollView.frame.width, height: scrollView.frame.height)
         scrollView.hidden = true
@@ -118,16 +118,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-//        // Grab our current location from the defaults
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        
-//        let latitude = defaults.objectForKey("user_latitude") as? String
-//        let longitude = defaults.objectForKey("user_longitude") as? String
-//        
-//        if (latitude != nil && longitude != nil) {
-//            myGlobalLocation = CLLocation(latitude: Double(latitude!)!, longitude: Double(longitude!)!)
-//            doDatabaseQuery()
-//        }
+        eventsTableView.alpha = 0.0
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 200
+        locationManager.requestWhenInUseAuthorization()
 
     }
     
@@ -253,6 +250,17 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                     
                     self.eventsTableView.reloadData()
+                    
+                    self.eventsTableView.hidden = false
+                    self.eventsTableView.alpha = 0.0
+                    
+                    UIView.animateWithDuration(0.2, animations: {
+                        
+                        self.eventsTableView.alpha = 1.0
+                        
+                        }, completion: { animationFinished in
+                    })
+                    
                 } else {
                     print("No results returned")
                 }
