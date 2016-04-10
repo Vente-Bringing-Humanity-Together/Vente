@@ -28,7 +28,7 @@ An application to give people the power to connect and share meaningful interact
 
 ##Optional Tier 3
 - [ ] Integrate Uber API into chat for users to request rides
-- [ ] Remake a past event
+- [X] Remake a past event
 - [ ] Check-in feature when a person comes to an event (bump phones together? bluetooth? location check?)
 
 ##Optional Tier 4

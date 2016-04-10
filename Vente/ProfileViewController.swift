@@ -269,6 +269,44 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        if(optionSegmentedControl.selectedSegmentIndex == 0){
+            let bump = UITableViewRowAction(style: .Normal, title: "  Bump  ") { action, index in
+                print("bumped!")
+                
+//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                
+//                let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as! CreateEventViewController
+//                self.presentViewController(nextViewController, animated:true, completion:nil)
+                
+                let createEventViewController = CreateEventViewController()
+                
+                let bumpEvent = self.events![indexPath.section]
+                
+                createEventViewController.bumpEvent = bumpEvent
+//                createEventViewController.chillSwitch.on = (bumpEvent["chill"] as? Bool)!
+//                createEventViewController.fooddrinkSwitch.on = (bumpEvent["fooddrink"] as? Bool)!
+//                createEventViewController.adventureSwitch.on = (bumpEvent["adventure"] as? Bool)!
+//                createEventViewController.academicSwitch.on = (bumpEvent["academic"] as? Bool)!
+//                createEventViewController.musicSwitch.on = (bumpEvent["music"] as? Bool)!
+//                createEventViewController.sportsSwitch.on = (bumpEvent["sports"] as? Bool)!
+//                createEventViewController.nightlifeSwitch.on = (bumpEvent["nightlife"] as? Bool)!
+//                createEventViewController.entertainmentSwitch.on = (bumpEvent["entertainment"] as? Bool)!
+//                createEventViewController.descriptionTextField.text = bumpEvent["event_description"] as? String
+                
+                self.navigationController?.pushViewController(createEventViewController, animated: true)
+            }
+    
+            bump.backgroundColor = UIColor(red: 121/255, green: 183/255, blue: 145/255, alpha: 1.0)
+        
+            return[bump]
+        }
+        
+        return nil
+    }
+
+    
     func doDatabaseQuery() {
         let userId = PFUser.currentUser()?.objectId
         let query = PFQuery(className: "Events")
