@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
+import HUD
 
 let userDidLogoutNotification = "userDidLogoutNotification"
 
@@ -86,7 +87,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
         
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             if (self.events != nil) {
@@ -118,33 +118,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (optionSegmentedControl.selectedSegmentIndex == 0) {
-//            if (self.events != nil) {
-//                return self.events!.count
-//            }
-//            else {
-//                return 0
-//            }
-//        }
-//        else if (optionSegmentedControl.selectedSegmentIndex == 1) {
-//            if (self.followingArray != nil && self.followingArray != []) {
-//                return self.followingArray!.count
-//            }
-//            else {
-//                return 0
-//            }
-//        }
-//        else if (optionSegmentedControl.selectedSegmentIndex == 2) {
-//            if (self.followerArray != nil && self.followerArray != []) {
-//                return self.followerArray!.count
-//            }
-//            else {
-//                return 0
-//            }
-//        }
-//        else {
-//            return 0
-//        }
         
         return 1
     }
@@ -294,6 +267,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
     func doDatabaseQuery() {
+        
+        HUD.show(.loading, text: "Loading...")
+        
         let userId = PFUser.currentUser()?.objectId
         let query = PFQuery(className: "Events")
         query.limit = 20
@@ -309,8 +285,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
+                
+                HUD.dismiss()
+                let alertController = UIAlertController(title: "There Was An Error", message: "", preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                }
+                alertController.addAction(OKAction)
+                self.presentViewController(alertController, animated: true) {
+                }
+                
             } else {
                 if let results = results {
+                    
+                    HUD.show(.success, text: "Success")
+                    
                     print("Successfully retrieved \(results.count) ventes")
                     self.events = results
                     self.tableView.reloadData()
@@ -323,6 +311,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                         self.tableView.alpha = 1.0
                         
                         }, completion: { animationFinished in
+                            HUD.dismiss()
                     })
                     
                 } else {

@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import CoreLocation
 import Material
+import HUD
 
 class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
     
@@ -185,6 +186,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func doDatabaseQuery() {
         
+        HUD.show(.loading, text: "Loading...")
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         
         let radiusVal = defaults.integerForKey("distanceSlider")
@@ -229,9 +232,21 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
+                
+                HUD.dismiss()
+                let alertController = UIAlertController(title: "There Was An Error", message: "", preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                }
+                alertController.addAction(OKAction)
+                self.presentViewController(alertController, animated: true) {
+                }
+                
             } else {
                 if let results = results {
                     print("Successfully retrieved \(results.count) ventes")
+                    
+                    HUD.show(.success, text: "Success")
+                    
                     self.events = results
                     self.filteredEvents = self.events
                     
@@ -262,6 +277,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                         self.eventsTableView.alpha = 1.0
                         
                         }, completion: { animationFinished in
+                            HUD.dismiss()
                     })
                     
                 } else {

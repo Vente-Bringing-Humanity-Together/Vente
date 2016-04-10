@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import HUD
 
 class MyEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
@@ -202,6 +203,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
     func getEventsFromDatabase() {
         print("Retrieving My Ventes from Parse...")
         
+        HUD.show(.loading, text: "Loading...")
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         
         let userId = PFUser.currentUser()?.objectId
@@ -244,9 +247,21 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
         query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
+                
+                HUD.dismiss()
+                let alertController = UIAlertController(title: "There Was An Error", message: "", preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                }
+                alertController.addAction(OKAction)
+                self.presentViewController(alertController, animated: true) {
+                }
+                
             } else {
                 if let results = results {
                     print("Successfully retrieved \(results.count) ventes")
+                    
+                    HUD.show(.success, text: "Success")
+                    
                     self.myEvents = results
                     self.filteredEvents = self.myEvents
                     self.tableView.reloadData()
@@ -259,6 +274,7 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
                         self.tableView.alpha = 1.0
                         
                         }, completion: { animationFinished in
+                            HUD.dismiss()
                     })
 
                     

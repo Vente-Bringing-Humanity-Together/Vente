@@ -13,5 +13,6 @@ target 'Vente' do
     pod 'Material', '~> 1.38'
     pod 'DOFavoriteButton'
     pod 'MaterialControls', '~> 1.0.2'
+    pod 'HUD', '~>1.1.0'
 end
 

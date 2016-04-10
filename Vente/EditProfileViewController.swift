@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-import MBProgressHUD
+import HUD
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -92,7 +92,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func doneButtonTouched(sender: AnyObject) {
         self.view.endEditing(true)
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        HUD.show(.loading, text: "Loading...")
         
         let user = PFUser.currentUser()
         
@@ -113,7 +113,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 print("Update user failed")
                 print(error.localizedDescription)
                 
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                HUD.dismiss()
                 
                 let alertController = UIAlertController(title: "There Was An Error", message: "", preferredStyle: .Alert)
                 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
@@ -124,7 +124,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
             } else {
                 print("Updated user successfully")
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                HUD.show(.success, text: "Success")
+                
 //                self.navigationController?.popViewControllerAnimated(true)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
