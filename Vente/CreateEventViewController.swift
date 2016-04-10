@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import MBProgressHUD
 import MaterialControls
+import MapKit
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
@@ -268,19 +269,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         event["event_location"] = eventLocationLabel.text
         event["event_description"] = descriptionTextField.text
         
-        // Grab our current location from the defaults
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        let latitude = defaults.objectForKey("user_latitude") as? String
-        let longitude = defaults.objectForKey("user_longitude") as? String
-        
-        if (latitude != nil) {
-            event["latitude"] = latitude
-        }
-        if (longitude != nil) {
-            event["longitude"] = longitude
-        }
-        
         //Event tags
         event["fooddrink"] = fooddrinkSwitch.on
         event["entertainment"] = entertainmentSwitch.on
@@ -307,19 +295,89 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             event["public"] = false
         }
         
-        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            if let error = error {
-                print("Event Add Failed")
-                print(error.localizedDescription)
-                self.createEventButton.enabled = true
+        
+        // This is not the event location. It is the location of the user.
+//        // Grab our current location from the defaults
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        
+//        let latitude = defaults.objectForKey("user_latitude") as? String
+//        let longitude = defaults.objectForKey("user_longitude") as? String
+//        
+//        if (latitude != nil) {
+//            event["latitude"] = latitude
+//        }
+//        if (longitude != nil) {
+//            event["longitude"] = longitude
+//        }
+        
+        let location = eventLocationLabel.text
+        let geocoder: CLGeocoder = CLGeocoder()
+        
+         if location != nil || location != "" {
+             geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                if (error == nil) {
+                    
+                    if (placemarks != nil) {
+                        let topResult = (placemarks![0])
+                        
+                        let lat = "\(topResult.location!.coordinate.latitude)"
+                        let lon = "\(topResult.location!.coordinate.longitude)"
+                        
+                        event["latitude"] = lat
+                        event["longitude"] = lon
+                        
+                        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                            if let error = error {
+                                print("Event Add Failed")
+                                print(error.localizedDescription)
+                                self.createEventButton.enabled = true
+                                
+                            } else {
+                                print("Added Event Successfully")
+                                //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+                                self.navigationController?.popViewControllerAnimated(true)
+                            }
+                            
+                        }
+                        
+                    }
+                }
+                else {
+                    print(error?.localizedDescription)
+                    
+                    // save with no latitude or longitude
+                    event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if let error = error {
+                            print("Event Add Failed")
+                            print(error.localizedDescription)
+                            self.createEventButton.enabled = true
+                            
+                        } else {
+                            print("Added Event Successfully")
+                            //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+                            self.navigationController?.popViewControllerAnimated(true)
+                        }
+                        
+                    }
+                }
                 
-            } else {
-                print("Added Event Successfully")
-                //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            
+            })
         }
+
+        
+//        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+//            if let error = error {
+//                print("Event Add Failed")
+//                print(error.localizedDescription)
+//                self.createEventButton.enabled = true
+//                
+//            } else {
+//                print("Added Event Successfully")
+//                //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+//                self.navigationController?.popViewControllerAnimated(true)
+//            }
+//            
+//        }
 
     }
     
