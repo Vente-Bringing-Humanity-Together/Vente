@@ -52,6 +52,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var yelpTableView: UITableView!
     @IBOutlet weak var yelpSearchBar: UISearchBar!
     
+    var bumpEvent: PFObject?
+    
     @IBOutlet weak var createEventButton: UIButton!
     
     let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
@@ -72,6 +74,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(bumpEvent != nil){
+            bumpInit()
+        }
         
         createEventButton.enabled = true
         let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
@@ -142,6 +148,22 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         timePicker!.delegate = self
         view.addSubview(timePicker!)
         timePicker?.hidden = true
+    }
+    
+    func bumpInit(){
+        eventNameLabel.text = bumpEvent!["event_name"] as? String
+        descriptionTextField.text = bumpEvent!["event_description"] as? String
+        chillSwitch.on = (bumpEvent!["chill"] as? Bool)!
+        fooddrinkSwitch.on = (bumpEvent!["fooddrink"] as? Bool)!
+        adventureSwitch.on = (bumpEvent!["adventure"] as? Bool)!
+        academicSwitch.on = (bumpEvent!["academic"] as? Bool)!
+        entertainmentSwitch.on = (bumpEvent!["entertainment"] as? Bool)!
+        sportsSwitch.on = (bumpEvent!["sports"] as? Bool)!
+        musicSwitch.on = (bumpEvent!["music"] as? Bool)!
+        nightlifeSwitch.on = (bumpEvent!["nightlife"] as? Bool)!
+        if(!(bumpEvent!["public"] as! Bool)){
+            publicSegmentedControl.selectedSegmentIndex = 1
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

@@ -281,6 +281,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //                self.presentViewController(nextViewController, animated:true, completion:nil)
                 
                 let createEventViewController = CreateEventViewController()
+                
+                let bumpEvent = self.events![indexPath.section]
+                
+                createEventViewController.bumpEvent = bumpEvent
+//                createEventViewController.chillSwitch.on = (bumpEvent["chill"] as? Bool)!
+//                createEventViewController.fooddrinkSwitch.on = (bumpEvent["fooddrink"] as? Bool)!
+//                createEventViewController.adventureSwitch.on = (bumpEvent["adventure"] as? Bool)!
+//                createEventViewController.academicSwitch.on = (bumpEvent["academic"] as? Bool)!
+//                createEventViewController.musicSwitch.on = (bumpEvent["music"] as? Bool)!
+//                createEventViewController.sportsSwitch.on = (bumpEvent["sports"] as? Bool)!
+//                createEventViewController.nightlifeSwitch.on = (bumpEvent["nightlife"] as? Bool)!
+//                createEventViewController.entertainmentSwitch.on = (bumpEvent["entertainment"] as? Bool)!
+//                createEventViewController.descriptionTextField.text = bumpEvent["event_description"] as? String
+                
                 self.navigationController?.pushViewController(createEventViewController, animated: true)
             }
     
