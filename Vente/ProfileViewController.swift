@@ -269,6 +269,30 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        if(optionSegmentedControl.selectedSegmentIndex == 0){
+            let bump = UITableViewRowAction(style: .Normal, title: "  Bump  ") { action, index in
+                print("bumped!")
+                
+//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                
+//                let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as! CreateEventViewController
+//                self.presentViewController(nextViewController, animated:true, completion:nil)
+                
+                let createEventViewController = CreateEventViewController()
+                self.navigationController?.pushViewController(createEventViewController, animated: true)
+            }
+    
+            bump.backgroundColor = UIColor(red: 121/255, green: 183/255, blue: 145/255, alpha: 1.0)
+        
+            return[bump]
+        }
+        
+        return nil
+    }
+
+    
     func doDatabaseQuery() {
         let userId = PFUser.currentUser()?.objectId
         let query = PFQuery(className: "Events")
