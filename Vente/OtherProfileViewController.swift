@@ -39,6 +39,15 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.clipsToBounds = true
+        let white = UIColor.whiteColor()
+        tableView.layer.borderColor = white.CGColor
+        tableView.layer.borderWidth = 1
+        tableView.layer.cornerRadius = 15
+        
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.cornerRadius = 30
+        
         let cellNib = UINib(nibName: "PastEventsTableViewCell", bundle: NSBundle.mainBundle())
         tableView.registerNib(cellNib, forCellReuseIdentifier: "PastEventsTableViewCell")
         let cellNib2 = UINib(nibName: "XIBPeopleTableViewCell", bundle: NSBundle.mainBundle())
@@ -227,6 +236,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                             }
                         })
                     }
+                    
                 }
             }
             
@@ -296,6 +306,21 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                         else {
                             let image = UIImage(data: imageData!)
                             self.profileImageView.image = image
+                        }
+                    })
+                }
+                
+                if (user?["cover_image"] != nil) {
+                    let userImageFile = user?["cover_image"] as! PFFile
+                    userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else {
+                            let image = UIImage(data: imageData!)
+                            
+                            self.backgroundImageView.image = image
+                            
                         }
                     })
                 }
