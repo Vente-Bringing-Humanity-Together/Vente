@@ -2,7 +2,7 @@
 An application to give people the power to connect and share meaningful interactions
 
 # Time Spent
-**100** Hours
+**110** Hours
 
 ##Required
 - [X] User can make a profile and log in
@@ -31,19 +31,14 @@ An application to give people the power to connect and share meaningful interact
 - [X] Remake a past event
 - [ ] Check-in feature when a person comes to an event (bump phones together? bluetooth? location check?)
 
-##Optional Tier 4
-- [ ] User can specify interests within profile
-- [ ] Filter other users based on their interests
-- [ ] Notification for user if somebody with mutual interest is nearby
-
 ##UI 
 - [X] Custom splash screen
 - [ ] Splash screen animation
 - [X] Custom search bars
 - [X] Tableviews fade in
 - [X] Subviews slide on the screen
-- [ ] Loading indicators
-- [ ] Alerts for bad data entry
+- [X] Loading indicators
+- [X] Alerts for bad data entry
 - [X] Screen moves to match textfield
 - [X] Clean color scheme
 
