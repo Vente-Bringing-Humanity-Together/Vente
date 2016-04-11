@@ -262,8 +262,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         let finalDateStr = myDateStr + " " + myTimeStr
         let finalDate = formatter2.dateFromString(finalDateStr)
-        event["event_date"] = finalDate!
-        
+        if(finalDate != nil){
+            event["event_date"] = finalDate!
+        }
+            
         event["creator"] = creator
         event["event_name"] = eventNameLabel.text
         event["event_location"] = eventLocationLabel.text
@@ -295,24 +297,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             event["public"] = false
         }
         
-        
-        // This is not the event location. It is the location of the user.
-//        // Grab our current location from the defaults
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        
-//        let latitude = defaults.objectForKey("user_latitude") as? String
-//        let longitude = defaults.objectForKey("user_longitude") as? String
-//        
-//        if (latitude != nil) {
-//            event["latitude"] = latitude
-//        }
-//        if (longitude != nil) {
-//            event["longitude"] = longitude
-//        }
-        
         let location = eventLocationLabel.text
         let geocoder: CLGeocoder = CLGeocoder()
         
+        if(eventNameLabel.text != nil && eventLocationLabel.text != nil && finalDate != nil){
          if location != nil || location != "" {
              geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
                 if (error == nil) {
@@ -334,7 +322,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                                 
                             } else {
                                 print("Added Event Successfully")
-                                //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
                                 self.navigationController?.popViewControllerAnimated(true)
                             }
                             
@@ -363,22 +350,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                 
             })
         }
-
-        
-//        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//            if let error = error {
-//                print("Event Add Failed")
-//                print(error.localizedDescription)
-//                self.createEventButton.enabled = true
-//                
-//            } else {
-//                print("Added Event Successfully")
-//                //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
-//                self.navigationController?.popViewControllerAnimated(true)
-//            }
-//            
-//        }
-
+        }
+        else{
+            print("Mo data")
+        }
     }
     
     func callYelpAPI(input: String) {
@@ -389,11 +364,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             self.businesses = businesses
             self.filteredData = businesses
             self.yelpTableView.reloadData()
-            
-//            for business in businesses{
-//                print(business.name!)
-//                print(business.address!)
-//            }
         })
     
     }
