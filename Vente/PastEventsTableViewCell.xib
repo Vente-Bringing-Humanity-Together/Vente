@@ -79,6 +79,7 @@
                 <outlet property="eventImageView" destination="4TS-CY-66h" id="6go-Os-hxO"/>
                 <outlet property="locationLabel" destination="axl-9b-AbO" id="pbU-Ij-iF4"/>
                 <outlet property="nameLabel" destination="FB1-t1-sUM" id="ak4-Bx-GMy"/>
+                <outlet property="wentCountLabel" destination="KAS-9f-fXa" id="C3K-LI-Ngw"/>
             </connections>
         </tableViewCell>
     </objects>

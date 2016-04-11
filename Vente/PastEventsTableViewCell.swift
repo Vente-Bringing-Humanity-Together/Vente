@@ -11,6 +11,7 @@ import Parse
 
 class PastEventsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var wentCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -22,7 +23,18 @@ class PastEventsTableViewCell: UITableViewCell {
             self.dateLabel.text = Event["event_date"] as? String
             self.locationLabel.text = Event["event_location"] as? String
             self.eventImageView.image = Event["event_image"] as? UIImage
-            //self.attendeeList = Event["attendee_list"] as! [String]
+            if (Event?["attendee_list"] != nil) {
+                let goingCount = Event!["attendee_list"].count
+                if (wentCountLabel != nil) {
+                    if (goingCount == 1) {
+                        self.wentCountLabel.text = "\(goingCount) person went"
+                    }
+                    else {
+                        self.wentCountLabel.text = "\(goingCount) people went"
+                    }
+                }
+                
+            }
         }
     }
     
