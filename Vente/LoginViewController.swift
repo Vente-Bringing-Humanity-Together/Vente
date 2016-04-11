@@ -40,10 +40,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         defaults.setFloat(10, forKey: "distanceSlider")
         defaults.synchronize()
         
-        usernameField.placeholder = "Username"
+        usernameField.placeholder = "Username (email)"
         textMaker(usernameField)
         
         passwordField.placeholder = "Password"
+        passwordField.secureTextEntry = true
         textMaker(passwordField)
         
         loginbutton.setTitle("Log In", forState: .Normal)

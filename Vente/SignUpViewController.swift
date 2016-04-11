@@ -42,6 +42,7 @@ class SignUpViewController: UIViewController {
         usernameField.addTarget(self, action: #selector(SignUpViewController.usernameEndToEdit), forControlEvents: .EditingDidEnd)
         
         passwordField.placeholder = "Password"
+        passwordField.secureTextEntry = true
         textMaker(passwordField)
         passwordField.addTarget(self, action: #selector(SignUpViewController.passwordBeganToEdit), forControlEvents: .EditingDidBegin)
         passwordField.addTarget(self, action: #selector(SignUpViewController.passwordEndToEdit), forControlEvents: .EditingDidEnd)
@@ -150,6 +151,13 @@ class SignUpViewController: UIViewController {
         }
         else {
             print("No ufl :)")
+            let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Must have a .ufl email.", preferredStyle: .Alert)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Cancel) { action -> Void in
+            }
+            actionSheetController.addAction(cancelAction)
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
         }
     }
     
