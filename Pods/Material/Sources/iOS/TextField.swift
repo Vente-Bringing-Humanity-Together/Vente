@@ -298,6 +298,7 @@ public class TextField : UITextField {
 			if nil == lineLayerActiveColor {
 				lineLayerActiveColor = titleLabelActiveColor
 			}
+            tintColor = titleLabelActiveColor
 		}
 	}
 	
@@ -368,7 +369,7 @@ public class TextField : UITextField {
 		}
 	}
 	
-	/// A wrapper for searchBar.placeholder.
+	/// Sets the placeholder value.
 	@IBInspectable public override var placeholder: String? {
 		didSet {
 			if let v: String = placeholder {
@@ -378,7 +379,7 @@ public class TextField : UITextField {
 	}
 	
 	/// Placeholder textColor.
-	@IBInspectable public var placeholderTextColor: UIColor = MaterialColor.black {
+	@IBInspectable public var placeholderTextColor: UIColor = MaterialColor.darkText.others {
 		didSet {
 			if let v: String = placeholder {
 				attributedPlaceholder = NSAttributedString(string: v, attributes: [NSForegroundColorAttributeName: placeholderTextColor])
@@ -484,9 +485,8 @@ public class TextField : UITextField {
 	public func prepareView() {
 		backgroundColor = MaterialColor.white
 		masksToBounds = false
-		placeholderTextColor = MaterialColor.grey.base
 		font = RobotoFont.regularWithSize(16)
-		textColor = MaterialColor.grey.darken4
+		textColor = MaterialColor.darkText.primary
 		borderStyle = .None
 		prepareClearButton()
 		prepareTitleLabel()
@@ -559,7 +559,7 @@ public class TextField : UITextField {
 		titleLabel.font = RobotoFont.mediumWithSize(12)
 		addSubview(titleLabel)
 		
-		titleLabelColor = MaterialColor.grey.base
+		titleLabelColor = placeholderTextColor
 		titleLabelActiveColor = MaterialColor.blue.accent3
 		
 		if 0 < text?.utf16.count {
@@ -608,9 +608,10 @@ public class TextField : UITextField {
 		let image: UIImage? = MaterialIcon.cm.close
 		clearButton = FlatButton()
 		clearButton.contentEdgeInsets = UIEdgeInsetsZero
-		clearButton.pulseColor = MaterialColor.grey.base
+		clearButton.pulseColor = MaterialColor.black
+        clearButton.pulseOpacity = 0.12
 		clearButton.pulseScale = false
-		clearButton.tintColor = MaterialColor.grey.base
+		clearButton.tintColor = placeholderTextColor
 		clearButton.setImage(image, forState: .Normal)
 		clearButton.setImage(image, forState: .Highlighted)
 		clearButtonAutoHandleEnabled = true
