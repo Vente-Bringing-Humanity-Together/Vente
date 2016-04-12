@@ -254,7 +254,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @IBAction func createEvent(sender: AnyObject) {
-        if(eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil) {
+        if(eventNameLabel.text != nil && eventLocationLabel.text != nil && eventLocationLabel.text != nil && eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil) {
             
             HUD.show(.loading, text: "Saving...")
             
@@ -303,65 +303,59 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
             let location = eventLocationLabel.text
             let geocoder: CLGeocoder = CLGeocoder()
+            
+            
+            geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                if (error == nil) {
+            
+                    if (placemarks != nil) {
+                        let topResult = (placemarks![0])
+                
+                        let lat = "\(topResult.location!.coordinate.latitude)"
+                        let lon = "\(topResult.location!.coordinate.longitude)"
                     
-            if(eventNameLabel.text != nil && eventLocationLabel.text != nil && finalDate != nil) {
-                if location != nil || location != "" {
-                    geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
-                        if (error == nil) {
-                    
-                            if (placemarks != nil) {
-                                let topResult = (placemarks![0])
+                        event["latitude"] = lat
+                        event["longitude"] = lon
                         
-                                let lat = "\(topResult.location!.coordinate.latitude)"
-                                let lon = "\(topResult.location!.coordinate.longitude)"
-                        
-                                event["latitude"] = lat
-                                event["longitude"] = lon
-                        
-                                event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                                    
-                                    HUD.dismiss()
-                                    
-                                    if let error = error {
-                                        print("Event Add Failed")
-                                        print(error.localizedDescription)
-                                        self.createEventButton.enabled = true
+                        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                            
+                            HUD.dismiss()
+                            
+                            if let error = error {
+                                print("Event Add Failed")
+                                print(error.localizedDescription)
+                                self.createEventButton.enabled = true
                                 
-                                    } else {
-                                        print("Added Event Successfully")
-                                        self.navigationController?.popViewControllerAnimated(true)
-                                    }
-                            
-                                }
-                        
+                            } else {
+                                print("Added Event Successfully")
+                                self.navigationController?.popViewControllerAnimated(true)
                             }
-                        }
-                        else {
-                            print(error?.localizedDescription)
-                    
-                            // save with no latitude or longitude
-                            event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                                if let error = error {
-                                    print("Event Add Failed")
-                                    print(error.localizedDescription)
-                                    self.createEventButton.enabled = true
                             
-                                } else {
-                                    print("Added Event Successfully")
-                                    //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
-                                    self.navigationController?.popViewControllerAnimated(true)
-                                }
-                        
-                            }
                         }
-                    })
+                        
+                    }
                 }
-            }
-            else{
-                print("Mo data")
-            }
+                else {
+                    print(error?.localizedDescription)
+                    
+                    // save with no latitude or longitude
+                    event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if let error = error {
+                            print("Event Add Failed")
+                            print(error.localizedDescription)
+                            self.createEventButton.enabled = true
+                            
+                        } else {
+                            print("Added Event Successfully")
+                            //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+                            self.navigationController?.popViewControllerAnimated(true)
+                        }
+                        
+                    }
+                }
+            })
         }
-        else if(eventNameLabel.text == ""){
+        else if(eventNameLabel.text == "" || eventNameLabel.text == nil){
             let alertController = UIAlertController(title: "Missing Event Name", message: "", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
@@ -369,7 +363,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             self.presentViewController(alertController, animated: true) {
             }
         }
-        else if(eventLocationLabel.text == ""){
+        else if(eventLocationLabel.text == "" || eventLocationLabel.text == nil){
             let alertController = UIAlertController(title: "Missing Event Location", message: "", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
@@ -377,7 +371,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             self.presentViewController(alertController, animated: true) {
             }
         }
-        else if(descriptionTextField.text == ""){
+        else if(descriptionTextField.text == "" || descriptionTextField.text == nil){
             let alertController = UIAlertController(title: "Missing Event Description", message: "", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
