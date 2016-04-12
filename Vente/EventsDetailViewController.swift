@@ -158,7 +158,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-        cell.backgroundColor = UIColor(red: 222/255, green: 184/255, blue: 135/255, alpha: 0.8)
+        cell.backgroundColor = UIColor(red: 161/255, green: 164/255, blue: 153/255, alpha: 0.8)
         
         return cell
     }
