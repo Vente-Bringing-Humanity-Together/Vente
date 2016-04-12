@@ -250,10 +250,11 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func createBarButtonTouched() {
-        createEvent("")
+            createEvent("")
     }
     
     @IBAction func createEvent(sender: AnyObject) {
+        if(eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil){
         self.createEventButton.enabled = false
         let event = PFObject(className: "Events")
         
@@ -353,6 +354,55 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         }
         else{
             print("Mo data")
+        }
+        }
+        else if(eventNameLabel.text == ""){
+            let alertController = UIAlertController(title: "Missing Event Name", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(eventLocationLabel.text == ""){
+            let alertController = UIAlertController(title: "Missing Event Location", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(descriptionTextField.text == ""){
+            let alertController = UIAlertController(title: "Missing Event Description", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(dateLabel.text == "Event Date"){
+            let alertController = UIAlertController(title: "Missing Event Date", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(timeLabel.text == "Event Time"){
+            let alertController = UIAlertController(title: "Missing Event Time", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(eventImageView == nil){
+            let alertController = UIAlertController(title: "Missing Event Picture", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
         }
     }
     
