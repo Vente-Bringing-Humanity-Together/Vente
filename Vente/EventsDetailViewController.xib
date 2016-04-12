@@ -61,8 +61,8 @@
                     <rect key="frame" x="108" y="76" width="104" height="90"/>
                 </imageView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-Ib-cjn">
-                    <rect key="frame" x="8" y="299" width="304" height="29"/>
-                    <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="0.0" y="299" width="320" height="29"/>
+                    <color key="backgroundColor" red="0.41958079539999998" green="0.80139357499999997" blue="0.8665476527" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Going"/>
                         <segment title="Invited"/>
@@ -70,7 +70,7 @@
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
             </subviews>
-            <color key="backgroundColor" red="0.98823529409999999" green="0.91372549020000005" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.98823529409999999" green="0.98039215690000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
             <point key="canvasLocation" x="483" y="330"/>
         </view>
     </objects>
