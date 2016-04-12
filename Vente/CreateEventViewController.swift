@@ -8,9 +8,9 @@
 
 import UIKit
 import Parse
-import MBProgressHUD
 import MaterialControls
 import MapKit
+import HUD
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
@@ -256,6 +256,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBAction func createEvent(sender: AnyObject) {
         if(eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil) {
             
+            HUD.show(.loading, text: "Saving...")
+            
             self.createEventButton.enabled = false
             let event = PFObject(className: "Events")
         
@@ -301,7 +303,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
             let location = eventLocationLabel.text
             let geocoder: CLGeocoder = CLGeocoder()
-        
+                    
             if(eventNameLabel.text != nil && eventLocationLabel.text != nil && finalDate != nil) {
                 if location != nil || location != "" {
                     geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
@@ -317,6 +319,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                                 event["longitude"] = lon
                         
                                 event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                                    
+                                    HUD.dismiss()
+                                    
                                     if let error = error {
                                         print("Event Add Failed")
                                         print(error.localizedDescription)
