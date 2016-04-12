@@ -68,13 +68,31 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     func loginButtonTouched() {
-        PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!){
-            (user: PFUser?, error: NSError?) -> Void in
-            if user != nil {
-                print("You're logging in")
-                print(PFUser.currentUser()?.objectId)
+        if(usernameField.text != "" && passwordField.text != "") {
+            PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil {
+                    print("You're logging in")
+                    print(PFUser.currentUser()?.objectId)
                 
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                    self.performSegueWithIdentifier("loginSegue", sender: nil)
+                }
+            }
+        }
+        else if(usernameField.text == "") {
+                let alertController = UIAlertController(title: "Missing Username", message: "", preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                }
+                alertController.addAction(OKAction)
+                self.presentViewController(alertController, animated: true) {
+                }
+        }
+        else if(passwordField.text == "") {
+            let alertController = UIAlertController(title: "Missing Password", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
             }
         }
     }

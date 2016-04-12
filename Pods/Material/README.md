@@ -58,7 +58,14 @@ Material is a growing project and will encounter changes throughout its developm
 #### Colors
 
 * [MaterialColor](#materialcolor)
+
+#### Icons
+
 * [MaterialIcon](#materialicon)
+
+#### Filters
+
+* [Blur](#filterblur)
 
 #### Base Layers & Views
 
@@ -119,7 +126,7 @@ Material is a growing project and will encounter changes throughout its developm
 
 * [CaptureView](#captureview)
 
-# Explore
+## Explore
 
 <a name="materialcolor"></a>
 #### MaterialColor
@@ -134,6 +141,13 @@ MaterialColor is a complete Material Design color library. It uses base color va
 MaterialIcon is a library of Google and CosmicMind icons that are available for use within your iOS applications.
 
 ![MaterialMaterialIcon](http://www.cosmicmind.io/MK/MaterialMaterialIcon.png)
+
+<a name="filterblur"></a>
+#### Filters
+
+Material will be expanding its library to add image filters. The initial filter is blur.
+
+![MaterialFilterBlur](http://www.cosmicmind.io/MK/MaterialFilterBlur.png)
 
 <a name="materiallayer"></a>
 #### MaterialLayer
@@ -364,7 +378,7 @@ Add a new dimension of interactivity with CaptureView. CaptureView is a fully fu
 
 [Learn More About CaptureView](https://github.com/CosmicMind/Material/wiki/CaptureView)
 
-# Upcoming
+## Upcoming
 
 * TabBar
 * TabBarController
@@ -378,7 +392,7 @@ Add a new dimension of interactivity with CaptureView. CaptureView is a fully fu
 * Advanced Camera / Audio Toolset & Views
 * More Examples
 
-# License
+## License
 
 Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>. All rights reserved.
 

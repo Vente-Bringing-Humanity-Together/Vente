@@ -107,7 +107,7 @@ class SignUpViewController: UIViewController {
         
         self.view.endEditing(true)
         
-        if ((usernameField.text?.containsString("ufl.edu")) == true) {
+        if ((usernameField.text?.containsString("ufl.edu")) == true && usernameField.text != "" && passwordField.text != "" && phoneNumberField.text != "" && firstNameField.text != "" && lastNameField.text != "") {
             
             let newUser = PFUser()
             
@@ -149,7 +149,7 @@ class SignUpViewController: UIViewController {
             }
 
         }
-        else {
+        else if(usernameField.text?.containsString("ufl.edu") == false) {
             print("No ufl :)")
             let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Must have a .ufl email.", preferredStyle: .Alert)
             
@@ -157,7 +157,48 @@ class SignUpViewController: UIViewController {
             let cancelAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Cancel) { action -> Void in
             }
             actionSheetController.addAction(cancelAction)
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            self.presentViewController(actionSheetController, animated: true){
+            }
+        }
+        else if(usernameField.text == ""){
+            let alertController = UIAlertController(title: "Missing Username", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(passwordField.text == ""){
+            let alertController = UIAlertController(title: "Missing Password", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(firstNameField.text == ""){
+            let alertController = UIAlertController(title: "Missing First Name", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(lastNameField.text == ""){
+            let alertController = UIAlertController(title: "Missing Last Name", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
+        }
+        else if(phoneNumberField.text == ""){
+            let alertController = UIAlertController(title: "Missing Phone Number", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
+            }
         }
     }
     

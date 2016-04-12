@@ -37,7 +37,8 @@ PODS:
     - CocoaLumberjack/Default
   - DOFavoriteButton (0.0.4)
   - HUD (1.1.0)
-  - Material (1.39.5)
+  - JHSpinner (0.1.1)
+  - Material (1.39.6)
   - MaterialControls (1.0.2)
   - MBProgressHUD (0.9.2)
   - Parse (1.13.0):
@@ -54,6 +55,7 @@ DEPENDENCIES:
   - ChameleonFramework
   - DOFavoriteButton
   - HUD (~> 1.1.0)
+  - JHSpinner
   - Material (~> 1.38)
   - MaterialControls (~> 1.0.2)
   - MBProgressHUD (~> 0.9.2)
@@ -68,7 +70,8 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
   HUD: e99c155e759d0bf2f395491159d23f2c965ba885
-  Material: c6ebc24f0bcb19c2dce94e8c76b48392c0d67a1c
+  JHSpinner: d2d986f3116ea4087f35214d5e2c95221d3630ee
+  Material: 009eaa29b014a938478bbd80057e565a91ef49c2
   MaterialControls: bdeeb94aa049b73f70739a5514be137d2d45c08a
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
