@@ -116,7 +116,7 @@
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-Pf-L4O">
                                 <rect key="frame" x="20" y="290" width="280" height="29"/>
-                                <color key="backgroundColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Past Events"/>
                                     <segment title="Following"/>
@@ -151,7 +151,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.29411764709999999" green="0.27450980390000002" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pVR-XU-QUU">
                                                     <rect key="frame" x="76" y="38" width="236" height="30"/>
@@ -163,7 +163,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.015686274510000001" green="0.1647058824" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVs-w4-SIE">
                                                     <rect key="frame" x="8" y="74" width="126" height="27"/>
@@ -175,7 +175,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.92523611809999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ckj-Ty-x6z">
                                                     <rect key="frame" x="133" y="74" width="179" height="27"/>
@@ -187,11 +187,11 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.78039215689999997" green="0.56862745100000001" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.59607843140000005" green="0.46274509800000002" blue="0.3294117647" alpha="0.62286679960000002" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.91372549020000005" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="rLY-tS-rp7" id="xga-hu-fHr"/>
                                             <outlet property="eventImageView" destination="CMM-oj-waF" id="Vfg-eZ-53X"/>
@@ -236,7 +236,7 @@
                                 <rect key="frame" x="95" y="92" width="130" height="110"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.63137254901960782" green="0.64313725490196072" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="uGF-kz-4JO">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="UXg-DU-ZfY">
@@ -321,7 +321,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.29411764709999999" green="0.27450980390000002" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-r9-9vn">
                                                     <rect key="frame" x="8" y="21" width="70" height="70"/>
@@ -336,7 +336,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.015686274510000001" green="0.1647058824" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2T7-96-5hG">
                                                     <rect key="frame" x="8" y="99" width="122" height="35"/>
@@ -348,7 +348,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8of-u5-URz">
                                                     <rect key="frame" x="130" y="99" width="182" height="35"/>
@@ -360,11 +360,11 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.78039215689999997" green="0.56862745100000001" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.59607843140000005" green="0.46274509800000002" blue="0.3294117647" alpha="0.62286679960000002" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.91372549020000005" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="FzC-B3-ftq" id="BEN-IG-KbR"/>
                                             <outlet property="eventImageView" destination="cIK-r9-9vn" id="ev2-sH-pt7"/>
@@ -381,7 +381,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X32-dJ-ak3">
                                         <rect key="frame" x="113" y="11" width="48" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xws-ie-MzF">
@@ -415,7 +415,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.49019607840000001" green="0.86666666670000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.63137254899999995" green="0.64313725489999995" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RV8-Ou-xus">
                                 <rect key="frame" x="0.0" y="152" width="320" height="70"/>
@@ -505,10 +505,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.87058823529999996" green="0.72156862749999995" blue="0.52941176469999995" alpha="0.79931294330000002" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.91372549020000005" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wyf-kf-lwA"/>
                     <connections>
@@ -564,7 +564,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agi-8x-AeZ">
                                                     <rect key="frame" x="20" y="8" width="280" height="229"/>
                                                 </imageView>
-                                                <view alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7A6-Xi-ikY">
+                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7A6-Xi-ikY">
                                                     <rect key="frame" x="20" y="8" width="280" height="151"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -574,45 +574,39 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQb-GA-uZS">
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQb-GA-uZS">
                                                     <rect key="frame" x="20" y="157" width="116" height="44"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgd-u6-lOt">
-                                                            <rect key="frame" x="8" y="15" width="100" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="0.76000000000000001" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.015686274510000001" green="0.1647058824" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YhY-8Y-7jA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgd-u6-lOt">
+                                                    <rect key="frame" x="28" y="171" width="100" height="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YhY-8Y-7jA">
                                                     <rect key="frame" x="136" y="157" width="164" height="44"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObS-h8-A6O">
-                                                            <rect key="frame" x="8" y="13" width="148" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="0.79124461209999997" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.015686274509803921" green="0.16470588235294117" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4d-VK-FxX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObS-h8-A6O">
+                                                    <rect key="frame" x="144" y="170" width="149" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4d-VK-FxX">
                                                     <rect key="frame" x="20" y="200" width="280" height="37"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENm-rX-uNX">
-                                                            <rect key="frame" x="8" y="10" width="264" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.78039215689999997" green="0.56862745100000001" blue="0.54901960780000003" alpha="0.77980939716312059" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.36862745098039218" green="0.69411764705882351" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENm-rX-uNX">
+                                                    <rect key="frame" x="28" y="210" width="264" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.47450980392156861" green="0.71764705882352942" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.91372549020000005" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="Xgd-u6-lOt" id="yJr-2y-b5O"/>
                                             <outlet property="eventImageView" destination="agi-8x-AeZ" id="nOC-GL-TWj"/>
@@ -628,13 +622,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELS-Qi-su2">
                                         <rect key="frame" x="58" y="14" width="36" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUk-o8-KB3">
                                         <rect key="frame" x="160" y="14" width="60" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aTq-NE-KBu">
@@ -655,7 +649,7 @@
                                         <rect key="frame" x="277" y="7" width="35" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="doneButtonTouched:" destination="DRn-OP-QMD" eventType="touchUpInside" id="nUD-2j-lja"/>
@@ -665,14 +659,14 @@
                                         <rect key="frame" x="8" y="7" width="34" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Clear">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="clearTagsTouched:" destination="DRn-OP-QMD" eventType="touchUpInside" id="Ddk-Gc-aWE"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.49019607840000001" green="0.86666666670000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.63137254901960782" green="0.64313725490196072" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaM-d5-S8r">
                                 <rect key="frame" x="0.0" y="152" width="320" height="44"/>
@@ -695,7 +689,7 @@
                                         <color key="maximumTrackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </slider>
                                 </subviews>
-                                <color key="backgroundColor" red="0.78039215689999997" green="0.56862745100000001" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-Lw-Zem">
                                 <rect key="frame" x="0.0" y="152" width="320" height="70"/>
@@ -785,10 +779,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.47450980390000003" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.91372549020000005" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="4OC-PC-ajG">
                         <barButtonItem key="rightBarButtonItem" image="ic_add" id="ebt-9F-ijQ">
