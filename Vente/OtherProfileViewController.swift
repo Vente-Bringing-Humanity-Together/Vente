@@ -54,7 +54,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.registerNib(cellNib2, forCellReuseIdentifier: "XIBPeopleTableViewCell")
         
         if let navigationBar = navigationController?.navigationBar {
-            navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
+            navigationBar.barTintColor = UIColor(red: 0.29, green: 0.27, blue: 0.26, alpha: 1.0)
             navigationBar.backgroundColor = UIColor.whiteColor()
             navigationBar.tintColor = UIColor.whiteColor()
             
@@ -90,7 +90,6 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
         
         if (optionSegmentedControl.selectedSegmentIndex == 0) {
             if (self.events != nil) {
@@ -123,34 +122,6 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (optionSegmentedControl.selectedSegmentIndex == 0) {
-//            if (self.events != nil) {
-//                return self.events!.count
-//            }
-//            else {
-//                return 0
-//            }
-//        }
-//        else if (optionSegmentedControl.selectedSegmentIndex == 1) {
-//            if (self.tableFollowingArray != nil && self.tableFollowingArray != []) {
-//                return self.tableFollowingArray!.count
-//            }
-//            else {
-//                return 0
-//            }
-//        }
-//        else if (optionSegmentedControl.selectedSegmentIndex == 2) {
-//            if (self.tableFollowersArray != nil && self.tableFollowersArray != []) {
-//                return self.tableFollowersArray!.count
-//            }
-//            else {
-//                return 0
-//            }
-//        }
-//        else {
-//            return 0
-//        }
-        
         return 1
     }
     

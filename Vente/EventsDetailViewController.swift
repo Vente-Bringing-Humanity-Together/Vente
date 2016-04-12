@@ -89,7 +89,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationItem.rightBarButtonItem = groupMessageButton
         
         if let navigationBar = navigationController?.navigationBar {
-            navigationBar.barTintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
+            navigationBar.barTintColor = UIColor(red: 0.29, green: 0.27, blue: 0.26, alpha: 1.0)
             navigationBar.backgroundColor = UIColor.whiteColor()
             navigationBar.tintColor = UIColor.whiteColor()
             
@@ -109,7 +109,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         if let tabBar = tabBarController?.tabBar {
             tabBar.barTintColor = UIColor.whiteColor()
             tabBar.backgroundColor = UIColor.whiteColor()
-            tabBar.tintColor = UIColor(red: 132/255, green: 87/255, blue: 48/255, alpha: 1.0)
+            tabBar.tintColor = UIColor(red: 0.29, green: 0.27, blue: 0.26, alpha: 1.0)
         }
     }
     
