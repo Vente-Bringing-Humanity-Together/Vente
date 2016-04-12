@@ -116,7 +116,7 @@
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-Pf-L4O">
                                 <rect key="frame" x="20" y="290" width="280" height="29"/>
-                                <color key="backgroundColor" red="0.43921568630000002" green="0.52941176469999995" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Past Events"/>
                                     <segment title="Following"/>
