@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+            UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.switchToHome), name: userDidPostEventNotification, object: nil)
                 
             Parse.initializeWithConfiguration(
