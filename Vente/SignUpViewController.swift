@@ -157,8 +157,8 @@ class SignUpViewController: UIViewController {
             let cancelAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Cancel) { action -> Void in
             }
             actionSheetController.addAction(cancelAction)
-        self.presentViewController(actionSheetController, animated: true){
-        }
+            self.presentViewController(actionSheetController, animated: true){
+            }
         }
         else if(usernameField.text == ""){
             let alertController = UIAlertController(title: "Missing Username", message: "", preferredStyle: .Alert)

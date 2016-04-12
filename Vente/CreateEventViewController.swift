@@ -250,111 +250,111 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func createBarButtonTouched() {
-            createEvent("")
+        createEvent("")
     }
     
     @IBAction func createEvent(sender: AnyObject) {
-        if(eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil){
-        self.createEventButton.enabled = false
-        let event = PFObject(className: "Events")
-        
-        let formatter2 = NSDateFormatter()
-        formatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let finalDateStr = myDateStr + " " + myTimeStr
-        let finalDate = formatter2.dateFromString(finalDateStr)
-        if(finalDate != nil){
-            event["event_date"] = finalDate!
-        }
+        if(eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil) {
             
-        event["creator"] = creator
-        event["event_name"] = eventNameLabel.text
-        event["event_location"] = eventLocationLabel.text
-        event["event_description"] = descriptionTextField.text
+            self.createEventButton.enabled = false
+            let event = PFObject(className: "Events")
         
-        //Event tags
-        event["fooddrink"] = fooddrinkSwitch.on
-        event["entertainment"] = entertainmentSwitch.on
-        event["sports"] = sportsSwitch.on
-        event["chill"] = chillSwitch.on
-        event["academic"] = academicSwitch.on
-        event["music"] = musicSwitch.on
-        event["nightlife"] = nightlifeSwitch.on
-        event["adventure"] = adventureSwitch.on
+            let formatter2 = NSDateFormatter()
+            formatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        if (eventImageView.image != nil) {
+            let finalDateStr = myDateStr + " " + myTimeStr
+            let finalDate = formatter2.dateFromString(finalDateStr)
+            if(finalDate != nil) {
+                event["event_date"] = finalDate!
+            }
+            
+            event["creator"] = creator
+            event["event_name"] = eventNameLabel.text
+            event["event_location"] = eventLocationLabel.text
+            event["event_description"] = descriptionTextField.text
+        
+            //Event tags
+            event["fooddrink"] = fooddrinkSwitch.on
+            event["entertainment"] = entertainmentSwitch.on
+            event["sports"] = sportsSwitch.on
+            event["chill"] = chillSwitch.on
+            event["academic"] = academicSwitch.on
+            event["music"] = musicSwitch.on
+            event["nightlife"] = nightlifeSwitch.on
+            event["adventure"] = adventureSwitch.on
+        
+            if (eventImageView.image != nil) {
             let userMedia = UserMedia()
-            event["event_image"] = userMedia.getPFFileFromImage(eventImageView.image)
-        }
+                event["event_image"] = userMedia.getPFFileFromImage(eventImageView.image)
+            }
         
-        // Want creator first
-        attendeeList.insert(creator, atIndex: 0)
-        event["attendee_list"] = attendeeList
+            // Want creator first
+            attendeeList.insert(creator, atIndex: 0)
+            event["attendee_list"] = attendeeList
         
-        if (publicSegmentedControl.selectedSegmentIndex == 0) {
-            event["public"] = true
-        }
-        else {
-            event["public"] = false
-        }
+            if (publicSegmentedControl.selectedSegmentIndex == 0) {
+                event["public"] = true
+            }
+            else {
+                event["public"] = false
+            }
         
-        let location = eventLocationLabel.text
-        let geocoder: CLGeocoder = CLGeocoder()
+            let location = eventLocationLabel.text
+            let geocoder: CLGeocoder = CLGeocoder()
         
-        if(eventNameLabel.text != nil && eventLocationLabel.text != nil && finalDate != nil){
-         if location != nil || location != "" {
-             geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
-                if (error == nil) {
+            if(eventNameLabel.text != nil && eventLocationLabel.text != nil && finalDate != nil) {
+                if location != nil || location != "" {
+                    geocoder.geocodeAddressString(location!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                        if (error == nil) {
                     
-                    if (placemarks != nil) {
-                        let topResult = (placemarks![0])
+                            if (placemarks != nil) {
+                                let topResult = (placemarks![0])
                         
-                        let lat = "\(topResult.location!.coordinate.latitude)"
-                        let lon = "\(topResult.location!.coordinate.longitude)"
+                                let lat = "\(topResult.location!.coordinate.latitude)"
+                                let lon = "\(topResult.location!.coordinate.longitude)"
                         
-                        event["latitude"] = lat
-                        event["longitude"] = lon
+                                event["latitude"] = lat
+                                event["longitude"] = lon
                         
-                        event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                            if let error = error {
-                                print("Event Add Failed")
-                                print(error.localizedDescription)
-                                self.createEventButton.enabled = true
+                                event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                                    if let error = error {
+                                        print("Event Add Failed")
+                                        print(error.localizedDescription)
+                                        self.createEventButton.enabled = true
                                 
-                            } else {
-                                print("Added Event Successfully")
-                                self.navigationController?.popViewControllerAnimated(true)
+                                    } else {
+                                        print("Added Event Successfully")
+                                        self.navigationController?.popViewControllerAnimated(true)
+                                    }
+                            
+                                }
+                        
                             }
-                            
                         }
-                        
-                    }
-                }
-                else {
-                    print(error?.localizedDescription)
+                        else {
+                            print(error?.localizedDescription)
                     
-                    // save with no latitude or longitude
-                    event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-                        if let error = error {
-                            print("Event Add Failed")
-                            print(error.localizedDescription)
-                            self.createEventButton.enabled = true
+                            // save with no latitude or longitude
+                            event.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                                if let error = error {
+                                    print("Event Add Failed")
+                                    print(error.localizedDescription)
+                                    self.createEventButton.enabled = true
                             
-                        } else {
-                            print("Added Event Successfully")
-                            //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
-                            self.navigationController?.popViewControllerAnimated(true)
-                        }
+                                } else {
+                                    print("Added Event Successfully")
+                                    //NSNotificationCenter.defaultCenter().postNotificationName(userDidPostEventNotification, object: nil)
+                                    self.navigationController?.popViewControllerAnimated(true)
+                                }
                         
-                    }
+                            }
+                        }
+                    })
                 }
-                
-            })
-        }
-        }
-        else{
-            print("Mo data")
-        }
+            }
+            else{
+                print("Mo data")
+            }
         }
         else if(eventNameLabel.text == ""){
             let alertController = UIAlertController(title: "Missing Event Name", message: "", preferredStyle: .Alert)
