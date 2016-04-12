@@ -259,7 +259,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.50980392159999999" green="0.47058823529999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.36862745099999999" green="0.69411764710000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                     <gestureRecognizers/>
                 </scrollView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF0-wM-jSx">

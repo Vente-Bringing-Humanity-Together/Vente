@@ -116,7 +116,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         self.navigationItem.rightBarButtonItem = createBarButton
         
         if let navigationBar = navigationController?.navigationBar {
-            navigationBar.barTintColor = UIColor(red: 0.29, green: 0.27, blue: 0.26, alpha: 1.0)
+            navigationBar.barTintColor = UIColor(red: 0.88, green: 0.58, blue: 0.38, alpha: 1.0)
             navigationBar.backgroundColor = UIColor.whiteColor()
             navigationBar.tintColor = UIColor.whiteColor()
             
@@ -136,7 +136,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         if let tabBar = tabBarController?.tabBar {
             tabBar.barTintColor = UIColor.whiteColor()
             tabBar.backgroundColor = UIColor.whiteColor()
-            tabBar.tintColor = UIColor(red: 0.29, green: 0.27, blue: 0.26, alpha: 1.0)
+            tabBar.tintColor = UIColor(red: 0.88, green: 0.58, blue: 0.38, alpha: 1.0)
         }
         
         datePicker = MDDatePicker(frame: dateFrame)
