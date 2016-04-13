@@ -1,4 +1,7 @@
 PODS:
+  - AeroGearHttp (0.5.1)
+  - AeroGearOAuth2 (0.5.1):
+    - AeroGearHttp
   - AFNetworking (2.6.3):
     - AFNetworking/NSURLConnection (= 2.6.3)
     - AFNetworking/NSURLSession (= 2.6.3)
@@ -38,9 +41,10 @@ PODS:
   - DOFavoriteButton (0.0.4)
   - HUD (1.1.0)
   - JHSpinner (0.1.1)
-  - Material (1.39.6)
+  - Material (1.39.7)
   - MaterialControls (1.0.2)
   - MBProgressHUD (0.9.2)
+  - OAuthSwift (0.5.2)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
   - PubNub (4.3.0):
@@ -48,8 +52,11 @@ PODS:
     - PubNub/Core (= 4.3.0)
   - PubNub/Core (4.3.0):
     - CocoaLumberjack (= 2.2.0)
+  - UberRides (0.3.1)
 
 DEPENDENCIES:
+  - AeroGearHttp
+  - AeroGearOAuth2
   - AFNetworking (~> 2.5)
   - BDBOAuth1Manager
   - ChameleonFramework
@@ -59,10 +66,14 @@ DEPENDENCIES:
   - Material (~> 1.38)
   - MaterialControls (~> 1.0.2)
   - MBProgressHUD (~> 0.9.2)
+  - OAuthSwift (~> 0.5.0)
   - Parse
   - PubNub
+  - UberRides
 
 SPEC CHECKSUMS:
+  AeroGearHttp: 9eb405b694aa9ac5daff842f68648f4a9fe0fa66
+  AeroGearOAuth2: 6f29d3fac8b78a0ff6d51b04c4ba1a02baed2e52
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
@@ -71,10 +82,12 @@ SPEC CHECKSUMS:
   DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
   HUD: e99c155e759d0bf2f395491159d23f2c965ba885
   JHSpinner: d2d986f3116ea4087f35214d5e2c95221d3630ee
-  Material: 009eaa29b014a938478bbd80057e565a91ef49c2
+  Material: 92a94dea4511c86f2e0f4cdb16048182d15b03d5
   MaterialControls: bdeeb94aa049b73f70739a5514be137d2d45c08a
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   PubNub: a05f2a2c6cc1f637a0c473f236c4671c0b8c09b1
+  UberRides: db7aead2e9c853fe481ac4dee03643fb274e884e
 
 COCOAPODS: 0.39.0

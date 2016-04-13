@@ -236,6 +236,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHt-Mc-QLy">
                                 <rect key="frame" x="95" y="72" width="130" height="130"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBm-yw-BJK">
+                                <rect key="frame" x="26" y="180" width="49" height="22"/>
+                                <color key="backgroundColor" red="0.63137254899999995" green="0.64313725489999995" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Uber">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uberButtonTouched:" destination="L1h-zZ-QJU" eventType="touchUpInside" id="eph-Kz-Gbz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.98039215690000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
