@@ -15,6 +15,8 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var bioLabel: UILabel!
+    
     @IBOutlet weak var followButton: UIButton!
     
     var followingArray: [String]! = []
@@ -290,6 +292,10 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                             
                         }
                     })
+                }
+                
+                if (user?["bio"] != nil) {
+                    self.bioLabel.text = user?["bio"] as? String
                 }
                 
                 if (PFUser.currentUser()?["following"] != nil) {

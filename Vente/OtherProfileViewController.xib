@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OtherProfileViewController" customModule="Vente" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundImageView" destination="XcA-25-jAN" id="34w-Dd-Bhy"/>
+                <outlet property="bioLabel" destination="Gdi-Lm-MEm" id="5e1-Pe-Vvv"/>
                 <outlet property="followButton" destination="sEb-63-hDI" id="nEx-SC-4S3"/>
                 <outlet property="nameLabel" destination="7Ib-sP-GuX" id="kfu-XW-NFU"/>
                 <outlet property="optionSegmentedControl" destination="l80-Y8-yLG" id="A4a-Qn-jaP"/>
