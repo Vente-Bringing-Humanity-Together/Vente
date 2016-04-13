@@ -179,6 +179,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         field.titleLabelColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
         field.titleLabelActiveColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
         
+        field.autocapitalizationType = .None
+        
         let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
         
         let clearButton: FlatButton = FlatButton()
