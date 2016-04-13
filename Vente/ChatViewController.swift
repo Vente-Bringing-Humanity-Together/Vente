@@ -129,6 +129,7 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
             cell.leftLabel.text = messageText
             cell.leftLabel.textColor = UIColor.whiteColor()
             cell.nameLabel.text = name
+            cell.nameLabel.hidden = false
         }
         
         return cell

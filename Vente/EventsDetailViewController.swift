@@ -111,6 +111,21 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
             
             self.navigationItem.rightBarButtonItem = groupMessageButton
+            
+            if (!attendeeList.contains((PFUser.currentUser()?.objectId)!)) {
+                attendeeList.append((PFUser.currentUser()?.objectId)!)
+                
+                event["attendee_list"] = attendeeList
+                
+                event.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+                    if (error != nil) {
+                        print(error?.localizedDescription)
+                    }
+                    else {
+                        print("The current user joined the event")
+                    }
+                })
+            }
         }
         else {
             self.navigationItem.rightBarButtonItem = .None
