@@ -110,23 +110,25 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
         let oneAfterFirstAt = firstAt?.advancedBy(1)
         let messageNameAndText = messageWhole.substringFromIndex(oneAfterFirstAt!)
         let secondAt = messageNameAndText.characters.indexOf("@")
-//        let name = messageNameAndText.substringToIndex(secondAt!)
+        let name = messageNameAndText.substringToIndex(secondAt!)
         let oneAfterSecondAt = secondAt?.advancedBy(1)
         let messageText = messageNameAndText.substringFromIndex(oneAfterSecondAt!)
         
         if (PFUser.currentUser()?.objectId! == userID) {
             cell.leftView.backgroundColor = UIColor.whiteColor()
             cell.leftLabel.text = ""
-            cell.rightView.backgroundColor = UIColor.blueColor()
+            cell.rightView.backgroundColor = UIColor(red: 0.42, green: 0.80, blue: 0.87, alpha: 1.0)
             cell.rightLabel.text = messageText
             cell.rightLabel.textColor = UIColor.whiteColor()
+            cell.nameLabel.hidden = true
         }
         else {
             cell.rightView.backgroundColor = UIColor.whiteColor()
             cell.rightLabel.text = ""
-            cell.leftView.backgroundColor = UIColor.greenColor()
+            cell.leftView.backgroundColor = UIColor(red: 0.89, green: 0.64, blue: 0.47, alpha: 1.0)
             cell.leftLabel.text = messageText
             cell.leftLabel.textColor = UIColor.whiteColor()
+            cell.nameLabel.text = name
         }
         
         return cell
@@ -211,7 +213,12 @@ class ChatViewController: UIViewController, PNObjectEventListener, UITableViewDe
         messages.append((message.data.message as? String)!)
         
         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: messages.count-1, inSection: 0)], withRowAnimation: .Bottom)
-        
+                
+        if (self.messages.count > 0) {
+            let lastSpot = self.messages.count - 1
+            let position = NSIndexPath(forRow: lastSpot, inSection: 0)
+            self.tableView.scrollToRowAtIndexPath(position, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        }
         
     }
     

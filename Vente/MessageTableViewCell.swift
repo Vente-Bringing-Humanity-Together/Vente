@@ -16,6 +16,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var rightView: UIView!
     @IBOutlet weak var rightLabel: UILabel!
     
+    @IBOutlet weak var nameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
