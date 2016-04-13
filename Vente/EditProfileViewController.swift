@@ -19,13 +19,14 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     let takeCoverPhotoButton: FlatButton = FlatButton(frame: CGRectMake(160, 197, 130, 30))
     let closeButton: FlatButton = FlatButton(frame: CGRectMake(50, 477, 90, 30))
     let doneButton: FlatButton = FlatButton(frame: CGRectMake(180, 477, 90, 30))
+    
+    let myBioTextField: TextField! = TextField(frame: CGRectMake(8, 439, 304, 30))
 
 
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var coverImageView: UIImageView!
-    
-    @IBOutlet weak var myBioTextField: UITextField!
+
     
     var isCover = false
     
@@ -57,6 +58,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         closeButton.setTitle("Close", forState: .Normal)
         buttonMaker(closeButton)
         closeButton.addTarget(self, action: #selector(EditProfileViewController.closeButtonTouched), forControlEvents: .TouchUpInside)
+        
+        myBioTextField.placeholder = "Your Bio"
+        textMaker(myBioTextField)
+        myBioTextField.addTarget(self, action: #selector(EditProfileViewController.textFieldDidBeginEditing), forControlEvents: .EditingDidBegin)
+        myBioTextField.addTarget(self, action: #selector(EditProfileViewController.textFieldDidEndEditing), forControlEvents: .EditingDidEnd)
         
         vc.delegate = self
         vc.allowsEditing = true
@@ -242,6 +248,31 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         UIView.commitAnimations()
     }
+    
+    func textMaker(field: TextField) {
+        
+        field.placeholderTextColor = MaterialColor.grey.base
+        field.font = UIFont (name: "District Pro Thin", size: 17)
+        field.textColor = MaterialColor.black
+        
+        //        field.titleLabel = UILabel()
+        field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
+        field.titleLabelColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        field.titleLabelActiveColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        
+        let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        
+        let clearButton: FlatButton = FlatButton()
+        clearButton.pulseColor = MaterialColor.red.lighten1
+        clearButton.pulseScale = false
+        clearButton.tintColor = MaterialColor.red.lighten1
+        clearButton.setImage(image, forState: .Normal)
+        clearButton.setImage(image, forState: .Highlighted)
+        
+        //        field.clearButton = clearButton
+        view.addSubview(field)
+    }
+
     
     
     func textFieldDidEndEditing(textField: UITextField) {
