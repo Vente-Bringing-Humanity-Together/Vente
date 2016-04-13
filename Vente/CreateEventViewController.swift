@@ -108,7 +108,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         }
         
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1180)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1000)
         //setAttributes()
         
         let createBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(CreateEventViewController.createBarButtonTouched))

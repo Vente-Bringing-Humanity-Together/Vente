@@ -37,6 +37,7 @@ class SignUpViewController: UIViewController {
         textMaker(lastNameField)
         
         usernameField.placeholder = "Username (Email)"
+        usernameField.autocapitalizationType = .None
         textMaker(usernameField)
         usernameField.addTarget(self, action: #selector(SignUpViewController.usernameBeganToEdit), forControlEvents: .EditingDidBegin)
         usernameField.addTarget(self, action: #selector(SignUpViewController.usernameEndToEdit), forControlEvents: .EditingDidEnd)
@@ -152,13 +153,11 @@ class SignUpViewController: UIViewController {
         }
         else if(usernameField.text?.containsString("ufl.edu") == false) {
             print("No ufl :)")
-            let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Must have a .ufl email.", preferredStyle: .Alert)
-            
-            //Create and add the Cancel action
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Cancel) { action -> Void in
+            let alertController = UIAlertController(title: "Must have a .ufl email", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
-            actionSheetController.addAction(cancelAction)
-            self.presentViewController(actionSheetController, animated: true){
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
             }
         }
         else if(usernameField.text == ""){
