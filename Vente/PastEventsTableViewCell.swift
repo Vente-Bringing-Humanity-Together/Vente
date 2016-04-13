@@ -20,7 +20,6 @@ class PastEventsTableViewCell: UITableViewCell {
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String
-            self.dateLabel.text = Event["event_date"] as? String
             self.locationLabel.text = Event["event_location"] as? String
             self.eventImageView.image = Event["event_image"] as? UIImage
             if (Event?["attendee_list"] != nil) {
@@ -33,8 +32,14 @@ class PastEventsTableViewCell: UITableViewCell {
                         self.wentCountLabel.text = "\(goingCount) people went"
                     }
                 }
-                
             }
+            
+            var eventDateString = ""
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .ShortStyle
+            formatter.timeStyle = .ShortStyle
+            eventDateString = formatter.stringFromDate((Event["event_date"] as? NSDate)!)
+            self.dateLabel.text = eventDateString
         }
     }
     
