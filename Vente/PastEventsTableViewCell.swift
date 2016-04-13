@@ -13,9 +13,9 @@ class PastEventsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var wentCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
 
     var Event: PFObject! {
         didSet {

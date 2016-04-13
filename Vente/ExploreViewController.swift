@@ -406,7 +406,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             }
         }
-        join.backgroundColor = UIColor(red: 121/255, green: 183/255, blue: 145/255, alpha: 1.0)
+        join.backgroundColor = UIColor(red: 0.42, green: 0.8, blue: 0.87, alpha: 1.0)
         
         return[join]
     }

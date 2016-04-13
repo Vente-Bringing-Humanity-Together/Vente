@@ -19,6 +19,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var optionSegmentedControl: UISegmentedControl!
     @IBOutlet weak var joinButton: UIButton!
     
     var event: PFObject!
@@ -56,6 +57,10 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             })
         }
 
+        let white = UIColor.whiteColor().CGColor
+        optionSegmentedControl.layer.borderColor = white
+        optionSegmentedControl.layer.borderWidth = 1.5
+        optionSegmentedControl.layer.cornerRadius = 0
         
         var eventDateString = ""
         let formatter = NSDateFormatter()

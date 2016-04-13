@@ -194,6 +194,11 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             tabBar.tintColor = UIColor(red: 0.88, green: 0.58, blue: 0.38, alpha: 1.0)
         }
         
+        let white = UIColor.whiteColor().CGColor
+        publicSegmentedControl.layer.borderColor = white
+        publicSegmentedControl.layer.borderWidth = 1.5
+        publicSegmentedControl.layer.cornerRadius = 0
+        
         datePicker = MDDatePicker(frame: dateFrame)
         datePicker!.delegate = self
         view.addSubview(datePicker!)

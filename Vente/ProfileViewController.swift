@@ -45,6 +45,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        tableView.layer.borderWidth = 1
 //        tableView.layer.cornerRadius = 15
         
+        optionSegmentedControl.layer.borderColor = white.CGColor
+        optionSegmentedControl.layer.borderWidth = 1.5
+        optionSegmentedControl.layer.cornerRadius = 0
+        
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 30
         

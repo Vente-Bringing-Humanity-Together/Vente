@@ -14,6 +14,7 @@
                 <outlet property="eventNameLabel" destination="72L-vE-x9q" id="qcj-sR-FiM"/>
                 <outlet property="joinButton" destination="CKe-OA-6rE" id="dUA-iW-Aw4"/>
                 <outlet property="locationLabel" destination="7Xf-PE-3xd" id="ctB-Pi-8sI"/>
+                <outlet property="optionSegmentedControl" destination="uYj-Ib-cjn" id="fz6-A0-LUF"/>
                 <outlet property="tableView" destination="13t-S5-QOQ" id="x2X-oc-YKg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -48,8 +49,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="13t-S5-QOQ">
-                    <rect key="frame" x="0.0" y="335" width="320" height="170"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="335" width="320" height="233"/>
+                    <color key="backgroundColor" red="0.87058823529999996" green="0.72156862749999995" blue="0.52941176469999995" alpha="0.79931294330000002" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.51764705879999995" green="0.3411764706" blue="0.18823529410000001" alpha="0.47999778380000002" colorSpace="calibratedRGB"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kk-9W-QdH">
@@ -61,15 +62,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5g-z2-g81">
                     <rect key="frame" x="108" y="76" width="104" height="90"/>
                 </imageView>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-Ib-cjn">
-                    <rect key="frame" x="0.0" y="299" width="320" height="29"/>
-                    <color key="backgroundColor" red="0.41958079539999998" green="0.80139357499999997" blue="0.8665476527" alpha="1" colorSpace="calibratedRGB"/>
-                    <segments>
-                        <segment title="Going"/>
-                        <segment title="Invited"/>
-                    </segments>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-OA-6rE">
                     <rect key="frame" x="252" y="136" width="52" height="30"/>
                     <state key="normal" title="Join">
@@ -79,6 +71,15 @@
                         <action selector="joinButtonTouched:" destination="-1" eventType="touchUpInside" id="VZH-gc-CYi"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uYj-Ib-cjn">
+                    <rect key="frame" x="0.0" y="299" width="320" height="29"/>
+                    <color key="backgroundColor" red="0.41958079539999998" green="0.80139357499999997" blue="0.8665476527" alpha="1" colorSpace="calibratedRGB"/>
+                    <segments>
+                        <segment title="Going"/>
+                        <segment title="Invited"/>
+                    </segments>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" red="0.98823529409999999" green="0.98039215690000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
             <point key="canvasLocation" x="483" y="330"/>
