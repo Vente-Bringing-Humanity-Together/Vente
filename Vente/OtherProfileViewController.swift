@@ -13,9 +13,7 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
     
     @IBOutlet weak var followButton: UIButton!
     
@@ -52,6 +50,10 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.registerNib(cellNib, forCellReuseIdentifier: "PastEventsTableViewCell")
         let cellNib2 = UINib(nibName: "XIBPeopleTableViewCell", bundle: NSBundle.mainBundle())
         tableView.registerNib(cellNib2, forCellReuseIdentifier: "XIBPeopleTableViewCell")
+        
+        optionSegmentedControl.layer.borderColor = white.CGColor
+        optionSegmentedControl.layer.borderWidth = 1.5
+        optionSegmentedControl.layer.cornerRadius = 0
         
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.barTintColor = UIColor(red: 0.88, green: 0.58, blue: 0.38, alpha: 1.0)
@@ -260,12 +262,6 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
                 self.thisUser = user!
                 if (user?["first_name"] != nil && user?["last_name"] != nil) {
                     self.nameLabel.text = (user?["first_name"] as! String) + " " + ((user?["last_name"])! as! String)
-                }
-                if (user?["username"] != nil) {
-                    self.emailLabel.text = user!["username"] as? String
-                }
-                if(user?["number"] != nil){
-                    self.numberLabel.text = user?["number"] as? String
                 }
                 
                 if (user?["profile_image"] != nil) {
