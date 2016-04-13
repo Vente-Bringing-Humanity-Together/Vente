@@ -69,6 +69,10 @@
                     </segments>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-OA-6rE">
+                    <rect key="frame" x="274" y="136" width="30" height="30"/>
+                    <state key="normal" title="Join"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.98823529409999999" green="0.98039215690000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
             <point key="canvasLocation" x="483" y="330"/>
