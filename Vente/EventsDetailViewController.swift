@@ -22,6 +22,8 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     var event: PFObject!
     var attendeeList : [String] = []
     
+    var isGoing = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,16 +75,6 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-//        if (attendeeList.contains((PFUser.currentUser()?.objectId)!)) {
-//            let backgroundImage = UIImage(named: "ic_chat")
-//            let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
-//
-//            self.navigationItem.rightBarButtonItem = groupMessageButton
-//        }
-//        else {
-//            self.navigationItem.rightBarButtonItem = .None
-//        }
-        
         let backgroundImage = UIImage(named: "ic_chat")
         let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
 
@@ -111,6 +103,20 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             tabBar.backgroundColor = UIColor.whiteColor()
             tabBar.tintColor = UIColor(red: 0.88, green: 0.58, blue: 0.38, alpha: 1.0)
         }
+        
+        if (isGoing) {
+            let backgroundImage = UIImage(named: "ic_chat")
+            let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
+            
+            self.navigationItem.rightBarButtonItem = groupMessageButton
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = .None
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
     }
     
     func chatButtonTouched() {

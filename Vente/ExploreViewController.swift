@@ -337,9 +337,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if (events[indexPath.section]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
             cell.joinButton.select()
+            cell.isGoing = true
         }
         else {
             cell.joinButton.deselect()
+            cell.isGoing = false
         }
         
         return cell
@@ -426,6 +428,11 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         let event = filteredEvents![indexPath.section]
         
         eventDetailsViewController.event = event
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
+        eventDetailsViewController.isGoing = cell!.isGoing
+        
+        print(cell!.isGoing)
         
         self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         

@@ -21,6 +21,8 @@ class ExploreTableViewCell: UITableViewCell {
     
     let joinButton = DOFavoriteButton(frame: CGRectMake(250, 0, 60, 60), image: UIImage(named: "ic_done"))
     
+    var isGoing = false
+    
     var Event: PFObject! {
         didSet {
             self.nameLabel.text = Event["event_name"] as? String
@@ -35,7 +37,7 @@ class ExploreTableViewCell: UITableViewCell {
             eventDateString = formatter.stringFromDate((Event["event_date"] as? NSDate)!)
             self.dateLabel.text = eventDateString
             
-            joinButton.deselect()
+            joinButton.deselect()            
         }
     }
 
@@ -63,9 +65,12 @@ class ExploreTableViewCell: UITableViewCell {
         if joinButton.selected {
             // deselect
             joinButton.deselect()
+            isGoing = false
+            
         } else {
             // select with animation
             joinButton.select()
+            isGoing = true
         }
     }
 
