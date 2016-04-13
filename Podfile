@@ -15,5 +15,9 @@ target 'Vente' do
     pod 'MaterialControls', '~> 1.0.2'
     pod 'HUD', '~>1.1.0'
     pod 'JHSpinner'
+    pod 'UberRides'
+    pod "OAuthSwift", "~> 0.5.0"
+    pod 'AeroGearHttp'
+    pod 'AeroGearOAuth2'
 end
 

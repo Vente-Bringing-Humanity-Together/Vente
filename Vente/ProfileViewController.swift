@@ -11,6 +11,7 @@ import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
 import HUD
+import OAuthSwift
 
 let userDidLogoutNotification = "userDidLogoutNotification"
 
@@ -419,5 +420,46 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.reloadData()
     }
     
+    @IBAction func uberButtonTouched(sender: AnyObject) {
+        
+        // 1 Create OAuth2Swift object
+//        let uberBaseURL = NSURL(string: "https://api.uber.com")
+        let uberClientID: String = "pI-kyJ5ZvK3OorOZ5hFYZPFOYPCV2dQN"
+        let uberClientSecret: String = "MNtMLqHhdVAJqCFIbrMyuuRjE5z57S-muVlMb6n4"
+//        let uberServerToken: String = "IzP49IheY73iRtIy-g35zE_P1CWUm_KhiLEEW7Ib"
+        
+        let oauthswift = OAuth2Swift(
+            consumerKey:    uberClientID, // 2 Enter app settings
+            consumerSecret: uberClientSecret,
+            authorizeUrl:   "https://login.uber.com/oauth/v2/authorize",
+            accessTokenUrl: "https://login.uber.com/oauth/v2/token",
+            responseType:   "code"
+        )
+        
+        // 4 Scope = What I said on Uber
+        oauthswift.authorizeWithCallbackURL(
+            NSURL(string: "Vente://oauth/callback")!, scope: "", state:"", success: { credential, response, parameters in
+                print(credential.oauth_token)
+            },
+            failure: { error in
+                print(error.localizedDescription)
+            }
+        )
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func snapshot() -> NSData {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let fullScreenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        UIImageWriteToSavedPhotosAlbum(fullScreenshot, nil, nil, nil)
+        return UIImageJPEGRepresentation(fullScreenshot, 0.5)!
+    }
 
 }

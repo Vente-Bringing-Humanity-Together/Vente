@@ -85,6 +85,8 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Vente/AFNetworking.framework"
+  install_framework "Pods-Vente/AeroGearHttp.framework"
+  install_framework "Pods-Vente/AeroGearOAuth2.framework"
   install_framework "Pods-Vente/BDBOAuth1Manager.framework"
   install_framework "Pods-Vente/Bolts.framework"
   install_framework "Pods-Vente/ChameleonFramework.framework"
@@ -95,11 +97,15 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Vente/MBProgressHUD.framework"
   install_framework "Pods-Vente/Material.framework"
   install_framework "Pods-Vente/MaterialControls.framework"
+  install_framework "Pods-Vente/OAuthSwift.framework"
   install_framework "Pods-Vente/Parse.framework"
   install_framework "Pods-Vente/PubNub.framework"
+  install_framework "Pods-Vente/UberRides.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Vente/AFNetworking.framework"
+  install_framework "Pods-Vente/AeroGearHttp.framework"
+  install_framework "Pods-Vente/AeroGearOAuth2.framework"
   install_framework "Pods-Vente/BDBOAuth1Manager.framework"
   install_framework "Pods-Vente/Bolts.framework"
   install_framework "Pods-Vente/ChameleonFramework.framework"
@@ -110,6 +116,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Vente/MBProgressHUD.framework"
   install_framework "Pods-Vente/Material.framework"
   install_framework "Pods-Vente/MaterialControls.framework"
+  install_framework "Pods-Vente/OAuthSwift.framework"
   install_framework "Pods-Vente/Parse.framework"
   install_framework "Pods-Vente/PubNub.framework"
+  install_framework "Pods-Vente/UberRides.framework"
 fi
