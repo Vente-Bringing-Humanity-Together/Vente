@@ -317,7 +317,7 @@
                                                     <color key="backgroundColor" red="0.88627450980392153" green="0.63529411764705879" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5W-d1-lbl">
-                                                    <rect key="frame" x="94" y="31" width="210" height="15"/>
+                                                    <rect key="frame" x="94" y="29" width="210" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -330,7 +330,7 @@
                                                     <color key="backgroundColor" red="0.8862745098" green="0.63529411759999999" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGq-nn-elA">
-                                                    <rect key="frame" x="94" y="65" width="210" height="16"/>
+                                                    <rect key="frame" x="94" y="64" width="210" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
