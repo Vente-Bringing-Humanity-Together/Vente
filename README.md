@@ -27,8 +27,9 @@ An application to give people the power to connect and share meaningful interact
 - [X] Ability to see followers and following
 
 ##Optional Tier 3
-- [ ] Integrate Uber API into chat for users to request rides
 - [X] Remake a past event
+- [X] OAuth2 call to allow user to login to Uber
+- [ ] Integrate Uber API into chat for users to request rides
 - [ ] Check-in feature when a person comes to an event (bump phones together? bluetooth? location check?)
 
 ##UI 
