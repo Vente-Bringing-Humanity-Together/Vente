@@ -78,6 +78,8 @@ class SignUpViewController: UIViewController {
         field.titleLabelColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
         field.titleLabelActiveColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
         
+        field.autocapitalizationType = .None
+        
         let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
         
         let clearButton: FlatButton = FlatButton()
@@ -152,13 +154,11 @@ class SignUpViewController: UIViewController {
         }
         else if(usernameField.text?.containsString("ufl.edu") == false) {
             print("No ufl :)")
-            let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Must have a .ufl email.", preferredStyle: .Alert)
-            
-            //Create and add the Cancel action
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Cancel) { action -> Void in
+            let alertController = UIAlertController(title: "Must have a .ufl email", message: "", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
-            actionSheetController.addAction(cancelAction)
-            self.presentViewController(actionSheetController, animated: true){
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {
             }
         }
         else if(usernameField.text == ""){

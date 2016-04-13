@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Material
 
 // So we can delete from an array based on a value
 extension Array where Element: Equatable {
@@ -26,6 +27,8 @@ extension Array where Element: Equatable {
 
 class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let donebutton: FlatButton = FlatButton(frame: CGRectMake(122, 474, 80, 30))
+    
     @IBOutlet weak var tableView: UITableView!
     
     var followingArray: [String]?
@@ -36,6 +39,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        donebutton.setTitle("Done", forState: .Normal)
+        buttonMaker(donebutton)
+        donebutton.addTarget(self, action: #selector(InviteFriendsViewController.doneButtonTouched), forControlEvents: .TouchUpInside)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -148,12 +155,20 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func buttonMaker(button: FlatButton) {
+        button.titleLabel!.font = UIFont (name: "District Pro Thin", size: 13)
+        button.tintColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        
+        // Add button to UIViewController.
+        view.addSubview(button)
+    }
+    
     func sendData(data: [String]) {
         // Send that thing back
         self.onDataAvailable?(data: data)
     }
     
-    @IBAction func doneButtonTouched(sender: AnyObject) {
+    func doneButtonTouched() {
         sendData(self.friendsToInvite)
         navigationController?.popViewControllerAnimated(true)
     }

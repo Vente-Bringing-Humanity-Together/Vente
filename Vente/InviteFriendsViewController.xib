@@ -16,15 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEx-5K-gNU">
-                    <rect key="frame" x="142" y="474" width="37" height="30"/>
-                    <state key="normal" title="Done">
-                        <color key="titleColor" red="0.8862745098" green="0.63529411759999999" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="doneButtonTouched:" destination="-1" eventType="touchUpInside" id="nsQ-tV-WSt"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qfc-pc-Jn3">
                     <rect key="frame" x="8" y="65" width="304" height="372"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

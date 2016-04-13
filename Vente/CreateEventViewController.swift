@@ -11,10 +11,23 @@ import Parse
 import MaterialControls
 import MapKit
 import HUD
+import Material
 
 let userDidPostEventNotification = "userDidPostEventNotification"
 
 class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UIScrollViewDelegate, MDCalendarDelegate, MDCalendarTimePickerDialogDelegate {
+    
+    let eventNameLabel: TextField! = TextField(frame: CGRectMake(8, 40, 304, 30))
+    let descriptionTextField: TextField! = TextField(frame: CGRectMake(8, 180, 304, 30))
+    let eventLocationLabel: TextField! = TextField(frame: CGRectMake(8, 255, 304, 30))
+    
+    let invitebutton: FlatButton = FlatButton(frame: CGRectMake(8, 968, 150, 30))
+    let createbutton: FlatButton = FlatButton(frame: CGRectMake(150, 968, 150, 30))
+    let datebutton: FlatButton = FlatButton(frame: CGRectMake(30, 120, 100, 30))
+    let timebutton: FlatButton = FlatButton(frame: CGRectMake(170, 120, 100, 30))
+    let uploadbutton: FlatButton = FlatButton(frame: CGRectMake(10, 339, 150, 30))
+    let takephotobutton: FlatButton = FlatButton(frame: CGRectMake(155, 339, 150, 30))
+    let yelpbutton: FlatButton = FlatButton(frame: CGRectMake(60, 224, 80, 30))
     
     var businesses: [Business]!
     var filteredData: [Business]?
@@ -26,11 +39,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     let vc = UIImagePickerController()
 
-    @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var takePhotoButton: UIButton!
-    @IBOutlet weak var uploadImageButton: UIButton!
-    @IBOutlet weak var eventNameLabel: UITextField!
-    @IBOutlet weak var eventLocationLabel: UITextField!
     @IBOutlet weak var eventImageView: UIImageView!
     
     @IBOutlet weak var publicSegmentedControl: UISegmentedControl!
@@ -55,8 +63,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     var bumpEvent: PFObject?
     
-    @IBOutlet weak var createEventButton: UIButton!
-    
     let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var blurEffectView: UIVisualEffectView?
     
@@ -76,11 +82,60 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        eventNameLabel.placeholder = "Name"
+        textMaker(eventNameLabel)
+        eventNameLabel.addTarget(self, action: #selector(CreateEventViewController.nameBeganToEdit), forControlEvents: .EditingDidBegin)
+        eventNameLabel.addTarget(self, action: #selector(CreateEventViewController.nameEndToEdit), forControlEvents: .EditingDidEnd)
+        
+        descriptionTextField.placeholder = "Description"
+        textMaker(descriptionTextField)
+        descriptionTextField.addTarget(self, action: #selector(CreateEventViewController.descriptionBeganToEdit), forControlEvents: .EditingDidBegin)
+        descriptionTextField.addTarget(self, action: #selector(CreateEventViewController.descriptionEndToEdit), forControlEvents: .EditingDidEnd)
+        
+        eventLocationLabel.placeholder = "Location"
+        textMaker(eventLocationLabel)
+        eventLocationLabel.addTarget(self, action: #selector(CreateEventViewController.locationBeganToEdit), forControlEvents: .EditingDidBegin)
+        eventLocationLabel.addTarget(self, action: #selector(CreateEventViewController.locationEndToEdit), forControlEvents: .EditingDidEnd)
+        
+        invitebutton.setTitle("Invite Friends", forState: .Normal)
+        invitebutton.titleLabel?.textAlignment = .Left
+        buttonMaker(invitebutton)
+        invitebutton.addTarget(self, action: #selector(CreateEventViewController.InviteFriendsButtonTouched), forControlEvents: .TouchUpInside)
+        
+        createbutton.setTitle("Create Event", forState: .Normal)
+        createbutton.titleLabel?.textAlignment = .Right
+        buttonMaker(createbutton)
+        createbutton.addTarget(self, action: #selector(CreateEventViewController.createEvent), forControlEvents: .TouchUpInside)
+        
+        datebutton.setTitle("Date?", forState: .Normal)
+        buttonMaker(datebutton)
+        datebutton.titleLabel?.textAlignment = .Left
+        datebutton.addTarget(self, action: #selector(CreateEventViewController.dateButtonTouched), forControlEvents: .TouchUpInside)
+        
+        timebutton.setTitle("Time?", forState: .Normal)
+        buttonMaker(timebutton)
+        timebutton.titleLabel?.textAlignment = .Right
+        timebutton.addTarget(self, action: #selector(CreateEventViewController.timeButtonTouched), forControlEvents: .TouchUpInside)
+        
+        uploadbutton.setTitle("Upload Image", forState: .Normal)
+        buttonMaker(uploadbutton)
+        uploadbutton.titleLabel?.textAlignment = .Left
+        uploadbutton.addTarget(self, action: #selector(CreateEventViewController.uploadButtonTouched), forControlEvents: .TouchUpInside)
+        
+        takephotobutton.setTitle("Take Photo", forState: .Normal)
+        buttonMaker(takephotobutton)
+        takephotobutton.titleLabel?.textAlignment = .Right
+        takephotobutton.addTarget(self, action: #selector(CreateEventViewController.takePhotoButtonTouched), forControlEvents: .TouchUpInside)
+        
+        yelpbutton.setTitle("Yelp?", forState: .Normal)
+        buttonMaker(yelpbutton)
+        yelpbutton.addTarget(self, action: #selector(CreateEventViewController.yelpButtonTouched), forControlEvents: .TouchUpInside)
+        
         if(bumpEvent != nil){
             bumpInit()
         }
         
-        createEventButton.enabled = true
+        createbutton.enabled = true
         let cellNib = UINib(nibName: "YelpTableViewCell", bundle: NSBundle.mainBundle())
         yelpTableView.registerNib(cellNib, forCellReuseIdentifier: "YelpTableViewCell")
         
@@ -101,17 +156,17 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         vc.allowsEditing = true
         
         if (!UIImagePickerController.isSourceTypeAvailable(.Camera)){
-            takePhotoButton.enabled = false
+            takephotobutton.enabled = false
         }
         if (!UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)){
-            uploadImageButton.enabled = false
+            uploadbutton.enabled = false
         }
         
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1180)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
         //setAttributes()
         
-        let createBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(CreateEventViewController.createBarButtonTouched))
+        let createBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(CreateEventViewController.createEvent))
         
         self.navigationItem.rightBarButtonItem = createBarButton
         
@@ -151,6 +206,122 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         timePicker?.hidden = true
     }
     
+    func textMaker(field: TextField) {
+        
+        field.placeholderTextColor = MaterialColor.grey.base
+        field.font = UIFont (name: "District Pro Thin", size: 17)
+        field.textColor = MaterialColor.black
+        
+        //        field.titleLabel = UILabel()
+        field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
+        field.titleLabelColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        field.titleLabelActiveColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        
+        field.autocapitalizationType = .None
+        
+        let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        
+        let clearButton: FlatButton = FlatButton()
+        clearButton.pulseColor = MaterialColor.red.lighten1
+        clearButton.pulseScale = false
+        clearButton.tintColor = MaterialColor.red.lighten1
+        clearButton.setImage(image, forState: .Normal)
+        clearButton.setImage(image, forState: .Highlighted)
+        
+        //        field.clearButton = clearButton
+        scrollView.addSubview(field)
+    }
+    
+    func buttonMaker(button: FlatButton) {
+        button.titleLabel!.font = UIFont (name: "District Pro Thin", size: 13)
+        button.tintColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        
+        // Add button to UIViewController.
+        scrollView.addSubview(button)
+    }
+    
+    func nameBeganToEdit() {
+        textFieldDidBeginEditing(eventNameLabel)
+    }
+    func nameEndToEdit() {
+        textFieldDidEndEditing(eventNameLabel)
+    }
+    func descriptionBeganToEdit() {
+        textFieldDidBeginEditing(descriptionTextField)
+    }
+    func descriptionEndToEdit() {
+        textFieldDidEndEditing(descriptionTextField)
+    }
+    func locationBeganToEdit() {
+        textFieldDidBeginEditing(eventLocationLabel)
+    }
+    func locationEndToEdit() {
+        textFieldDidEndEditing(eventLocationLabel)
+    }
+    
+    @IBAction func screenTouched(sender: AnyObject) {
+         view.endEditing(true)
+    }
+    struct MoveKeyboard {
+        static let KEYBOARD_ANIMATION_DURATION : CGFloat = 0.3
+        static let MINIMUM_SCROLL_FRACTION : CGFloat = 0.2;
+        static let MAXIMUM_SCROLL_FRACTION : CGFloat = 0.8;
+        static let PORTRAIT_KEYBOARD_HEIGHT : CGFloat = 216;
+        static let LANDSCAPE_KEYBOARD_HEIGHT : CGFloat = 162;
+    }
+    
+    var animateDistance: CGFloat = 0
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        let textFieldRect : CGRect = self.view.window!.convertRect(textField.bounds, fromView: textField)
+        let viewRect : CGRect = self.view.window!.convertRect(self.view.bounds, fromView: self.view)
+        
+        let midline : CGFloat = textFieldRect.origin.y + 0.5 * textFieldRect.size.height
+        let numerator : CGFloat = midline - viewRect.origin.y - MoveKeyboard.MINIMUM_SCROLL_FRACTION * viewRect.size.height
+        let denominator : CGFloat = (MoveKeyboard.MAXIMUM_SCROLL_FRACTION - MoveKeyboard.MINIMUM_SCROLL_FRACTION) * viewRect.size.height
+        var heightFraction : CGFloat = numerator / denominator
+        
+        if heightFraction < 0.0 {
+            heightFraction = 0.0
+        } else if heightFraction > 1.0 {
+            heightFraction = 1.0
+        }
+        
+        let orientation : UIInterfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
+        if (orientation == UIInterfaceOrientation.Portrait || orientation == UIInterfaceOrientation.PortraitUpsideDown) {
+            animateDistance = floor(MoveKeyboard.PORTRAIT_KEYBOARD_HEIGHT * heightFraction)
+        } else {
+            animateDistance = floor(MoveKeyboard.LANDSCAPE_KEYBOARD_HEIGHT * heightFraction)
+        }
+        
+        var viewFrame : CGRect = self.view.frame
+        viewFrame.origin.y -= animateDistance
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(NSTimeInterval(MoveKeyboard.KEYBOARD_ANIMATION_DURATION))
+        
+        self.view.frame = viewFrame
+        
+        UIView.commitAnimations()
+    }
+    
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        var viewFrame : CGRect = self.view.frame
+        viewFrame.origin.y += animateDistance
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        
+        UIView.setAnimationDuration(NSTimeInterval(MoveKeyboard.KEYBOARD_ANIMATION_DURATION))
+        
+        self.view.frame = viewFrame
+        
+        UIView.commitAnimations()
+        
+    }
+    
     func bumpInit(){
         eventNameLabel.text = bumpEvent!["event_name"] as? String
         descriptionTextField.text = bumpEvent!["event_description"] as? String
@@ -187,7 +358,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         return cell
     }
     
-    @IBAction func onClickYelp(sender: AnyObject) {
+    func yelpButtonTouched() {
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
         let start = CGPoint(x: 0.0, y: 0.0)
@@ -249,16 +420,16 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func createBarButtonTouched() {
-        createEvent("")
-    }
+ //   func createBarButtonTouched() {
+   //     createEvent("")
+    //}
     
-    @IBAction func createEvent(sender: AnyObject) {
+    func createEvent() {
         if(eventNameLabel.text != nil && eventLocationLabel.text != nil && eventLocationLabel.text != nil && eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil) {
             
             HUD.show(.loading, text: "Saving...")
             
-            self.createEventButton.enabled = false
+            self.createbutton.enabled = false
             let event = PFObject(className: "Events")
         
             let formatter2 = NSDateFormatter()
@@ -324,7 +495,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                             if let error = error {
                                 print("Event Add Failed")
                                 print(error.localizedDescription)
-                                self.createEventButton.enabled = true
+                                self.createbutton.enabled = true
                                 
                             } else {
                                 print("Added Event Successfully")
@@ -343,7 +514,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                         if let error = error {
                             print("Event Add Failed")
                             print(error.localizedDescription)
-                            self.createEventButton.enabled = true
+                            self.createbutton.enabled = true
                             
                         } else {
                             print("Added Event Successfully")
@@ -439,7 +610,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 //        callYelpAPI(searchBar.text!)
     }
     
-    @IBAction func InviteFriendsButtonTouched(sender: AnyObject) {
+    func InviteFriendsButtonTouched() {
         let inviteFriendsViewController = InviteFriendsViewController()
         
         // Closures :)
@@ -459,11 +630,11 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         self.presentViewController(vc, animated: true, completion: nil)
     }
 
-    @IBAction func takePhotoButtonTouched(sender: AnyObject) {
+    func takePhotoButtonTouched() {
         vc.sourceType = UIImagePickerControllerSourceType.Camera
         showImagePicker()
     }
-    @IBAction func uploadImageButtonTouched(sender: AnyObject) {
+    func uploadButtonTouched() {
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         showImagePicker()
     }
@@ -480,7 +651,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         view.endEditing(true)
     }
     
-    @IBAction func eventDateButtonTouched(sender: AnyObject) {
+    func dateButtonTouched() {
         
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
@@ -505,7 +676,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 
     }
     
-    @IBAction func eventTimeButtonTouched(sender: AnyObject) {
+    func timeButtonTouched() {
         
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)

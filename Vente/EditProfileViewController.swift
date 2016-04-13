@@ -9,19 +9,24 @@
 import UIKit
 import Parse
 import HUD
+import Material
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    let uploadImageButton: FlatButton = FlatButton(frame: CGRectMake(50, 372, 90, 30))
+    let takePhotoButton: FlatButton = FlatButton(frame: CGRectMake(160, 372, 130, 30))
+    let uploadCoverImageButton: FlatButton = FlatButton(frame: CGRectMake(50, 197, 90, 30))
+    let takeCoverPhotoButton: FlatButton = FlatButton(frame: CGRectMake(160, 197, 130, 30))
+    let closeButton: FlatButton = FlatButton(frame: CGRectMake(50, 477, 90, 30))
+    let doneButton: FlatButton = FlatButton(frame: CGRectMake(180, 477, 90, 30))
+    
+    let myBioTextField: TextField! = TextField(frame: CGRectMake(8, 439, 304, 30))
 
-    @IBOutlet weak var uploadImageButton: UIButton!
+
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var takePhotoButton: UIButton!
     
     @IBOutlet weak var coverImageView: UIImageView!
-    @IBOutlet weak var uploadCoverImageButton: UIButton!
-    @IBOutlet weak var takeCoverPhotoButton: UIButton!
-    
-    @IBOutlet weak var myBioTextField: UITextField!
+
     
     var isCover = false
     
@@ -29,6 +34,35 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        uploadImageButton.setTitle("Upload", forState: .Normal)
+        buttonMaker(uploadImageButton)
+        uploadImageButton.addTarget(self, action: #selector(EditProfileViewController.uploadImageButtonTouched), forControlEvents: .TouchUpInside)
+        
+        takePhotoButton.setTitle("Take Photo", forState: .Normal)
+        buttonMaker(takePhotoButton)
+        takePhotoButton.addTarget(self, action: #selector(EditProfileViewController.takePhotoButtonTouched), forControlEvents: .TouchUpInside)
+        
+        uploadCoverImageButton.setTitle("Upload", forState: .Normal)
+        buttonMaker(uploadCoverImageButton)
+        uploadCoverImageButton.addTarget(self, action: #selector(EditProfileViewController.uploadCoverImageButtonTouched), forControlEvents: .TouchUpInside)
+        
+        takeCoverPhotoButton.setTitle("Take Photo", forState: .Normal)
+        buttonMaker(takeCoverPhotoButton)
+        takeCoverPhotoButton.addTarget(self, action: #selector(EditProfileViewController.takeCoverPhotoButtonTouched), forControlEvents: .TouchUpInside)
+        
+        doneButton.setTitle("Done", forState: .Normal)
+        buttonMaker(doneButton)
+        doneButton.addTarget(self, action: #selector(EditProfileViewController.doneButtonTouched), forControlEvents: .TouchUpInside)
+        
+        closeButton.setTitle("Close", forState: .Normal)
+        buttonMaker(closeButton)
+        closeButton.addTarget(self, action: #selector(EditProfileViewController.closeButtonTouched), forControlEvents: .TouchUpInside)
+        
+        myBioTextField.placeholder = "Your Bio"
+        textMaker(myBioTextField)
+        myBioTextField.addTarget(self, action: #selector(EditProfileViewController.textFieldDidBeginEditing), forControlEvents: .EditingDidBegin)
+        myBioTextField.addTarget(self, action: #selector(EditProfileViewController.textFieldDidEndEditing), forControlEvents: .EditingDidEnd)
         
         vc.delegate = self
         vc.allowsEditing = true
@@ -66,30 +100,31 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             tabBar.backgroundColor = UIColor.whiteColor()
         }
     }
+    
 
-    @IBAction func uploadImageButtonTouched(sender: AnyObject) {
+    func uploadImageButtonTouched() {
         isCover = false
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         showImagePicker()
     }
-    @IBAction func takePhotoButtonTouched(sender: AnyObject) {
+    func takePhotoButtonTouched() {
         isCover = false
         vc.sourceType = UIImagePickerControllerSourceType.Camera
         showImagePicker()
     }
     
-    @IBAction func uploadCoverImageButtonTouched(sender: AnyObject) {
+    func uploadCoverImageButtonTouched() {
         isCover = true
         vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         showImagePicker()
     }
-    @IBAction func takeCoverPhotoButtonTouched(sender: AnyObject) {
+    func takeCoverPhotoButtonTouched() {
         isCover = true
         vc.sourceType = UIImagePickerControllerSourceType.Camera
         showImagePicker()
     }
     
-    @IBAction func doneButtonTouched(sender: AnyObject) {
+    func doneButtonTouched() {
         self.view.endEditing(true)
         
         HUD.show(.loading, text: "Loading...")
@@ -131,6 +166,14 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         })
+    }
+    
+    func buttonMaker(button: FlatButton) {
+        button.titleLabel!.font = UIFont (name: "District Pro Thin", size: 13)
+        button.tintColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        
+        // Add button to UIViewController.
+        view.addSubview(button)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -206,6 +249,33 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         UIView.commitAnimations()
     }
     
+    func textMaker(field: TextField) {
+        
+        field.placeholderTextColor = MaterialColor.grey.base
+        field.font = UIFont (name: "District Pro Thin", size: 17)
+        field.textColor = MaterialColor.black
+        
+        //        field.titleLabel = UILabel()
+        field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
+        field.titleLabelColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        field.titleLabelActiveColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        
+        field.autocapitalizationType = .None
+        
+        let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
+        
+        let clearButton: FlatButton = FlatButton()
+        clearButton.pulseColor = MaterialColor.red.lighten1
+        clearButton.pulseScale = false
+        clearButton.tintColor = MaterialColor.red.lighten1
+        clearButton.setImage(image, forState: .Normal)
+        clearButton.setImage(image, forState: .Highlighted)
+        
+        //        field.clearButton = clearButton
+        view.addSubview(field)
+    }
+
+    
     
     func textFieldDidEndEditing(textField: UITextField) {
         var viewFrame : CGRect = self.view.frame
@@ -226,7 +296,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         view.endEditing(true)
     }
     
-    @IBAction func closeButtonTouched(sender: AnyObject) {
+    func closeButtonTouched() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
