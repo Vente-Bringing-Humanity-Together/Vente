@@ -27,7 +27,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     let timebutton: FlatButton = FlatButton(frame: CGRectMake(170, 120, 100, 30))
     let uploadbutton: FlatButton = FlatButton(frame: CGRectMake(10, 339, 150, 30))
     let takephotobutton: FlatButton = FlatButton(frame: CGRectMake(155, 339, 150, 30))
-    let yelpbutton: FlatButton = FlatButton(frame: CGRectMake(40, 224, 80, 30))
+    let yelpbutton: FlatButton = FlatButton(frame: CGRectMake(60, 224, 80, 30))
     
     var businesses: [Business]!
     var filteredData: [Business]?
@@ -163,7 +163,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         }
         
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1000)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1020)
         //setAttributes()
         
         let createBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(CreateEventViewController.createEvent))
@@ -319,9 +319,6 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         UIView.commitAnimations()
         
     }
-
-    
-    
     
     func bumpInit(){
         eventNameLabel.text = bumpEvent!["event_name"] as? String
