@@ -75,8 +75,8 @@ class SignUpViewController: UIViewController {
         
 //        field.titleLabel = UILabel()
         field.titleLabel!.font = UIFont (name: "District Pro Thin", size: 17)
-        field.titleLabelColor = MaterialColor.grey.base
-        field.titleLabelActiveColor = MaterialColor.blue.darken1
+        field.titleLabelColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
+        field.titleLabelActiveColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
         
         let image = UIImage(named: "ic_close")?.imageWithRenderingMode(.AlwaysTemplate)
         
@@ -93,7 +93,7 @@ class SignUpViewController: UIViewController {
     
     func buttonMaker(button: FlatButton) {
         button.titleLabel!.font = UIFont (name: "District Pro Thin", size: 13)
-        button.tintColor = MaterialColor.blue.darken1
+        button.tintColor = UIColor(red: 226/255, green: 162/255, blue: 118/225, alpha: 1.0)
         
         // Add button to UIViewController.
         view.addSubview(button)
