@@ -100,6 +100,7 @@ class SignUpViewController: UIViewController {
     }
 
     func cancelButtonTouched() {
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
