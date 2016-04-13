@@ -12,6 +12,7 @@
                 <outlet property="dateLabel" destination="67q-9i-Z7k" id="su1-x5-8u1"/>
                 <outlet property="descriptionLabel" destination="9kk-9W-QdH" id="1er-HE-wrA"/>
                 <outlet property="eventNameLabel" destination="72L-vE-x9q" id="qcj-sR-FiM"/>
+                <outlet property="joinButton" destination="CKe-OA-6rE" id="dUA-iW-Aw4"/>
                 <outlet property="locationLabel" destination="7Xf-PE-3xd" id="ctB-Pi-8sI"/>
                 <outlet property="tableView" destination="13t-S5-QOQ" id="x2X-oc-YKg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -70,8 +71,13 @@
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-OA-6rE">
-                    <rect key="frame" x="274" y="136" width="30" height="30"/>
-                    <state key="normal" title="Join"/>
+                    <rect key="frame" x="252" y="136" width="52" height="30"/>
+                    <state key="normal" title="Join">
+                        <color key="titleColor" red="0.41960784309999999" green="0.80000000000000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="joinButtonTouched:" destination="-1" eventType="touchUpInside" id="VZH-gc-CYi"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.98823529409999999" green="0.98039215690000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>

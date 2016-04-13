@@ -19,6 +19,8 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var joinButton: UIButton!
+    
     var event: PFObject!
     var attendeeList : [String] = []
     
@@ -113,6 +115,14 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         else {
             self.navigationItem.rightBarButtonItem = .None
         }
+        
+        
+        if (event["attendee_list"].containsObject(PFUser.currentUser()?.objectId)) {
+            joinButton.setTitle("Leave", forState: .Normal)
+        }
+        else {
+            joinButton.setTitle("Join", forState: .Normal)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -186,4 +196,50 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func joinButtonTouched(sender: AnyObject) {
+        
+        if (joinButton.currentTitle == "Join") {
+            if event?["attendee_list"] != nil {
+                attendeeList.append((PFUser.currentUser()?.objectId)!)
+                
+                event["attendee_list"] = attendeeList
+                
+                event.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+                    if (error != nil) {
+                        print(error?.localizedDescription)
+                    }
+                    else {
+                        print("The current user joined the event")
+                        self.joinButton.setTitle("Leave", forState: .Normal)
+                        
+                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.attendeeList.count-1, inSection: 0)], withRowAnimation: .Fade)
+                    }
+                })
+            }
+        }
+        else {
+            if event?["attendee_list"] != nil {
+                
+                let rowIndex = self.attendeeList.indexOf((PFUser.currentUser()?.objectId)!)!
+                self.attendeeList.removeAtIndex(rowIndex)
+                
+                event["attendee_list"] = attendeeList
+                
+                event.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+                    if (error != nil) {
+                        print(error?.localizedDescription)
+                    }
+                    else {
+                        print("The current user left the event")
+                        self.joinButton.setTitle("Join", forState: .Normal)
+                        
+                        self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: rowIndex, inSection: 0)], withRowAnimation: .Fade)
+                    }
+                })
+            }
+        }
+    }
+    
+    
 }

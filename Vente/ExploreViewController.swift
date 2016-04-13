@@ -431,9 +431,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? ExploreTableViewCell
         eventDetailsViewController.isGoing = cell!.isGoing
-        
-        print(cell!.isGoing)
-        
+                
         self.navigationController?.pushViewController(eventDetailsViewController, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
