@@ -174,8 +174,7 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
             if error != nil {
                 print(error)
             } else if let user = user {
-                cell.nameLabel.text = user["first_name"] as? String
-                cell.lastNameLabel.text = user["last_name"] as? String
+                cell.nameLabel.text = (user["first_name"] as! String) + " " + ((user["last_name"])! as! String)
                 
                 if (user["profile_image"] != nil) {
                     let userImageFile = user["profile_image"] as! PFFile

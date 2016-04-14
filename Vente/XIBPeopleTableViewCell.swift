@@ -12,7 +12,6 @@ class XIBPeopleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

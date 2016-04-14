@@ -162,8 +162,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if error != nil {
                     print(error)
                 } else if let user = user {
-                    cell.firstNameLabel.text = user["first_name"] as? String
-                    cell.lastNameLabel.text = user["last_name"] as? String
+                    cell.firstNameLabel.text = (user["first_name"] as! String) + " " + ((user["last_name"])! as! String)
                     
                     if (user["profile_image"] != nil) {
                         let userImageFile = user["profile_image"] as! PFFile
@@ -193,8 +192,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if error != nil {
                     print(error)
                 } else if let user = user {
-                    cell.firstNameLabel.text = user["first_name"] as? String
-                    cell.lastNameLabel.text = user["last_name"] as? String
+                    cell.firstNameLabel.text = (user["first_name"] as! String) + " " + ((user["last_name"])! as! String)
                     
                     if (user["profile_image"] != nil) {
                         let userImageFile = user["profile_image"] as! PFFile
