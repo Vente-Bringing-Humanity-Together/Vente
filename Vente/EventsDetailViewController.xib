@@ -49,7 +49,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="13t-S5-QOQ">
-                    <rect key="frame" x="0.0" y="335" width="320" height="233"/>
+                    <rect key="frame" x="0.0" y="335" width="320" height="184"/>
                     <color key="backgroundColor" red="0.87058823529999996" green="0.72156862749999995" blue="0.52941176469999995" alpha="0.79931294330000002" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.51764705879999995" green="0.3411764706" blue="0.18823529410000001" alpha="0.47999778380000002" colorSpace="calibratedRGB"/>
                 </tableView>

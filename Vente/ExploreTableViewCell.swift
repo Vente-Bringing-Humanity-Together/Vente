@@ -17,6 +17,8 @@ class ExploreTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
     
+    @IBOutlet weak var tagsLine: UILabel!
+    
     var attendeeList : [String]!
     
     let joinButton = DOFavoriteButton(frame: CGRectMake(250, 0, 60, 60), image: UIImage(named: "ic_done"))

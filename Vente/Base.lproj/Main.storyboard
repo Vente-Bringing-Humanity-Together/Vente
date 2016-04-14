@@ -616,6 +616,7 @@
                                             <outlet property="eventImageView" destination="agi-8x-AeZ" id="nOC-GL-TWj"/>
                                             <outlet property="locationLabel" destination="ObS-h8-A6O" id="B5d-qv-ZYF"/>
                                             <outlet property="nameLabel" destination="VUv-sd-Rnr" id="Jlh-Cy-zlt"/>
+                                            <outlet property="tagsLine" destination="ENm-rX-uNX" id="FuK-Lb-vM8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -49,7 +49,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var doneButton: UIButton!
     
     var refreshControl: UIRefreshControl!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -333,9 +333,13 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             })
         }
         
+//        if () {
+//            
+//        }
+        
         cell.backgroundColor = UIColor(red: 0.99, green: 0.98, blue: 0.89, alpha: 1.0)
         
-        if (events[indexPath.section]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
+        if (filteredEvents![indexPath.section]["attendee_list"].containsObject((PFUser.currentUser()?.objectId)!)) {
             cell.joinButton.select()
             cell.isGoing = true
         }
