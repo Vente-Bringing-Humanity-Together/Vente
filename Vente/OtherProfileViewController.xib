@@ -65,7 +65,7 @@
                     </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="deb-u3-NMR">
-                    <rect key="frame" x="0.0" y="335" width="320" height="181"/>
+                    <rect key="frame" x="0.0" y="335" width="320" height="178"/>
                     <color key="backgroundColor" red="0.8862745098" green="0.63529411759999999" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
             </subviews>
