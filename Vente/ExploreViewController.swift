@@ -310,8 +310,8 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         
         cell.Event = filteredEvents![indexPath.section]
         
-        if (events?[indexPath.section]["event_image"] != nil) {
-            let userImageFile = events?[indexPath.section]["event_image"] as! PFFile
+        if (filteredEvents?[indexPath.section]["event_image"] != nil) {
+            let userImageFile = filteredEvents?[indexPath.section]["event_image"] as! PFFile
             userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)

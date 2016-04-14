@@ -138,8 +138,8 @@ class MyEventsViewController: UIViewController, UITableViewDataSource, UITableVi
 //        cell.Event = myEvents[indexPath.section]
         cell.Event = filteredEvents![indexPath.section]
         
-        if (myEvents?[indexPath.section]["event_image"] != nil) {
-            let userImageFile = myEvents?[indexPath.section]["event_image"] as! PFFile
+        if (filteredEvents?[indexPath.section]["event_image"] != nil) {
+            let userImageFile = filteredEvents?[indexPath.section]["event_image"] as! PFFile
             userImageFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
