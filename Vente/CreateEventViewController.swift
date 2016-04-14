@@ -663,6 +663,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     func dateButtonTouched() {
         
+        self.view.endEditing(true)
+        
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
         let start = CGPoint(x: 0.0, y: 0.0)
@@ -687,6 +689,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func timeButtonTouched() {
+        
+        self.view.endEditing(true)
         
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
