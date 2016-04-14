@@ -23,8 +23,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     let invitebutton: FlatButton = FlatButton(frame: CGRectMake(8, 968, 150, 30))
     let createbutton: FlatButton = FlatButton(frame: CGRectMake(150, 968, 150, 30))
-    let datebutton: FlatButton = FlatButton(frame: CGRectMake(30, 120, 100, 30))
-    let timebutton: FlatButton = FlatButton(frame: CGRectMake(170, 120, 100, 30))
+    let datebutton: FlatButton = FlatButton(frame: CGRectMake(32, 91, 100, 30))
+    let timebutton: FlatButton = FlatButton(frame: CGRectMake(180, 91, 100, 30))
     let uploadbutton: FlatButton = FlatButton(frame: CGRectMake(10, 339, 150, 30))
     let takephotobutton: FlatButton = FlatButton(frame: CGRectMake(155, 339, 150, 30))
     let yelpbutton: FlatButton = FlatButton(frame: CGRectMake(60, 224, 80, 30))
@@ -81,6 +81,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timeLabel.text = ""
+        dateLabel.text = ""
         
         eventNameLabel.placeholder = "Name"
         textMaker(eventNameLabel)
@@ -430,7 +433,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     //}
     
     func createEvent() {
-        if(eventNameLabel.text != nil && eventLocationLabel.text != nil && eventLocationLabel.text != nil && eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "Event Date" && timeLabel.text != "Event Time" && eventImageView != nil) {
+        if(eventNameLabel.text != nil && eventLocationLabel.text != nil && eventLocationLabel.text != nil && eventNameLabel.text != "" && eventLocationLabel.text != "" && descriptionTextField.text != "" && dateLabel.text != "" && timeLabel.text != "" && eventImageView != nil) {
             
             HUD.show(.loading, text: "Saving...")
             
@@ -555,7 +558,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             self.presentViewController(alertController, animated: true) {
             }
         }
-        else if(dateLabel.text == "Event Date"){
+        else if(dateLabel.text == ""){
             let alertController = UIAlertController(title: "Missing Event Date", message: "", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
@@ -563,7 +566,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
             self.presentViewController(alertController, animated: true) {
             }
         }
-        else if(timeLabel.text == "Event Time"){
+        else if(timeLabel.text == ""){
             let alertController = UIAlertController(title: "Missing Event Time", message: "", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             }
