@@ -77,6 +77,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
+                
+                if let error = error {
+                    print("User login failed.")
+                    print(error.localizedDescription)
+                    if (error.code == 101) {
+                        let alertController = UIAlertController(title: "Username or Password\nInvalid", message: "", preferredStyle: .Alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                        }
+                        alertController.addAction(OKAction)
+                        self.presentViewController(alertController, animated: true) {
+                        }
+                    }
+                    
+                    if (error.code == 202) {
+                        let alertController = UIAlertController(title: "Account already exists", message: "", preferredStyle: .Alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                        }
+                        alertController.addAction(OKAction)
+                        self.presentViewController(alertController, animated: true) {
+                        }
+                    }
+                }
             }
         }
         else if(usernameField.text == "") {

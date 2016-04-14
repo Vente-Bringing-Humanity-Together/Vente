@@ -148,6 +148,15 @@ class SignUpViewController: UIViewController {
                 } else {
                     print("error")
                     print(error?.localizedDescription)
+                    
+                    if (error?.code == 202) {
+                        let alertController = UIAlertController(title: "Account already exists", message: "", preferredStyle: .Alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                        }
+                        alertController.addAction(OKAction)
+                        self.presentViewController(alertController, animated: true) {
+                        }
+                    }
                 }
             }
 
