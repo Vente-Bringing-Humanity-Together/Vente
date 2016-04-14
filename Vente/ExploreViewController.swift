@@ -333,9 +333,50 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             })
         }
         
-//        if () {
-//            
-//        }
+        var myString = ""
+        var myBool = false
+        
+        myBool = (filteredEvents![indexPath.section]["entertainment"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Entertainment "
+        }
+        
+        myBool = (filteredEvents![indexPath.section]["chill"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Chill "
+        }
+
+        myBool = (filteredEvents![indexPath.section]["fooddrink"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Food/Drink "
+        }
+        
+        myBool = (filteredEvents![indexPath.section]["music"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Music "
+        }
+        
+        myBool = (filteredEvents![indexPath.section]["sports"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Sports "
+        }
+
+        myBool = (filteredEvents![indexPath.section]["nightlife"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Nightlife "
+        }
+        
+        myBool = (filteredEvents![indexPath.section]["academic"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Academic "
+        }
+        
+        myBool = (filteredEvents![indexPath.section]["adventure"] as? Bool)!
+        if (myBool) {
+            myString = myString + "Adventure "
+        }
+        
+        cell.tagsLine.text = myString
         
         cell.backgroundColor = UIColor(red: 0.99, green: 0.98, blue: 0.89, alpha: 1.0)
         
