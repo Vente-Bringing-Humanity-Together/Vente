@@ -131,6 +131,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDataSource, UITa
             cell.accessoryType = .Checkmark
         }
         
+        cell.backgroundColor = UIColor(red: 0.99, green: 0.98, blue: 0.89, alpha: 1.0)
+        
         return cell
     }
     

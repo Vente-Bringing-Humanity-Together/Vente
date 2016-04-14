@@ -149,8 +149,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         yelpTableView.dataSource = self
         
         yelpView.backgroundColor = UIColor(red: 0.95, green: 0.6, blue: 0.6, alpha: 1.0)
-        yelpView.clipsToBounds = true
-        yelpView.layer.cornerRadius = 15
+//        yelpView.clipsToBounds = true
+//        yelpView.layer.cornerRadius = 15
         
 //        yelpTableView.rowHeight = UITableViewAutomaticDimension
 //        yelpTableView.estimatedRowHeight = 120
@@ -367,6 +367,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func yelpButtonTouched() {
+        view.endEditing(true)
+        
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         let blurEffectViewSize = CGSize(width: scrollView.frame.width, height: 1180)
         let start = CGPoint(x: 0.0, y: 0.0)
