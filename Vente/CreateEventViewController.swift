@@ -784,10 +784,20 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                 self.myTimeStr = self.myTimeStr + ":00"
                 
                 if (hour > 12) {
-                    self.timeLabel.text = "\(hour - 12):\(minute) PM"
+                    if (minute < 10) {
+                        self.timeLabel.text = "\(hour - 12):0\(minute) PM"
+                    }
+                    else {
+                        self.timeLabel.text = "\(hour - 12):\(minute) PM"
+                    }
                 }
                 else {
-                    self.timeLabel.text = "\(hour):\(minute) AM"
+                    if (minute < 10) {
+                        self.timeLabel.text = "\(hour):0\(minute) AM"
+                    }
+                    else {
+                        self.timeLabel.text = "\(hour):\(minute) AM"
+                    }
                 }
                 self.timeLabel.textAlignment = .Center
         })
