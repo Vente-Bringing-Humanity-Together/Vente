@@ -25,10 +25,16 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>NikhilThotaAppz.Vente</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1690812681158855</string>
 				<string>fbauth2</string>
+                <string>oauth-swift</string>
+                <string>NikhilThotaAppz.Vente</string>
 			</array>
 		</dict>
 	</array>

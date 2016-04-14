@@ -442,7 +442,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // 4 Scope = What I said on Uber
         oauthswift.authorizeWithCallbackURL(
-            NSURL(string: "Vente://oauth/callback")!, scope: "", state:"", success: { credential, response, parameters in
+            NSURL(string: "https://codepath.com/")!, scope: "", state:"", success: { credential, response, parameters in
                 print(credential.oauth_token)
             },
             failure: { error in
