@@ -463,5 +463,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         UIImageWriteToSavedPhotosAlbum(fullScreenshot, nil, nil, nil)
         return UIImageJPEGRepresentation(fullScreenshot, 0.5)!
     }
+    
+    
+    @IBAction func profileImageButtonTouched(sender: AnyObject) {
+        let imageViewController = ImageViewController()
+//        imageViewController.modalPresentationStyle = .OverCurrentContext
+        imageViewController.modalTransitionStyle = .CrossDissolve
+        
+        imageViewController.userImage = profileImageView.image
+        
+        self.presentViewController(imageViewController, animated: true, completion: nil)
+        
+    }
 
 }

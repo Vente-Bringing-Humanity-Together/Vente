@@ -454,4 +454,15 @@ class OtherProfileViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
+    
+    @IBAction func photoButtonTouched(sender: AnyObject) {
+        let imageViewController = ImageViewController()
+        //        imageViewController.modalPresentationStyle = .OverCurrentContext
+        imageViewController.modalTransitionStyle = .CrossDissolve
+        
+        imageViewController.userImage = profileImageView.image
+        
+        self.presentViewController(imageViewController, animated: true, completion: nil)
+    }
+    
 }

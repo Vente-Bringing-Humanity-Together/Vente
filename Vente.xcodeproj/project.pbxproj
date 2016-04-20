@@ -24,6 +24,8 @@
 		27D38FE71C9747C6006D5770 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */; };
 		27D38FE81C9747C6006D5770 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */; };
 		27D38FE91C9747C6006D5770 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D38FE61C9747C6006D5770 /* Bolts.framework */; };
+		27D68AF41CC7CA3E00E57EA2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D68AF21CC7CA3E00E57EA2 /* ImageViewController.swift */; };
+		27D68AF51CC7CA3E00E57EA2 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D68AF31CC7CA3E00E57EA2 /* ImageViewController.xib */; };
 		27EAD9F51C8F98B80069BC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */; };
 		27EAD9F71C8F98B80069BC6F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */; };
 		27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EAD9F81C8F98B80069BC6F /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		27D38FE41C9747C6006D5770 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		27D38FE51C9747C6006D5770 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		27D38FE61C9747C6006D5770 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		27D68AF21CC7CA3E00E57EA2 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		27D68AF31CC7CA3E00E57EA2 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		27EAD9F11C8F98B80069BC6F /* Vente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EAD9F41C8F98B80069BC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27EAD9F61C8F98B80069BC6F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +194,15 @@
 			name = EditProfileViewController;
 			sourceTree = "<group>";
 		};
+		27D68AF11CC7CA0000E57EA2 /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27D68AF21CC7CA3E00E57EA2 /* ImageViewController.swift */,
+				27D68AF31CC7CA3E00E57EA2 /* ImageViewController.xib */,
+			);
+			name = ImageViewController;
+			sourceTree = "<group>";
+		};
 		27EAD9E81C8F98B80069BC6F = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +290,7 @@
 				382B7A861C9B68BF000B2D5E /* OtherProfileViewController */,
 				273DEF671CAB0F6500EBD504 /* ChatViewController */,
 				273DEF611CAAF35900EBD504 /* SettingsViewController */,
+				27D68AF11CC7CA0000E57EA2 /* ImageViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -408,6 +422,7 @@
 				276B894A1CAF31E800455247 /* MessageTableViewCell.xib in Resources */,
 				27EAD9FA1C8F98B80069BC6F /* Main.storyboard in Resources */,
 				A1529BC81CAB51B30066BA85 /* YelpTableViewCell.xib in Resources */,
+				27D68AF51CC7CA3E00E57EA2 /* ImageViewController.xib in Resources */,
 				38E8CD4D1C90E8AF00796901 /* CreateEventViewController.xib in Resources */,
 				2742B1321CADCE8100BA5176 /* PastEventsTableViewCell.xib in Resources */,
 				382B7A761C98C807000B2D5E /* OtherProfileViewController.xib in Resources */,
@@ -481,6 +496,7 @@
 				276B89491CAF31E800455247 /* MessageTableViewCell.swift in Sources */,
 				2742B12E1CADA4F000BA5176 /* PeopleTableViewCell.swift in Sources */,
 				273DEF641CAAF51C00EBD504 /* SettingsViewController.swift in Sources */,
+				27D68AF41CC7CA3E00E57EA2 /* ImageViewController.swift in Sources */,
 				3841B5BD1CA361D9003FEAEE /* YelpClient.swift in Sources */,
 				38AA860A1C8FA3F600A4020F /* ExploreViewController.swift in Sources */,
 				38AA860E1C8FA41A00A4020F /* ProfileViewController.swift in Sources */,
