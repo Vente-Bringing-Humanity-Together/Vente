@@ -68,6 +68,13 @@
                     <rect key="frame" x="0.0" y="335" width="320" height="178"/>
                     <color key="backgroundColor" red="0.8862745098" green="0.63529411759999999" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wb-j8-udN">
+                    <rect key="frame" x="95" y="105" width="130" height="110"/>
+                    <state key="normal" title=" "/>
+                    <connections>
+                        <action selector="photoButtonTouched:" destination="-1" eventType="touchUpInside" id="GVS-fB-AcV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.98823529409999999" green="0.98039215690000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
             <point key="canvasLocation" x="353" y="330"/>

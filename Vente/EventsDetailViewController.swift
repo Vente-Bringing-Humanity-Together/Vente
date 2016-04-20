@@ -233,6 +233,11 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                         self.joinButton.setTitle("Leave", forState: .Normal)
                         
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.attendeeList.count-1, inSection: 0)], withRowAnimation: .Fade)
+                        
+                        let backgroundImage = UIImage(named: "ic_chat")
+                        let groupMessageButton = UIBarButtonItem(image: backgroundImage, style: .Plain, target: self, action: #selector(EventsDetailViewController.chatButtonTouched))
+                        
+                        self.navigationItem.rightBarButtonItem = groupMessageButton
                     }
                 })
             }
@@ -254,10 +259,23 @@ class EventsDetailViewController: UIViewController, UITableViewDelegate, UITable
                         self.joinButton.setTitle("Join", forState: .Normal)
                         
                         self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: rowIndex, inSection: 0)], withRowAnimation: .Fade)
+                        
+                        self.navigationItem.rightBarButtonItem = .None
                     }
                 })
             }
         }
+    }
+    
+    @IBAction func photoButtonTouched(sender: AnyObject) {
+        
+        let imageViewController = ImageViewController()
+        //        imageViewController.modalPresentationStyle = .OverCurrentContext
+        imageViewController.modalTransitionStyle = .CrossDissolve
+        
+        imageViewController.userImage = coverImageView.image
+        
+        self.presentViewController(imageViewController, animated: true, completion: nil)
     }
     
     
